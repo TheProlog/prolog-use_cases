@@ -1,0 +1,1772 @@
+---
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Death Beast
+      author_name: Rahsaan Kessler
+      body: |-
+        Sapiente illo architecto quas debitis repudiandae aut vitae. Iure commodi voluptatem dicta ut est doloribus et est. Quia veniam maiores sint et est nesciunt eum possimus.
+        Quo ducimus harum quam adipisci. Distinctio odio ducimus minus repellat voluptas id omnis. Voluptates vel maxime nisi velit laboriosam ut voluptatem quo. Consequatur deleniti fugit enim aut quia rerum id nihil. Velit assumenda omnis distinctio voluptatem veritatis.
+        Saepe omnis nulla facere et nihil. Veniam autem et reprehenderit quidem numquam possimus aut. Et qui quam sunt cupiditate voluptatem eos sint. Earum pariatur et ea sed iure.
+        Perspiciatis accusantium voluptatem saepe est sed harum. Dignissimos non dolor ut qui repellendus qui asperiores reiciendis. Aperiam a incidunt impedit ut odit eaque. Sed sapiente incidunt fugiat mollitia accusamus.
+      image_url: http://www.example.com/in.alias.png
+      keywords: !ruby/object:Set
+        hash:
+          cred: true
+          Austin: true
+          sartorial: true
+          bicycle rights: true
+          fanny pack: true
+          biodiesel: true
+          scenester: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Death Beast
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Sapiente illo architecto quas debitis repudiandae aut vitae. Iure commodi voluptatem dicta ut est doloribus et est. Quia veniam maiores sint et est nesciunt eum possimus.
+      Quo ducimus harum quam adipisci. Distinctio odio ducimus minus repellat voluptas id omnis. Voluptates vel maxime nisi velit laboriosam ut voluptatem quo. Consequatur deleniti fugit enim aut quia rerum id nihil. Velit assumenda omnis distinctio voluptatem veritatis.
+      Saepe omnis nulla facere et nihil. Veniam autem et reprehenderit quidem numquam possimus aut. Et qui quam sunt cupiditate voluptatem eos sint. Earum pariatur et ea sed iure.
+      Perspiciatis accusantium voluptatem saepe est sed harum. Dignissimos non dolor ut qui repellendus qui asperiores reiciendis. Aperiam a incidunt impedit ut odit eaque. Sed sapiente incidunt fugiat mollitia accusamus.
+    image_url_present: http://www.example.com/in.alias.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Time of the Green Gypsy
+      author_name: Marisa Satterfield
+      body: |-
+        Autem qui beatae voluptas culpa. Consequuntur facilis non animi est. Facere placeat ducimus molestias velit.
+        Incidunt quo ex explicabo iure rerum. Est et corporis placeat suscipit fugit aut dolor dolor. Ullam architecto odio quae maiores aut. Corrupti et facilis ullam eos quisquam veritatis. Fuga voluptatem incidunt dolorem illum labore similique vel.
+      image_url: http://www.example.com/laboriosam.numquam.png
+      keywords: !ruby/object:Set
+        hash:
+          organic: true
+          Portland: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Time of the Green Gypsy
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Autem qui beatae voluptas culpa. Consequuntur facilis non animi est. Facere placeat ducimus molestias velit.
+      Incidunt quo ex explicabo iure rerum. Est et corporis placeat suscipit fugit aut dolor dolor. Ullam architecto odio quae maiores aut. Corrupti et facilis ullam eos quisquam veritatis. Fuga voluptatem incidunt dolorem illum labore similique vel.
+    image_url_present: http://www.example.com/laboriosam.numquam.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: A Fistful of Wolves
+      author_name: Rahsaan Kessler
+      body: 
+      image_url: http://www.example.com/qui-ut.png
+      keywords: !ruby/object:Set
+        hash:
+          chambray: true
+          party: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of Wolves
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/qui-ut.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Tentacle Without a Demon
+      author_name: Stefan Renner
+      body: |-
+        Culpa aut esse rerum perspiciatis. Qui modi esse ratione tempore perferendis et quia. Facere enim distinctio adipisci iure vitae sit rerum.
+        Eum nemo ex et ut illo. Nihil et maxime qui ut sed. Omnis consequatur qui placeat voluptas id sequi debitis. Possimus et consequatur vel aut esse dolor eos.
+      image_url: http://www.example.com/laudantium-voluptatem.png
+      keywords: !ruby/object:Set
+        hash:
+          scenester: true
+          salvia: true
+          leggings: true
+          gentrify: true
+          Portland: true
+          beard: true
+          keffiyeh: true
+          echo park: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tentacle Without a Demon
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Culpa aut esse rerum perspiciatis. Qui modi esse ratione tempore perferendis et quia. Facere enim distinctio adipisci iure vitae sit rerum.
+      Eum nemo ex et ut illo. Nihil et maxime qui ut sed. Omnis consequatur qui placeat voluptas id sequi debitis. Possimus et consequatur vel aut esse dolor eos.
+    image_url_present: http://www.example.com/laudantium-voluptatem.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The City Without a Hills
+      author_name: Nannie Hoppe
+      body: 
+      image_url: http://www.example.com/sit_iste.png
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The City Without a Hills
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/sit_iste.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Tentacle from the Black Lagoon
+      author_name: Rahsaan Kessler
+      body: |-
+        Vero aut eum fugit consequuntur. Est doloribus quibusdam et molestias. Labore asperiores vel quam perferendis officia et nihil aut. Est iste voluptates perferendis aut consequatur quidem eos exercitationem. Recusandae sunt est autem ut et in possimus est.
+        Minus facilis sequi quasi sit velit officia. Qui eaque alias aut et aut. Sit perspiciatis numquam commodi ipsa. Sequi veniam rem aut doloremque vel cumque velit ut.
+        Aut commodi dignissimos debitis saepe beatae. A neque reiciendis non ipsam. Eius sit occaecati et eligendi aut at cum omnis. Doloribus impedit sed nihil eum.
+        Beatae repellendus magnam est ipsum harum voluptatibus. Enim in cumque tempore est occaecati. Veritatis enim rerum sed quam consequatur.
+        Quibusdam iste dolores nam libero. Eos sed dolores vero ea autem. Assumenda blanditiis reiciendis corporis architecto sunt molestiae temporibus.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          cliche: true
+          trust fund: true
+          before they sold out: true
+          keytar: true
+          tofu: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tentacle from the Black Lagoon
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Vero aut eum fugit consequuntur. Est doloribus quibusdam et molestias. Labore asperiores vel quam perferendis officia et nihil aut. Est iste voluptates perferendis aut consequatur quidem eos exercitationem. Recusandae sunt est autem ut et in possimus est.
+      Minus facilis sequi quasi sit velit officia. Qui eaque alias aut et aut. Sit perspiciatis numquam commodi ipsa. Sequi veniam rem aut doloremque vel cumque velit ut.
+      Aut commodi dignissimos debitis saepe beatae. A neque reiciendis non ipsam. Eius sit occaecati et eligendi aut at cum omnis. Doloribus impedit sed nihil eum.
+      Beatae repellendus magnam est ipsum harum voluptatibus. Enim in cumque tempore est occaecati. Veritatis enim rerum sed quam consequatur.
+      Quibusdam iste dolores nam libero. Eos sed dolores vero ea autem. Assumenda blanditiis reiciendis corporis architecto sunt molestiae temporibus.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Season of the Diaries
+      author_name: Kaitlin McCullough
+      body: |-
+        Placeat accusantium et sit possimus quod distinctio nihil amet. Aut et et tempore est aliquid rerum maiores. Quaerat expedita ut tempora facere alias nesciunt distinctio ea. Sit dicta et et nemo ea non vel. Nihil eaque eos perspiciatis ea aut.
+        In unde at id dignissimos ut. Aliquid facere corrupti qui ducimus sit reiciendis aspernatur natus. Magni reiciendis quis repellat impedit dolore est.
+        Sed voluptas earum doloremque ut. Omnis excepturi dolores mollitia soluta delectus est. Ea distinctio consequuntur optio nobis doloremque nesciunt ipsa.
+        Officia nulla occaecati non voluptas. Necessitatibus pariatur est reiciendis eum est sit quasi dignissimos. Autem voluptatem reprehenderit excepturi est non ut. Sunt iusto mollitia animi enim et aut voluptas.
+        Ea voluptates perspiciatis quis quo doloribus omnis labore molestiae. In sint reiciendis corporis tenetur esse sed est. Illo sint nostrum enim delectus qui. Nostrum et id iusto in excepturi rerum nesciunt. Quia vel in adipisci similique sequi.
+        Accusamus fuga ex amet numquam ab quis et temporibus. Nihil animi et error ad. Aut doloremque qui saepe expedita maxime ut omnis. Aliquam doloremque ut ullam quia.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          Williamsburg: true
+          quinoa: true
+          mustache: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Season of the Diaries
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Placeat accusantium et sit possimus quod distinctio nihil amet. Aut et et tempore est aliquid rerum maiores. Quaerat expedita ut tempora facere alias nesciunt distinctio ea. Sit dicta et et nemo ea non vel. Nihil eaque eos perspiciatis ea aut.
+      In unde at id dignissimos ut. Aliquid facere corrupti qui ducimus sit reiciendis aspernatur natus. Magni reiciendis quis repellat impedit dolore est.
+      Sed voluptas earum doloremque ut. Omnis excepturi dolores mollitia soluta delectus est. Ea distinctio consequuntur optio nobis doloremque nesciunt ipsa.
+      Officia nulla occaecati non voluptas. Necessitatibus pariatur est reiciendis eum est sit quasi dignissimos. Autem voluptatem reprehenderit excepturi est non ut. Sunt iusto mollitia animi enim et aut voluptas.
+      Ea voluptates perspiciatis quis quo doloribus omnis labore molestiae. In sint reiciendis corporis tenetur esse sed est. Illo sint nostrum enim delectus qui. Nostrum et id iusto in excepturi rerum nesciunt. Quia vel in adipisci similique sequi.
+      Accusamus fuga ex amet numquam ab quis et temporibus. Nihil animi et error ad. Aut doloremque qui saepe expedita maxime ut omnis. Aliquam doloremque ut ullam quia.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Dangerous Diaries
+      author_name: Anderson Stracke
+      body: Molestiae libero quia quo sunt labore voluptates. Et maiores ut ex voluptas
+        aut. A dolorum vitae et quaerat exercitationem enim ut explicabo. Corporis
+        vero maiores dolor saepe sed sint dolores est. Nemo aut eligendi amet nulla
+        debitis doloribus reiciendis.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          cred: true
+          Austin: true
+          sartorial: true
+          bicycle rights: true
+          fanny pack: true
+          biodiesel: true
+          scenester: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Dangerous Diaries
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: Molestiae libero quia quo sunt labore voluptates. Et maiores ut ex voluptas
+      aut. A dolorum vitae et quaerat exercitationem enim ut explicabo. Corporis vero
+      maiores dolor saepe sed sint dolores est. Nemo aut eligendi amet nulla debitis
+      doloribus reiciendis.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Wolf from Across the Ocean
+      author_name: Alexandrine Kohler
+      body: |-
+        Modi vero vitae quo ab minus quos consectetur. Assumenda ut ex aliquam et. In consequatur voluptas tenetur excepturi harum doloribus. Nam ut voluptas quia cum assumenda autem esse eum. Voluptas error consequatur nisi est voluptas quibusdam.
+        Veritatis amet non odit vero ea possimus dolores. Quod rerum sit reiciendis labore architecto doloribus dignissimos rerum. Nesciunt aliquid et illo omnis.
+        Est et et dolores nulla cum soluta cupiditate quo. Enim aspernatur omnis eligendi quam maiores illum dolorem. Enim nisi qui voluptates omnis dolorum. Est aut aliquam minima eos natus nesciunt.
+        Magnam ullam omnis quibusdam ad facere tempora. Ex error sunt ut nam hic esse sit ipsum. Sapiente modi cum natus accusamus qui.
+        Officia quia natus vel voluptatem. Ut omnis error suscipit sit et et. Labore odio qui iste sed quasi magni fugiat. Est velit dolorem et voluptatem.
+        Sunt et dolores et laborum qui. Consequatur illum voluptatem magnam tempora ut consectetur. Autem consequatur dolorum et dolor. Quis animi dolorem saepe ducimus repellat et est enim. Quo excepturi illo assumenda perspiciatis in quo dolore ea.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          leggings: true
+          moon: true
+          irony: true
+          vinyl: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Wolf from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Modi vero vitae quo ab minus quos consectetur. Assumenda ut ex aliquam et. In consequatur voluptas tenetur excepturi harum doloribus. Nam ut voluptas quia cum assumenda autem esse eum. Voluptas error consequatur nisi est voluptas quibusdam.
+      Veritatis amet non odit vero ea possimus dolores. Quod rerum sit reiciendis labore architecto doloribus dignissimos rerum. Nesciunt aliquid et illo omnis.
+      Est et et dolores nulla cum soluta cupiditate quo. Enim aspernatur omnis eligendi quam maiores illum dolorem. Enim nisi qui voluptates omnis dolorum. Est aut aliquam minima eos natus nesciunt.
+      Magnam ullam omnis quibusdam ad facere tempora. Ex error sunt ut nam hic esse sit ipsum. Sapiente modi cum natus accusamus qui.
+      Officia quia natus vel voluptatem. Ut omnis error suscipit sit et et. Labore odio qui iste sed quasi magni fugiat. Est velit dolorem et voluptatem.
+      Sunt et dolores et laborum qui. Consequatur illum voluptatem magnam tempora ut consectetur. Autem consequatur dolorum et dolor. Quis animi dolorem saepe ducimus repellat et est enim. Quo excepturi illo assumenda perspiciatis in quo dolore ea.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Time of the Wolves
+      author_name: Samara Abernathy
+      body: |-
+        Natus quia vel assumenda iusto enim nihil. Nisi et natus odit quisquam velit. Nobis quasi ab veritatis quisquam ipsa repudiandae a. Vero asperiores et nam quia quas. At iusto aut repellat dolorum aut.
+        Fugit nam impedit sed et quo labore. Id officiis quia sunt cum aliquid veritatis ducimus. Iure commodi assumenda id est excepturi voluptatibus voluptas.
+      image_url: http://www.example.com/dolorum.iste.png
+      keywords: !ruby/object:Set
+        hash:
+          bicycle rights: true
+          raw denim: true
+          hoodie: true
+          Cosby Sweater: true
+          master cleanse: true
+          VHS: true
+          banh mi: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Time of the Wolves
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Natus quia vel assumenda iusto enim nihil. Nisi et natus odit quisquam velit. Nobis quasi ab veritatis quisquam ipsa repudiandae a. Vero asperiores et nam quia quas. At iusto aut repellat dolorum aut.
+      Fugit nam impedit sed et quo labore. Id officiis quia sunt cum aliquid veritatis ducimus. Iure commodi assumenda id est excepturi voluptatibus voluptas.
+    image_url_present: http://www.example.com/dolorum.iste.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Action Demon
+      author_name: Adam Abernathy
+      body: |-
+        Quasi ex sit qui esse maiores illo. Veritatis odio sint dicta repudiandae eum tenetur quaerat. Voluptatem dolorem sequi nihil sit. Nihil qui sequi et id necessitatibus esse ut sed.
+        Doloremque et quae cupiditate quis officiis. Inventore iure exercitationem culpa voluptatem. Deleniti alias fugiat et error eum saepe consequatur. Et perferendis vero dolor enim omnis praesentium. Voluptate quisquam mollitia quos exercitationem pariatur quibusdam similique expedita.
+      image_url: http://www.example.com/voluptatem.atque.png
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Action Demon
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Quasi ex sit qui esse maiores illo. Veritatis odio sint dicta repudiandae eum tenetur quaerat. Voluptatem dolorem sequi nihil sit. Nihil qui sequi et id necessitatibus esse ut sed.
+      Doloremque et quae cupiditate quis officiis. Inventore iure exercitationem culpa voluptatem. Deleniti alias fugiat et error eum saepe consequatur. Et perferendis vero dolor enim omnis praesentium. Voluptate quisquam mollitia quos exercitationem pariatur quibusdam similique expedita.
+    image_url_present: http://www.example.com/voluptatem.atque.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Blue Diaries
+      author_name: Ethyl Muller
+      body: |-
+        Ut eaque vel nostrum odio. Aut voluptatem similique cupiditate id. Consequatur sed nostrum vel culpa omnis. Illo dolorem fugit aut cupiditate occaecati maiores nihil.
+        Ullam modi qui cumque excepturi maiores dolorem quia. Deserunt molestias est iusto quos. Voluptatibus tempore facilis debitis velit similique.
+        Repudiandae id voluptatem est facilis corporis aut. Quas placeat quis voluptas maiores ut. Et officiis ut assumenda veniam eveniet possimus alias.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Blue Diaries
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Ut eaque vel nostrum odio. Aut voluptatem similique cupiditate id. Consequatur sed nostrum vel culpa omnis. Illo dolorem fugit aut cupiditate occaecati maiores nihil.
+      Ullam modi qui cumque excepturi maiores dolorem quia. Deserunt molestias est iusto quos. Voluptatibus tempore facilis debitis velit similique.
+      Repudiandae id voluptatem est facilis corporis aut. Quas placeat quis voluptas maiores ut. Et officiis ut assumenda veniam eveniet possimus alias.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Bloody Fly
+      author_name: Alejandrin Grimes
+      body: |-
+        Nisi harum tempore est ea. Ratione rerum fugiat nulla molestiae sunt laudantium. Alias eum deleniti vel hic.
+        Expedita incidunt corrupti cum ipsam necessitatibus quod quisquam velit. Nulla perspiciatis placeat optio veritatis consequuntur. Dolorem et velit nobis id. Consequatur nesciunt fugiat rerum et non natus laudantium et.
+        Saepe inventore deserunt necessitatibus quisquam. Voluptas dolorum rerum odit dignissimos distinctio cupiditate. Facilis est porro quam voluptate assumenda non. Ipsa voluptatem amet omnis sit officia autem ratione.
+        Eveniet minus ea quae consectetur nihil ratione beatae et. Labore aliquam sit accusamus ut animi. Sit et ipsam repudiandae qui non alias earum.
+      image_url: http://www.example.com/dolor.provident.png
+      keywords: !ruby/object:Set
+        hash:
+          messenger bag: true
+          sustainable: true
+          American Apparel: true
+          jean shorts: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Bloody Fly
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Nisi harum tempore est ea. Ratione rerum fugiat nulla molestiae sunt laudantium. Alias eum deleniti vel hic.
+      Expedita incidunt corrupti cum ipsam necessitatibus quod quisquam velit. Nulla perspiciatis placeat optio veritatis consequuntur. Dolorem et velit nobis id. Consequatur nesciunt fugiat rerum et non natus laudantium et.
+      Saepe inventore deserunt necessitatibus quisquam. Voluptas dolorum rerum odit dignissimos distinctio cupiditate. Facilis est porro quam voluptate assumenda non. Ipsa voluptatem amet omnis sit officia autem ratione.
+      Eveniet minus ea quae consectetur nihil ratione beatae et. Labore aliquam sit accusamus ut animi. Sit et ipsam repudiandae qui non alias earum.
+    image_url_present: http://www.example.com/dolor.provident.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: A Fistful of American Fly
+      author_name: Rahsaan Kessler
+      body: |-
+        Rerum omnis minima ea quis. Necessitatibus consequuntur aspernatur expedita dicta fugiat. Nemo nihil et debitis suscipit quo aut. Qui quia laudantium distinctio consequatur voluptas neque. Officia ipsum voluptatem possimus praesentium.
+        Cupiditate labore nisi ullam velit possimus dolorem itaque. Fugiat corporis voluptatem quia facilis non. Eveniet voluptas voluptatem veritatis omnis nostrum rerum. Deleniti ut quisquam in voluptatum quasi labore qui.
+        Qui quia suscipit blanditiis consequatur qui quam nisi. Quis voluptatem voluptas nostrum sint dolorem vitae. Sed ut earum ea eius saepe omnis tempore.
+        Maiores consequuntur eos quaerat non. Est animi eveniet ut soluta eum placeat nobis quaerat. Quis quaerat omnis quis et. Fugiat porro accusamus iusto minima mollitia reprehenderit.
+        Consequatur ratione laudantium officiis veniam dolores. Quibusdam omnis et qui possimus et voluptas expedita doloremque. Tempore et nulla delectus repellat fugiat eum.
+      image_url: http://www.example.com/odio-aut.png
+      keywords: !ruby/object:Set
+        hash:
+          vice: true
+          scenester: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of American Fly
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Rerum omnis minima ea quis. Necessitatibus consequuntur aspernatur expedita dicta fugiat. Nemo nihil et debitis suscipit quo aut. Qui quia laudantium distinctio consequatur voluptas neque. Officia ipsum voluptatem possimus praesentium.
+      Cupiditate labore nisi ullam velit possimus dolorem itaque. Fugiat corporis voluptatem quia facilis non. Eveniet voluptas voluptatem veritatis omnis nostrum rerum. Deleniti ut quisquam in voluptatum quasi labore qui.
+      Qui quia suscipit blanditiis consequatur qui quam nisi. Quis voluptatem voluptas nostrum sint dolorem vitae. Sed ut earum ea eius saepe omnis tempore.
+      Maiores consequuntur eos quaerat non. Est animi eveniet ut soluta eum placeat nobis quaerat. Quis quaerat omnis quis et. Fugiat porro accusamus iusto minima mollitia reprehenderit.
+      Consequatur ratione laudantium officiis veniam dolores. Quibusdam omnis et qui possimus et voluptas expedita doloremque. Tempore et nulla delectus repellat fugiat eum.
+    image_url_present: http://www.example.com/odio-aut.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Dangerous Man
+      author_name: Emery Dach
+      body: |-
+        Voluptas quia quas et nam voluptatem. Est laudantium commodi incidunt voluptates. Neque iusto ut quia sunt iste rerum et. Voluptates officiis dignissimos deserunt praesentium at sit dolor. Et rerum exercitationem quod ex optio quis reprehenderit.
+        Rerum minima sapiente impedit beatae earum voluptas nihil. Voluptatem nihil expedita rerum alias quia quia. Error quam ut quia nam. Natus sint repellendus quae ratione voluptatem qui recusandae quibusdam. Qui pariatur corrupti et sed perferendis quis nemo mollitia.
+        Ab natus est aliquid nemo. Corrupti autem mollitia rerum blanditiis optio laudantium animi qui. Facere quibusdam non autem consequuntur. Reprehenderit consequatur commodi quia culpa perspiciatis.
+        Nemo quia aut dolorem rem iusto maiores ut iste. Repellendus molestiae aliquid esse autem dolores voluptates voluptatum ratione. Ratione pariatur in laudantium aut id atque. Odit dolorem aliquam voluptatem velit consectetur aspernatur. Ullam quis eaque excepturi qui.
+        Rerum maiores magnam omnis placeat dicta. Voluptatem itaque optio quibusdam quae expedita. Ullam itaque dolorum dolores eos aut rerum. Est ab eius magni enim amet delectus. Autem earum similique laborum qui ipsum ullam ut debitis.
+        Et at occaecati omnis quasi et consectetur. Quod et quia ea nostrum nam iure sed. Porro repudiandae non mollitia est aut amet. Cumque autem soluta dolore aut.
+      image_url: http://www.example.com/debitis_doloremque.png
+      keywords: !ruby/object:Set
+        hash:
+          bicycle rights: true
+          raw denim: true
+          hoodie: true
+          Cosby Sweater: true
+          master cleanse: true
+          VHS: true
+          banh mi: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Dangerous Man
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Voluptas quia quas et nam voluptatem. Est laudantium commodi incidunt voluptates. Neque iusto ut quia sunt iste rerum et. Voluptates officiis dignissimos deserunt praesentium at sit dolor. Et rerum exercitationem quod ex optio quis reprehenderit.
+      Rerum minima sapiente impedit beatae earum voluptas nihil. Voluptatem nihil expedita rerum alias quia quia. Error quam ut quia nam. Natus sint repellendus quae ratione voluptatem qui recusandae quibusdam. Qui pariatur corrupti et sed perferendis quis nemo mollitia.
+      Ab natus est aliquid nemo. Corrupti autem mollitia rerum blanditiis optio laudantium animi qui. Facere quibusdam non autem consequuntur. Reprehenderit consequatur commodi quia culpa perspiciatis.
+      Nemo quia aut dolorem rem iusto maiores ut iste. Repellendus molestiae aliquid esse autem dolores voluptates voluptatum ratione. Ratione pariatur in laudantium aut id atque. Odit dolorem aliquam voluptatem velit consectetur aspernatur. Ullam quis eaque excepturi qui.
+      Rerum maiores magnam omnis placeat dicta. Voluptatem itaque optio quibusdam quae expedita. Ullam itaque dolorum dolores eos aut rerum. Est ab eius magni enim amet delectus. Autem earum similique laborum qui ipsum ullam ut debitis.
+      Et at occaecati omnis quasi et consectetur. Quod et quia ea nostrum nam iure sed. Porro repudiandae non mollitia est aut amet. Cumque autem soluta dolore aut.
+    image_url_present: http://www.example.com/debitis_doloremque.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Dreams from Across the Ocean
+      author_name: Kaden Bednar
+      body: |-
+        Ratione voluptatem ut vel sed. Quod aliquam amet soluta sunt aut aspernatur dolorum. Ducimus quidem illum consequuntur et cumque.
+        Vitae nihil tempora quia rerum. Et voluptas et in est ducimus sunt perferendis. Tenetur odit eius consequuntur porro culpa ullam fuga repudiandae. Odit numquam ut cumque eum. Omnis praesentium voluptatibus est et perferendis.
+      image_url: http://www.example.com/quibusdam_reiciendis.png
+      keywords: !ruby/object:Set
+        hash:
+          dreamcatcher: true
+          cliche: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Dreams from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Ratione voluptatem ut vel sed. Quod aliquam amet soluta sunt aut aspernatur dolorum. Ducimus quidem illum consequuntur et cumque.
+      Vitae nihil tempora quia rerum. Et voluptas et in est ducimus sunt perferendis. Tenetur odit eius consequuntur porro culpa ullam fuga repudiandae. Odit numquam ut cumque eum. Omnis praesentium voluptatibus est et perferendis.
+    image_url_present: http://www.example.com/quibusdam_reiciendis.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Ninjas with a Thousand Faces
+      author_name: Anderson Stracke
+      body: |-
+        Aspernatur in deserunt voluptatibus qui et. Vel est sunt voluptas dicta similique ducimus. Dolores rerum id aliquid eos aut excepturi est non. Pariatur et quibusdam aspernatur voluptatem reprehenderit.
+        Animi ipsa repellendus eos iusto hic porro quos. Recusandae illum quidem blanditiis molestiae. Qui laudantium blanditiis impedit ratione aliquid mollitia. In quibusdam nemo et optio et unde enim. Veritatis reiciendis repellat libero architecto nulla est quo facilis.
+        Ullam alias quibusdam aut non facilis. Qui et voluptas necessitatibus perferendis consectetur. Consectetur eaque sunt atque et ullam quia incidunt. Minus dolores et omnis ex magni.
+        Rerum non vitae iure et voluptate. Vel repellendus tempore qui et rerum. Voluptate officiis enim dolorem aut amet qui voluptas incidunt. Facere veritatis tempore sit voluptatem eligendi.
+      image_url: http://www.example.com/et.dolorem.png
+      keywords: !ruby/object:Set
+        hash:
+          vice: true
+          salvia: true
+          American Apparel: true
+          fixie: true
+          mustache: true
+          aesthetic: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Ninjas with a Thousand Faces
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Aspernatur in deserunt voluptatibus qui et. Vel est sunt voluptas dicta similique ducimus. Dolores rerum id aliquid eos aut excepturi est non. Pariatur et quibusdam aspernatur voluptatem reprehenderit.
+      Animi ipsa repellendus eos iusto hic porro quos. Recusandae illum quidem blanditiis molestiae. Qui laudantium blanditiis impedit ratione aliquid mollitia. In quibusdam nemo et optio et unde enim. Veritatis reiciendis repellat libero architecto nulla est quo facilis.
+      Ullam alias quibusdam aut non facilis. Qui et voluptas necessitatibus perferendis consectetur. Consectetur eaque sunt atque et ullam quia incidunt. Minus dolores et omnis ex magni.
+      Rerum non vitae iure et voluptate. Vel repellendus tempore qui et rerum. Voluptate officiis enim dolorem aut amet qui voluptas incidunt. Facere veritatis tempore sit voluptatem eligendi.
+    image_url_present: http://www.example.com/et.dolorem.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Hungry Monster That Came to Dinner
+      author_name: Kaitlin McCullough
+      body: 
+      image_url: http://www.example.com/ratione_ab.png
+      keywords: !ruby/object:Set
+        hash:
+          chambray: true
+          party: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Hungry Monster That Came to Dinner
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/ratione_ab.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Tentacle with a Thousand Faces
+      author_name: Jerad Tremblay
+      body: |-
+        Sint nam laudantium temporibus minus ut eaque quia. Sit suscipit sed quas possimus repellat numquam a et. Voluptate ipsa enim est nesciunt. Sed blanditiis velit perspiciatis quia ut. Porro similique ipsa unde id nulla sit adipisci.
+        Soluta qui harum asperiores quia error dolor et. Porro officia eum sit cum blanditiis illo eos voluptates. Quos illum aliquid dolorem minus est.
+        Voluptatum maiores nemo et et accusantium suscipit itaque. Magnam harum nihil ducimus vel et quod quisquam provident. Sint nihil ratione recusandae vero dolorem.
+        Repellat itaque hic non odit similique facere quo non. Distinctio est qui tempore dolor ea voluptate consequatur est. Et numquam placeat et deserunt esse dolores impedit. Et autem facere culpa esse ratione quia eos.
+        Eos et quasi et ut ea. Voluptate ut sint perferendis quibusdam et mollitia voluptas omnis. Ipsum eius fugit et omnis. Temporibus aperiam laudantium numquam quas id quo. Fuga sed exercitationem dolor ut dolorem voluptas.
+        Fugit vel ab nihil eligendi dolorem. Fugit omnis est voluptas et fuga ad dolor. Aut et quis recusandae assumenda dignissimos. Hic velit ratione exercitationem aut impedit ad quo incidunt.
+        Eveniet laudantium animi et aspernatur itaque optio est. Fugit facilis reiciendis dolorum sed omnis ducimus aperiam. Consequuntur blanditiis dolores vitae in laborum dolore. Veritatis aut est qui fuga.
+      image_url: http://www.example.com/nesciunt_est.png
+      keywords: !ruby/object:Set
+        hash:
+          Williamsburg: true
+          quinoa: true
+          mustache: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tentacle with a Thousand Faces
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Sint nam laudantium temporibus minus ut eaque quia. Sit suscipit sed quas possimus repellat numquam a et. Voluptate ipsa enim est nesciunt. Sed blanditiis velit perspiciatis quia ut. Porro similique ipsa unde id nulla sit adipisci.
+      Soluta qui harum asperiores quia error dolor et. Porro officia eum sit cum blanditiis illo eos voluptates. Quos illum aliquid dolorem minus est.
+      Voluptatum maiores nemo et et accusantium suscipit itaque. Magnam harum nihil ducimus vel et quod quisquam provident. Sint nihil ratione recusandae vero dolorem.
+      Repellat itaque hic non odit similique facere quo non. Distinctio est qui tempore dolor ea voluptate consequatur est. Et numquam placeat et deserunt esse dolores impedit. Et autem facere culpa esse ratione quia eos.
+      Eos et quasi et ut ea. Voluptate ut sint perferendis quibusdam et mollitia voluptas omnis. Ipsum eius fugit et omnis. Temporibus aperiam laudantium numquam quas id quo. Fuga sed exercitationem dolor ut dolorem voluptas.
+      Fugit vel ab nihil eligendi dolorem. Fugit omnis est voluptas et fuga ad dolor. Aut et quis recusandae assumenda dignissimos. Hic velit ratione exercitationem aut impedit ad quo incidunt.
+      Eveniet laudantium animi et aspernatur itaque optio est. Fugit facilis reiciendis dolorum sed omnis ducimus aperiam. Consequuntur blanditiis dolores vitae in laborum dolore. Veritatis aut est qui fuga.
+    image_url_present: http://www.example.com/nesciunt_est.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Action Ninja
+      author_name: Rahsaan Kessler
+      body: |-
+        Provident suscipit perspiciatis tenetur voluptatem dolorem. Accusamus eum impedit labore qui explicabo vero sint illum. In cum voluptatem rerum possimus et voluptatum veritatis autem.
+        Ratione reiciendis dolor optio sed sit nam officiis qui. Id qui non numquam magnam. Nobis iste minima soluta aliquam. Corporis et sequi molestiae ab. Nemo qui sed saepe ipsa fugit provident.
+        Nobis repudiandae cum excepturi consectetur corporis rem odit expedita. Est odio consequuntur adipisci aspernatur expedita facilis. Id nulla maiores asperiores voluptas. Perspiciatis quia earum asperiores modi. Error tenetur alias consequatur atque molestiae.
+        Et ut aut enim ratione delectus qui. Minus modi tempore occaecati et nulla ad consequuntur. Nisi sequi dolorem voluptate dolores tempora.
+      image_url: http://www.example.com/nemo.quas.png
+      keywords: !ruby/object:Set
+        hash:
+          banh mi: true
+          put a bird on it: true
+          Brooklyn: true
+          food truck: true
+          readymade: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Action Ninja
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Provident suscipit perspiciatis tenetur voluptatem dolorem. Accusamus eum impedit labore qui explicabo vero sint illum. In cum voluptatem rerum possimus et voluptatum veritatis autem.
+      Ratione reiciendis dolor optio sed sit nam officiis qui. Id qui non numquam magnam. Nobis iste minima soluta aliquam. Corporis et sequi molestiae ab. Nemo qui sed saepe ipsa fugit provident.
+      Nobis repudiandae cum excepturi consectetur corporis rem odit expedita. Est odio consequuntur adipisci aspernatur expedita facilis. Id nulla maiores asperiores voluptas. Perspiciatis quia earum asperiores modi. Error tenetur alias consequatur atque molestiae.
+      Et ut aut enim ratione delectus qui. Minus modi tempore occaecati et nulla ad consequuntur. Nisi sequi dolorem voluptate dolores tempora.
+    image_url_present: http://www.example.com/nemo.quas.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Nuclear World
+      author_name: Ethyl Muller
+      body: |-
+        Omnis autem accusamus et quia minima placeat non perspiciatis. Et impedit et fuga id in perspiciatis eius. Inventore nam tempore est occaecati eum.
+        Ea similique qui unde dolorum quaerat aliquam. Sint eaque nemo occaecati in expedita voluptas fugit. Nesciunt id illum ullam sit minus sequi modi. Est quaerat ea maxime consequatur dolores dolorum sint voluptatem.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          sartorial: true
+          Carles: true
+          stumptown: true
+          beard: true
+          brunch: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Nuclear World
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Omnis autem accusamus et quia minima placeat non perspiciatis. Et impedit et fuga id in perspiciatis eius. Inventore nam tempore est occaecati eum.
+      Ea similique qui unde dolorum quaerat aliquam. Sint eaque nemo occaecati in expedita voluptas fugit. Nesciunt id illum ullam sit minus sequi modi. Est quaerat ea maxime consequatur dolores dolorum sint voluptatem.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: 'Electric Pickpocket 2: Son of Electric Pickpocket'
+      author_name: Kaden Bednar
+      body: Sit nobis esse quia aut officia neque sunt. Et officia ad dolores distinctio
+        ut nisi odio. Fugit eum aut provident maiores consequatur assumenda. Iusto
+        similique ut quo qui sequi tenetur quia. Accusamus hic maxime quas rem natus
+        consequatur corrupti.
+      image_url: http://www.example.com/ullam_eum.png
+      keywords: !ruby/object:Set
+        hash:
+          sustainable: true
+          iPhone: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: 'Electric Pickpocket 2: Son of Electric Pickpocket'
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: Sit nobis esse quia aut officia neque sunt. Et officia ad dolores distinctio
+      ut nisi odio. Fugit eum aut provident maiores consequatur assumenda. Iusto similique
+      ut quo qui sequi tenetur quia. Accusamus hic maxime quas rem natus consequatur
+      corrupti.
+    image_url_present: http://www.example.com/ullam_eum.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: A Fistful of Green Men
+      author_name: Adam Abernathy
+      body: 
+      image_url: http://www.example.com/sapiente_eos.png
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of Green Men
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/sapiente_eos.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Tentacle from Outer Space
+      author_name: Jaren Fadel
+      body: |-
+        Labore et ut voluptatem natus omnis ea dignissimos quia. Qui et excepturi eligendi voluptas eum. Saepe aut ducimus eaque officia magnam quo.
+        Enim tempora ut quidem atque delectus dolores aut corporis. Magni eligendi excepturi recusandae et cumque et. Ratione nihil minima quia recusandae est consectetur voluptatem et.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tentacle from Outer Space
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Labore et ut voluptatem natus omnis ea dignissimos quia. Qui et excepturi eligendi voluptas eum. Saepe aut ducimus eaque officia magnam quo.
+      Enim tempora ut quidem atque delectus dolores aut corporis. Magni eligendi excepturi recusandae et cumque et. Ratione nihil minima quia recusandae est consectetur voluptatem et.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Brain
+      author_name: Kaitlin McCullough
+      body: 
+      image_url: http://www.example.com/consequatur_eveniet.png
+      keywords: !ruby/object:Set
+        hash:
+          put a bird on it: true
+          tattooed: true
+          keffiyeh: true
+          PBR: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Brain
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/consequatur_eveniet.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: 'Codename: Red Monster'
+      author_name: Aric Rosenbaum
+      body: |-
+        Harum dolorem qui ea eveniet ducimus sequi qui aut. Recusandae asperiores tenetur corporis nihil sed. Beatae iure iste autem totam est ipsum. Quia enim nam aut error quis itaque exercitationem qui.
+        Ut et accusamus sint veritatis voluptatibus voluptatem. Illo dicta commodi consequuntur tempore illum omnis dignissimos. Magni ut perspiciatis fugiat temporibus ipsum. Porro in molestiae ut qui itaque. Sed iste ducimus tempore amet qui.
+        Laborum ut id iusto minima qui numquam sed ut. Quia modi sed ratione aut nisi ea. Velit in eligendi aut ut illum porro recusandae. Sint eius asperiores ut qui voluptatem quisquam rerum et.
+        Et alias non commodi doloribus iste omnis. Aut neque et ut possimus voluptas tempora molestiae. Enim officiis dolorem voluptas quo ea. Praesentium dignissimos nihil ut consequatur id perferendis. Quia ea corrupti laudantium molestiae cumque.
+        Recusandae aliquam commodi exercitationem dolorum perspiciatis ipsum doloremque optio. Cumque natus sapiente dicta reprehenderit iusto earum laborum. Molestiae error unde aut nemo eos. Ut velit quia et voluptatem veniam ut sit.
+        Aliquam pariatur delectus consequuntur voluptas nostrum culpa minima. Animi iusto voluptates nam culpa a consectetur harum nesciunt. Sed omnis maxime voluptates saepe. Molestias maxime quod nemo deserunt et qui quaerat tenetur. Et est soluta quia facilis possimus quod at molestias.
+        Dolores officiis recusandae non nostrum in magnam ad pariatur. Odit reprehenderit enim error id cumque aut itaque quo. Sed at corporis est atque ratione et repellendus. Adipisci reprehenderit exercitationem animi consequatur ipsum.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          Wes Anderson: true
+          locavore: true
+          cardigan: true
+          iPhone: true
+          synth: true
+          Austin: true
+          seitan: true
+          art: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: 'Codename: Red Monster'
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Harum dolorem qui ea eveniet ducimus sequi qui aut. Recusandae asperiores tenetur corporis nihil sed. Beatae iure iste autem totam est ipsum. Quia enim nam aut error quis itaque exercitationem qui.
+      Ut et accusamus sint veritatis voluptatibus voluptatem. Illo dicta commodi consequuntur tempore illum omnis dignissimos. Magni ut perspiciatis fugiat temporibus ipsum. Porro in molestiae ut qui itaque. Sed iste ducimus tempore amet qui.
+      Laborum ut id iusto minima qui numquam sed ut. Quia modi sed ratione aut nisi ea. Velit in eligendi aut ut illum porro recusandae. Sint eius asperiores ut qui voluptatem quisquam rerum et.
+      Et alias non commodi doloribus iste omnis. Aut neque et ut possimus voluptas tempora molestiae. Enim officiis dolorem voluptas quo ea. Praesentium dignissimos nihil ut consequatur id perferendis. Quia ea corrupti laudantium molestiae cumque.
+      Recusandae aliquam commodi exercitationem dolorum perspiciatis ipsum doloremque optio. Cumque natus sapiente dicta reprehenderit iusto earum laborum. Molestiae error unde aut nemo eos. Ut velit quia et voluptatem veniam ut sit.
+      Aliquam pariatur delectus consequuntur voluptas nostrum culpa minima. Animi iusto voluptates nam culpa a consectetur harum nesciunt. Sed omnis maxime voluptates saepe. Molestias maxime quod nemo deserunt et qui quaerat tenetur. Et est soluta quia facilis possimus quod at molestias.
+      Dolores officiis recusandae non nostrum in magnam ad pariatur. Odit reprehenderit enim error id cumque aut itaque quo. Sed at corporis est atque ratione et repellendus. Adipisci reprehenderit exercitationem animi consequatur ipsum.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Journey of the Tentacle
+      author_name: Nannie Hoppe
+      body: |-
+        Nihil ut quam consectetur odio natus. Et sunt molestiae sapiente est quisquam quasi eum. Velit laboriosam eaque corporis omnis eligendi ipsa. Illum ab ipsum aliquid illo. Est distinctio quia praesentium aut autem qui modi.
+        Explicabo nostrum repudiandae et totam eius consequatur blanditiis nobis. Dolor sit perferendis cum vel nesciunt. Doloremque aut deleniti enim eos voluptas beatae. Libero fugiat qui ut voluptates voluptate autem iure animi.
+        Dolorem deserunt nostrum et saepe voluptas dolorum quia voluptas. Non et ipsam ipsa enim placeat ducimus voluptas est. Eveniet error aut est harum nihil tempora.
+        Itaque minima facere suscipit et officia quia. Consequuntur ratione autem sit labore quia. Repellat vel aut error voluptatum corporis libero. Sed modi voluptate voluptas dicta quas vitae.
+        Fuga aperiam suscipit maxime vitae. Consequatur porro nihil maxime minima ut sequi accusantium earum. Rerum qui cupiditate provident quasi voluptatem deserunt non amet. Ut ab vero impedit aliquid nesciunt itaque quia. Maxime dolores enim quis ab corrupti et.
+        Alias et a officiis consectetur suscipit animi. Veniam doloremque vitae et deserunt rem. Quidem soluta nam qui occaecati laboriosam unde necessitatibus odit. Hic tempora et cupiditate eos.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          cardigan: true
+          Williamsburg: true
+          gluten-free: true
+          helvetica: true
+          photo booth: true
+          Shoreditch: true
+          fap: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Journey of the Tentacle
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Nihil ut quam consectetur odio natus. Et sunt molestiae sapiente est quisquam quasi eum. Velit laboriosam eaque corporis omnis eligendi ipsa. Illum ab ipsum aliquid illo. Est distinctio quia praesentium aut autem qui modi.
+      Explicabo nostrum repudiandae et totam eius consequatur blanditiis nobis. Dolor sit perferendis cum vel nesciunt. Doloremque aut deleniti enim eos voluptas beatae. Libero fugiat qui ut voluptates voluptate autem iure animi.
+      Dolorem deserunt nostrum et saepe voluptas dolorum quia voluptas. Non et ipsam ipsa enim placeat ducimus voluptas est. Eveniet error aut est harum nihil tempora.
+      Itaque minima facere suscipit et officia quia. Consequuntur ratione autem sit labore quia. Repellat vel aut error voluptatum corporis libero. Sed modi voluptate voluptas dicta quas vitae.
+      Fuga aperiam suscipit maxime vitae. Consequatur porro nihil maxime minima ut sequi accusantium earum. Rerum qui cupiditate provident quasi voluptatem deserunt non amet. Ut ab vero impedit aliquid nesciunt itaque quia. Maxime dolores enim quis ab corrupti et.
+      Alias et a officiis consectetur suscipit animi. Veniam doloremque vitae et deserunt rem. Quidem soluta nam qui occaecati laboriosam unde necessitatibus odit. Hic tempora et cupiditate eos.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Forbidden Ninja
+      author_name: Rahsaan Kessler
+      body: |-
+        Saepe error quia et sed ut sed soluta. Quia rem nesciunt ut eligendi vitae dolorem sit placeat. Quasi iusto neque minus aut qui non. Corrupti velit nostrum est rem cum doloribus.
+        Perferendis nisi velit consequatur quia sed fugit. Cupiditate tempora omnis sit nam exercitationem. Animi quam fugiat soluta recusandae.
+        Provident consectetur ex cumque quam doloremque dignissimos ullam. Enim provident vel quia qui placeat quo minima. Occaecati voluptatem adipisci ab eligendi ut vitae nihil. Officiis laudantium consequatur autem non non.
+        Dolore modi aut sed blanditiis. Optio et sed voluptatem eius. Eos doloribus qui eum tenetur aut ex a. Aut voluptatem dolorem quo ipsum consequatur.
+        Repellat blanditiis dolores qui qui reiciendis eos. Minima aut consequatur architecto rerum exercitationem incidunt quisquam ullam. Quasi repellendus minus molestias eligendi nemo suscipit pariatur ut. Id ut aut ut odio laboriosam laborum rerum.
+      image_url: http://www.example.com/quia.error.png
+      keywords: !ruby/object:Set
+        hash:
+          leggings: true
+          moon: true
+          irony: true
+          vinyl: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Forbidden Ninja
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Saepe error quia et sed ut sed soluta. Quia rem nesciunt ut eligendi vitae dolorem sit placeat. Quasi iusto neque minus aut qui non. Corrupti velit nostrum est rem cum doloribus.
+      Perferendis nisi velit consequatur quia sed fugit. Cupiditate tempora omnis sit nam exercitationem. Animi quam fugiat soluta recusandae.
+      Provident consectetur ex cumque quam doloremque dignissimos ullam. Enim provident vel quia qui placeat quo minima. Occaecati voluptatem adipisci ab eligendi ut vitae nihil. Officiis laudantium consequatur autem non non.
+      Dolore modi aut sed blanditiis. Optio et sed voluptatem eius. Eos doloribus qui eum tenetur aut ex a. Aut voluptatem dolorem quo ipsum consequatur.
+      Repellat blanditiis dolores qui qui reiciendis eos. Minima aut consequatur architecto rerum exercitationem incidunt quisquam ullam. Quasi repellendus minus molestias eligendi nemo suscipit pariatur ut. Id ut aut ut odio laboriosam laborum rerum.
+    image_url_present: http://www.example.com/quia.error.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Curse of the Champagne Brains
+      author_name: Kaitlin McCullough
+      body: |-
+        Eligendi esse vitae id maiores. Quia eos at possimus voluptatem aut excepturi omnis neque. Sed et qui fugit nam enim enim. Et nemo aut sint aut error quidem.
+        Blanditiis voluptatem harum ut inventore accusantium veniam qui. Sit eos vel quisquam minima iste sint. Id et aliquid numquam quas optio.
+        Laboriosam non doloremque tempora maxime debitis ipsa omnis. Inventore enim nemo non suscipit illo. Provident recusandae itaque vitae quo.
+      image_url: http://www.example.com/cum-neque.png
+      keywords: !ruby/object:Set
+        hash:
+          letterpress: true
+          butcher: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Curse of the Champagne Brains
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Eligendi esse vitae id maiores. Quia eos at possimus voluptatem aut excepturi omnis neque. Sed et qui fugit nam enim enim. Et nemo aut sint aut error quidem.
+      Blanditiis voluptatem harum ut inventore accusantium veniam qui. Sit eos vel quisquam minima iste sint. Id et aliquid numquam quas optio.
+      Laboriosam non doloremque tempora maxime debitis ipsa omnis. Inventore enim nemo non suscipit illo. Provident recusandae itaque vitae quo.
+    image_url_present: http://www.example.com/cum-neque.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: 'Death Wolf 2: Son of Death Wolf'
+      author_name: Alexandrine Kohler
+      body: |-
+        Voluptate eaque aut velit aliquid. Saepe placeat nostrum doloremque omnis odio. Ut esse enim modi cupiditate sed.
+        Amet a ratione maiores atque aut. Eaque ex et unde iste ab non. Consequuntur tempore harum illum vel nam qui sunt. Pariatur dolore voluptatibus debitis quam et aut.
+        Non tempora tenetur incidunt neque impedit sit. Rem consequuntur odio sit voluptatem eos provident non maxime. Dolorum sapiente eaque eum velit ducimus laborum ut quis. Inventore reprehenderit aut sequi omnis magnam velit nemo repellendus.
+        Et consequuntur expedita adipisci mollitia voluptatem quia. Ut ea aliquam quam quis placeat voluptatem. Possimus numquam et nihil praesentium reiciendis aliquam aspernatur.
+        Ab non deleniti dolores laborum blanditiis inventore. Consequuntur soluta dolor cum harum hic reprehenderit doloremque. Sed molestias vel fuga laudantium alias voluptas.
+        Consequatur modi ullam vel enim voluptas. Et fugiat eos veniam dignissimos. Autem voluptates dicta dolorum qui non ducimus et. Cumque temporibus assumenda et repellendus architecto.
+        Sit assumenda necessitatibus omnis consequuntur et. Similique cupiditate tempore impedit veritatis sed. Et doloribus odit aspernatur harum reiciendis repudiandae reprehenderit. Tempore vel ut officiis ut labore voluptas doloremque.
+      image_url: http://www.example.com/incidunt.a.png
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: 'Death Wolf 2: Son of Death Wolf'
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Voluptate eaque aut velit aliquid. Saepe placeat nostrum doloremque omnis odio. Ut esse enim modi cupiditate sed.
+      Amet a ratione maiores atque aut. Eaque ex et unde iste ab non. Consequuntur tempore harum illum vel nam qui sunt. Pariatur dolore voluptatibus debitis quam et aut.
+      Non tempora tenetur incidunt neque impedit sit. Rem consequuntur odio sit voluptatem eos provident non maxime. Dolorum sapiente eaque eum velit ducimus laborum ut quis. Inventore reprehenderit aut sequi omnis magnam velit nemo repellendus.
+      Et consequuntur expedita adipisci mollitia voluptatem quia. Ut ea aliquam quam quis placeat voluptatem. Possimus numquam et nihil praesentium reiciendis aliquam aspernatur.
+      Ab non deleniti dolores laborum blanditiis inventore. Consequuntur soluta dolor cum harum hic reprehenderit doloremque. Sed molestias vel fuga laudantium alias voluptas.
+      Consequatur modi ullam vel enim voluptas. Et fugiat eos veniam dignissimos. Autem voluptates dicta dolorum qui non ducimus et. Cumque temporibus assumenda et repellendus architecto.
+      Sit assumenda necessitatibus omnis consequuntur et. Similique cupiditate tempore impedit veritatis sed. Et doloribus odit aspernatur harum reiciendis repudiandae reprehenderit. Tempore vel ut officiis ut labore voluptas doloremque.
+    image_url_present: http://www.example.com/incidunt.a.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Woman from the Black Lagoon
+      author_name: Dino Heller
+      body: |-
+        Corporis animi soluta voluptatem unde enim. Voluptatum maiores magnam aspernatur ea. Et et aut magni error est non praesentium. Consequatur ea soluta nesciunt rerum vel nostrum.
+        Porro quod quis voluptatem quia. Incidunt repudiandae aliquid consectetur est rerum asperiores tenetur. Facere in enim commodi repellat at magni ex. Sunt vel ipsum voluptatum est et incidunt. Molestiae omnis minus aspernatur voluptatem nesciunt deleniti sequi repudiandae.
+        Aspernatur dolore omnis et sunt ut. Culpa doloremque aut voluptate illum. Excepturi est aut qui sapiente aut necessitatibus. Est minima laboriosam at ex laborum. Saepe quidem libero illum et voluptas exercitationem.
+        Blanditiis modi quae nostrum dolor dolorem. Ut eveniet sit molestias omnis quaerat esse et. Neque unde quis aspernatur maiores sunt recusandae. Distinctio quas ut ipsum sint corporis excepturi placeat. Unde tenetur tempore aliquid adipisci esse mollitia sit laborum.
+        Sed et temporibus ut et distinctio voluptatem voluptatem eaque. Odit aspernatur occaecati ut quam eligendi enim facilis. Consequatur ea nihil voluptate quam et. Non eos velit earum sint est consequatur ea delectus. Hic sunt at excepturi provident.
+        Commodi magnam porro et necessitatibus voluptates in autem tempore. Deserunt labore laborum facere laudantium consequatur placeat cumque. Earum eius similique eos consequuntur et saepe quos.
+      image_url: http://www.example.com/dolorum.explicabo.png
+      keywords: !ruby/object:Set
+        hash:
+          Williamsburg: true
+          quinoa: true
+          mustache: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Woman from the Black Lagoon
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Corporis animi soluta voluptatem unde enim. Voluptatum maiores magnam aspernatur ea. Et et aut magni error est non praesentium. Consequatur ea soluta nesciunt rerum vel nostrum.
+      Porro quod quis voluptatem quia. Incidunt repudiandae aliquid consectetur est rerum asperiores tenetur. Facere in enim commodi repellat at magni ex. Sunt vel ipsum voluptatum est et incidunt. Molestiae omnis minus aspernatur voluptatem nesciunt deleniti sequi repudiandae.
+      Aspernatur dolore omnis et sunt ut. Culpa doloremque aut voluptate illum. Excepturi est aut qui sapiente aut necessitatibus. Est minima laboriosam at ex laborum. Saepe quidem libero illum et voluptas exercitationem.
+      Blanditiis modi quae nostrum dolor dolorem. Ut eveniet sit molestias omnis quaerat esse et. Neque unde quis aspernatur maiores sunt recusandae. Distinctio quas ut ipsum sint corporis excepturi placeat. Unde tenetur tempore aliquid adipisci esse mollitia sit laborum.
+      Sed et temporibus ut et distinctio voluptatem voluptatem eaque. Odit aspernatur occaecati ut quam eligendi enim facilis. Consequatur ea nihil voluptate quam et. Non eos velit earum sint est consequatur ea delectus. Hic sunt at excepturi provident.
+      Commodi magnam porro et necessitatibus voluptates in autem tempore. Deserunt labore laborum facere laudantium consequatur placeat cumque. Earum eius similique eos consequuntur et saepe quos.
+    image_url_present: http://www.example.com/dolorum.explicabo.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Hard Boiled Cousins
+      author_name: Marisa Satterfield
+      body: 
+      image_url: http://www.example.com/voluptatem.natus.png
+      keywords: !ruby/object:Set
+        hash:
+          skateboard: true
+          seitan: true
+          moon: true
+          freegan: true
+          Carles: true
+          Rerry Richardson: true
+          leggings: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Hard Boiled Cousins
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/voluptatem.natus.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: I Married a Dangerous Man
+      author_name: Anderson Stracke
+      body: |-
+        Aut nesciunt modi explicabo accusamus ut ea atque. Minus molestiae sapiente nam ipsum ipsam expedita voluptatem aliquid. Veritatis reiciendis neque eos eos omnis ea. Mollitia dolore qui velit dicta fugit earum aut. Quae quisquam possimus eius quis et.
+        Minus aut blanditiis repudiandae aperiam vel. Voluptas exercitationem assumenda nulla facere. Nihil enim similique illum asperiores fugit eligendi repudiandae. Harum sequi dolorem qui saepe quia dolorum mollitia perferendis.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          cred: true
+          echo park: true
+          helvetica: true
+          mlkshk: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: I Married a Dangerous Man
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Aut nesciunt modi explicabo accusamus ut ea atque. Minus molestiae sapiente nam ipsum ipsam expedita voluptatem aliquid. Veritatis reiciendis neque eos eos omnis ea. Mollitia dolore qui velit dicta fugit earum aut. Quae quisquam possimus eius quis et.
+      Minus aut blanditiis repudiandae aperiam vel. Voluptas exercitationem assumenda nulla facere. Nihil enim similique illum asperiores fugit eligendi repudiandae. Harum sequi dolorem qui saepe quia dolorum mollitia perferendis.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Monster from Mars
+      author_name: Adam Abernathy
+      body: 
+      image_url: http://www.example.com/eos_quibusdam.png
+      keywords: !ruby/object:Set
+        hash:
+          scenester: true
+          salvia: true
+          leggings: true
+          gentrify: true
+          Portland: true
+          beard: true
+          keffiyeh: true
+          echo park: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Monster from Mars
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/eos_quibusdam.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: I am Women
+      author_name: Stefan Renner
+      body: |-
+        Quis quod temporibus velit tempore et. Incidunt unde consequatur consequuntur ut pariatur voluptas quo. Fuga quia voluptatem dolor a. Facilis suscipit qui sunt sequi libero voluptatum consequuntur. Voluptas facere sint quasi architecto quia.
+        Dolorum aut dolor dolore ea minima voluptas. Cupiditate iste incidunt quo cum. Est tenetur est et libero. Accusantium itaque quis rerum aperiam. Aperiam inventore beatae ipsum error velit aut.
+        Sit eos unde harum occaecati soluta quo omnis minus. Expedita eligendi minus aspernatur aliquid. Consequatur earum ullam rerum minus architecto ipsam. Impedit laudantium similique nobis labore et perspiciatis minus velit.
+        Sed sequi officiis aut et. Autem enim voluptas porro molestiae doloremque est. Doloremque natus et rerum nam ducimus corporis quidem. Sint dolorum unde ea dolore similique.
+        Provident ut exercitationem voluptate aliquid quo sit voluptatem. Quia corrupti consequatur est officia eum est. Qui aperiam impedit omnis sed sapiente quod sint. Dolores commodi deleniti est cupiditate et vel rerum quaerat. Atque alias consequuntur vel fugiat ipsum fugit magnam dolor.
+        Reiciendis ut aut voluptatem placeat odio. Voluptate quibusdam odit qui perspiciatis odio at et voluptas. Minima corporis doloremque tempore deleniti magni amet commodi doloribus. Omnis nam consequatur veritatis eum sint deleniti molestias. Voluptatem dolorem pariatur quae et quis.
+      image_url: http://www.example.com/non-vel.png
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: I am Women
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Quis quod temporibus velit tempore et. Incidunt unde consequatur consequuntur ut pariatur voluptas quo. Fuga quia voluptatem dolor a. Facilis suscipit qui sunt sequi libero voluptatum consequuntur. Voluptas facere sint quasi architecto quia.
+      Dolorum aut dolor dolore ea minima voluptas. Cupiditate iste incidunt quo cum. Est tenetur est et libero. Accusantium itaque quis rerum aperiam. Aperiam inventore beatae ipsum error velit aut.
+      Sit eos unde harum occaecati soluta quo omnis minus. Expedita eligendi minus aspernatur aliquid. Consequatur earum ullam rerum minus architecto ipsam. Impedit laudantium similique nobis labore et perspiciatis minus velit.
+      Sed sequi officiis aut et. Autem enim voluptas porro molestiae doloremque est. Doloremque natus et rerum nam ducimus corporis quidem. Sint dolorum unde ea dolore similique.
+      Provident ut exercitationem voluptate aliquid quo sit voluptatem. Quia corrupti consequatur est officia eum est. Qui aperiam impedit omnis sed sapiente quod sint. Dolores commodi deleniti est cupiditate et vel rerum quaerat. Atque alias consequuntur vel fugiat ipsum fugit magnam dolor.
+      Reiciendis ut aut voluptatem placeat odio. Voluptate quibusdam odit qui perspiciatis odio at et voluptas. Minima corporis doloremque tempore deleniti magni amet commodi doloribus. Omnis nam consequatur veritatis eum sint deleniti molestias. Voluptatem dolorem pariatur quae et quis.
+    image_url_present: http://www.example.com/non-vel.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Christmas on Cecil Shoals
+      author_name: General Huels
+      body: 
+      image_url: http://www.example.com/et-impedit.png
+      keywords: !ruby/object:Set
+        hash:
+          salvia: true
+          Portland: true
+          moon: true
+          McSweeney's: true
+          raw denim: true
+          master cleanse: true
+          Brooklyn: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Christmas on Cecil Shoals
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/et-impedit.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Fake Brain
+      author_name: Anderson Stracke
+      body: |-
+        Et odit quidem ex mollitia libero repellat officia. Illum atque asperiores dolorem quam. Omnis incidunt rerum voluptas autem dolor unde neque. Sint consequatur aliquam eum doloremque aut. Porro reiciendis eligendi maiores consequatur quod doloremque.
+        Nihil cumque aperiam similique quo aut dolores explicabo ex. Aut nihil autem eos ducimus. Possimus aut distinctio sit cum. Sunt rerum unde quaerat commodi non. Omnis dolores adipisci temporibus doloremque.
+        Rem totam saepe debitis magni dolor vel. Ex iste quasi quaerat hic voluptatem distinctio quisquam. Dicta asperiores maxime molestiae provident. Mollitia earum consequuntur quis enim dolore porro error. Atque neque saepe quisquam velit autem totam fuga fugit.
+        Amet est alias occaecati sequi officiis at natus iure. Nesciunt id odit sed asperiores delectus. Quos et consequatur expedita est et.
+        Voluptatem incidunt sint debitis dolore est quis. Consequuntur ut in blanditiis voluptatem a. Animi perferendis perspiciatis dolor pariatur provident.
+        Voluptatem ipsum laboriosam adipisci aspernatur explicabo exercitationem. Id hic maxime libero incidunt. Nulla molestiae nesciunt quod aut modi laborum. Adipisci et ea accusamus qui cumque autem magnam.
+        Tempore sapiente sequi unde non officiis quam ab. Ratione consequuntur commodi doloremque tenetur consequatur. Adipisci reiciendis inventore consequatur blanditiis.
+      image_url: http://www.example.com/aut.quia.png
+      keywords: !ruby/object:Set
+        hash:
+          letterpress: true
+          party: true
+          bicycle rights: true
+          synth: true
+          tumblr: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Fake Brain
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Et odit quidem ex mollitia libero repellat officia. Illum atque asperiores dolorem quam. Omnis incidunt rerum voluptas autem dolor unde neque. Sint consequatur aliquam eum doloremque aut. Porro reiciendis eligendi maiores consequatur quod doloremque.
+      Nihil cumque aperiam similique quo aut dolores explicabo ex. Aut nihil autem eos ducimus. Possimus aut distinctio sit cum. Sunt rerum unde quaerat commodi non. Omnis dolores adipisci temporibus doloremque.
+      Rem totam saepe debitis magni dolor vel. Ex iste quasi quaerat hic voluptatem distinctio quisquam. Dicta asperiores maxime molestiae provident. Mollitia earum consequuntur quis enim dolore porro error. Atque neque saepe quisquam velit autem totam fuga fugit.
+      Amet est alias occaecati sequi officiis at natus iure. Nesciunt id odit sed asperiores delectus. Quos et consequatur expedita est et.
+      Voluptatem incidunt sint debitis dolore est quis. Consequuntur ut in blanditiis voluptatem a. Animi perferendis perspiciatis dolor pariatur provident.
+      Voluptatem ipsum laboriosam adipisci aspernatur explicabo exercitationem. Id hic maxime libero incidunt. Nulla molestiae nesciunt quod aut modi laborum. Adipisci et ea accusamus qui cumque autem magnam.
+      Tempore sapiente sequi unde non officiis quam ab. Ratione consequuntur commodi doloremque tenetur consequatur. Adipisci reiciendis inventore consequatur blanditiis.
+    image_url_present: http://www.example.com/aut.quia.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Champagne Mutant
+      author_name: Napoleon Hahn
+      body: Molestias omnis est est quibusdam totam facere. Enim autem eaque velit
+        doloribus inventore illum voluptas. Unde harum ipsa maxime minima iure at.
+        Et et ullam molestiae voluptas cupiditate deleniti. Sed perspiciatis veniam
+        assumenda tenetur.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          Wes Anderson: true
+          locavore: true
+          cardigan: true
+          iPhone: true
+          synth: true
+          Austin: true
+          seitan: true
+          art: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Champagne Mutant
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: Molestias omnis est est quibusdam totam facere. Enim autem eaque velit doloribus
+      inventore illum voluptas. Unde harum ipsa maxime minima iure at. Et et ullam
+      molestiae voluptas cupiditate deleniti. Sed perspiciatis veniam assumenda tenetur.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: When Angelita Met Christina
+      author_name: Kaitlin McCullough
+      body: |-
+        Dolore at perferendis numquam doloremque delectus et aspernatur. Quia enim sed vitae veniam aut voluptatem. Dolor vel est aut deleniti voluptas quisquam quas quo.
+        Nobis aut molestias et nam id voluptatem nemo vitae. Molestias perspiciatis esse fugit officiis a consequuntur quia voluptas. Deleniti corrupti est quis ut. Veniam quia eligendi reprehenderit ut voluptate omnis nam.
+      image_url: http://www.example.com/qui.est.png
+      keywords: !ruby/object:Set
+        hash:
+          bicycle rights: true
+          raw denim: true
+          hoodie: true
+          Cosby Sweater: true
+          master cleanse: true
+          VHS: true
+          banh mi: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: When Angelita Met Christina
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Dolore at perferendis numquam doloremque delectus et aspernatur. Quia enim sed vitae veniam aut voluptatem. Dolor vel est aut deleniti voluptas quisquam quas quo.
+      Nobis aut molestias et nam id voluptatem nemo vitae. Molestias perspiciatis esse fugit officiis a consequuntur quia voluptas. Deleniti corrupti est quis ut. Veniam quia eligendi reprehenderit ut voluptate omnis nam.
+    image_url_present: http://www.example.com/qui.est.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Tentacle from Across the Ocean
+      author_name: Deshaun Stoltenberg
+      body: Quas corrupti mollitia veniam similique. Fugiat molestias pariatur fuga
+        facere qui dolore. Iste qui ea itaque officia et. Magni modi consequatur eveniet
+        ducimus atque quaerat aut. Quibusdam magni qui iusto nemo aliquam vel.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          tattooed: true
+          whatever: true
+          skateboard: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tentacle from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: Quas corrupti mollitia veniam similique. Fugiat molestias pariatur fuga
+      facere qui dolore. Iste qui ea itaque officia et. Magni modi consequatur eveniet
+      ducimus atque quaerat aut. Quibusdam magni qui iusto nemo aliquam vel.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Rise of the Red Jungle
+      author_name: Kaitlin McCullough
+      body: |-
+        Totam laborum quisquam molestiae quaerat. Hic cumque et veritatis voluptas ut quis modi. Incidunt ut temporibus dignissimos id qui aliquid repellendus veniam. Molestiae et natus at modi id.
+        Ducimus nihil impedit maiores consequatur labore. Earum mollitia omnis sunt eos est. Labore quae tenetur accusantium ut officiis. Nam odit voluptas quam voluptatum consequatur eveniet.
+        Molestias iusto rem fugit nisi delectus ut et perspiciatis. Aut tenetur consequatur ipsa fugit excepturi ipsum provident non. Nihil qui quo et voluptates ea ut consequatur. Rem et iste iure omnis non eius. Natus qui consequuntur esse maxime odit sequi.
+        Nulla magni porro ab tenetur consequatur. Sit quo deserunt rerum autem. Aliquid dolore unde qui voluptatem. Sed sed molestiae explicabo possimus reprehenderit.
+        Autem libero dolore et reiciendis minima odit. Numquam accusantium nostrum dolorum illum ad voluptatem necessitatibus ut. Accusamus iusto nesciunt doloribus cumque et tempore aut. Asperiores numquam dolores et voluptatem similique.
+        Consequuntur officia vero laborum quod assumenda quos id eveniet. Et in voluptate laudantium aliquid sit. Qui magnam autem ut ullam est eaque vel tenetur. Repudiandae sint nostrum quis hic et doloremque.
+        Vero maxime est non ut et animi. Ut soluta odio sit beatae dignissimos. Corrupti recusandae explicabo fugit aut quos beatae. Laudantium id perspiciatis tempora officia.
+      image_url: http://www.example.com/fugiat_sit.png
+      keywords: !ruby/object:Set
+        hash:
+          Rerry Richardson: true
+          party: true
+          keffiyeh: true
+          mlkshk: true
+          trust fund: true
+          lomo: true
+          beard: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Rise of the Red Jungle
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Totam laborum quisquam molestiae quaerat. Hic cumque et veritatis voluptas ut quis modi. Incidunt ut temporibus dignissimos id qui aliquid repellendus veniam. Molestiae et natus at modi id.
+      Ducimus nihil impedit maiores consequatur labore. Earum mollitia omnis sunt eos est. Labore quae tenetur accusantium ut officiis. Nam odit voluptas quam voluptatum consequatur eveniet.
+      Molestias iusto rem fugit nisi delectus ut et perspiciatis. Aut tenetur consequatur ipsa fugit excepturi ipsum provident non. Nihil qui quo et voluptates ea ut consequatur. Rem et iste iure omnis non eius. Natus qui consequuntur esse maxime odit sequi.
+      Nulla magni porro ab tenetur consequatur. Sit quo deserunt rerum autem. Aliquid dolore unde qui voluptatem. Sed sed molestiae explicabo possimus reprehenderit.
+      Autem libero dolore et reiciendis minima odit. Numquam accusantium nostrum dolorum illum ad voluptatem necessitatibus ut. Accusamus iusto nesciunt doloribus cumque et tempore aut. Asperiores numquam dolores et voluptatem similique.
+      Consequuntur officia vero laborum quod assumenda quos id eveniet. Et in voluptate laudantium aliquid sit. Qui magnam autem ut ullam est eaque vel tenetur. Repudiandae sint nostrum quis hic et doloremque.
+      Vero maxime est non ut et animi. Ut soluta odio sit beatae dignissimos. Corrupti recusandae explicabo fugit aut quos beatae. Laudantium id perspiciatis tempora officia.
+    image_url_present: http://www.example.com/fugiat_sit.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Journey of the Dangerous Clash
+      author_name: Alexandrine Kohler
+      body: |-
+        Beatae laudantium officiis porro ut. Sit quasi quia est repudiandae reiciendis dolore quo voluptas. Natus magnam ad molestiae consequatur sit culpa minima dolorum. Dolorem impedit commodi qui et odit.
+        Beatae qui repellendus numquam aut modi cupiditate cum nulla. Doloribus quia qui sit laboriosam et eveniet. Omnis atque aliquam iusto corrupti architecto. Dolores officia molestiae quos laudantium.
+        Deserunt nam iure voluptates illo quae ab. Perferendis error molestiae delectus aut ipsum sed aut natus. Eos est est officia dolor quos quia dignissimos. Rem rerum consequatur ullam esse libero est. Quia odio et perferendis sit.
+        Labore qui molestias excepturi soluta veritatis occaecati dolores accusantium. Molestiae amet error ut vel quis expedita porro architecto. Sed animi consequatur nobis mollitia est non enim. Qui est fuga ut accusamus.
+        Inventore ea enim distinctio ut. Dolor dignissimos consequatur ipsa modi nesciunt et qui eos. Culpa laboriosam hic numquam in. Sunt ad eligendi maxime placeat qui ab. Porro nesciunt voluptatum nostrum et maxime quaerat est magnam.
+        Voluptas voluptatum ea atque minima ut cumque. Esse debitis odio odit quasi asperiores sit eos. Facere ex quia sunt facilis quod excepturi quo.
+        Voluptates placeat laborum asperiores quia sed molestiae accusantium cum. Illum consequatur fuga ut veniam dolore et ut. Et ipsum eos dolor voluptatum quis veniam molestiae suscipit.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          seitan: true
+          banh mi: true
+          Pitchfork: true
+          mlkshk: true
+          freegan: true
+          artisan: true
+          craft beer: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Journey of the Dangerous Clash
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Beatae laudantium officiis porro ut. Sit quasi quia est repudiandae reiciendis dolore quo voluptas. Natus magnam ad molestiae consequatur sit culpa minima dolorum. Dolorem impedit commodi qui et odit.
+      Beatae qui repellendus numquam aut modi cupiditate cum nulla. Doloribus quia qui sit laboriosam et eveniet. Omnis atque aliquam iusto corrupti architecto. Dolores officia molestiae quos laudantium.
+      Deserunt nam iure voluptates illo quae ab. Perferendis error molestiae delectus aut ipsum sed aut natus. Eos est est officia dolor quos quia dignissimos. Rem rerum consequatur ullam esse libero est. Quia odio et perferendis sit.
+      Labore qui molestias excepturi soluta veritatis occaecati dolores accusantium. Molestiae amet error ut vel quis expedita porro architecto. Sed animi consequatur nobis mollitia est non enim. Qui est fuga ut accusamus.
+      Inventore ea enim distinctio ut. Dolor dignissimos consequatur ipsa modi nesciunt et qui eos. Culpa laboriosam hic numquam in. Sunt ad eligendi maxime placeat qui ab. Porro nesciunt voluptatum nostrum et maxime quaerat est magnam.
+      Voluptas voluptatum ea atque minima ut cumque. Esse debitis odio odit quasi asperiores sit eos. Facere ex quia sunt facilis quod excepturi quo.
+      Voluptates placeat laborum asperiores quia sed molestiae accusantium cum. Illum consequatur fuga ut veniam dolore et ut. Et ipsum eos dolor voluptatum quis veniam molestiae suscipit.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Fake Gypsy with a Thousand Faces
+      author_name: Anderson Stracke
+      body: 
+      image_url: http://www.example.com/inventore.quos.png
+      keywords: !ruby/object:Set
+        hash:
+          PBR: true
+          sustainable: true
+          tumblr: true
+          beard: true
+          mlkshk: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Fake Gypsy with a Thousand Faces
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: 
+    image_url_present: http://www.example.com/inventore.quos.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Wolves from Outer Space
+      author_name: Adam Abernathy
+      body: Maiores minus est voluptas laudantium ut. Consequatur dolorem in est est
+        perspiciatis eius dolores reprehenderit. Reprehenderit mollitia assumenda
+        in quisquam qui hic quo quia.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Wolves from Outer Space
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: Maiores minus est voluptas laudantium ut. Consequatur dolorem in est est
+      perspiciatis eius dolores reprehenderit. Reprehenderit mollitia assumenda in
+      quisquam qui hic quo quia.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Diaries from Mars
+      author_name: Deshaun Stoltenberg
+      body: |-
+        Quis suscipit quibusdam cum ut aliquid est. Quisquam eos dolorem quae distinctio impedit quia necessitatibus. Optio et non illum magni fuga sed quisquam possimus.
+        Earum praesentium quidem minus ut beatae. Aspernatur provident ut placeat dolores corporis molestias deleniti. Odio nesciunt dolorem pariatur quia id facilis itaque. Maxime quis architecto consequatur minus reprehenderit quo molestiae error.
+        Sunt distinctio nobis ut eius repellat adipisci. Ut nostrum inventore quam doloremque id. Quae est aut placeat inventore dolores reiciendis porro omnis. Dicta et facilis et amet est. Et ipsum at praesentium velit voluptatem.
+        Qui delectus consequatur aut qui non et expedita autem. Mollitia autem et sit beatae. Consequatur repellendus cum rem accusantium earum exercitationem.
+        Temporibus deserunt porro modi dolores rerum nihil ab. Eveniet id fugiat sed hic. Doloribus ut est at sapiente. Eos consequuntur tempore laboriosam ea odit consequatur.
+        Doloremque et est voluptatem est. Et porro ipsa doloremque veniam eaque. Veritatis commodi consequatur est dolorum reiciendis non enim aut. Numquam amet aliquid sit nostrum consectetur.
+        Consectetur qui sed consequuntur reprehenderit. Reprehenderit dolor voluptatem occaecati quisquam animi et molestiae. Est omnis sint sint repellat dolorem saepe. Ipsam sit aut quaerat nam debitis ut asperiores est.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash: {}
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Diaries from Mars
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Quis suscipit quibusdam cum ut aliquid est. Quisquam eos dolorem quae distinctio impedit quia necessitatibus. Optio et non illum magni fuga sed quisquam possimus.
+      Earum praesentium quidem minus ut beatae. Aspernatur provident ut placeat dolores corporis molestias deleniti. Odio nesciunt dolorem pariatur quia id facilis itaque. Maxime quis architecto consequatur minus reprehenderit quo molestiae error.
+      Sunt distinctio nobis ut eius repellat adipisci. Ut nostrum inventore quam doloremque id. Quae est aut placeat inventore dolores reiciendis porro omnis. Dicta et facilis et amet est. Et ipsum at praesentium velit voluptatem.
+      Qui delectus consequatur aut qui non et expedita autem. Mollitia autem et sit beatae. Consequatur repellendus cum rem accusantium earum exercitationem.
+      Temporibus deserunt porro modi dolores rerum nihil ab. Eveniet id fugiat sed hic. Doloribus ut est at sapiente. Eos consequuntur tempore laboriosam ea odit consequatur.
+      Doloremque et est voluptatem est. Et porro ipsa doloremque veniam eaque. Veritatis commodi consequatur est dolorum reiciendis non enim aut. Numquam amet aliquid sit nostrum consectetur.
+      Consectetur qui sed consequuntur reprehenderit. Reprehenderit dolor voluptatem occaecati quisquam animi et molestiae. Est omnis sint sint repellat dolorem saepe. Ipsam sit aut quaerat nam debitis ut asperiores est.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Je Vous Presente, Ophelia
+      author_name: Alejandrin Grimes
+      body: |-
+        Reiciendis atque voluptatibus nam accusamus eveniet excepturi. At tempora optio harum architecto. Eligendi consectetur consequatur non velit consequatur aut est. Ut occaecati et exercitationem non esse. Rerum vitae quia eaque numquam doloremque aut non tenetur.
+        Autem ex debitis cum provident id consequatur repellat. Vero eum ipsa dolorum accusantium. Quo quae architecto et voluptas illo officiis aut. Et modi consequatur repellendus sit sed distinctio laborum quis.
+        Eos voluptatem at ut velit a cupiditate. Numquam eaque laborum impedit necessitatibus. Ut ea doloribus velit molestiae nihil voluptas delectus. Deleniti molestias adipisci voluptates veritatis possimus.
+        Non sit non aut est culpa. Quisquam aut vel cupiditate voluptatem ut aliquid labore voluptatem. Nulla est ut dicta consequatur et.
+        Facere libero ut molestias ut totam omnis deserunt aut. Velit iusto qui eum voluptatem aut. Qui natus sequi fugiat et ex tempora. Dolor ut nisi libero aut deserunt repellat placeat. Qui quia ipsa id tempora numquam.
+        Distinctio exercitationem nihil molestiae corporis recusandae non occaecati praesentium. Animi veniam est qui laudantium a ab mollitia laboriosam. Consequatur eius non est nobis. Et placeat qui minus ex aut magni. Id eaque itaque dolor facere repellendus vel voluptate.
+        Aut perspiciatis qui consequatur non et saepe. Aut ducimus numquam architecto et. Itaque suscipit delectus omnis aut earum. Sapiente sed harum est autem eos dolorum explicabo suscipit. Rerum dolorem deleniti numquam totam quae qui sit.
+        Est consequatur eum dolorem aliquam soluta perferendis doloribus in. Similique facilis est quas magnam et minima quaerat voluptas. Ut atque et modi maiores quis.
+      image_url: http://www.example.com/soluta.quaerat.png
+      keywords: !ruby/object:Set
+        hash:
+          blog: true
+          organic: true
+          iPhone: true
+          keffiyeh: true
+          mustache: true
+          squid: true
+          Wes Anderson: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Je Vous Presente, Ophelia
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Reiciendis atque voluptatibus nam accusamus eveniet excepturi. At tempora optio harum architecto. Eligendi consectetur consequatur non velit consequatur aut est. Ut occaecati et exercitationem non esse. Rerum vitae quia eaque numquam doloremque aut non tenetur.
+      Autem ex debitis cum provident id consequatur repellat. Vero eum ipsa dolorum accusantium. Quo quae architecto et voluptas illo officiis aut. Et modi consequatur repellendus sit sed distinctio laborum quis.
+      Eos voluptatem at ut velit a cupiditate. Numquam eaque laborum impedit necessitatibus. Ut ea doloribus velit molestiae nihil voluptas delectus. Deleniti molestias adipisci voluptates veritatis possimus.
+      Non sit non aut est culpa. Quisquam aut vel cupiditate voluptatem ut aliquid labore voluptatem. Nulla est ut dicta consequatur et.
+      Facere libero ut molestias ut totam omnis deserunt aut. Velit iusto qui eum voluptatem aut. Qui natus sequi fugiat et ex tempora. Dolor ut nisi libero aut deserunt repellat placeat. Qui quia ipsa id tempora numquam.
+      Distinctio exercitationem nihil molestiae corporis recusandae non occaecati praesentium. Animi veniam est qui laudantium a ab mollitia laboriosam. Consequatur eius non est nobis. Et placeat qui minus ex aut magni. Id eaque itaque dolor facere repellendus vel voluptate.
+      Aut perspiciatis qui consequatur non et saepe. Aut ducimus numquam architecto et. Itaque suscipit delectus omnis aut earum. Sapiente sed harum est autem eos dolorum explicabo suscipit. Rerum dolorem deleniti numquam totam quae qui sit.
+      Est consequatur eum dolorem aliquam soluta perferendis doloribus in. Similique facilis est quas magnam et minima quaerat voluptas. Ut atque et modi maiores quis.
+    image_url_present: http://www.example.com/soluta.quaerat.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: A Fistful of Red Beast
+      author_name: Anderson Stracke
+      body: |-
+        Id debitis quia accusantium amet et. Et ea fugiat dolorem minima voluptate excepturi est voluptates. Quia nesciunt possimus blanditiis vitae quos. Eaque consectetur ad ea pariatur.
+        Quisquam est maxime odio eos animi qui earum consectetur. Sed odit odio minima culpa ducimus magnam velit totam. Consequatur ut cumque molestiae et consectetur et corrupti. Eos voluptatibus officia rerum et.
+        Labore eius nam consectetur dolor. Consequuntur ut similique non fugiat quis et quaerat. Eaque recusandae aut tempora quos tenetur magnam. Sit animi in et rerum.
+        Non deleniti aut ex nulla aspernatur est sit odio. Qui veritatis perspiciatis voluptatem et. Blanditiis harum rem perspiciatis labore. Molestias officia qui laudantium provident consequuntur aut tempora nobis.
+      image_url: http://www.example.com/molestiae_quia.png
+      keywords: !ruby/object:Set
+        hash:
+          dreamcatcher: true
+          cliche: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of Red Beast
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Id debitis quia accusantium amet et. Et ea fugiat dolorem minima voluptate excepturi est voluptates. Quia nesciunt possimus blanditiis vitae quos. Eaque consectetur ad ea pariatur.
+      Quisquam est maxime odio eos animi qui earum consectetur. Sed odit odio minima culpa ducimus magnam velit totam. Consequatur ut cumque molestiae et consectetur et corrupti. Eos voluptatibus officia rerum et.
+      Labore eius nam consectetur dolor. Consequuntur ut similique non fugiat quis et quaerat. Eaque recusandae aut tempora quos tenetur magnam. Sit animi in et rerum.
+      Non deleniti aut ex nulla aspernatur est sit odio. Qui veritatis perspiciatis voluptatem et. Blanditiis harum rem perspiciatis labore. Molestias officia qui laudantium provident consequuntur aut tempora nobis.
+    image_url_present: http://www.example.com/molestiae_quia.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: Planet of the Monster
+      author_name: Aric Rosenbaum
+      body: |-
+        Consequatur corporis autem quibusdam quas voluptas nostrum blanditiis. Explicabo assumenda error dolor labore porro. Asperiores fuga dignissimos exercitationem possimus repellat nostrum sint. Rem et esse est molestiae et ut distinctio fugit. Quo temporibus facere et dolorem et est.
+        Necessitatibus nam sit natus molestiae ratione libero. Nemo debitis ab ipsam iusto veritatis tempore quisquam aut. Nihil labore magnam sed nisi modi. Atque qui minus minima facilis. Tempora esse sed adipisci id.
+        Quaerat inventore at qui ducimus quia fugit ut voluptate. Placeat sed et et voluptas amet. Est dolor nihil alias distinctio autem provident.
+        Molestias vel necessitatibus aut dolor odit quibusdam. Aspernatur nisi quia impedit dolorem omnis. Et minima ut voluptas vel dolores fuga quisquam. Tenetur sunt numquam voluptatibus sequi porro consequatur odit. Aut sit quas molestiae aut quae.
+        Quos hic quis aut non nihil adipisci id. Et illo earum reprehenderit exercitationem voluptas qui. Id id repellendus ipsam itaque. Quibusdam quidem sit rerum et molestias sunt quia. Vel itaque quisquam doloremque eius voluptas et ea.
+      image_url: http://www.example.com/quod_rem.png
+      keywords: !ruby/object:Set
+        hash:
+          whatever: true
+          McSweeney's: true
+          vegan: true
+          photo booth: true
+          sartorial: true
+          put a bird on it: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Planet of the Monster
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Consequatur corporis autem quibusdam quas voluptas nostrum blanditiis. Explicabo assumenda error dolor labore porro. Asperiores fuga dignissimos exercitationem possimus repellat nostrum sint. Rem et esse est molestiae et ut distinctio fugit. Quo temporibus facere et dolorem et est.
+      Necessitatibus nam sit natus molestiae ratione libero. Nemo debitis ab ipsam iusto veritatis tempore quisquam aut. Nihil labore magnam sed nisi modi. Atque qui minus minima facilis. Tempora esse sed adipisci id.
+      Quaerat inventore at qui ducimus quia fugit ut voluptate. Placeat sed et et voluptas amet. Est dolor nihil alias distinctio autem provident.
+      Molestias vel necessitatibus aut dolor odit quibusdam. Aspernatur nisi quia impedit dolorem omnis. Et minima ut voluptas vel dolores fuga quisquam. Tenetur sunt numquam voluptatibus sequi porro consequatur odit. Aut sit quas molestiae aut quae.
+      Quos hic quis aut non nihil adipisci id. Et illo earum reprehenderit exercitationem voluptas qui. Id id repellendus ipsam itaque. Quibusdam quidem sit rerum et molestias sunt quia. Vel itaque quisquam doloremque eius voluptas et ea.
+    image_url_present: http://www.example.com/quod_rem.png
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Fake Brain from Outer Space
+      author_name: Dino Heller
+      body: |-
+        Deserunt doloremque natus facere asperiores. Cumque natus esse eaque voluptas quas minima. Est neque suscipit ipsam error rerum deleniti. Omnis qui suscipit id dignissimos dolorum quibusdam voluptatem quod.
+        Quae et perspiciatis quidem quia unde maxime et laborum. Molestiae blanditiis occaecati fuga id impedit aliquam distinctio. Aperiam culpa at voluptates voluptas. Rem voluptas odit error aut aperiam corrupti enim. Aperiam odit consectetur cumque quis.
+        Quia voluptatem quidem quo ab ut et qui. Omnis qui rerum vel aperiam accusamus qui. Labore aut saepe cupiditate dolor inventore laborum itaque et. Et consequatur a aut provident.
+        Quam minus natus quibusdam voluptas unde eum. Ab amet a qui eum. Nihil nemo accusamus mollitia aliquam aut veritatis quas omnis. Dolores iusto quo laborum est voluptas. Corporis maxime et et ut dicta sunt.
+        A quia illo molestiae vitae culpa doloremque error. Facere nam officia modi quaerat aut sit sint. Neque aut cumque sint eos vel consequatur. Ut qui ut dolorum ut. Sit quaerat recusandae rem accusantium suscipit veniam esse in.
+        Id consequatur tempora sint modi cum est eum sequi. Et id quidem et quaerat quibusdam. Aliquid voluptatem id iste in expedita voluptate. Expedita distinctio corrupti libero eius iusto provident corporis hic.
+        Animi repudiandae rerum odio sunt aut qui aspernatur. Aspernatur quis et ab voluptas. Aut voluptatibus quas et adipisci ullam. Distinctio est eum veniam unde enim.
+        Sit aut accusantium dolor ipsa voluptatem. Et architecto sapiente illo ipsam nobis voluptate saepe magni. Earum architecto et dignissimos nulla dolor error magnam.
+      image_url: 
+      keywords: !ruby/object:Set
+        hash:
+          cred: true
+          echo park: true
+          helvetica: true
+          mlkshk: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Fake Brain from Outer Space
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Deserunt doloremque natus facere asperiores. Cumque natus esse eaque voluptas quas minima. Est neque suscipit ipsam error rerum deleniti. Omnis qui suscipit id dignissimos dolorum quibusdam voluptatem quod.
+      Quae et perspiciatis quidem quia unde maxime et laborum. Molestiae blanditiis occaecati fuga id impedit aliquam distinctio. Aperiam culpa at voluptates voluptas. Rem voluptas odit error aut aperiam corrupti enim. Aperiam odit consectetur cumque quis.
+      Quia voluptatem quidem quo ab ut et qui. Omnis qui rerum vel aperiam accusamus qui. Labore aut saepe cupiditate dolor inventore laborum itaque et. Et consequatur a aut provident.
+      Quam minus natus quibusdam voluptas unde eum. Ab amet a qui eum. Nihil nemo accusamus mollitia aliquam aut veritatis quas omnis. Dolores iusto quo laborum est voluptas. Corporis maxime et et ut dicta sunt.
+      A quia illo molestiae vitae culpa doloremque error. Facere nam officia modi quaerat aut sit sint. Neque aut cumque sint eos vel consequatur. Ut qui ut dolorum ut. Sit quaerat recusandae rem accusantium suscipit veniam esse in.
+      Id consequatur tempora sint modi cum est eum sequi. Et id quidem et quaerat quibusdam. Aliquid voluptatem id iste in expedita voluptate. Expedita distinctio corrupti libero eius iusto provident corporis hic.
+      Animi repudiandae rerum odio sunt aut qui aspernatur. Aspernatur quis et ab voluptas. Aut voluptatibus quas et adipisci ullam. Distinctio est eum veniam unde enim.
+      Sit aut accusantium dolor ipsa voluptatem. Et architecto sapiente illo ipsam nobis voluptate saepe magni. Earum architecto et dignissimos nulla dolor error magnam.
+    image_url_present: 
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      title: The Yellow Rose of Scotland
+      author_name: Dino Heller
+      body: |-
+        Minus ut mollitia et nihil. Quidem accusantium animi molestias nihil eos quia commodi beatae. Iusto aut non sed voluptatum accusantium maxime et eaque. Dolor quisquam facilis quam adipisci mollitia.
+        Architecto dolore quae cumque et et numquam. Et et sit magni iusto nostrum assumenda est. Incidunt corporis placeat atque quibusdam enim fugiat. Eos tempora accusantium expedita voluptate aperiam eos.
+        Iste commodi et odit veniam quod sapiente. Praesentium temporibus est fugit et rerum autem nihil corrupti. Sunt fugit repudiandae quas voluptatum aliquid nobis.
+        Quaerat voluptates non iste qui ad ut. Velit quas a sit soluta exercitationem quia et. Sed reiciendis ea id culpa vero qui.
+        Non consequatur quaerat tempore omnis alias omnis saepe placeat. Ut nostrum rerum quibusdam eius non suscipit ipsa. Totam at dolores quas corporis ut voluptate voluptates.
+        Eos voluptas nam aperiam mollitia. Quod deleniti voluptas corporis ipsum quia. Repudiandae in aut ad ut ea. Consectetur aut distinctio temporibus aut et quis cupiditate nesciunt.
+        Dolores dolores error et et. Dolor dicta quae voluptas accusantium nisi est dolorum. Voluptates qui vero deserunt deleniti. Ab illum rerum aliquid non.
+        Amet qui repudiandae hic harum tempore voluptatem qui et. Perspiciatis explicabo dolorem omnis consequuntur. Illo provident eveniet recusandae vel vero atque assumenda. Est et eligendi qui voluptatum reiciendis ut qui hic.
+      image_url: http://www.example.com/adipisci_ut.png
+      keywords: !ruby/object:Set
+        hash:
+          letterpress: true
+          butcher: true
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Yellow Rose of Scotland
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Minus ut mollitia et nihil. Quidem accusantium animi molestias nihil eos quia commodi beatae. Iusto aut non sed voluptatum accusantium maxime et eaque. Dolor quisquam facilis quam adipisci mollitia.
+      Architecto dolore quae cumque et et numquam. Et et sit magni iusto nostrum assumenda est. Incidunt corporis placeat atque quibusdam enim fugiat. Eos tempora accusantium expedita voluptate aperiam eos.
+      Iste commodi et odit veniam quod sapiente. Praesentium temporibus est fugit et rerum autem nihil corrupti. Sunt fugit repudiandae quas voluptatum aliquid nobis.
+      Quaerat voluptates non iste qui ad ut. Velit quas a sit soluta exercitationem quia et. Sed reiciendis ea id culpa vero qui.
+      Non consequatur quaerat tempore omnis alias omnis saepe placeat. Ut nostrum rerum quibusdam eius non suscipit ipsa. Totam at dolores quas corporis ut voluptate voluptates.
+      Eos voluptas nam aperiam mollitia. Quod deleniti voluptas corporis ipsum quia. Repudiandae in aut ad ut ea. Consectetur aut distinctio temporibus aut et quis cupiditate nesciunt.
+      Dolores dolores error et et. Dolor dicta quae voluptas accusantium nisi est dolorum. Voluptates qui vero deserunt deleniti. Ab illum rerum aliquid non.
+      Amet qui repudiandae hic harum tempore voluptatem qui et. Perspiciatis explicabo dolorem omnis consequuntur. Illo provident eveniet recusandae vel vero atque assumenda. Est et eligendi qui voluptatum reiciendis ut qui hic.
+    image_url_present: http://www.example.com/adipisci_ut.png

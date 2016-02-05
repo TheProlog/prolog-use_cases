@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-reporters", "~> 1.0"
   spec.add_development_dependency "minitest-tagz", "~> 1.2"
 
+  spec.add_development_dependency "ffaker", "~> 2.2"
   spec.add_development_dependency "flay", "~> 2.6"
   spec.add_development_dependency "flog", "~> 4.3", ">= 4.3.2"
   spec.add_development_dependency "reek", "~> 3.7"
