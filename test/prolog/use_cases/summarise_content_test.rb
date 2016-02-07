@@ -1,6 +1,7 @@
 
 require 'test_helper'
 
+require 'prolog/core'
 require 'prolog/use_cases/summarise_content'
 
 describe 'Prolog::UseCases::SummariseContent' do

@@ -1,28 +1,30 @@
 
-require 'prolog/core'
+require 'forwardable'
+
+require_relative 'summarise_content/article_lister.rb'
 
 module Prolog
   module UseCases
     # Class to summarise content of landing page or equivalent. This includes,
-    # but is not necessarily limited to, a list of most-recent articles.
+    # but is notlimited to, a list of most-recent articles.
     class SummariseContent
+      private_constant :ArticleLister
+      extend Forwardable
       include Wisper::Publisher
 
-      attr_reader :articles
+      def_delegators :@article_list, :articles
 
       def call
         load_article_list
       end
 
-      def all_articles(articles)
-        @articles = articles
-        self
-      end
-
       private
 
+      attr_reader :article_list
+
       def load_article_list
-        Wisper.subscribe(self) { broadcast :query_all_articles }
+        @article_list = ArticleLister.new broadcast: method(:broadcast)
+        article_list.call
         self
       end
     end # class Prolog::UseCases::SummariseContent
