@@ -11,32 +11,18 @@ module Prolog
       attr_reader :articles
 
       def call
-        query_current_user
         load_article_list
       end
 
       def all_articles(articles)
         @articles = articles
-      end
-
-      def current_user_is(user_name)
-        @current_user_name = user_name
         self
       end
 
       private
 
-      attr_reader :current_user_name
-
-      def query_current_user
-        Wisper.subscribe(self) { publish :current_user }
-        self
-      end
-
       def load_article_list
-        Wisper.subscribe(self) do
-          publish :all_articles_permitted_to, current_user_name
-        end
+        Wisper.subscribe(self) { broadcast :query_all_articles }
         self
       end
     end # class Prolog::UseCases::SummariseContent

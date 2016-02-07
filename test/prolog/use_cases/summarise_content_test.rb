@@ -42,15 +42,14 @@ describe 'Prolog::UseCases::SummariseContent' do
       Class.new do
         include Wisper::Publisher
 
-        attr_reader :user_names
+        attr_reader :called
 
         def initialize(articles)
-          @user_names = []
           @articles = articles
         end
 
-        def all_articles_permitted_to(user_name)
-          @user_names << user_name
+        def query_all_articles
+          @called = @called.to_i + 1
           broadcast :all_articles, articles
         end
 
@@ -59,19 +58,30 @@ describe 'Prolog::UseCases::SummariseContent' do
         attr_reader :articles
       end.new(all_articles)
     end
+    let(:current_user_listener) do
+      Class.new do
+        attr_reader :current_user_name
 
-    describe 'broadcasts the message' do
+        def current_user_is(user_name)
+          @current_user_name = user_name
+          self
+        end
+      end
+    end
+
+    describe 'no longer broadcasts the message' do
       it ':current_user' do
         obj.subscribe auth_listener
         obj.call
-        expect(auth_listener.count).must_equal 1
+        expect(auth_listener.count).must_be :zero?
       end
+    end # describe 'no longer broadcasts the message'
 
-      it ':all_articles_permitted_to message with the current user name' do
-        obj.subscribe auth_listener
+    describe 'broadcasts the message' do
+      it ':all_articles' do
         obj.subscribe persistence_listener
         obj.call
-        expect(persistence_listener.user_names).must_equal [current_user_name]
+        expect(persistence_listener.called).must_equal 1
       end
     end # describe 'broadcasts the message'
   end # describe 'has a #call method that'
