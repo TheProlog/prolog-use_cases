@@ -38,7 +38,8 @@ class ArticleFixtureBuilder
   # Until we find an alternative, we'll just have to suck it up.
 
   def author_factory
-    @author_factory ||= AuthorFactory.new count
+    author_count = (count * 0.4).to_i
+    @author_factory ||= AuthorFactory.new author_count
   end
 
   def body_factory
