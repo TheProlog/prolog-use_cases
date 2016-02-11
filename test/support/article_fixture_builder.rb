@@ -50,12 +50,13 @@ class ArticleFixtureBuilder
     created_at = created_at_factory.sample
     { author_name: author_factory.sample, body: body_factory.sample,
       created_at: created_at, image_url: image_url_factory.sample,
-      keyword_list: keyword_list_factory.sample, title: title_factory.sample,
+      keywords: keyword_list_factory.sample, title: title_factory.sample,
       updated_at: LaterTimestampFactory.new(start_time: created_at).sample }
   end
 
   def build_list
-    @list = count.times.map { Prolog::Core::Article.new build_attributes }
+    attribs = build_attributes
+    @list = count.times.map { Prolog::Core::Article.new attribs }
     self
   end
 
