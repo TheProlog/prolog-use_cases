@@ -3,8 +3,7 @@ require 'wisper'
 
 module Prolog
   module UseCases
-    # Class to summarise content of landing page or equivalent. This includes,
-    # but is not necessarily limited to, a list of most-recent articles.
+    # Class to summarise content of landing page or equivalent.
     class SummariseContent
       # Build list of articles visible in system (perhaps to "current user").
       class ArticleLister
