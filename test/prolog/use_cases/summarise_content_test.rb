@@ -118,4 +118,32 @@ describe 'Prolog::UseCases::SummariseContent' do
       end
     end # describe 'after calling a properly-set-up #call method returns'
   end # describe 'has a #most_recently_updated_articles method that, ...'
+
+  describe 'has a #most_recent_articles method that, when called' do
+    describe 'without previously calling #call on that instance' do
+      it 'returns an empty array' do
+        expect(obj.most_recent_articles).must_be :empty?
+      end
+    end # describe 'without previously calling #call on that instance'
+
+    describe 'after calling a properly-set-up #call method returns' do
+      let(:list) { obj.most_recent_articles }
+
+      before do
+        obj.subscribe persistence_listener
+        obj.call
+      end
+
+      it 'a list of Articles' do
+        others = list.reject { |item| item.instance_of? Prolog::Core::Article }
+        expect(others).must_be :empty?
+      end
+
+      it 'a list sorted by created-at timestamp in reverse order' do
+        actual = list.map(&:created_at)
+        expected = all_articles.map(&:created_at).sort.reverse
+        expect(actual).must_equal expected
+      end
+    end # describe 'after calling a properly-set-up #call method returns'
+  end # describe 'has a #most_recent_articles method that, when called'
 end

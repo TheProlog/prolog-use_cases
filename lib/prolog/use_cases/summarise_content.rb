@@ -18,6 +18,10 @@ module Prolog
         load_article_list
       end
 
+      def most_recent_articles
+        sort_article_list(sort_by: :created_at).reverse
+      end
+
       def most_recently_updated_articles
         sort_article_list(sort_by: :updated_at).reverse
       end
