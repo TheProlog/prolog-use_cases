@@ -85,108 +85,81 @@ describe 'Prolog::UseCases::SummariseContent' do
         expect(persistence_listener.called).must_equal 1
       end
     end # describe 'broadcasts the message'
-  end # describe 'has a #call method that'
 
-  it 'has a #most_recently_updated_articles method' do
-    expect(obj).must_respond_to :most_recently_updated_articles
-  end
+    it 'returns a Hash with four entries' do
+      obj.subscribe persistence_listener
+      expect(obj.call.keys.count).must_equal 4
+    end
 
-  describe 'has a #most_recently_updated_articles method that, when called' do
-    describe 'without previously calling #call on that instance' do
-      it 'returns an empty array' do
-        expect(obj.most_recently_updated_articles).must_be :empty?
-      end
-    end # describe 'without previously calling #call on that instance'
-
-    describe 'after calling a properly-set-up #call method returns' do
-      let(:list) { obj.most_recently_updated_articles }
+    describe 'returns a Hash with' do
+      let(:return_value) { obj.call }
 
       before do
         obj.subscribe persistence_listener
-        obj.call
       end
 
-      it 'a list of Articles' do
-        others = list.reject { |item| item.instance_of? Prolog::Core::Article }
+      it 'an :articles entry containing an array of Article entities' do
+        others = return_value[:articles].reject do |item|
+          item.is_a? Prolog::Core::Article
+        end
         expect(others).must_be :empty?
       end
 
-      it 'a list sorted by updated-at timestamp in reverse order' do
-        actual = list.map(&:updated_at)
-        expected = all_articles.map(&:updated_at).sort.reverse
-        expect(actual).must_equal expected
-      end
-    end # describe 'after calling a properly-set-up #call method returns'
-  end # describe 'has a #most_recently_updated_articles method that, ...'
+      describe 'a :keywords_by_frequency Hash with' do
+        let(:kbf) { return_value[:keywords_by_frequency] }
 
-  describe 'has a #most_recent_articles method that, when called' do
-    describe 'without previously calling #call on that instance' do
-      it 'returns an empty array' do
-        expect(obj.most_recent_articles).must_be :empty?
-      end
-    end # describe 'without previously calling #call on that instance'
-
-    describe 'after calling a properly-set-up #call method returns' do
-      let(:list) { obj.most_recent_articles }
-
-      before do
-        obj.subscribe persistence_listener
-        obj.call
-      end
-
-      it 'a list of Articles' do
-        others = list.reject { |item| item.instance_of? Prolog::Core::Article }
-        expect(others).must_be :empty?
-      end
-
-      it 'a list sorted by created-at timestamp in reverse order' do
-        actual = list.map(&:created_at)
-        expected = all_articles.map(&:created_at).sort.reverse
-        expect(actual).must_equal expected
-      end
-    end # describe 'after calling a properly-set-up #call method returns'
-  end # describe 'has a #most_recent_articles method that, when called'
-
-  describe 'has a #keywords_by_frequency method that, when called' do
-    describe 'without previously calling #call on that instance' do
-      it 'returns an empty Hash' do
-        expect(obj.keywords_by_frequency).must_equal({})
-      end
-    end # describe 'without previously calling #call on that instance'
-
-    describe 'after calling a properly-set-up #call method returns' do
-      let(:keywords) { obj.keywords_by_frequency }
-
-      before do
-        obj.subscribe persistence_listener
-        obj.call
-      end
-
-      it 'a non-empty Hash' do
-        expect(keywords.keys).wont_be :empty?
-      end
-
-      describe 'a Hash with' do
-        it 'positive integers as keys' do
-          expected = keywords.keys.select { |key| key.is_a? Fixnum }
-                     .select { |key| key > 0 }
-          expect(keywords.keys).must_equal expected
+        it 'non-zero integer values as keys' do
+          others = kbf.keys.reject { |key| key.is_a?(Fixnum) && key > 0 }
+          expect(others).must_be :empty?
         end
 
-        it 'arrays of strings as values' do
-          expected = keywords.values.select { |value| value.is_a? Array }
-                     .select do |values|
-            values.reject { |value| value.is_a? String }
-            .empty?
+        it 'ascending integer values as keys' do
+          expect(kbf.keys).must_equal kbf.keys.sort
+        end
+
+        it 'an array of strings as the values' do
+          others = []
+          kbf.values.each do |entry|
+            others << entry.reject { |value| value.is_a? String }
           end
-          expect(keywords.values).must_equal expected
+          expect(others.flatten).must_be :empty?
         end
 
-        it 'values containing unique strings' do
-          all_keywords = keywords.values.flatten
-          expect(all_keywords).must_equal all_keywords.uniq
+        it 'a sorted array of strings as the value' do
+          all_sorted = kbf.values.inject(true) do |accum, entry|
+            accum && entry == entry.sort
+          end
+          expect(all_sorted).must_equal true
         end
-      end # describe 'a Hash with'
-    end # describe 'after calling a properly-set-up #call method returns'
-  end # describe 'has a #keywords_by_frequency method that, when called'
+      end # describe 'a :keywords_by_frequency Hash with'
+
+      describe 'a :most_recent_articles array with' do
+        let(:mra) { return_value[:most_recent_articles] }
+
+        it 'an array of Prolog::Core::Article instances' do
+          others = mra.reject { |item| item.is_a? Prolog::Core::Article }
+          expect(others).must_be :empty?
+        end
+
+        it 'an array sorted by created-at timestamps in descending order' do
+          stamps = mra.map(&:created_at)
+          expect(stamps).must_equal stamps.sort.reverse
+        end
+      end # describe 'a :most_recent_articles array with'
+
+      describe 'a :most_recently_updated_articles array with' do
+        let(:mru) { return_value[:most_recently_updated_articles] }
+
+        it 'an array of Prolog::Core::Article instances' do
+          others = mru.reject { |item| item.is_a? Prolog::Core::Article }
+          expect(others).must_be :empty?
+        end
+
+        it 'an array sorted by updated-at timestamps in descending order' do
+          stamps = mru.map(&:updated_at)
+          expect(stamps).must_equal stamps.sort.reverse
+        end
+      end # describe 'a :most_recently_updated_articles array with'
+    end # describe 'returns a Hash with'
+  end # describe 'has a #call method that'
 end

@@ -17,6 +17,26 @@ module Prolog
 
       def call
         load_article_list
+        build_return_hash
+      end
+
+      private
+
+      attr_reader :article_list
+
+      def build_return_hash
+        {
+          articles: article_list.articles,
+          keywords_by_frequency: keywords_by_frequency,
+          most_recent_articles: most_recent_articles,
+          most_recently_updated_articles: most_recently_updated_articles
+        }
+      end
+
+      def if_articles_exist(on_empty:)
+        articles = article_list&.articles
+        return on_empty unless articles
+        yield articles
       end
 
       def keywords_by_frequency
@@ -25,28 +45,18 @@ module Prolog
         end
       end
 
-      def most_recent_articles
-        sort_article_list(sort_by: :created_at).reverse
-      end
-
-      def most_recently_updated_articles
-        sort_article_list(sort_by: :updated_at).reverse
-      end
-
-      private
-
-      attr_reader :article_list
-
       def load_article_list
         @article_list = ArticleLister.new broadcast: method(:broadcast)
         article_list.call
         self
       end
 
-      def if_articles_exist(on_empty:)
-        articles = article_list&.articles
-        return on_empty unless articles
-        yield articles
+      def most_recent_articles
+        sort_article_list(sort_by: :created_at).reverse
+      end
+
+      def most_recently_updated_articles
+        sort_article_list(sort_by: :updated_at).reverse
       end
 
       def sort_article_list(sort_by:)
