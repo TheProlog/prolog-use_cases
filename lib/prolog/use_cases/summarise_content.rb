@@ -1,8 +1,9 @@
 
 require 'forwardable'
 
-require_relative 'summarise_content/article_lister.rb'
-require_relative 'summarise_content/article_sorter.rb'
+require_relative 'summarise_content/article_lister'
+require_relative 'summarise_content/article_sorter'
+require_relative 'summarise_content/keyword_counter'
 
 module Prolog
   module UseCases
@@ -16,6 +17,12 @@ module Prolog
 
       def call
         load_article_list
+      end
+
+      def keywords_by_frequency
+        if_articles_exist(on_empty: {}) do |articles|
+          KeywordCounter.new(articles).call
+        end
       end
 
       def most_recent_articles
@@ -36,10 +43,16 @@ module Prolog
         self
       end
 
-      def sort_article_list(sort_by:)
+      def if_articles_exist(on_empty:)
         articles = article_list&.articles
-        return [] unless articles
-        ArticleSorter.new(articles: articles, sort_by: sort_by).call
+        return on_empty unless articles
+        yield articles
+      end
+
+      def sort_article_list(sort_by:)
+        if_articles_exist(on_empty: []) do |articles|
+          ArticleSorter.new(articles: articles, sort_by: sort_by).call
+        end
       end
     end # class Prolog::UseCases::SummariseContent
   end

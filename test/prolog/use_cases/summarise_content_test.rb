@@ -146,4 +146,47 @@ describe 'Prolog::UseCases::SummariseContent' do
       end
     end # describe 'after calling a properly-set-up #call method returns'
   end # describe 'has a #most_recent_articles method that, when called'
+
+  describe 'has a #keywords_by_frequency method that, when called' do
+    describe 'without previously calling #call on that instance' do
+      it 'returns an empty Hash' do
+        expect(obj.keywords_by_frequency).must_equal({})
+      end
+    end # describe 'without previously calling #call on that instance'
+
+    describe 'after calling a properly-set-up #call method returns' do
+      let(:keywords) { obj.keywords_by_frequency }
+
+      before do
+        obj.subscribe persistence_listener
+        obj.call
+      end
+
+      it 'a non-empty Hash' do
+        expect(keywords.keys).wont_be :empty?
+      end
+
+      describe 'a Hash with' do
+        it 'positive integers as keys' do
+          expected = keywords.keys.select { |key| key.is_a? Fixnum }
+                     .select { |key| key > 0 }
+          expect(keywords.keys).must_equal expected
+        end
+
+        it 'arrays of strings as values' do
+          expected = keywords.values.select { |value| value.is_a? Array }
+                     .select do |values|
+            values.reject { |value| value.is_a? String }
+            .empty?
+          end
+          expect(keywords.values).must_equal expected
+        end
+
+        it 'values containing unique strings' do
+          all_keywords = keywords.values.flatten
+          expect(all_keywords).must_equal all_keywords.uniq
+        end
+      end # describe 'a Hash with'
+    end # describe 'after calling a properly-set-up #call method returns'
+  end # describe 'has a #keywords_by_frequency method that, when called'
 end
