@@ -10,12 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jdickey@seven-sigma.com"]
   spec.license       = 'Nonstandard'
   spec.summary       = %q{Use-case layer for Meldd/Prolog application.}
-  spec_description   = <<~EOT
-                       Following a hexagonal or clean architecture, the use cases are implemented
-                       in the next major layer "outward" from the core entities, which are known
-                       to this code but not vice versa.
-                       EOT
-  spec.description   = spec_description.split.join ' '
+  spec.description   = %Q(Following a hexagonal or clean architecture, the use cases are implemented in the next major layer "outward" from the core entities, which are known to this code but not vice versa.)
   spec.homepage      = "https://github.com/theprolog/prolog-use_cases"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
