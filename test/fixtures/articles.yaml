@@ -1,0 +1,2186 @@
+---
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Chris Ward
+      body: |-
+        Sustainable +1 dreamcatcher quinoa mustache echo park. Raw denim moon farm-to-table sartorial letterpress. Messenger bag skateboard party Four Loko retro craft beer.
+
+        Etsy trust fund farm-to-table twee chambray tofu before they sold out helvetica artisan. High life ethical blog Shoreditch Brooklyn sartorial fap twee Williamsburg. Seitan Wayfarers etsy gluten-free Williamsburg jean shorts blog ethical helvetica. Ethical moon fap iPhone next level messenger bag. Art sustainable Marfa salvia tofu Austin yr fanny pack moon.
+
+        Party dreamcatcher VHS viral tumblr Rerry Richardson. Williamsburg you probably haven't heard of them butcher American Apparel vegan keffiyeh. Readymade squid aesthetic leggings keffiyeh food truck before they sold out.
+      image_url: https://robohash.org/quifaciliscorporis.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          art: true
+          locavore: true
+          Brooklyn: true
+          lo-fi: true
+      title: Death Women
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-21 10:00:04.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-09 14:34:49.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Death Women
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Sustainable +1 dreamcatcher quinoa mustache echo park. Raw denim moon farm-to-table sartorial letterpress. Messenger bag skateboard party Four Loko retro craft beer.
+
+      Etsy trust fund farm-to-table twee chambray tofu before they sold out helvetica artisan. High life ethical blog Shoreditch Brooklyn sartorial fap twee Williamsburg. Seitan Wayfarers etsy gluten-free Williamsburg jean shorts blog ethical helvetica. Ethical moon fap iPhone next level messenger bag. Art sustainable Marfa salvia tofu Austin yr fanny pack moon.
+
+      Party dreamcatcher VHS viral tumblr Rerry Richardson. Williamsburg you probably haven't heard of them butcher American Apparel vegan keffiyeh. Readymade squid aesthetic leggings keffiyeh food truck before they sold out.
+    image_url_present: https://robohash.org/quifaciliscorporis.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shane Nienow
+      body: |-
+        Sustainable master cleanse Pitchfork biodiesel trust fund. Beard single-origin coffee McSweeney's mlkshk skateboard. Put a bird on it trust fund Rerry Richardson DIY keffiyeh hoodie banh mi biodiesel mustache. Cliche you probably haven't heard of them tofu chambray craft beer food truck wolf.
+
+        Craft beer leggings American Apparel organic scenester. Lo-fi leggings skateboard cliche Marfa blog. You probably haven't heard of them Four Loko whatever ethical vegan sartorial +1.
+
+        Viral etsy locavore vegan mlkshk Wes Anderson ethical artisan. Vice tumblr locavore cardigan cliche lo-fi scenester Austin fixie. Biodiesel farm-to-table aesthetic Marfa lo-fi skateboard butcher brunch. Rerry richardson Wayfarers squid yr craft beer cardigan keffiyeh Cosby Sweater. Vegan American Apparel aesthetic twee sartorial single-origin coffee Carles jean shorts.
+      image_url: https://robohash.org/estmaximedolore.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          retro: true
+      title: Nuclear Gypsy
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-24 17:57:57.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-03 11:54:56.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Nuclear Gypsy
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Sustainable master cleanse Pitchfork biodiesel trust fund. Beard single-origin coffee McSweeney's mlkshk skateboard. Put a bird on it trust fund Rerry Richardson DIY keffiyeh hoodie banh mi biodiesel mustache. Cliche you probably haven't heard of them tofu chambray craft beer food truck wolf.
+
+      Craft beer leggings American Apparel organic scenester. Lo-fi leggings skateboard cliche Marfa blog. You probably haven't heard of them Four Loko whatever ethical vegan sartorial +1.
+
+      Viral etsy locavore vegan mlkshk Wes Anderson ethical artisan. Vice tumblr locavore cardigan cliche lo-fi scenester Austin fixie. Biodiesel farm-to-table aesthetic Marfa lo-fi skateboard butcher brunch. Rerry richardson Wayfarers squid yr craft beer cardigan keffiyeh Cosby Sweater. Vegan American Apparel aesthetic twee sartorial single-origin coffee Carles jean shorts.
+    image_url_present: https://robohash.org/estmaximedolore.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shane Nienow
+      body: |-
+        8-bit viral quinoa you probably haven't heard of them tumblr. Farm-to-table organic iPhone Marfa thundercats beard etsy fixie. Blog Austin food truck Rerry Richardson beard stumptown. Banksy party aesthetic master cleanse readymade. Gluten-free chambray Wes Anderson salvia VHS.
+
+        Freegan photo booth fanny pack vice master cleanse party scenester +1. Gentrify Austin next level messenger bag put a bird on it. Aesthetic butcher beard Portland Wes Anderson. Tattooed fixie echo park Carles seitan you probably haven't heard of them scenester jean shorts banh mi.
+
+        Mcsweeney's Shoreditch Portland stumptown Four Loko organic +1. Artisan sartorial scenester etsy mixtape keytar iPhone skateboard salvia. Farm-to-table banh mi vice scenester viral.
+      image_url: https://robohash.org/rerumodiovoluptate.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          bicycle rights: true
+          butcher: true
+          cliche: true
+      title: Je Vous Presente, Katelynn
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-19 11:02:50.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-07 16:23:02.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Je Vous Presente, Katelynn
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      8-bit viral quinoa you probably haven't heard of them tumblr. Farm-to-table organic iPhone Marfa thundercats beard etsy fixie. Blog Austin food truck Rerry Richardson beard stumptown. Banksy party aesthetic master cleanse readymade. Gluten-free chambray Wes Anderson salvia VHS.
+
+      Freegan photo booth fanny pack vice master cleanse party scenester +1. Gentrify Austin next level messenger bag put a bird on it. Aesthetic butcher beard Portland Wes Anderson. Tattooed fixie echo park Carles seitan you probably haven't heard of them scenester jean shorts banh mi.
+
+      Mcsweeney's Shoreditch Portland stumptown Four Loko organic +1. Artisan sartorial scenester etsy mixtape keytar iPhone skateboard salvia. Farm-to-table banh mi vice scenester viral.
+    image_url_present: https://robohash.org/rerumodiovoluptate.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Chris Ward
+      body: |-
+        Synth PBR yr wolf blog fap tumblr. Four loko McSweeney's VHS artisan Marfa vice gluten-free. Next level craft beer iPhone wolf Wes Anderson. Biodiesel craft beer McSweeney's sartorial cliche banh mi jean shorts synth photo booth.
+
+        Locavore leggings twee letterpress whatever wolf brunch butcher. Moon Carles farm-to-table etsy lo-fi ethical McSweeney's. Banksy etsy Austin brunch ethical VHS tattooed. Bicycle rights Shoreditch raw denim keytar blog.
+
+        Tofu fap photo booth iPhone Cosby Sweater lomo PBR vegan gluten-free. Ethical fap banh mi vice gentrify leggings McSweeney's. Synth freegan letterpress put a bird on it biodiesel chambray. Fanny pack tofu Portland dreamcatcher art mixtape gluten-free cliche. Etsy before they sold out twee cred blog farm-to-table vinyl.
+      image_url: https://robohash.org/quieamaiores.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          master cleanse: true
+          lomo: true
+          art: true
+          moon: true
+      title: American City
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-25 10:57:01.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-07 09:25:34.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: American City
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Synth PBR yr wolf blog fap tumblr. Four loko McSweeney's VHS artisan Marfa vice gluten-free. Next level craft beer iPhone wolf Wes Anderson. Biodiesel craft beer McSweeney's sartorial cliche banh mi jean shorts synth photo booth.
+
+      Locavore leggings twee letterpress whatever wolf brunch butcher. Moon Carles farm-to-table etsy lo-fi ethical McSweeney's. Banksy etsy Austin brunch ethical VHS tattooed. Bicycle rights Shoreditch raw denim keytar blog.
+
+      Tofu fap photo booth iPhone Cosby Sweater lomo PBR vegan gluten-free. Ethical fap banh mi vice gentrify leggings McSweeney's. Synth freegan letterpress put a bird on it biodiesel chambray. Fanny pack tofu Portland dreamcatcher art mixtape gluten-free cliche. Etsy before they sold out twee cred blog farm-to-table vinyl.
+    image_url_present: https://robohash.org/quieamaiores.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Chris Ward
+      body: |-
+        Brunch Williamsburg single-origin coffee cred tofu McSweeney's. Vinyl next level retro artisan butcher put a bird on it keffiyeh lomo stumptown. Carles mlkshk keffiyeh dreamcatcher +1 seitan. Bicycle rights fap vice letterpress high life viral scenester. Carles stumptown before they sold out biodiesel lo-fi irony party leggings messenger bag.
+
+        Letterpress Banksy scenester Williamsburg Austin. Party Wayfarers before they sold out thundercats keytar hoodie single-origin coffee mustache. Quinoa vice viral retro yr VHS irony tumblr Wayfarers.
+
+        Brunch DIY messenger bag tumblr high life Williamsburg. Brunch artisan tofu stumptown Marfa ethical. Moon craft beer twee cardigan gluten-free messenger bag. Echo park letterpress vinyl Pitchfork thundercats single-origin coffee. Aesthetic moon whatever irony salvia.
+      image_url: https://robohash.org/laudantiumlaborumillum.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          vice: true
+          8-bit: true
+          artisan: true
+      title: Je Vous Presente, Kendall
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-13 11:15:12.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-11 17:11:31.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Je Vous Presente, Kendall
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Brunch Williamsburg single-origin coffee cred tofu McSweeney's. Vinyl next level retro artisan butcher put a bird on it keffiyeh lomo stumptown. Carles mlkshk keffiyeh dreamcatcher +1 seitan. Bicycle rights fap vice letterpress high life viral scenester. Carles stumptown before they sold out biodiesel lo-fi irony party leggings messenger bag.
+
+      Letterpress Banksy scenester Williamsburg Austin. Party Wayfarers before they sold out thundercats keytar hoodie single-origin coffee mustache. Quinoa vice viral retro yr VHS irony tumblr Wayfarers.
+
+      Brunch DIY messenger bag tumblr high life Williamsburg. Brunch artisan tofu stumptown Marfa ethical. Moon craft beer twee cardigan gluten-free messenger bag. Echo park letterpress vinyl Pitchfork thundercats single-origin coffee. Aesthetic moon whatever irony salvia.
+    image_url_present: https://robohash.org/laudantiumlaborumillum.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Augustine Heller
+      body: |-
+        Trust fund brunch lomo Marfa yr Portland PBR. You probably haven't heard of them raw denim keytar next level put a bird on it etsy mixtape keffiyeh. Wolf whatever vinyl artisan put a bird on it Marfa lo-fi American Apparel +1. Artisan butcher Carles 8-bit lo-fi organic Brooklyn.
+
+        Sustainable farm-to-table Portland blog gluten-free. Rerry richardson wolf bicycle rights brunch salvia synth. Craft beer mixtape cliche photo booth gluten-free.
+
+        Next level PBR American Apparel irony VHS moon. Photo booth twee vice synth Williamsburg leggings. Trust fund high life photo booth viral Wayfarers readymade. Four loko Cosby Sweater +1 Banksy salvia.
+      image_url: https://robohash.org/optiomolestiaeanimi.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          bicycle rights: true
+      title: The Action Friday from Across the Ocean
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-30 12:56:43.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-29 15:50:39.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Action Friday from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Trust fund brunch lomo Marfa yr Portland PBR. You probably haven't heard of them raw denim keytar next level put a bird on it etsy mixtape keffiyeh. Wolf whatever vinyl artisan put a bird on it Marfa lo-fi American Apparel +1. Artisan butcher Carles 8-bit lo-fi organic Brooklyn.
+
+      Sustainable farm-to-table Portland blog gluten-free. Rerry richardson wolf bicycle rights brunch salvia synth. Craft beer mixtape cliche photo booth gluten-free.
+
+      Next level PBR American Apparel irony VHS moon. Photo booth twee vice synth Williamsburg leggings. Trust fund high life photo booth viral Wayfarers readymade. Four loko Cosby Sweater +1 Banksy salvia.
+    image_url_present: https://robohash.org/optiomolestiaeanimi.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Rene Von
+      body: |-
+        Mcsweeney's yr messenger bag Banksy photo booth. Locavore lomo moon photo booth cardigan McSweeney's iPhone tattooed. Readymade synth Pitchfork brunch quinoa banh mi Marfa tattooed irony. Party +1 butcher lomo Shoreditch biodiesel mixtape.
+
+        Four loko messenger bag brunch art vinyl synth. Beard craft beer seitan dreamcatcher Shoreditch irony trust fund gluten-free. Austin jean shorts letterpress photo booth fap sustainable.
+
+        Mcsweeney's vice Brooklyn biodiesel DIY raw denim high life vegan locavore. Banh mi lomo biodiesel echo park party. Fap skateboard bicycle rights tumblr chambray Portland. Cred Wayfarers artisan Wes Anderson letterpress jean shorts Portland photo booth seitan. Art cardigan moon blog butcher banh mi ethical McSweeney's fanny pack.
+      image_url: https://robohash.org/consequunturcupiditateplaceat.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          twee: true
+          skateboard: true
+          aesthetic: true
+      title: The Electric Tentacle from Across the Ocean
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-22 17:56:53.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-03 16:35:28.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Electric Tentacle from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Mcsweeney's yr messenger bag Banksy photo booth. Locavore lomo moon photo booth cardigan McSweeney's iPhone tattooed. Readymade synth Pitchfork brunch quinoa banh mi Marfa tattooed irony. Party +1 butcher lomo Shoreditch biodiesel mixtape.
+
+      Four loko messenger bag brunch art vinyl synth. Beard craft beer seitan dreamcatcher Shoreditch irony trust fund gluten-free. Austin jean shorts letterpress photo booth fap sustainable.
+
+      Mcsweeney's vice Brooklyn biodiesel DIY raw denim high life vegan locavore. Banh mi lomo biodiesel echo park party. Fap skateboard bicycle rights tumblr chambray Portland. Cred Wayfarers artisan Wes Anderson letterpress jean shorts Portland photo booth seitan. Art cardigan moon blog butcher banh mi ethical McSweeney's fanny pack.
+    image_url_present: https://robohash.org/consequunturcupiditateplaceat.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Ignacio Mitchell
+      body: |-
+        Single-origin coffee sustainable chambray Pitchfork mustache. Lomo keffiyeh gluten-free American Apparel Austin. Organic VHS PBR yr butcher brunch whatever seitan. Yr single-origin coffee fixie Wayfarers you probably haven't heard of them Carles. Aesthetic Pitchfork Wayfarers master cleanse dreamcatcher vinyl.
+
+        Freegan whatever fap Williamsburg bicycle rights locavore trust fund ethical stumptown. Brunch Carles butcher put a bird on it organic craft beer lomo skateboard mlkshk. Pitchfork keytar Banksy sartorial farm-to-table bicycle rights hoodie whatever.
+
+        Mustache you probably haven't heard of them etsy messenger bag scenester 8-bit photo booth farm-to-table mixtape. Quinoa Marfa iPhone gentrify trust fund Brooklyn. Beard DIY craft beer quinoa bicycle rights. Cardigan lomo McSweeney's DIY letterpress vegan aesthetic yr.
+      image_url: https://robohash.org/dolorillovoluptates.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          synth: true
+          vinyl: true
+      title: Planet of the Thief
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-29 17:20:01.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-22 16:59:21.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Planet of the Thief
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Single-origin coffee sustainable chambray Pitchfork mustache. Lomo keffiyeh gluten-free American Apparel Austin. Organic VHS PBR yr butcher brunch whatever seitan. Yr single-origin coffee fixie Wayfarers you probably haven't heard of them Carles. Aesthetic Pitchfork Wayfarers master cleanse dreamcatcher vinyl.
+
+      Freegan whatever fap Williamsburg bicycle rights locavore trust fund ethical stumptown. Brunch Carles butcher put a bird on it organic craft beer lomo skateboard mlkshk. Pitchfork keytar Banksy sartorial farm-to-table bicycle rights hoodie whatever.
+
+      Mustache you probably haven't heard of them etsy messenger bag scenester 8-bit photo booth farm-to-table mixtape. Quinoa Marfa iPhone gentrify trust fund Brooklyn. Beard DIY craft beer quinoa bicycle rights. Cardigan lomo McSweeney's DIY letterpress vegan aesthetic yr.
+    image_url_present: https://robohash.org/dolorillovoluptates.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shaylee O'Reilly
+      body: |-
+        Biodiesel gentrify echo park Banksy lomo. Readymade VHS wolf Shoreditch aesthetic hoodie whatever. Tumblr Wayfarers fanny pack fixie hoodie food truck bicycle rights sartorial. Wes anderson wolf biodiesel food truck messenger bag raw denim. Brooklyn salvia stumptown butcher Williamsburg cliche.
+
+        Skateboard American Apparel freegan artisan synth Banksy squid 8-bit retro. Vice lo-fi Four Loko butcher lomo PBR photo booth hoodie Portland. Iphone helvetica yr aesthetic vice craft beer whatever. Viral helvetica trust fund put a bird on it lomo artisan.
+
+        Iphone McSweeney's Wayfarers irony Rerry Richardson cardigan gentrify trust fund mlkshk. Mlkshk VHS aesthetic scenester tofu. Leggings Carles raw denim keytar mlkshk quinoa keffiyeh.
+      image_url: https://robohash.org/dictaexet.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          synth: true
+          Portland: true
+          vice: true
+          ethical: true
+          art: true
+      title: Rise of the Diaries
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-04 13:38:09.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-06 09:34:00.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Rise of the Diaries
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Biodiesel gentrify echo park Banksy lomo. Readymade VHS wolf Shoreditch aesthetic hoodie whatever. Tumblr Wayfarers fanny pack fixie hoodie food truck bicycle rights sartorial. Wes anderson wolf biodiesel food truck messenger bag raw denim. Brooklyn salvia stumptown butcher Williamsburg cliche.
+
+      Skateboard American Apparel freegan artisan synth Banksy squid 8-bit retro. Vice lo-fi Four Loko butcher lomo PBR photo booth hoodie Portland. Iphone helvetica yr aesthetic vice craft beer whatever. Viral helvetica trust fund put a bird on it lomo artisan.
+
+      Iphone McSweeney's Wayfarers irony Rerry Richardson cardigan gentrify trust fund mlkshk. Mlkshk VHS aesthetic scenester tofu. Leggings Carles raw denim keytar mlkshk quinoa keffiyeh.
+    image_url_present: https://robohash.org/dictaexet.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Rene Von
+      body: |-
+        Wolf American Apparel moon Shoreditch 8-bit Portland locavore party. Synth high life Wes Anderson tumblr readymade. Art Wes Anderson seitan blog dreamcatcher Carles Rerry Richardson etsy trust fund. Aesthetic helvetica artisan twee sartorial etsy.
+
+        Irony farm-to-table lo-fi artisan butcher jean shorts cred. Portland photo booth trust fund put a bird on it high life organic party sartorial 8-bit. Aesthetic fixie Wes Anderson VHS vegan Cosby Sweater raw denim ethical Brooklyn. Marfa McSweeney's Four Loko mixtape vice sartorial keytar echo park.
+
+        Organic farm-to-table party freegan biodiesel viral tumblr. Williamsburg tofu jean shorts hoodie locavore letterpress mixtape biodiesel. Wes anderson food truck VHS twee squid cliche stumptown. Moon put a bird on it craft beer PBR gluten-free. Iphone lomo artisan Brooklyn irony sartorial vinyl tattooed salvia.
+      image_url: https://robohash.org/eiusrerumvoluptatem.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          PBR: true
+          twee: true
+          art: true
+          craft beer: true
+          letterpress: true
+      title: A Fistful of Action Pickpocket
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-22 13:48:02.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-05 11:10:09.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of Action Pickpocket
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Wolf American Apparel moon Shoreditch 8-bit Portland locavore party. Synth high life Wes Anderson tumblr readymade. Art Wes Anderson seitan blog dreamcatcher Carles Rerry Richardson etsy trust fund. Aesthetic helvetica artisan twee sartorial etsy.
+
+      Irony farm-to-table lo-fi artisan butcher jean shorts cred. Portland photo booth trust fund put a bird on it high life organic party sartorial 8-bit. Aesthetic fixie Wes Anderson VHS vegan Cosby Sweater raw denim ethical Brooklyn. Marfa McSweeney's Four Loko mixtape vice sartorial keytar echo park.
+
+      Organic farm-to-table party freegan biodiesel viral tumblr. Williamsburg tofu jean shorts hoodie locavore letterpress mixtape biodiesel. Wes anderson food truck VHS twee squid cliche stumptown. Moon put a bird on it craft beer PBR gluten-free. Iphone lomo artisan Brooklyn irony sartorial vinyl tattooed salvia.
+    image_url_present: https://robohash.org/eiusrerumvoluptatem.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jarret Nicolas
+      body: |-
+        Retro trust fund helvetica Four Loko vinyl food truck. Brooklyn irony Shoreditch seitan vice. Organic 8-bit Williamsburg mlkshk tofu. Aesthetic keytar mlkshk DIY Wayfarers dreamcatcher McSweeney's farm-to-table.
+
+        Shoreditch echo park helvetica Austin farm-to-table sustainable. Before they sold out cardigan Banksy salvia VHS. Brunch retro put a bird on it Portland aesthetic readymade art.
+
+        Cardigan Shoreditch mixtape freegan organic. Austin skateboard quinoa squid bicycle rights dreamcatcher. Mustache retro aesthetic cred Wes Anderson.
+      image_url: https://robohash.org/oditdolorumnam.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          fanny pack: true
+          Four Loko: true
+          butcher: true
+      title: Ultra Dreams
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-08 12:30:35.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-28 09:34:03.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Ultra Dreams
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Retro trust fund helvetica Four Loko vinyl food truck. Brooklyn irony Shoreditch seitan vice. Organic 8-bit Williamsburg mlkshk tofu. Aesthetic keytar mlkshk DIY Wayfarers dreamcatcher McSweeney's farm-to-table.
+
+      Shoreditch echo park helvetica Austin farm-to-table sustainable. Before they sold out cardigan Banksy salvia VHS. Brunch retro put a bird on it Portland aesthetic readymade art.
+
+      Cardigan Shoreditch mixtape freegan organic. Austin skateboard quinoa squid bicycle rights dreamcatcher. Mustache retro aesthetic cred Wes Anderson.
+    image_url_present: https://robohash.org/oditdolorumnam.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Gunner Toy
+      body: |-
+        Ethical trust fund jean shorts food truck fanny pack echo park. Wolf Portland food truck photo booth Brooklyn lo-fi raw denim Cosby Sweater lomo. Freegan Wayfarers thundercats iPhone cred. American apparel Portland farm-to-table Shoreditch mlkshk craft beer vegan cliche. Ethical irony letterpress put a bird on it Pitchfork.
+
+        Marfa banh mi irony next level Austin Cosby Sweater American Apparel brunch. Letterpress yr leggings salvia put a bird on it biodiesel. Pbr Williamsburg cliche yr skateboard leggings. Chambray lomo dreamcatcher etsy PBR mlkshk. Scenester viral brunch skateboard vinyl trust fund blog squid.
+
+        Yr farm-to-table locavore Wes Anderson craft beer tumblr blog vegan. Seitan Pitchfork PBR synth gluten-free salvia blog banh mi. Beard Portland Four Loko Williamsburg aesthetic blog. Chambray salvia Brooklyn letterpress yr.
+      image_url: https://robohash.org/nihilipsamdoloremque.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          yr: true
+          skateboard: true
+      title: The Jungle That Came to Dinner
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-04 15:27:14.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-05 13:09:27.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Jungle That Came to Dinner
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Ethical trust fund jean shorts food truck fanny pack echo park. Wolf Portland food truck photo booth Brooklyn lo-fi raw denim Cosby Sweater lomo. Freegan Wayfarers thundercats iPhone cred. American apparel Portland farm-to-table Shoreditch mlkshk craft beer vegan cliche. Ethical irony letterpress put a bird on it Pitchfork.
+
+      Marfa banh mi irony next level Austin Cosby Sweater American Apparel brunch. Letterpress yr leggings salvia put a bird on it biodiesel. Pbr Williamsburg cliche yr skateboard leggings. Chambray lomo dreamcatcher etsy PBR mlkshk. Scenester viral brunch skateboard vinyl trust fund blog squid.
+
+      Yr farm-to-table locavore Wes Anderson craft beer tumblr blog vegan. Seitan Pitchfork PBR synth gluten-free salvia blog banh mi. Beard Portland Four Loko Williamsburg aesthetic blog. Chambray salvia Brooklyn letterpress yr.
+    image_url_present: https://robohash.org/nihilipsamdoloremque.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Isadore Brown
+      body: |-
+        Synth readymade biodiesel 8-bit freegan put a bird on it fixie DIY moon. Diy yr helvetica brunch Shoreditch Pitchfork American Apparel. Messenger bag party mixtape quinoa keffiyeh 8-bit lomo. Marfa thundercats stumptown readymade butcher scenester keytar Shoreditch. +1 McSweeney's keffiyeh twee freegan DIY Austin Marfa salvia.
+
+        Put a bird on it mustache freegan brunch tofu you probably haven't heard of them tumblr. Cliche master cleanse readymade keytar synth fap. Retro thundercats cardigan fap tofu fanny pack.
+
+        American apparel biodiesel you probably haven't heard of them lo-fi PBR. Fixie helvetica vinyl photo booth artisan you probably haven't heard of them organic jean shorts. Skateboard squid you probably haven't heard of them Pitchfork McSweeney's food truck salvia butcher. Echo park PBR farm-to-table tumblr stumptown sustainable bicycle rights.
+      image_url: https://robohash.org/quioccaecatisequi.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Carles: true
+          PBR: true
+          Austin: true
+          Portland: true
+      title: Blue Identity
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-12 15:56:36.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-10 17:00:42.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Blue Identity
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Synth readymade biodiesel 8-bit freegan put a bird on it fixie DIY moon. Diy yr helvetica brunch Shoreditch Pitchfork American Apparel. Messenger bag party mixtape quinoa keffiyeh 8-bit lomo. Marfa thundercats stumptown readymade butcher scenester keytar Shoreditch. +1 McSweeney's keffiyeh twee freegan DIY Austin Marfa salvia.
+
+      Put a bird on it mustache freegan brunch tofu you probably haven't heard of them tumblr. Cliche master cleanse readymade keytar synth fap. Retro thundercats cardigan fap tofu fanny pack.
+
+      American apparel biodiesel you probably haven't heard of them lo-fi PBR. Fixie helvetica vinyl photo booth artisan you probably haven't heard of them organic jean shorts. Skateboard squid you probably haven't heard of them Pitchfork McSweeney's food truck salvia butcher. Echo park PBR farm-to-table tumblr stumptown sustainable bicycle rights.
+    image_url_present: https://robohash.org/quioccaecatisequi.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Isadore Brown
+      body: |-
+        Blog whatever cliche keytar party American Apparel mustache Marfa. Viral vice helvetica McSweeney's Rerry Richardson Wayfarers. Scenester beard jean shorts Wayfarers keffiyeh dreamcatcher.
+
+        Banh mi echo park Wayfarers vegan Portland fixie sartorial mlkshk before they sold out. Vegan fanny pack Austin Portland Carles cliche trust fund. Photo booth PBR moon Shoreditch seitan gluten-free biodiesel Wes Anderson. Vice Marfa VHS scenester tumblr.
+
+        Mustache fap Austin party blog locavore. Portland party Shoreditch put a bird on it Williamsburg VHS lomo Carles. Blog party aesthetic scenester Portland before they sold out. Trust fund farm-to-table irony cardigan Wes Anderson.
+      image_url: https://robohash.org/eumhicperferendis.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          brunch: true
+      title: The Black Rose of Northern Ireland
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-12 09:22:20.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-16 15:44:30.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Black Rose of Northern Ireland
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Blog whatever cliche keytar party American Apparel mustache Marfa. Viral vice helvetica McSweeney's Rerry Richardson Wayfarers. Scenester beard jean shorts Wayfarers keffiyeh dreamcatcher.
+
+      Banh mi echo park Wayfarers vegan Portland fixie sartorial mlkshk before they sold out. Vegan fanny pack Austin Portland Carles cliche trust fund. Photo booth PBR moon Shoreditch seitan gluten-free biodiesel Wes Anderson. Vice Marfa VHS scenester tumblr.
+
+      Mustache fap Austin party blog locavore. Portland party Shoreditch put a bird on it Williamsburg VHS lomo Carles. Blog party aesthetic scenester Portland before they sold out. Trust fund farm-to-table irony cardigan Wes Anderson.
+    image_url_present: https://robohash.org/eumhicperferendis.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shaylee O'Reilly
+      body: |-
+        Sartorial dreamcatcher party cardigan organic. Moon gentrify seitan freegan keytar vinyl butcher chambray Austin. Mixtape helvetica mlkshk American Apparel iPhone organic irony moon.
+
+        Master cleanse mixtape seitan jean shorts before they sold out lomo cardigan farm-to-table butcher. Put a bird on it brunch stumptown party jean shorts. Shoreditch viral mlkshk cred Cosby Sweater butcher seitan.
+
+        Iphone twee Banksy vice photo booth. Banh mi locavore trust fund jean shorts single-origin coffee art wolf tofu. Mlkshk cardigan dreamcatcher stumptown whatever you probably haven't heard of them letterpress.
+      image_url: https://robohash.org/fugiatipsumipsam.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          food truck: true
+          seitan: true
+          cliche: true
+      title: The Ultra Jungle Who Fell to Earth
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-10 09:44:03.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-16 11:00:01.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Ultra Jungle Who Fell to Earth
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Sartorial dreamcatcher party cardigan organic. Moon gentrify seitan freegan keytar vinyl butcher chambray Austin. Mixtape helvetica mlkshk American Apparel iPhone organic irony moon.
+
+      Master cleanse mixtape seitan jean shorts before they sold out lomo cardigan farm-to-table butcher. Put a bird on it brunch stumptown party jean shorts. Shoreditch viral mlkshk cred Cosby Sweater butcher seitan.
+
+      Iphone twee Banksy vice photo booth. Banh mi locavore trust fund jean shorts single-origin coffee art wolf tofu. Mlkshk cardigan dreamcatcher stumptown whatever you probably haven't heard of them letterpress.
+    image_url_present: https://robohash.org/fugiatipsumipsam.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jessie Lockman
+      body: |-
+        Tumblr lomo single-origin coffee chambray mlkshk skateboard. Skateboard food truck Marfa blog lo-fi tofu Austin Portland fap. Fap you probably haven't heard of them irony readymade vinyl mustache. Etsy beard dreamcatcher Banksy mustache.
+
+        Portland biodiesel quinoa helvetica hoodie dreamcatcher. Farm-to-table jean shorts tofu mlkshk vice mustache butcher. Cardigan sartorial DIY Austin PBR keffiyeh ethical messenger bag. Wolf fixie VHS seitan stumptown hoodie tumblr lo-fi.
+
+        Wayfarers fixie mixtape artisan Carles Wes Anderson VHS etsy cred. Scenester high life moon messenger bag organic. Banksy etsy blog food truck dreamcatcher. Vinyl Carles keytar yr sartorial.
+      image_url: https://robohash.org/maioresbeataereprehenderit.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          vice: true
+          keytar: true
+      title: The Mutant from Across the Ocean
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-17 15:23:37.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-16 13:27:20.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Mutant from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Tumblr lomo single-origin coffee chambray mlkshk skateboard. Skateboard food truck Marfa blog lo-fi tofu Austin Portland fap. Fap you probably haven't heard of them irony readymade vinyl mustache. Etsy beard dreamcatcher Banksy mustache.
+
+      Portland biodiesel quinoa helvetica hoodie dreamcatcher. Farm-to-table jean shorts tofu mlkshk vice mustache butcher. Cardigan sartorial DIY Austin PBR keffiyeh ethical messenger bag. Wolf fixie VHS seitan stumptown hoodie tumblr lo-fi.
+
+      Wayfarers fixie mixtape artisan Carles Wes Anderson VHS etsy cred. Scenester high life moon messenger bag organic. Banksy etsy blog food truck dreamcatcher. Vinyl Carles keytar yr sartorial.
+    image_url_present: https://robohash.org/maioresbeataereprehenderit.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Lisette Schmidt
+      body: |-
+        Cosby sweater banh mi Shoreditch salvia butcher Marfa gluten-free. Photo booth Banksy cardigan etsy viral. Vinyl VHS dreamcatcher letterpress aesthetic. Gentrify Portland vegan echo park moon.
+
+        Vhs cliche sartorial keffiyeh stumptown Wes Anderson Banksy. Scenester lomo irony helvetica cardigan butcher +1. Freegan cliche blog PBR raw denim fap yr sartorial fanny pack.
+
+        Moon leggings freegan retro single-origin coffee Austin. Iphone sartorial DIY you probably haven't heard of them helvetica vice PBR Banksy. Wayfarers thundercats sartorial retro blog Marfa.
+      image_url: https://robohash.org/distinctiovoluptatumnam.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          letterpress: true
+          gluten-free: true
+          artisan: true
+          ethical: true
+          next level: true
+      title: The Green Thief from Across the Ocean
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-15 12:21:15.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-11-20 13:30:52.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Green Thief from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Cosby sweater banh mi Shoreditch salvia butcher Marfa gluten-free. Photo booth Banksy cardigan etsy viral. Vinyl VHS dreamcatcher letterpress aesthetic. Gentrify Portland vegan echo park moon.
+
+      Vhs cliche sartorial keffiyeh stumptown Wes Anderson Banksy. Scenester lomo irony helvetica cardigan butcher +1. Freegan cliche blog PBR raw denim fap yr sartorial fanny pack.
+
+      Moon leggings freegan retro single-origin coffee Austin. Iphone sartorial DIY you probably haven't heard of them helvetica vice PBR Banksy. Wayfarers thundercats sartorial retro blog Marfa.
+    image_url_present: https://robohash.org/distinctiovoluptatumnam.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Ebba Stark
+      body: |-
+        Mcsweeney's DIY cardigan butcher raw denim you probably haven't heard of them mlkshk food truck. Beard butcher salvia single-origin coffee DIY gentrify craft beer blog keffiyeh. Sustainable sartorial twee wolf moon. Aesthetic hoodie Carles iPhone cred trust fund.
+
+        Jean shorts tattooed Williamsburg vegan before they sold out messenger bag. Jean shorts fap beard Brooklyn before they sold out 8-bit keffiyeh dreamcatcher. Viral artisan VHS farm-to-table yr.
+
+        Artisan lo-fi cliche twee DIY Banksy helvetica. Tumblr farm-to-table mustache stumptown banh mi keytar. Butcher party organic letterpress 8-bit DIY. Brooklyn high life +1 leggings cardigan brunch organic jean shorts Williamsburg.
+      image_url: https://robohash.org/molestiaslaboriosamut.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          moon: true
+          letterpress: true
+          locavore: true
+      title: I Married a Ninjas
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-12 14:07:58.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-11 13:32:17.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: I Married a Ninjas
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Mcsweeney's DIY cardigan butcher raw denim you probably haven't heard of them mlkshk food truck. Beard butcher salvia single-origin coffee DIY gentrify craft beer blog keffiyeh. Sustainable sartorial twee wolf moon. Aesthetic hoodie Carles iPhone cred trust fund.
+
+      Jean shorts tattooed Williamsburg vegan before they sold out messenger bag. Jean shorts fap beard Brooklyn before they sold out 8-bit keffiyeh dreamcatcher. Viral artisan VHS farm-to-table yr.
+
+      Artisan lo-fi cliche twee DIY Banksy helvetica. Tumblr farm-to-table mustache stumptown banh mi keytar. Butcher party organic letterpress 8-bit DIY. Brooklyn high life +1 leggings cardigan brunch organic jean shorts Williamsburg.
+    image_url_present: https://robohash.org/molestiaslaboriosamut.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Helen Torphy
+      body: |-
+        Biodiesel craft beer gluten-free party 8-bit brunch. Seitan Pitchfork put a bird on it Rerry Richardson VHS Four Loko freegan tattooed readymade. 8-bit Marfa tattooed before they sold out Pitchfork cliche mustache put a bird on it.
+
+        Brooklyn letterpress synth Shoreditch wolf. Whatever cred you probably haven't heard of them Rerry Richardson butcher Portland McSweeney's farm-to-table. +1 gluten-free mustache cred readymade put a bird on it tattooed thundercats DIY.
+
+        Moon keytar VHS biodiesel yr brunch jean shorts trust fund. Hoodie gentrify chambray Brooklyn brunch stumptown tattooed. Cardigan lomo master cleanse +1 messenger bag before they sold out keytar. Retro lo-fi artisan keffiyeh Carles cliche tumblr. Banh mi letterpress beard helvetica artisan cliche jean shorts DIY.
+      image_url: https://robohash.org/quiaquidemincidunt.png?size=120x120
+      keywords: !ruby/object:Set
+        hash: {}
+      title: When Lilla Met Syble
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-04 13:37:10.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-12 16:19:57.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: When Lilla Met Syble
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Biodiesel craft beer gluten-free party 8-bit brunch. Seitan Pitchfork put a bird on it Rerry Richardson VHS Four Loko freegan tattooed readymade. 8-bit Marfa tattooed before they sold out Pitchfork cliche mustache put a bird on it.
+
+      Brooklyn letterpress synth Shoreditch wolf. Whatever cred you probably haven't heard of them Rerry Richardson butcher Portland McSweeney's farm-to-table. +1 gluten-free mustache cred readymade put a bird on it tattooed thundercats DIY.
+
+      Moon keytar VHS biodiesel yr brunch jean shorts trust fund. Hoodie gentrify chambray Brooklyn brunch stumptown tattooed. Cardigan lomo master cleanse +1 messenger bag before they sold out keytar. Retro lo-fi artisan keffiyeh Carles cliche tumblr. Banh mi letterpress beard helvetica artisan cliche jean shorts DIY.
+    image_url_present: https://robohash.org/quiaquidemincidunt.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Herbert Dicki
+      body: |-
+        Single-origin coffee cliche seitan fanny pack butcher. +1 mustache party biodiesel readymade twee. Cred irony Cosby Sweater before they sold out fixie Portland high life locavore.
+
+        American apparel sartorial fap brunch DIY tumblr stumptown Shoreditch trust fund. Four loko wolf DIY raw denim skateboard craft beer Brooklyn messenger bag. Banksy butcher stumptown Four Loko retro. Blog messenger bag beard high life thundercats mustache fixie.
+
+        Fanny pack mixtape McSweeney's Austin bicycle rights photo booth wolf Banksy moon. Readymade tofu Pitchfork jean shorts bicycle rights lomo yr Austin. Marfa iPhone high life Four Loko +1 synth farm-to-table etsy. Vhs viral echo park Marfa next level PBR. Fanny pack raw denim tattooed tofu craft beer.
+      image_url: https://robohash.org/adipisciprovidentut.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          mlkshk: true
+          high life: true
+          master cleanse: true
+          salvia: true
+      title: War of the Gypsy
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-10 10:52:15.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-30 17:53:23.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: War of the Gypsy
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Single-origin coffee cliche seitan fanny pack butcher. +1 mustache party biodiesel readymade twee. Cred irony Cosby Sweater before they sold out fixie Portland high life locavore.
+
+      American apparel sartorial fap brunch DIY tumblr stumptown Shoreditch trust fund. Four loko wolf DIY raw denim skateboard craft beer Brooklyn messenger bag. Banksy butcher stumptown Four Loko retro. Blog messenger bag beard high life thundercats mustache fixie.
+
+      Fanny pack mixtape McSweeney's Austin bicycle rights photo booth wolf Banksy moon. Readymade tofu Pitchfork jean shorts bicycle rights lomo yr Austin. Marfa iPhone high life Four Loko +1 synth farm-to-table etsy. Vhs viral echo park Marfa next level PBR. Fanny pack raw denim tattooed tofu craft beer.
+    image_url_present: https://robohash.org/adipisciprovidentut.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shane Nienow
+      body: |-
+        Beard gluten-free master cleanse Portland cardigan sustainable seitan +1. Before they sold out Austin party biodiesel butcher yr. Vhs yr PBR next level salvia gluten-free stumptown.
+
+        Leggings twee gentrify moon Rerry Richardson sartorial lomo stumptown Wes Anderson. Mcsweeney's put a bird on it Brooklyn Four Loko butcher beard echo park. Cosby sweater readymade keytar blog sustainable retro synth. Vegan cardigan American Apparel helvetica squid fap. Austin high life Shoreditch farm-to-table sustainable jean shorts banh mi iPhone.
+
+        Echo park art Wes Anderson fixie freegan sustainable bicycle rights. Yr Marfa butcher cliche vice tofu freegan. Squid put a bird on it ethical stumptown brunch mlkshk biodiesel. Gluten-free keffiyeh Wayfarers Portland PBR synth leggings jean shorts.
+      image_url: https://robohash.org/voluptasomnisqui.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Banksy: true
+          you probably haven't heard of them: true
+      title: The Tokyo World from Across the Ocean
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-13 14:52:31.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-20 11:15:39.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Tokyo World from Across the Ocean
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Beard gluten-free master cleanse Portland cardigan sustainable seitan +1. Before they sold out Austin party biodiesel butcher yr. Vhs yr PBR next level salvia gluten-free stumptown.
+
+      Leggings twee gentrify moon Rerry Richardson sartorial lomo stumptown Wes Anderson. Mcsweeney's put a bird on it Brooklyn Four Loko butcher beard echo park. Cosby sweater readymade keytar blog sustainable retro synth. Vegan cardigan American Apparel helvetica squid fap. Austin high life Shoreditch farm-to-table sustainable jean shorts banh mi iPhone.
+
+      Echo park art Wes Anderson fixie freegan sustainable bicycle rights. Yr Marfa butcher cliche vice tofu freegan. Squid put a bird on it ethical stumptown brunch mlkshk biodiesel. Gluten-free keffiyeh Wayfarers Portland PBR synth leggings jean shorts.
+    image_url_present: https://robohash.org/voluptasomnisqui.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shaylee O'Reilly
+      body: |-
+        Twee Wayfarers +1 party master cleanse beard aesthetic. Seitan 8-bit irony high life letterpress synth echo park messenger bag. Food truck Pitchfork chambray thundercats Williamsburg whatever mixtape banh mi. Party Austin cred butcher art farm-to-table DIY. Echo park fap fixie whatever food truck photo booth DIY.
+
+        Jean shorts viral salvia iPhone messenger bag photo booth scenester. Art McSweeney's cardigan fixie bicycle rights vinyl vegan Shoreditch. Beard Wes Anderson echo park high life blog butcher. Mustache helvetica moon vegan quinoa beard seitan irony viral. Sustainable scenester dreamcatcher beard trust fund Cosby Sweater quinoa viral echo park.
+
+        Mlkshk Carles dreamcatcher scenester chambray seitan. Rerry richardson craft beer cred you probably haven't heard of them artisan. Four loko Wes Anderson viral craft beer party scenester.
+      image_url: https://robohash.org/etautemeligendi.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Brooklyn: true
+          twee: true
+          etsy: true
+          before they sold out: true
+      title: The Brains with a Thousand Faces
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-19 16:06:06.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-13 13:10:46.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Brains with a Thousand Faces
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Twee Wayfarers +1 party master cleanse beard aesthetic. Seitan 8-bit irony high life letterpress synth echo park messenger bag. Food truck Pitchfork chambray thundercats Williamsburg whatever mixtape banh mi. Party Austin cred butcher art farm-to-table DIY. Echo park fap fixie whatever food truck photo booth DIY.
+
+      Jean shorts viral salvia iPhone messenger bag photo booth scenester. Art McSweeney's cardigan fixie bicycle rights vinyl vegan Shoreditch. Beard Wes Anderson echo park high life blog butcher. Mustache helvetica moon vegan quinoa beard seitan irony viral. Sustainable scenester dreamcatcher beard trust fund Cosby Sweater quinoa viral echo park.
+
+      Mlkshk Carles dreamcatcher scenester chambray seitan. Rerry richardson craft beer cred you probably haven't heard of them artisan. Four loko Wes Anderson viral craft beer party scenester.
+    image_url_present: https://robohash.org/etautemeligendi.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Chris Ward
+      body: |-
+        Cred thundercats American Apparel sustainable squid single-origin coffee Four Loko vice leggings. Pbr you probably haven't heard of them biodiesel Shoreditch Marfa. 8-bit fap whatever farm-to-table high life.
+
+        8-bit photo booth etsy seitan trust fund Marfa. Portland butcher aesthetic whatever Austin. Leggings Wes Anderson fanny pack mustache skateboard. Rerry richardson Pitchfork farm-to-table American Apparel etsy organic synth irony Banksy. Retro DIY gluten-free seitan Four Loko Williamsburg hoodie.
+
+        Portland Pitchfork viral VHS sartorial. Brunch you probably haven't heard of them viral put a bird on it squid. Banh mi vegan VHS PBR party etsy viral.
+      image_url: https://robohash.org/estremet.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          tattooed: true
+          gluten-free: true
+          skateboard: true
+      title: A Fistful of Thief
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-16 14:43:21.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-26 16:09:40.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: A Fistful of Thief
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Cred thundercats American Apparel sustainable squid single-origin coffee Four Loko vice leggings. Pbr you probably haven't heard of them biodiesel Shoreditch Marfa. 8-bit fap whatever farm-to-table high life.
+
+      8-bit photo booth etsy seitan trust fund Marfa. Portland butcher aesthetic whatever Austin. Leggings Wes Anderson fanny pack mustache skateboard. Rerry richardson Pitchfork farm-to-table American Apparel etsy organic synth irony Banksy. Retro DIY gluten-free seitan Four Loko Williamsburg hoodie.
+
+      Portland Pitchfork viral VHS sartorial. Brunch you probably haven't heard of them viral put a bird on it squid. Banh mi vegan VHS PBR party etsy viral.
+    image_url_present: https://robohash.org/estremet.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Gunner Toy
+      body: |-
+        Fixie +1 mlkshk single-origin coffee salvia organic quinoa. Mixtape banh mi Marfa high life mustache Wes Anderson. Fixie locavore organic leggings messenger bag thundercats raw denim gluten-free.
+
+        Banh mi Austin readymade gentrify craft beer. Vhs Marfa lo-fi quinoa iPhone +1 irony Pitchfork. Tumblr Four Loko lo-fi stumptown twee McSweeney's.
+
+        +1 Marfa lomo next level Williamsburg Wayfarers stumptown. 8-bit tofu photo booth skateboard fanny pack artisan beard. Fap Wes Anderson art viral fixie artisan jean shorts photo booth. Wolf hoodie keffiyeh Pitchfork keytar salvia leggings vinyl.
+      image_url: https://robohash.org/idlaborumnon.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Marfa: true
+      title: Champagne Dreams
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-04 09:11:33.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-09 17:16:01.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Champagne Dreams
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Fixie +1 mlkshk single-origin coffee salvia organic quinoa. Mixtape banh mi Marfa high life mustache Wes Anderson. Fixie locavore organic leggings messenger bag thundercats raw denim gluten-free.
+
+      Banh mi Austin readymade gentrify craft beer. Vhs Marfa lo-fi quinoa iPhone +1 irony Pitchfork. Tumblr Four Loko lo-fi stumptown twee McSweeney's.
+
+      +1 Marfa lomo next level Williamsburg Wayfarers stumptown. 8-bit tofu photo booth skateboard fanny pack artisan beard. Fap Wes Anderson art viral fixie artisan jean shorts photo booth. Wolf hoodie keffiyeh Pitchfork keytar salvia leggings vinyl.
+    image_url_present: https://robohash.org/idlaborumnon.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Ebba Stark
+      body: |-
+        Tumblr freegan 8-bit helvetica skateboard moon biodiesel. Yr messenger bag Pitchfork viral cardigan ethical Williamsburg. Single-origin coffee leggings viral Banksy McSweeney's +1 Four Loko chambray you probably haven't heard of them.
+
+        Mcsweeney's next level blog cred lomo. Craft beer chambray ethical single-origin coffee etsy cred gentrify. Cliche dreamcatcher Austin gluten-free fixie. Carles biodiesel artisan cliche twee mustache keffiyeh. Ethical scenester mlkshk Brooklyn biodiesel farm-to-table before they sold out.
+
+        Irony iPhone food truck art cliche mixtape. Echo park Carles whatever hoodie locavore Williamsburg lo-fi trust fund. Next level gluten-free freegan vice keytar cardigan biodiesel tofu butcher. Single-origin coffee retro +1 scenester cred trust fund lo-fi seitan aesthetic. Etsy mlkshk Brooklyn banh mi wolf lo-fi.
+      image_url: https://robohash.org/velvitaeperspiciatis.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          squid: true
+      title: The Red Rose of England
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-09 12:01:13.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-26 13:20:08.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Red Rose of England
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Tumblr freegan 8-bit helvetica skateboard moon biodiesel. Yr messenger bag Pitchfork viral cardigan ethical Williamsburg. Single-origin coffee leggings viral Banksy McSweeney's +1 Four Loko chambray you probably haven't heard of them.
+
+      Mcsweeney's next level blog cred lomo. Craft beer chambray ethical single-origin coffee etsy cred gentrify. Cliche dreamcatcher Austin gluten-free fixie. Carles biodiesel artisan cliche twee mustache keffiyeh. Ethical scenester mlkshk Brooklyn biodiesel farm-to-table before they sold out.
+
+      Irony iPhone food truck art cliche mixtape. Echo park Carles whatever hoodie locavore Williamsburg lo-fi trust fund. Next level gluten-free freegan vice keytar cardigan biodiesel tofu butcher. Single-origin coffee retro +1 scenester cred trust fund lo-fi seitan aesthetic. Etsy mlkshk Brooklyn banh mi wolf lo-fi.
+    image_url_present: https://robohash.org/velvitaeperspiciatis.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jessie Lockman
+      body: |-
+        Austin squid photo booth skateboard craft beer McSweeney's irony salvia. Beard iPhone Marfa readymade 8-bit quinoa American Apparel artisan whatever. Raw denim mixtape trust fund tumblr Austin put a bird on it ethical. Moon scenester etsy Four Loko PBR McSweeney's irony. Master cleanse Wayfarers Marfa iPhone sartorial fap you probably haven't heard of them 8-bit.
+
+        Thundercats retro fap dreamcatcher American Apparel. Farm-to-table keytar vinyl iPhone single-origin coffee Portland readymade scenester wolf. +1 hoodie trust fund yr leggings.
+
+        Skateboard retro twee keffiyeh VHS Williamsburg aesthetic. Twee hoodie chambray brunch yr biodiesel. Beard sartorial bicycle rights Pitchfork high life cliche.
+      image_url: https://robohash.org/voluptateofficiaaperiam.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          high life: true
+          beard: true
+      title: The Rain from 2826 Leagues
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-20 09:00:29.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-22 09:32:41.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Rain from 2826 Leagues
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Austin squid photo booth skateboard craft beer McSweeney's irony salvia. Beard iPhone Marfa readymade 8-bit quinoa American Apparel artisan whatever. Raw denim mixtape trust fund tumblr Austin put a bird on it ethical. Moon scenester etsy Four Loko PBR McSweeney's irony. Master cleanse Wayfarers Marfa iPhone sartorial fap you probably haven't heard of them 8-bit.
+
+      Thundercats retro fap dreamcatcher American Apparel. Farm-to-table keytar vinyl iPhone single-origin coffee Portland readymade scenester wolf. +1 hoodie trust fund yr leggings.
+
+      Skateboard retro twee keffiyeh VHS Williamsburg aesthetic. Twee hoodie chambray brunch yr biodiesel. Beard sartorial bicycle rights Pitchfork high life cliche.
+    image_url_present: https://robohash.org/voluptateofficiaaperiam.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Rene Von
+      body: |-
+        Freegan irony vegan fap ethical trust fund. Four loko skateboard food truck Marfa locavore. Banh mi chambray iPhone fap mlkshk DIY. Vegan American Apparel messenger bag VHS keffiyeh food truck Shoreditch Cosby Sweater Portland.
+
+        Gluten-free skateboard butcher retro bicycle rights fixie. Chambray Portland stumptown raw denim party blog Shoreditch American Apparel keffiyeh. Fanny pack Austin irony PBR 8-bit scenester cliche.
+
+        Viral synth vegan ethical irony +1 next level blog cardigan. American apparel sartorial before they sold out single-origin coffee dreamcatcher fanny pack artisan Cosby Sweater photo booth. Biodiesel fanny pack scenester irony sartorial 8-bit cred. Brooklyn sartorial synth next level seitan blog butcher. Letterpress craft beer single-origin coffee bicycle rights scenester art quinoa Austin.
+      image_url: https://robohash.org/enimetcorporis.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Four Loko: true
+          sartorial: true
+      title: Champagne Fly
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-22 14:23:48.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-05 16:36:13.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Champagne Fly
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Freegan irony vegan fap ethical trust fund. Four loko skateboard food truck Marfa locavore. Banh mi chambray iPhone fap mlkshk DIY. Vegan American Apparel messenger bag VHS keffiyeh food truck Shoreditch Cosby Sweater Portland.
+
+      Gluten-free skateboard butcher retro bicycle rights fixie. Chambray Portland stumptown raw denim party blog Shoreditch American Apparel keffiyeh. Fanny pack Austin irony PBR 8-bit scenester cliche.
+
+      Viral synth vegan ethical irony +1 next level blog cardigan. American apparel sartorial before they sold out single-origin coffee dreamcatcher fanny pack artisan Cosby Sweater photo booth. Biodiesel fanny pack scenester irony sartorial 8-bit cred. Brooklyn sartorial synth next level seitan blog butcher. Letterpress craft beer single-origin coffee bicycle rights scenester art quinoa Austin.
+    image_url_present: https://robohash.org/enimetcorporis.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Darian Howell
+      body: |-
+        Food truck scenester Austin synth yr. Thundercats moon freegan PBR lomo leggings. Keffiyeh beard fap vice Wayfarers. Party thundercats messenger bag Austin Banksy trust fund biodiesel single-origin coffee. Pbr freegan food truck vice tumblr beard.
+
+        Marfa banh mi salvia fanny pack biodiesel. Dreamcatcher viral Marfa Banksy irony stumptown salvia. Cliche chambray wolf vice cardigan. Twee VHS Portland keffiyeh vinyl.
+
+        Whatever synth cred locavore 8-bit mlkshk banh mi retro. American apparel vinyl chambray tumblr lomo VHS vice moon. Messenger bag Brooklyn vice biodiesel Wes Anderson Banksy wolf.
+      image_url: https://robohash.org/inciduntsinteligendi.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Carles: true
+          food truck: true
+          leggings: true
+          tattooed: true
+      title: Legend of Cousins
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-24 15:54:04.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-09 10:36:39.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Legend of Cousins
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Food truck scenester Austin synth yr. Thundercats moon freegan PBR lomo leggings. Keffiyeh beard fap vice Wayfarers. Party thundercats messenger bag Austin Banksy trust fund biodiesel single-origin coffee. Pbr freegan food truck vice tumblr beard.
+
+      Marfa banh mi salvia fanny pack biodiesel. Dreamcatcher viral Marfa Banksy irony stumptown salvia. Cliche chambray wolf vice cardigan. Twee VHS Portland keffiyeh vinyl.
+
+      Whatever synth cred locavore 8-bit mlkshk banh mi retro. American apparel vinyl chambray tumblr lomo VHS vice moon. Messenger bag Brooklyn vice biodiesel Wes Anderson Banksy wolf.
+    image_url_present: https://robohash.org/inciduntsinteligendi.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jarret Nicolas
+      body: |-
+        Aesthetic sustainable mustache Carles locavore. 8-bit skateboard trust fund you probably haven't heard of them next level high life messenger bag. Carles Brooklyn readymade fixie lo-fi VHS synth. Etsy you probably haven't heard of them twee helvetica dreamcatcher squid echo park. Shoreditch Wes Anderson cliche Rerry Richardson mlkshk photo booth McSweeney's salvia synth.
+
+        Echo park gluten-free Marfa retro fanny pack. Rerry richardson party chambray American Apparel readymade tofu. Dreamcatcher Austin messenger bag McSweeney's raw denim. Photo booth McSweeney's cliche Carles Shoreditch.
+
+        High life salvia Wayfarers fap twee. Fixie sustainable vegan before they sold out lo-fi trust fund artisan squid American Apparel. Cosby sweater whatever aesthetic beard biodiesel Rerry Richardson 8-bit Wayfarers.
+      image_url: https://robohash.org/eligendiautoccaecati.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          wolf: true
+          messenger bag: true
+          next level: true
+          Banksy: true
+      title: Blonde Mutant
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-12 10:26:05.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-03 09:31:46.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Blonde Mutant
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Aesthetic sustainable mustache Carles locavore. 8-bit skateboard trust fund you probably haven't heard of them next level high life messenger bag. Carles Brooklyn readymade fixie lo-fi VHS synth. Etsy you probably haven't heard of them twee helvetica dreamcatcher squid echo park. Shoreditch Wes Anderson cliche Rerry Richardson mlkshk photo booth McSweeney's salvia synth.
+
+      Echo park gluten-free Marfa retro fanny pack. Rerry richardson party chambray American Apparel readymade tofu. Dreamcatcher Austin messenger bag McSweeney's raw denim. Photo booth McSweeney's cliche Carles Shoreditch.
+
+      High life salvia Wayfarers fap twee. Fixie sustainable vegan before they sold out lo-fi trust fund artisan squid American Apparel. Cosby sweater whatever aesthetic beard biodiesel Rerry Richardson 8-bit Wayfarers.
+    image_url_present: https://robohash.org/eligendiautoccaecati.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jarret Nicolas
+      body: |-
+        Four loko 8-bit Williamsburg jean shorts +1 Banksy. Ethical tofu mustache whatever synth skateboard Brooklyn farm-to-table. Keytar high life aesthetic squid mustache. Rerry richardson VHS whatever banh mi helvetica ethical cardigan fixie skateboard.
+
+        Biodiesel locavore vinyl Shoreditch tofu +1. Banh mi master cleanse vinyl DIY gentrify cred. Fap keffiyeh twee cred whatever tumblr. Ethical Williamsburg mlkshk hoodie put a bird on it mixtape blog. Yr tofu vegan letterpress echo park Austin master cleanse bicycle rights.
+
+        Cliche synth locavore Marfa party squid trust fund vinyl gentrify. Moon before they sold out tattooed photo booth hoodie readymade scenester. Blog Wayfarers Wes Anderson gluten-free fixie. Pitchfork vinyl keytar Austin locavore ethical Wes Anderson. Iphone farm-to-table stumptown mustache Carles tumblr thundercats vinyl retro.
+      image_url: https://robohash.org/enimullamsint.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Marfa: true
+          sustainable: true
+      title: Je Vous Presente, Dax
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-29 11:36:24.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-12 17:31:21.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Je Vous Presente, Dax
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Four loko 8-bit Williamsburg jean shorts +1 Banksy. Ethical tofu mustache whatever synth skateboard Brooklyn farm-to-table. Keytar high life aesthetic squid mustache. Rerry richardson VHS whatever banh mi helvetica ethical cardigan fixie skateboard.
+
+      Biodiesel locavore vinyl Shoreditch tofu +1. Banh mi master cleanse vinyl DIY gentrify cred. Fap keffiyeh twee cred whatever tumblr. Ethical Williamsburg mlkshk hoodie put a bird on it mixtape blog. Yr tofu vegan letterpress echo park Austin master cleanse bicycle rights.
+
+      Cliche synth locavore Marfa party squid trust fund vinyl gentrify. Moon before they sold out tattooed photo booth hoodie readymade scenester. Blog Wayfarers Wes Anderson gluten-free fixie. Pitchfork vinyl keytar Austin locavore ethical Wes Anderson. Iphone farm-to-table stumptown mustache Carles tumblr thundercats vinyl retro.
+    image_url_present: https://robohash.org/enimullamsint.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Darian Howell
+      body: |-
+        Farm-to-table bicycle rights thundercats etsy cred. Cliche lo-fi yr Portland Williamsburg skateboard hoodie. Messenger bag 8-bit beard tumblr McSweeney's butcher VHS helvetica.
+
+        Hoodie food truck lomo squid dreamcatcher scenester next level. Wes anderson next level vegan you probably haven't heard of them McSweeney's messenger bag. Butcher blog stumptown echo park Shoreditch DIY.
+
+        Thundercats 8-bit synth bicycle rights sartorial tattooed Cosby Sweater biodiesel. American apparel cardigan messenger bag high life artisan aesthetic DIY. Moon Wes Anderson Marfa fap artisan mlkshk party ethical Cosby Sweater. Thundercats VHS mlkshk letterpress scenester locavore synth next level.
+      image_url: https://robohash.org/corporisculpamollitia.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          chambray: true
+      title: I am Death Pickpocket
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-23 17:27:07.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-08 17:49:02.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: I am Death Pickpocket
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Farm-to-table bicycle rights thundercats etsy cred. Cliche lo-fi yr Portland Williamsburg skateboard hoodie. Messenger bag 8-bit beard tumblr McSweeney's butcher VHS helvetica.
+
+      Hoodie food truck lomo squid dreamcatcher scenester next level. Wes anderson next level vegan you probably haven't heard of them McSweeney's messenger bag. Butcher blog stumptown echo park Shoreditch DIY.
+
+      Thundercats 8-bit synth bicycle rights sartorial tattooed Cosby Sweater biodiesel. American apparel cardigan messenger bag high life artisan aesthetic DIY. Moon Wes Anderson Marfa fap artisan mlkshk party ethical Cosby Sweater. Thundercats VHS mlkshk letterpress scenester locavore synth next level.
+    image_url_present: https://robohash.org/corporisculpamollitia.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Isadore Brown
+      body: |-
+        Messenger bag brunch sustainable thundercats DIY gluten-free. Pitchfork next level vinyl fixie lo-fi high life twee thundercats. Mustache quinoa skateboard vegan sartorial lomo synth. Retro salvia etsy whatever food truck.
+
+        Gentrify fixie twee Four Loko lomo. Messenger bag readymade mixtape Wes Anderson helvetica VHS vegan moon high life. Stumptown you probably haven't heard of them readymade aesthetic irony art. Vinyl readymade +1 Banksy mustache Portland DIY sustainable. Helvetica raw denim fixie keytar freegan sartorial organic PBR.
+
+        8-bit Portland hoodie keffiyeh etsy yr sustainable dreamcatcher ethical. Portland high life Rerry Richardson dreamcatcher tumblr organic Williamsburg. Wolf retro +1 gentrify locavore messenger bag Pitchfork single-origin coffee put a bird on it. Trust fund echo park keytar Rerry Richardson organic. Readymade quinoa gluten-free salvia jean shorts mlkshk brunch VHS.
+      image_url: https://robohash.org/etipsarepellendus.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          you probably haven't heard of them: true
+          DIY: true
+          leggings: true
+          lomo: true
+          biodiesel: true
+      title: War of the Ninja
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-17 11:04:30.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-18 16:53:43.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: War of the Ninja
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Messenger bag brunch sustainable thundercats DIY gluten-free. Pitchfork next level vinyl fixie lo-fi high life twee thundercats. Mustache quinoa skateboard vegan sartorial lomo synth. Retro salvia etsy whatever food truck.
+
+      Gentrify fixie twee Four Loko lomo. Messenger bag readymade mixtape Wes Anderson helvetica VHS vegan moon high life. Stumptown you probably haven't heard of them readymade aesthetic irony art. Vinyl readymade +1 Banksy mustache Portland DIY sustainable. Helvetica raw denim fixie keytar freegan sartorial organic PBR.
+
+      8-bit Portland hoodie keffiyeh etsy yr sustainable dreamcatcher ethical. Portland high life Rerry Richardson dreamcatcher tumblr organic Williamsburg. Wolf retro +1 gentrify locavore messenger bag Pitchfork single-origin coffee put a bird on it. Trust fund echo park keytar Rerry Richardson organic. Readymade quinoa gluten-free salvia jean shorts mlkshk brunch VHS.
+    image_url_present: https://robohash.org/etipsarepellendus.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Helen Torphy
+      body: |-
+        Party vegan messenger bag food truck dreamcatcher readymade. Put a bird on it twee aesthetic +1 tofu. Cardigan salvia farm-to-table Marfa Portland. Fanny pack Shoreditch biodiesel aesthetic bicycle rights VHS.
+
+        Organic vice quinoa food truck beard viral cliche mixtape. Dreamcatcher viral Wayfarers McSweeney's jean shorts farm-to-table 8-bit Four Loko. Keffiyeh tumblr Brooklyn you probably haven't heard of them Wes Anderson tattooed high life. Thundercats quinoa food truck wolf banh mi VHS sustainable tumblr cliche.
+
+        Bicycle rights stumptown cliche dreamcatcher wolf high life twee. Dreamcatcher yr Pitchfork Brooklyn master cleanse irony McSweeney's mlkshk farm-to-table. Cardigan fanny pack food truck PBR synth vinyl butcher +1 yr.
+      image_url: https://robohash.org/veniamauteum.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          fap: true
+          Williamsburg: true
+          master cleanse: true
+          craft beer: true
+      title: The Hills from Mars
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-20 10:14:04.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-09 14:10:28.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Hills from Mars
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Party vegan messenger bag food truck dreamcatcher readymade. Put a bird on it twee aesthetic +1 tofu. Cardigan salvia farm-to-table Marfa Portland. Fanny pack Shoreditch biodiesel aesthetic bicycle rights VHS.
+
+      Organic vice quinoa food truck beard viral cliche mixtape. Dreamcatcher viral Wayfarers McSweeney's jean shorts farm-to-table 8-bit Four Loko. Keffiyeh tumblr Brooklyn you probably haven't heard of them Wes Anderson tattooed high life. Thundercats quinoa food truck wolf banh mi VHS sustainable tumblr cliche.
+
+      Bicycle rights stumptown cliche dreamcatcher wolf high life twee. Dreamcatcher yr Pitchfork Brooklyn master cleanse irony McSweeney's mlkshk farm-to-table. Cardigan fanny pack food truck PBR synth vinyl butcher +1 yr.
+    image_url_present: https://robohash.org/veniamauteum.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Lisette Schmidt
+      body: |-
+        Carles farm-to-table sustainable hoodie PBR photo booth. Letterpress VHS fap vice scenester readymade irony messenger bag. Wolf keffiyeh synth irony dreamcatcher before they sold out high life quinoa Rerry Richardson. Banksy sartorial Wayfarers gentrify banh mi salvia.
+
+        Craft beer gluten-free gentrify organic keytar helvetica before they sold out. Mustache moon fanny pack art vinyl sartorial. Before they sold out twee cliche stumptown DIY keytar scenester. Quinoa banh mi Wayfarers butcher cliche fap.
+
+        Shoreditch jean shorts Rerry Richardson Cosby Sweater wolf you probably haven't heard of them Carles. Yr letterpress raw denim messenger bag Marfa beard American Apparel echo park. Brunch Pitchfork before they sold out Marfa skateboard stumptown raw denim.
+      image_url: https://robohash.org/sapienteminusiure.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          "+1": true
+      title: The Red Fly from the Black Lagoon
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-09 12:42:47.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-23 09:07:18.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Red Fly from the Black Lagoon
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Carles farm-to-table sustainable hoodie PBR photo booth. Letterpress VHS fap vice scenester readymade irony messenger bag. Wolf keffiyeh synth irony dreamcatcher before they sold out high life quinoa Rerry Richardson. Banksy sartorial Wayfarers gentrify banh mi salvia.
+
+      Craft beer gluten-free gentrify organic keytar helvetica before they sold out. Mustache moon fanny pack art vinyl sartorial. Before they sold out twee cliche stumptown DIY keytar scenester. Quinoa banh mi Wayfarers butcher cliche fap.
+
+      Shoreditch jean shorts Rerry Richardson Cosby Sweater wolf you probably haven't heard of them Carles. Yr letterpress raw denim messenger bag Marfa beard American Apparel echo park. Brunch Pitchfork before they sold out Marfa skateboard stumptown raw denim.
+    image_url_present: https://robohash.org/sapienteminusiure.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Ara Altenwerth
+      body: |-
+        +1 messenger bag Four Loko vinyl vice you probably haven't heard of them salvia. Messenger bag Williamsburg hoodie Carles fanny pack banh mi Wes Anderson aesthetic put a bird on it. Salvia Brooklyn mlkshk farm-to-table leggings dreamcatcher.
+
+        Party keffiyeh letterpress Wes Anderson McSweeney's biodiesel etsy beard. Iphone seitan wolf ethical McSweeney's. Ethical bicycle rights gluten-free Portland organic. Put a bird on it photo booth tumblr American Apparel Banksy.
+
+        Artisan craft beer you probably haven't heard of them Portland letterpress. Pitchfork keytar farm-to-table stumptown jean shorts Portland skateboard. Locavore art put a bird on it keffiyeh freegan Banksy 8-bit helvetica.
+      image_url: https://robohash.org/temporenequequae.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          next level: true
+      title: The Blonde Friday from Outer Space
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-27 16:12:26.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-31 15:33:10.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Blonde Friday from Outer Space
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      +1 messenger bag Four Loko vinyl vice you probably haven't heard of them salvia. Messenger bag Williamsburg hoodie Carles fanny pack banh mi Wes Anderson aesthetic put a bird on it. Salvia Brooklyn mlkshk farm-to-table leggings dreamcatcher.
+
+      Party keffiyeh letterpress Wes Anderson McSweeney's biodiesel etsy beard. Iphone seitan wolf ethical McSweeney's. Ethical bicycle rights gluten-free Portland organic. Put a bird on it photo booth tumblr American Apparel Banksy.
+
+      Artisan craft beer you probably haven't heard of them Portland letterpress. Pitchfork keytar farm-to-table stumptown jean shorts Portland skateboard. Locavore art put a bird on it keffiyeh freegan Banksy 8-bit helvetica.
+    image_url_present: https://robohash.org/temporenequequae.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shane Nienow
+      body: |-
+        Banh mi blog art irony you probably haven't heard of them aesthetic. Vegan trust fund art echo park you probably haven't heard of them aesthetic food truck irony. Wolf photo booth Portland ethical butcher scenester organic farm-to-table.
+
+        Moon Cosby Sweater before they sold out salvia yr. Next level farm-to-table master cleanse twee scenester sartorial. Scenester thundercats blog stumptown fap viral chambray mustache Banksy. Cliche photo booth whatever hoodie fap keffiyeh quinoa skateboard.
+
+        Biodiesel high life twee freegan master cleanse before they sold out farm-to-table artisan. Yr master cleanse vice raw denim seitan tumblr helvetica sartorial. Dreamcatcher artisan Cosby Sweater high life craft beer.
+      image_url: https://robohash.org/molestiaevelitvel.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          keytar: true
+          synth: true
+          gluten-free: true
+      title: Hard Boiled Witch
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-01 13:56:54.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-02 16:41:49.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Hard Boiled Witch
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Banh mi blog art irony you probably haven't heard of them aesthetic. Vegan trust fund art echo park you probably haven't heard of them aesthetic food truck irony. Wolf photo booth Portland ethical butcher scenester organic farm-to-table.
+
+      Moon Cosby Sweater before they sold out salvia yr. Next level farm-to-table master cleanse twee scenester sartorial. Scenester thundercats blog stumptown fap viral chambray mustache Banksy. Cliche photo booth whatever hoodie fap keffiyeh quinoa skateboard.
+
+      Biodiesel high life twee freegan master cleanse before they sold out farm-to-table artisan. Yr master cleanse vice raw denim seitan tumblr helvetica sartorial. Dreamcatcher artisan Cosby Sweater high life craft beer.
+    image_url_present: https://robohash.org/molestiaevelitvel.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Gunner Toy
+      body: |-
+        Wayfarers jean shorts next level chambray Pitchfork. Gentrify ethical tumblr single-origin coffee fap cliche. Fanny pack stumptown viral twee synth Austin moon tattooed irony. Vhs artisan party yr biodiesel art whatever.
+
+        Echo park party mixtape letterpress banh mi Four Loko master cleanse. Wolf bicycle rights Marfa keffiyeh Austin. You probably haven't heard of them Four Loko whatever Banksy readymade Carles Shoreditch twee iPhone. Hoodie Banksy Pitchfork Wayfarers Brooklyn Austin vice.
+
+        Skateboard photo booth tattooed jean shorts gentrify organic. Keytar next level before they sold out vinyl twee McSweeney's echo park ethical. Dreamcatcher cred butcher fanny pack Rerry Richardson bicycle rights cardigan synth locavore. Keytar irony cred before they sold out freegan.
+      image_url: https://robohash.org/enimlaudantiumaut.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          vegan: true
+          lo-fi: true
+          keytar: true
+          McSweeney's: true
+      title: Red Tentacle
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-29 16:13:48.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-30 16:03:15.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Red Tentacle
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Wayfarers jean shorts next level chambray Pitchfork. Gentrify ethical tumblr single-origin coffee fap cliche. Fanny pack stumptown viral twee synth Austin moon tattooed irony. Vhs artisan party yr biodiesel art whatever.
+
+      Echo park party mixtape letterpress banh mi Four Loko master cleanse. Wolf bicycle rights Marfa keffiyeh Austin. You probably haven't heard of them Four Loko whatever Banksy readymade Carles Shoreditch twee iPhone. Hoodie Banksy Pitchfork Wayfarers Brooklyn Austin vice.
+
+      Skateboard photo booth tattooed jean shorts gentrify organic. Keytar next level before they sold out vinyl twee McSweeney's echo park ethical. Dreamcatcher cred butcher fanny pack Rerry Richardson bicycle rights cardigan synth locavore. Keytar irony cred before they sold out freegan.
+    image_url_present: https://robohash.org/enimlaudantiumaut.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Eryn Cronin
+      body: |-
+        Banksy master cleanse synth leggings thundercats freegan yr tofu locavore. Vinyl mixtape aesthetic Shoreditch fixie sartorial helvetica. Lomo gluten-free next level sustainable thundercats McSweeney's Wayfarers Brooklyn twee. Dreamcatcher viral hoodie moon ethical banh mi vegan.
+
+        Next level food truck sartorial single-origin coffee Portland McSweeney's leggings salvia Carles. Yr blog aesthetic fixie beard before they sold out photo booth Pitchfork. Messenger bag single-origin coffee next level cred farm-to-table chambray. Iphone master cleanse beard art put a bird on it farm-to-table seitan cred fanny pack. Carles mlkshk readymade tattooed biodiesel gentrify.
+
+        Mustache mixtape echo park keffiyeh banh mi sartorial. Cardigan Brooklyn thundercats high life vinyl you probably haven't heard of them squid Four Loko skateboard. Lomo Wes Anderson Marfa locavore gentrify. Skateboard beard single-origin coffee organic cardigan you probably haven't heard of them lomo.
+      image_url: https://robohash.org/quiaesserem.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Williamsburg: true
+      title: American Diaries
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-26 11:33:24.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-29 17:05:41.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: American Diaries
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Banksy master cleanse synth leggings thundercats freegan yr tofu locavore. Vinyl mixtape aesthetic Shoreditch fixie sartorial helvetica. Lomo gluten-free next level sustainable thundercats McSweeney's Wayfarers Brooklyn twee. Dreamcatcher viral hoodie moon ethical banh mi vegan.
+
+      Next level food truck sartorial single-origin coffee Portland McSweeney's leggings salvia Carles. Yr blog aesthetic fixie beard before they sold out photo booth Pitchfork. Messenger bag single-origin coffee next level cred farm-to-table chambray. Iphone master cleanse beard art put a bird on it farm-to-table seitan cred fanny pack. Carles mlkshk readymade tattooed biodiesel gentrify.
+
+      Mustache mixtape echo park keffiyeh banh mi sartorial. Cardigan Brooklyn thundercats high life vinyl you probably haven't heard of them squid Four Loko skateboard. Lomo Wes Anderson Marfa locavore gentrify. Skateboard beard single-origin coffee organic cardigan you probably haven't heard of them lomo.
+    image_url_present: https://robohash.org/quiaesserem.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shaylee O'Reilly
+      body: |-
+        Farm-to-table vice sartorial trust fund dreamcatcher brunch squid moon Brooklyn. Lo-fi Brooklyn brunch cred Four Loko quinoa beard. Fap aesthetic keytar mlkshk Shoreditch single-origin coffee banh mi organic cred. Cred leggings helvetica echo park banh mi messenger bag.
+
+        Brooklyn vegan salvia before they sold out seitan whatever organic McSweeney's. Brunch lomo food truck wolf 8-bit tumblr. Mlkshk party VHS cardigan tumblr quinoa +1 fixie Portland.
+
+        Wolf leggings vinyl tattooed jean shorts dreamcatcher mustache butcher. Pbr high life Banksy VHS American Apparel cardigan readymade. Pbr salvia McSweeney's viral party twee trust fund. Brooklyn lomo readymade fixie cliche squid mlkshk lo-fi.
+      image_url: https://robohash.org/quierrorconsequatur.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          helvetica: true
+          Brooklyn: true
+          farm-to-table: true
+          gluten-free: true
+      title: Blonde Jungle
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-09 15:18:56.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-07 13:04:04.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Blonde Jungle
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Farm-to-table vice sartorial trust fund dreamcatcher brunch squid moon Brooklyn. Lo-fi Brooklyn brunch cred Four Loko quinoa beard. Fap aesthetic keytar mlkshk Shoreditch single-origin coffee banh mi organic cred. Cred leggings helvetica echo park banh mi messenger bag.
+
+      Brooklyn vegan salvia before they sold out seitan whatever organic McSweeney's. Brunch lomo food truck wolf 8-bit tumblr. Mlkshk party VHS cardigan tumblr quinoa +1 fixie Portland.
+
+      Wolf leggings vinyl tattooed jean shorts dreamcatcher mustache butcher. Pbr high life Banksy VHS American Apparel cardigan readymade. Pbr salvia McSweeney's viral party twee trust fund. Brooklyn lomo readymade fixie cliche squid mlkshk lo-fi.
+    image_url_present: https://robohash.org/quierrorconsequatur.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Lisette Schmidt
+      body: |-
+        Raw denim jean shorts Brooklyn mustache biodiesel yr banh mi. Keffiyeh fixie tumblr squid wolf organic Austin yr cardigan. Put a bird on it helvetica thundercats food truck locavore. Jean shorts thundercats keffiyeh yr quinoa whatever locavore tofu.
+
+        Stumptown Marfa biodiesel DIY master cleanse helvetica jean shorts wolf tumblr. Irony raw denim Portland sartorial quinoa. Single-origin coffee organic sustainable vice Brooklyn hoodie Marfa moon brunch. Etsy lomo Banksy party before they sold out synth Cosby Sweater sustainable.
+
+        Keffiyeh chambray organic put a bird on it skateboard Four Loko Wayfarers iPhone Williamsburg. Tofu hoodie Shoreditch high life gluten-free American Apparel chambray lo-fi. Squid farm-to-table PBR tumblr trust fund single-origin coffee Austin. Four loko letterpress butcher aesthetic Carles photo booth next level fixie irony. Marfa Cosby Sweater locavore twee gentrify.
+      image_url: https://robohash.org/quaequaeratvoluptas.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          tattooed: true
+          DIY: true
+      title: The City That Came to Dinner
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-27 13:34:34.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-03 15:06:32.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The City That Came to Dinner
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Raw denim jean shorts Brooklyn mustache biodiesel yr banh mi. Keffiyeh fixie tumblr squid wolf organic Austin yr cardigan. Put a bird on it helvetica thundercats food truck locavore. Jean shorts thundercats keffiyeh yr quinoa whatever locavore tofu.
+
+      Stumptown Marfa biodiesel DIY master cleanse helvetica jean shorts wolf tumblr. Irony raw denim Portland sartorial quinoa. Single-origin coffee organic sustainable vice Brooklyn hoodie Marfa moon brunch. Etsy lomo Banksy party before they sold out synth Cosby Sweater sustainable.
+
+      Keffiyeh chambray organic put a bird on it skateboard Four Loko Wayfarers iPhone Williamsburg. Tofu hoodie Shoreditch high life gluten-free American Apparel chambray lo-fi. Squid farm-to-table PBR tumblr trust fund single-origin coffee Austin. Four loko letterpress butcher aesthetic Carles photo booth next level fixie irony. Marfa Cosby Sweater locavore twee gentrify.
+    image_url_present: https://robohash.org/quaequaeratvoluptas.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Jarret Nicolas
+      body: |-
+        Pitchfork hoodie +1 fixie Banksy vinyl cardigan aesthetic. Leggings jean shorts irony tattooed Four Loko skateboard dreamcatcher Portland bicycle rights. Jean shorts thundercats fanny pack brunch beard vice irony cliche dreamcatcher.
+
+        Shoreditch keytar craft beer twee seitan McSweeney's party art. Sustainable party before they sold out ethical stumptown craft beer Carles chambray thundercats. Tattooed you probably haven't heard of them viral bicycle rights seitan raw denim. Lomo high life hoodie cred vegan Brooklyn Portland. Echo park banh mi dreamcatcher single-origin coffee stumptown brunch etsy irony.
+
+        Vinyl beard messenger bag freegan wolf craft beer Pitchfork. Vegan +1 Williamsburg dreamcatcher thundercats master cleanse Pitchfork synth. Party freegan yr Marfa farm-to-table. Bicycle rights trust fund readymade organic sartorial banh mi wolf helvetica biodiesel.
+      image_url: https://robohash.org/saepeetvoluptatem.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          whatever: true
+      title: Legend of Clash
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-07 11:25:30.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-14 13:44:32.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Legend of Clash
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Pitchfork hoodie +1 fixie Banksy vinyl cardigan aesthetic. Leggings jean shorts irony tattooed Four Loko skateboard dreamcatcher Portland bicycle rights. Jean shorts thundercats fanny pack brunch beard vice irony cliche dreamcatcher.
+
+      Shoreditch keytar craft beer twee seitan McSweeney's party art. Sustainable party before they sold out ethical stumptown craft beer Carles chambray thundercats. Tattooed you probably haven't heard of them viral bicycle rights seitan raw denim. Lomo high life hoodie cred vegan Brooklyn Portland. Echo park banh mi dreamcatcher single-origin coffee stumptown brunch etsy irony.
+
+      Vinyl beard messenger bag freegan wolf craft beer Pitchfork. Vegan +1 Williamsburg dreamcatcher thundercats master cleanse Pitchfork synth. Party freegan yr Marfa farm-to-table. Bicycle rights trust fund readymade organic sartorial banh mi wolf helvetica biodiesel.
+    image_url_present: https://robohash.org/saepeetvoluptatem.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Chris Ward
+      body: |-
+        Diy Carles messenger bag McSweeney's +1 fap letterpress. Craft beer readymade Cosby Sweater tattooed gluten-free food truck. Moon yr sustainable biodiesel retro Portland Rerry Richardson craft beer.
+
+        Thundercats next level Portland brunch food truck keffiyeh leggings +1. Chambray fixie vegan sartorial tofu. Pbr Brooklyn raw denim party skateboard. Art whatever twee sustainable wolf beard. Beard single-origin coffee salvia fixie irony letterpress cliche Carles food truck.
+
+        Messenger bag twee gentrify +1 bicycle rights. Scenester craft beer whatever keytar bicycle rights sustainable Wes Anderson sartorial. Party bicycle rights single-origin coffee tumblr letterpress Wayfarers iPhone 8-bit keffiyeh. Vinyl VHS party mustache master cleanse fixie Rerry Richardson Banksy irony.
+      image_url: https://robohash.org/vitaenihiltemporibus.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          before they sold out: true
+          moon: true
+      title: The Identity Who Fell to Earth
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-20 12:42:47.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-24 10:10:56.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Identity Who Fell to Earth
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Diy Carles messenger bag McSweeney's +1 fap letterpress. Craft beer readymade Cosby Sweater tattooed gluten-free food truck. Moon yr sustainable biodiesel retro Portland Rerry Richardson craft beer.
+
+      Thundercats next level Portland brunch food truck keffiyeh leggings +1. Chambray fixie vegan sartorial tofu. Pbr Brooklyn raw denim party skateboard. Art whatever twee sustainable wolf beard. Beard single-origin coffee salvia fixie irony letterpress cliche Carles food truck.
+
+      Messenger bag twee gentrify +1 bicycle rights. Scenester craft beer whatever keytar bicycle rights sustainable Wes Anderson sartorial. Party bicycle rights single-origin coffee tumblr letterpress Wayfarers iPhone 8-bit keffiyeh. Vinyl VHS party mustache master cleanse fixie Rerry Richardson Banksy irony.
+    image_url_present: https://robohash.org/vitaenihiltemporibus.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Shane Nienow
+      body: |-
+        Locavore Carles Four Loko fap +1 photo booth. Pbr fixie locavore Rerry Richardson Williamsburg. Cardigan cliche fanny pack dreamcatcher Williamsburg vegan VHS put a bird on it letterpress. Craft beer +1 VHS moon banh mi etsy. Sustainable Pitchfork helvetica PBR hoodie McSweeney's twee.
+
+        Carles sartorial organic biodiesel messenger bag Wayfarers. Fixie photo booth cred Cosby Sweater mlkshk irony you probably haven't heard of them organic. You probably haven't heard of them blog single-origin coffee helvetica vegan fixie skateboard. Scenester craft beer Cosby Sweater single-origin coffee keytar Banksy PBR jean shorts fap.
+
+        Echo park high life tofu scenester brunch leggings organic cardigan. Trust fund Portland viral leggings vinyl. Keytar trust fund tattooed aesthetic scenester gentrify stumptown ethical. Vinyl American Apparel retro Wayfarers Banksy VHS Brooklyn.
+      image_url: https://robohash.org/adipiscialiquamodit.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          ethical: true
+          cardigan: true
+          VHS: true
+          farm-to-table: true
+          tattooed: true
+      title: The Death Blow from Mars
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-02 09:00:11.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-03 10:44:23.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Death Blow from Mars
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Locavore Carles Four Loko fap +1 photo booth. Pbr fixie locavore Rerry Richardson Williamsburg. Cardigan cliche fanny pack dreamcatcher Williamsburg vegan VHS put a bird on it letterpress. Craft beer +1 VHS moon banh mi etsy. Sustainable Pitchfork helvetica PBR hoodie McSweeney's twee.
+
+      Carles sartorial organic biodiesel messenger bag Wayfarers. Fixie photo booth cred Cosby Sweater mlkshk irony you probably haven't heard of them organic. You probably haven't heard of them blog single-origin coffee helvetica vegan fixie skateboard. Scenester craft beer Cosby Sweater single-origin coffee keytar Banksy PBR jean shorts fap.
+
+      Echo park high life tofu scenester brunch leggings organic cardigan. Trust fund Portland viral leggings vinyl. Keytar trust fund tattooed aesthetic scenester gentrify stumptown ethical. Vinyl American Apparel retro Wayfarers Banksy VHS Brooklyn.
+    image_url_present: https://robohash.org/adipiscialiquamodit.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Eryn Cronin
+      body: |-
+        Keytar vice single-origin coffee Four Loko Williamsburg Brooklyn Austin cred. Thundercats Wayfarers next level stumptown echo park viral squid cardigan +1. Twee Williamsburg synth bicycle rights mustache echo park.
+
+        Thundercats fixie cliche Pitchfork American Apparel food truck. Lo-fi gentrify Carles freegan locavore stumptown helvetica McSweeney's +1. Stumptown twee Rerry Richardson photo booth single-origin coffee next level iPhone etsy.
+
+        Messenger bag hoodie Williamsburg Austin craft beer irony. Banksy etsy sustainable yr scenester tofu art. Fap leggings irony next level wolf Brooklyn. Fixie party leggings cred raw denim.
+      image_url: https://robohash.org/etquoex.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          PBR: true
+          Portland: true
+      title: The Fake Monster from Outer Space
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-10 12:37:45.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-12 14:48:43.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Fake Monster from Outer Space
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Keytar vice single-origin coffee Four Loko Williamsburg Brooklyn Austin cred. Thundercats Wayfarers next level stumptown echo park viral squid cardigan +1. Twee Williamsburg synth bicycle rights mustache echo park.
+
+      Thundercats fixie cliche Pitchfork American Apparel food truck. Lo-fi gentrify Carles freegan locavore stumptown helvetica McSweeney's +1. Stumptown twee Rerry Richardson photo booth single-origin coffee next level iPhone etsy.
+
+      Messenger bag hoodie Williamsburg Austin craft beer irony. Banksy etsy sustainable yr scenester tofu art. Fap leggings irony next level wolf Brooklyn. Fixie party leggings cred raw denim.
+    image_url_present: https://robohash.org/etquoex.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Helen Torphy
+      body: |-
+        Synth PBR wolf next level helvetica photo booth echo park. Banh mi McSweeney's ethical Wayfarers yr aesthetic. Squid photo booth you probably haven't heard of them VHS farm-to-table retro Brooklyn whatever.
+
+        Moon vegan American Apparel sartorial gentrify sustainable readymade PBR vinyl. Wolf Cosby Sweater Banksy PBR food truck scenester Rerry Richardson. Vegan letterpress viral Pitchfork +1 DIY 8-bit. Messenger bag letterpress aesthetic mustache 8-bit sustainable twee fixie Carles. Single-origin coffee VHS messenger bag +1 master cleanse.
+
+        Cred organic 8-bit biodiesel Portland gluten-free. Aesthetic blog Austin whatever Shoreditch leggings cliche raw denim PBR. Echo park irony cliche tattooed organic seitan. Seitan mixtape Marfa cliche art trust fund DIY etsy.
+      image_url: https://robohash.org/atcumqueassumenda.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          leggings: true
+          yr: true
+      title: Red Ninja
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-07 12:09:49.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-12 15:42:44.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Red Ninja
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Synth PBR wolf next level helvetica photo booth echo park. Banh mi McSweeney's ethical Wayfarers yr aesthetic. Squid photo booth you probably haven't heard of them VHS farm-to-table retro Brooklyn whatever.
+
+      Moon vegan American Apparel sartorial gentrify sustainable readymade PBR vinyl. Wolf Cosby Sweater Banksy PBR food truck scenester Rerry Richardson. Vegan letterpress viral Pitchfork +1 DIY 8-bit. Messenger bag letterpress aesthetic mustache 8-bit sustainable twee fixie Carles. Single-origin coffee VHS messenger bag +1 master cleanse.
+
+      Cred organic 8-bit biodiesel Portland gluten-free. Aesthetic blog Austin whatever Shoreditch leggings cliche raw denim PBR. Echo park irony cliche tattooed organic seitan. Seitan mixtape Marfa cliche art trust fund DIY etsy.
+    image_url_present: https://robohash.org/atcumqueassumenda.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Rene Von
+      body: |-
+        Austin before they sold out Portland thundercats squid sustainable. Tumblr before they sold out synth echo park helvetica viral scenester yr. Next level mustache jean shorts retro vegan Banksy stumptown.
+
+        Fanny pack thundercats letterpress Cosby Sweater wolf vice PBR. Biodiesel keffiyeh Wes Anderson single-origin coffee viral. Fixie gluten-free before they sold out synth wolf moon PBR. Yr tumblr mustache synth party single-origin coffee farm-to-table. Sartorial food truck photo booth butcher letterpress Portland gentrify.
+
+        Party banh mi farm-to-table McSweeney's vice PBR VHS. Stumptown cardigan master cleanse Portland banh mi farm-to-table. Keytar vice echo park fap stumptown put a bird on it aesthetic Cosby Sweater.
+      image_url: https://robohash.org/undeautnatus.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          messenger bag: true
+          beard: true
+          twee: true
+      title: Ultra Wizard
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-20 10:51:55.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-29 15:47:49.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Ultra Wizard
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Austin before they sold out Portland thundercats squid sustainable. Tumblr before they sold out synth echo park helvetica viral scenester yr. Next level mustache jean shorts retro vegan Banksy stumptown.
+
+      Fanny pack thundercats letterpress Cosby Sweater wolf vice PBR. Biodiesel keffiyeh Wes Anderson single-origin coffee viral. Fixie gluten-free before they sold out synth wolf moon PBR. Yr tumblr mustache synth party single-origin coffee farm-to-table. Sartorial food truck photo booth butcher letterpress Portland gentrify.
+
+      Party banh mi farm-to-table McSweeney's vice PBR VHS. Stumptown cardigan master cleanse Portland banh mi farm-to-table. Keytar vice echo park fap stumptown put a bird on it aesthetic Cosby Sweater.
+    image_url_present: https://robohash.org/undeautnatus.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Louvenia Bailey
+      body: |-
+        Fanny pack tofu retro Pitchfork bicycle rights cliche food truck. Twee retro trust fund food truck whatever echo park blog moon iPhone. Raw denim tumblr ethical craft beer sustainable. Vhs before they sold out Portland Carles organic. Mlkshk dreamcatcher salvia twee high life biodiesel butcher.
+
+        Marfa echo park bicycle rights lomo DIY salvia quinoa raw denim Banksy. Stumptown artisan irony raw denim seitan ethical retro American Apparel. Leggings vice banh mi next level butcher party.
+
+        Tumblr Williamsburg fanny pack sustainable bicycle rights butcher echo park chambray synth. Moon yr messenger bag viral twee. Rerry richardson Portland locavore gentrify high life echo park fanny pack Shoreditch etsy. Carles squid ethical hoodie before they sold out. Butcher Carles skateboard PBR helvetica.
+      image_url: https://robohash.org/aliquidconsequaturamet.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          ethical: true
+          artisan: true
+          food truck: true
+          fap: true
+      title: Hard Boiled Woman
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-11 15:09:36.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-22 10:37:10.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Hard Boiled Woman
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Fanny pack tofu retro Pitchfork bicycle rights cliche food truck. Twee retro trust fund food truck whatever echo park blog moon iPhone. Raw denim tumblr ethical craft beer sustainable. Vhs before they sold out Portland Carles organic. Mlkshk dreamcatcher salvia twee high life biodiesel butcher.
+
+      Marfa echo park bicycle rights lomo DIY salvia quinoa raw denim Banksy. Stumptown artisan irony raw denim seitan ethical retro American Apparel. Leggings vice banh mi next level butcher party.
+
+      Tumblr Williamsburg fanny pack sustainable bicycle rights butcher echo park chambray synth. Moon yr messenger bag viral twee. Rerry richardson Portland locavore gentrify high life echo park fanny pack Shoreditch etsy. Carles squid ethical hoodie before they sold out. Butcher Carles skateboard PBR helvetica.
+    image_url_present: https://robohash.org/aliquidconsequaturamet.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Augustine Heller
+      body: |-
+        High life Wes Anderson tumblr vinyl vegan +1 quinoa Portland. Put a bird on it DIY American Apparel gluten-free fap viral keffiyeh. Carles cliche mustache dreamcatcher scenester sustainable. Irony McSweeney's yr hoodie Carles gentrify.
+
+        Trust fund jean shorts beard Four Loko sustainable Carles Portland put a bird on it tofu. Aesthetic keffiyeh fanny pack tumblr single-origin coffee PBR Brooklyn Wayfarers. Tofu DIY readymade mixtape yr Shoreditch vice locavore. Fanny pack high life photo booth lomo helvetica butcher. Carles Four Loko mustache aesthetic Brooklyn gluten-free fixie.
+
+        Four loko scenester tofu 8-bit cred craft beer fixie. American apparel Portland craft beer leggings keytar. Cardigan trust fund keffiyeh sartorial ethical tumblr Wayfarers farm-to-table yr.
+      image_url: https://robohash.org/eiuspossimusipsam.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          8-bit: true
+          etsy: true
+          beard: true
+      title: The Fake Tears with a Thousand Faces
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-02 09:40:03.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-02-06 15:23:29.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: The Fake Tears with a Thousand Faces
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      High life Wes Anderson tumblr vinyl vegan +1 quinoa Portland. Put a bird on it DIY American Apparel gluten-free fap viral keffiyeh. Carles cliche mustache dreamcatcher scenester sustainable. Irony McSweeney's yr hoodie Carles gentrify.
+
+      Trust fund jean shorts beard Four Loko sustainable Carles Portland put a bird on it tofu. Aesthetic keffiyeh fanny pack tumblr single-origin coffee PBR Brooklyn Wayfarers. Tofu DIY readymade mixtape yr Shoreditch vice locavore. Fanny pack high life photo booth lomo helvetica butcher. Carles Four Loko mustache aesthetic Brooklyn gluten-free fixie.
+
+      Four loko scenester tofu 8-bit cred craft beer fixie. American apparel Portland craft beer leggings keytar. Cardigan trust fund keffiyeh sartorial ethical tumblr Wayfarers farm-to-table yr.
+    image_url_present: https://robohash.org/eiuspossimusipsam.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Margret Ferry
+      body: |-
+        Beard retro ethical skateboard artisan echo park. Gluten-free fanny pack cardigan cliche locavore Carles banh mi mixtape iPhone. Brooklyn wolf Austin vice before they sold out fap photo booth.
+
+        Leggings biodiesel viral Marfa art. Quinoa Williamsburg you probably haven't heard of them photo booth bicycle rights sustainable fixie vice Marfa. Synth keytar helvetica American Apparel mlkshk +1 biodiesel twee.
+
+        Vice readymade trust fund moon helvetica aesthetic craft beer tumblr farm-to-table. Brooklyn sustainable Portland sartorial fixie. Beard stumptown seitan salvia Brooklyn trust fund. Blog mustache Pitchfork Banksy cardigan.
+      image_url: https://robohash.org/debitiscommodinostrum.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          Austin: true
+          food truck: true
+          butcher: true
+      title: Hungry Wizard
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-12-12 12:20:22.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2015-12-21 14:54:04.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Hungry Wizard
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Beard retro ethical skateboard artisan echo park. Gluten-free fanny pack cardigan cliche locavore Carles banh mi mixtape iPhone. Brooklyn wolf Austin vice before they sold out fap photo booth.
+
+      Leggings biodiesel viral Marfa art. Quinoa Williamsburg you probably haven't heard of them photo booth bicycle rights sustainable fixie vice Marfa. Synth keytar helvetica American Apparel mlkshk +1 biodiesel twee.
+
+      Vice readymade trust fund moon helvetica aesthetic craft beer tumblr farm-to-table. Brooklyn sustainable Portland sartorial fixie. Beard stumptown seitan salvia Brooklyn trust fund. Blog mustache Pitchfork Banksy cardigan.
+    image_url_present: https://robohash.org/debitiscommodinostrum.png?size=120x120
+- !ruby/object:Prolog::Core::Article
+  attributes: !ruby/object:Prolog::Core::Article::Attributes
+    values: !ruby/object:Prolog::Core::Article::Attributes::Values
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          title=: true
+          image_url=: true
+          body=: true
+          keywords=: true
+          author_name=: true
+      author_name: Margret Ferry
+      body: |-
+        Austin etsy single-origin coffee vice iPhone thundercats fap keffiyeh. Tofu retro gluten-free Carles salvia scenester wolf. Farm-to-table ethical mlkshk Brooklyn letterpress PBR helvetica fixie. Austin Pitchfork gentrify wolf master cleanse mustache. Stumptown bicycle rights single-origin coffee banh mi locavore scenester synth Shoreditch.
+
+        Art next level mixtape synth artisan Portland keytar. Banksy Wayfarers trust fund put a bird on it hoodie farm-to-table artisan next level. Artisan beard locavore lomo farm-to-table skateboard mustache Williamsburg. Diy lomo quinoa fap before they sold out party locavore blog chambray.
+
+        Mcsweeney's high life iPhone Wes Anderson locavore echo park. Beard brunch locavore Marfa artisan blog cred quinoa dreamcatcher. Locavore single-origin coffee readymade Marfa wolf cred.
+      image_url: https://robohash.org/voluptatibusdignissimosdolorem.png?size=120x120
+      keywords: !ruby/object:Set
+        hash:
+          twee: true
+      title: Rise of the Red Cousins
+    metadata: !ruby/object:Prolog::Core::Article::Attributes::Metadata
+      allowed_writer_methods: !ruby/object:Set
+        hash:
+          created_at=: true
+          updated_at=: true
+      created_at: !ruby/object:DateTime 2015-11-27 14:10:42.000000000 +08:00
+      updated_at: !ruby/object:DateTime 2016-01-10 13:43:39.000000000 +08:00
+  validators:
+  - !ruby/object:Prolog::Core::Article::Validators::Title
+    title: Rise of the Red Cousins
+    local_registrations: !ruby/object:Set
+      hash: {}
+  - !ruby/object:Prolog::Core::Article::Validators::Body
+    body: |-
+      Austin etsy single-origin coffee vice iPhone thundercats fap keffiyeh. Tofu retro gluten-free Carles salvia scenester wolf. Farm-to-table ethical mlkshk Brooklyn letterpress PBR helvetica fixie. Austin Pitchfork gentrify wolf master cleanse mustache. Stumptown bicycle rights single-origin coffee banh mi locavore scenester synth Shoreditch.
+
+      Art next level mixtape synth artisan Portland keytar. Banksy Wayfarers trust fund put a bird on it hoodie farm-to-table artisan next level. Artisan beard locavore lomo farm-to-table skateboard mustache Williamsburg. Diy lomo quinoa fap before they sold out party locavore blog chambray.
+
+      Mcsweeney's high life iPhone Wes Anderson locavore echo park. Beard brunch locavore Marfa artisan blog cred quinoa dreamcatcher. Locavore single-origin coffee readymade Marfa wolf cred.
+    image_url_present: https://robohash.org/voluptatibusdignissimosdolorem.png?size=120x120

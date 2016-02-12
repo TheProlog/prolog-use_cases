@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "prolog_core", "~> 0.2"
+  spec.add_dependency "prolog_core", "~> 0.4"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-reporters", "~> 1.0"
   spec.add_development_dependency "minitest-tagz", "~> 1.2"
 
+  spec.add_development_dependency "ffaker", "~> 2.2"
   spec.add_development_dependency "flay", "~> 2.6"
   spec.add_development_dependency "flog", "~> 4.3", ">= 4.3.2"
   spec.add_development_dependency "reek", "~> 3.7"
@@ -48,4 +49,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.2"
   spec.add_development_dependency "pry-doc", "~> 0.8"
+  spec.add_development_dependency "colorize", "~> 0.7", ">= 0.7.7"
 end
