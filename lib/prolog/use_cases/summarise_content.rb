@@ -7,14 +7,41 @@ require_relative 'summarise_content/keyword_counter'
 
 module Prolog
   module UseCases
-    # Class to summarise content of landing page or equivalent. This includes,
-    # but is notlimited to, a list of most-recent articles.
+    # Class to summarise content of landing page or equivalent.
     class SummariseContent
       private_constant :ArticleLister, :ArticleSorter
 
       extend Forwardable
       include Wisper::Publisher
 
+      # The `#call` method returns a Hash with four entries in it:
+      #
+      # * `:articles` references an array of all `Article` entities which the
+      #   persistence subsystem (or "port") makes available. This is
+      #   accomplished by way of a Wisper conversation; a message is broadcast
+      #   asking for all articles, and an array of Article instances is read
+      #   from the payload of another message sent subsequent to (conceptually,
+      #   in reply to) the first message. Currently, *no error handling* for
+      #   contingencies such as no articles being received is in place; this
+      #   code will perform as though no articles are available. Without an
+      #   array of articles as referenced here, none of the other entries in the
+      #   Hash returned by `#call` will be meaningful.
+      # * `:keywords_by_frequency` references a Hash whose keys are integers and
+      #   whose values are arrays of strings. The value strings, collectively,
+      #   include all keywords defined in all `:articles`; each keyword occurs a
+      #   total number of times (in the article corpus) matching the index of
+      #   the hash entry in which it occurs. For example, a keyword "dunsel"
+      #   that occurs 6 times in total would be part of the array referenced by
+      #   `SummariseContent.new.call[:keywords_by_frequency][6]`.
+      # * `:most_recent_articles` references an array of all `Article` entities,
+      #   sorted by creation date/time, in descending order (most recent first).
+      #   This is distinct from `:articles`, which simply returns a list of the
+      #   same `Article` entities in the order supplied by the persistence port.
+      # * `:most_recently_updated_articles` references an array of all `Article`
+      #   entities, sorted by latest update date/time, in descending order (most
+      #   recent first). As with `:most_recent_articles`, this is a convenience
+      #   that simply reorders the same data as returned in the `:articles`
+      #   entry.
       def call
         load_article_list
         build_return_hash
