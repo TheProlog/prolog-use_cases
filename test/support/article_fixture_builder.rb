@@ -55,8 +55,7 @@ class ArticleFixtureBuilder
   end
 
   def build_list
-    attribs = build_attributes
-    @list = count.times.map { Prolog::Core::Article.new attribs }
+    @list = count.times.map { Prolog::Core::Article.new build_attributes }
     self
   end
 
