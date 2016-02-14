@@ -50,12 +50,49 @@ describe 'Prolog::UseCases::RegisterNewMember' do
         attr_reader :user_name
       end.new current_user_name
     end
-    let(:current_user_name) { 'Foghorn Leghorn' }
+    let(:current_user_name) { 'Guest User' }
 
     it 'queries for the current logged-in user' do
       obj.subscribe auth_listener
       obj.call params
       expect(auth_listener.count).must_equal 1
     end
+
+    describe 'when the current user is' do
+      let(:ui_listener) do
+        Class.new do
+          attr_reader :payloads
+
+          def initialize
+            @payloads = []
+            self
+          end
+
+          def failure(*params)
+            payloads.push params
+          end
+        end.new
+      end
+
+      before do
+        obj.subscribe auth_listener
+        obj.subscribe ui_listener
+        obj.call params
+      end
+
+      describe 'the guest user' do
+        it 'does not broadcast an error notification' do
+          expect(ui_listener.payloads.count).must_be :zero?
+        end
+      end # describe 'the guest user'
+
+      describe 'not the guest user' do
+        let(:current_user_name) { 'Foghorn Leghorn XVI' }
+
+        it 'broadcasts an error notification' do
+          expect(ui_listener.payloads.count).must_equal 1
+        end
+      end # describe 'not the guest user'
+    end # describe 'when the current user is'
   end # describe 'has a #call instance method that'
 end

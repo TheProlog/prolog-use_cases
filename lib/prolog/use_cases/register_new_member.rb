@@ -20,7 +20,7 @@ module Prolog
 
       def call(**params)
         @attributes = Attributes.new params
-        already_logged_in?
+        verify_not_logged_in
         # Do stuff
         self
       end
@@ -35,6 +35,17 @@ module Prolog
           broadcast :current_user
         end
         listener.current_user_name != 'Guest User'
+      end
+
+      def report_not_guest_user
+        broadcast :failure, :already_logged_in
+        self
+      end
+
+      def verify_not_logged_in
+        return report_not_guest_user if already_logged_in?
+        yield if block_given?
+        self
       end
     end # class Prolog::UseCases::RegisterNewMember
   end
