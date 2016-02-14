@@ -1,6 +1,8 @@
 
 require 'test_helper'
 
+require 'ffaker'
+
 require 'prolog/core'
 require 'prolog/use_cases/register_new_member'
 
@@ -15,39 +17,45 @@ describe 'Prolog::UseCases::RegisterNewMember' do
 
   describe 'has a #call instance method that' do
     let(:params) do
-      { name: 'Some User', email: 'user@example.com', password: 'password',
-        confirmation: 'password', profile: 'Profile Text Here'
-      }
+      { name: user_name, email: email, profile: profile, password: password,
+        confirmation: confirmation }
     end
+    let(:email) { FFaker::Internet.safe_email }
+    let(:password) { FFaker::Internet.slug }
+    let(:confirmation) { password }
+    let(:profile) { FFaker::HipsterIpsum.paragraph }
+    let(:user_name) do
+      [FFaker::Name.first_name, FFaker::Name.last_name].join ' '
+    end
+    let(:auth_listener) do
+      Class.new do
+        include Wisper::Publisher
 
-    describe 'requires parameter-hash entries including' do
-      after do
-        params.delete @omitted
-        error = expect { obj.call params }.must_raise KeyError
-        expect(error.message).must_equal "key not found: :#{@omitted}"
-      end
+        attr_reader :count
 
-      it ':name' do
-        @omitted = :name
-      end
+        def initialize(user_name)
+          @user_name = user_name
+          @count = 0
+          self
+        end
 
-      it ':email' do
-        @omitted = :email
-      end
+        def current_user
+          @count += 1
+          broadcast :current_user_is, user_name
+          self
+        end
 
-      it ':password' do
-        @omitted = :password
-      end
+        private
 
-      it ':confirmation' do
-        @omitted = :confirmation
-      end
-    end # describe 'requires parameter-hash entries including'
+        attr_reader :user_name
+      end.new current_user_name
+    end
+    let(:current_user_name) { 'Foghorn Leghorn' }
 
-    describe 'accepts parameter-hash entries including' do
-      it ':profile' do
-        expect { obj.call params }.must_be_silent
-      end
-    end # describe 'accepts parameter-hash entries including'
+    it 'queries for the current logged-in user' do
+      obj.subscribe auth_listener
+      obj.call params
+      expect(auth_listener.count).must_equal 1
+    end
   end # describe 'has a #call instance method that'
 end

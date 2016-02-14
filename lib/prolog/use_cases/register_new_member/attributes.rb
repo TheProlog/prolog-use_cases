@@ -15,11 +15,16 @@ module Prolog
 
           values do
             attribute :name, String
+            attribute :email, String
+            attribute :profile, String
+            attribute :password, String
+            attribute :confirmation, String
           end
         end # class Prolog::UseCases::RegisterNewMember::attributes::Values
 
         extend Forwardable
-        def_delegators :@values, :name
+        def_delegators :@values, :name, :email, :profile, :password,
+                       :confirmation
 
         def initialize(**params)
           @values = Values.new params
