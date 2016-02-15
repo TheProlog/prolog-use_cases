@@ -7,7 +7,39 @@ require 'prolog/use_cases/summarise_content'
 describe 'Prolog::UseCases::SummariseContent' do
   let(:described_class) { Prolog::UseCases::SummariseContent }
   let(:all_articles) { YAML.load_file 'test/fixtures/articles.yaml' }
-  let(:obj) { described_class.new }
+  let(:auth_listener) do
+    Class.new do
+      include Wisper::Publisher
+
+      attr_reader :count
+
+      def initialize(user_name)
+        @user_name = user_name
+        @count = 0
+        self
+      end
+
+      def current_user
+        @count += 1
+        broadcast :current_user_is, user_name
+        self
+      end
+
+      private
+
+      attr_reader :user_name
+    end.new current_user_name
+  end
+  let(:current_user_listener) do
+    Class.new do
+      attr_reader :current_user_name
+
+      def current_user_is(user_name)
+        @current_user_name = user_name
+        self
+      end
+    end
+  end
   let(:current_user_name) { 'Guest User' }
   let(:persistence_listener) do
     Class.new do
@@ -29,137 +61,108 @@ describe 'Prolog::UseCases::SummariseContent' do
       attr_reader :articles
     end.new(all_articles)
   end
+  let(:obj) { described_class.new }
 
   it 'has a #call instance method taking no parameters' do
     method = obj.method(:call)
     expect(method.arity).must_equal 0
   end
 
-  describe 'has a #call method that' do
-    let(:auth_listener) do
-      Class.new do
-        include Wisper::Publisher
+  description = 'when a persistence listener is set up properly, #call' \
+    ' returns a Hash'
+  describe description do
+    let(:summary) { obj.call }
 
-        attr_reader :count
-
-        def initialize(user_name)
-          @user_name = user_name
-          @count = 0
-          self
-        end
-
-        def current_user
-          @count += 1
-          broadcast :current_user_is, user_name
-          self
-        end
-
-        private
-
-        attr_reader :user_name
-      end.new current_user_name
-    end
-    let(:current_user_listener) do
-      Class.new do
-        attr_reader :current_user_name
-
-        def current_user_is(user_name)
-          @current_user_name = user_name
-          self
-        end
-      end
-    end
-
-    describe 'no longer broadcasts the message' do
-      it ':current_user' do
-        obj.subscribe auth_listener
-        obj.call
-        expect(auth_listener.count).must_be :zero?
-      end
-    end # describe 'no longer broadcasts the message'
-
-    describe 'broadcasts the message' do
-      it ':all_articles' do
-        obj.subscribe persistence_listener
-        obj.call
-        expect(persistence_listener.called).must_equal 1
-      end
-    end # describe 'broadcasts the message'
-
-    it 'returns a Hash with four entries' do
+    before :each do
       obj.subscribe persistence_listener
-      expect(obj.call.keys.count).must_equal 4
     end
 
-    describe 'returns a Hash with' do
-      let(:return_value) { obj.call }
+    it 'with non-empty values' do
+      empties = summary.values.reject { |item| !item.empty? }
+      expect(empties).must_be :empty?
+    end
 
-      before do
-        obj.subscribe persistence_listener
+    it 'with the correct four keys' do
+      expected = [:articles, :keywords_by_frequency, :most_recent_articles,
+                  :most_recently_updated_articles]
+      expect(summary.keys).must_equal expected
+    end
+
+    describe 'which has an :articles array value with' do
+      let(:articles) { summary[:articles] }
+
+      it 'the correct number of articles' do
+        expect(articles.count).must_equal all_articles.count
       end
 
-      it 'an :articles entry containing an array of Article entities' do
-        others = return_value[:articles].reject do |item|
-          item.is_a? Prolog::Core::Article
+      describe 'articles not sorted by' do
+        after do
+          ordered = @timestamps.sort
+          in_order = @timestamps == ordered || @timestamps == ordered.reverse
+          expect(in_order).must_equal false
         end
+
+        it 'creation timestamp' do
+          @timestamps = articles.map(&:created_at)
+        end
+
+        it 'update timestamp' do
+          @timestamps = articles.map(&:updated_at)
+        end
+      end # describe 'articles not sorted by'
+    end # describe 'which has an :articles array value with'
+
+    describe 'which has a :keywords_by_frequency Hash value with' do
+      let(:kw_freqs) { summary[:keywords_by_frequency] }
+
+      it 'integers as keys' do
+        others = kw_freqs.keys.reject { |key| key.is_a?(Integer) }
         expect(others).must_be :empty?
       end
 
-      describe 'a :keywords_by_frequency Hash with' do
-        let(:kbf) { return_value[:keywords_by_frequency] }
+      it 'keys in increasing-value order' do
+        expect(kw_freqs.keys).must_equal kw_freqs.keys.sort
+      end
 
-        it 'non-zero integer values as keys' do
-          others = kbf.keys.reject { |key| key.is_a?(Fixnum) && key > 0 }
-          expect(others).must_be :empty?
-        end
+      it 'values as sorted arrays' do
+        others = kw_freqs.values.select { |list| list != list.sort }
+        expect(others).must_be :empty?
+      end
+    end # describe 'which has a :keywords_by_frequency Hash value with'
 
-        it 'ascending integer values as keys' do
-          expect(kbf.keys).must_equal kbf.keys.sort
-        end
+    describe 'which has a :most_recent_articles array value with' do
+      let(:mra) { summary[:most_recent_articles] }
 
-        it 'an array of strings as the values' do
-          others = []
-          kbf.values.each do |entry|
-            others << entry.reject { |value| value.is_a? String }
-          end
-          expect(others.flatten).must_be :empty?
-        end
+      it 'articles sorted by creation timestamp, most recent first' do
+        timestamps = mra.map(&:created_at)
+        expect(timestamps).must_equal timestamps.sort.reverse
+      end
 
-        it 'a sorted array of strings as the value' do
-          all_sorted = kbf.values.inject(true) do |accum, entry|
-            accum && entry == entry.sort
-          end
-          expect(all_sorted).must_equal true
-        end
-      end # describe 'a :keywords_by_frequency Hash with'
+      it 'the same articles as in the list of :articles' do
+        expected = summary[:articles].sort_by(&:created_at).reverse
+        expect(mra).must_equal expected
+      end
+    end # describe 'which has a :most_recent_articles array value with'
 
-      describe 'a :most_recent_articles array with' do
-        let(:mra) { return_value[:most_recent_articles] }
+    describe 'which has a :most_recently_updated_articles array value with' do
+      let(:mru) { summary[:most_recently_updated_articles] }
 
-        it 'an array of Prolog::Core::Article instances' do
-          others = mra.reject { |item| item.is_a? Prolog::Core::Article }
-          expect(others).must_be :empty?
-        end
+      it 'articles sorted by update timestamp, most recent first' do
+        timestamps = mru.map(&:updated_at)
+        expect(timestamps).must_equal timestamps.sort.reverse
+      end
 
-        it 'an array sorted by created-at timestamps in descending order' do
-          stamps = mra.map(&:created_at)
-          expect(stamps).must_equal stamps.sort.reverse
-        end
-      end # describe 'a :most_recent_articles array with'
+      it 'the same articles as in the list of :articles' do
+        expected = summary[:articles].sort_by(&:updated_at).reverse
+        expect(mru).must_equal expected
+      end
+    end # describe '...a :most_recently_updated_articles array value with'
+  end # 'when a persistence listener is set up properly, #call returns a Hash'
 
-      describe 'a :most_recently_updated_articles array with' do
-        let(:mru) { return_value[:most_recently_updated_articles] }
-
-        it 'an array of Prolog::Core::Article instances' do
-          others = mru.reject { |item| item.is_a? Prolog::Core::Article }
-          expect(others).must_be :empty?
-        end
-
-        it 'an array sorted by updated-at timestamps in descending order' do
-          stamps = mru.map(&:updated_at)
-          expect(stamps).must_equal stamps.sort.reverse
-        end
-      end # describe 'a :most_recently_updated_articles array with'
-    end # describe 'returns a Hash with'
-  end # describe 'has a #call method that'
+  describe 'when, in error, no listener is active before calling #call' do
+    it 'returns a Hash with empty values' do
+      all_values = obj.call.reject { |data| !data || !data.empty? }
+      expect(all_values).must_be :empty?
+    end
+  end # describe 'when, in error, no listener is active before calling #call'
 end
