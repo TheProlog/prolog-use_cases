@@ -13,7 +13,7 @@ describe 'Prolog::UseCases::SummariseContent::ArticleLister' do
   end
 
   describe 'has a #call method that' do
-    let(:payload) { [1,2,3] }
+    let(:payload) { [1, 2, 3] }
     let(:repository) do
       Struct.new(:all).new payload
     end

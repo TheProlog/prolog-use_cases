@@ -1,6 +1,4 @@
 
-require 'wisper'
-
 module Prolog
   module UseCases
     # Class to summarise content of landing page or equivalent.
