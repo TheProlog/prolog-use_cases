@@ -9,28 +9,22 @@ module Prolog
       class ArticleLister
         attr_reader :articles
 
-        # Why shouldn't this be a Wisper publisher in its own right? Because
-        # outside code subscribes to events published by the use case, not by
-        # this. Oops.
-        def initialize(broadcast:)
-          @broadcast = broadcast
+        def initialize(repository:)
+          @articles = []
+          @repository = repository
+          self
         end
 
         def call
           load_article_list
         end
 
-        def all_articles(articles)
-          @articles = articles
-          self
-        end
-
         private
 
-        attr_reader :broadcast
+        attr_reader :repository
 
         def load_article_list
-          Wisper.subscribe(self) { broadcast.call :query_all_articles }
+          @articles = repository.all
           self
         end
       end # class Prolog::UseCases::SummariseContent::ArticleLister
