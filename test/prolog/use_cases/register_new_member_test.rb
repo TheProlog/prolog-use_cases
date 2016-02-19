@@ -14,8 +14,9 @@ describe 'Prolog::UseCases::RegisterNewMember' do
   let(:obj) { described_class.new init_params }
   let(:repository) do
     Class.new do
-      def initialize(user_present)
+      def initialize(user_present, save_succeeds)
         @user_present = user_present
+        @save_succeeds = save_succeeds
         self
       end
 
@@ -23,8 +24,14 @@ describe 'Prolog::UseCases::RegisterNewMember' do
         return :not_present unless @user_present
         :user_instance_should_be_here
       end
-    end.new(user_present)
+
+      def save_user(entity)
+        return :save_failed unless @save_succeeds
+        entity
+      end
+    end.new(user_present, save_succeeds)
   end
+  let(:save_succeeds) { true }
   let(:user_class) { Prolog::Core::User }
   let(:user_present) { false }
 
@@ -66,8 +73,8 @@ describe 'Prolog::UseCases::RegisterNewMember' do
       describe 'logged in' do
         let(:authoriser) { Struct.new(:guest?).new false }
 
-        it 'returns mil' do
-          expect(obj.call).must_be :nil?
+        it 'returns :precondition_failed' do
+          expect(obj.call).must_equal :precondition_failed
         end
 
         it 'stores a :failure notification indicating :already_logged_in' do
@@ -96,8 +103,8 @@ describe 'Prolog::UseCases::RegisterNewMember' do
       describe 'already present, it' do
         let(:user_present) { true }
 
-        it 'returns nil' do
-          expect(obj.call params).must_be :nil?
+        it 'returns :precondition_failed' do
+          expect(obj.call params).must_equal :precondition_failed
         end
       end # describe 'already present, it'
 
@@ -109,5 +116,16 @@ describe 'Prolog::UseCases::RegisterNewMember' do
         end
       end # describe 'not present, it'
     end # describe 'when called with a user name that is'
+
+    describe 'when persisting a newly-built User entity, if' do
+      describe 'the save attempt is unsuccessful' do
+        let(:save_succeeds) { false }
+        let(:authoriser) { Struct.new(:guest?).new true }
+
+        it 'returns :save_failed' do
+          expect(obj.call params).must_equal :save_failed
+        end
+      end # describe 'the save attempt is unsuccessful'
+    end # describe 'when persisting a newly-built User entity, if'
   end # describe 'has a #call instance method that'
 end
