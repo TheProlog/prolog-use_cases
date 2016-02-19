@@ -19,8 +19,8 @@ module Prolog
 
       def call(**params)
         @params = params
-        return nil unless all_preconditions_met?
-        Prolog::Core::User.new params
+        return :precondition_failed unless all_preconditions_met?
+        repository.save_user(new_entity)
       end
 
       private
@@ -46,6 +46,10 @@ module Prolog
       def name_available?
         user = repository.query_user_by_name form_object.name
         user == :not_present
+      end
+
+      def new_entity
+        Prolog::Core::User.new @params
       end
 
       def validate_params
