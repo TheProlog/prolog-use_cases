@@ -61,22 +61,24 @@ describe 'Prolog::UseCases::PublishNewArticle' do
       let(:image_url) { "http://example.com/#{FFaker::Internet.slug}" }
       let(:title) { FFaker::HipsterIpsum.phrase }
 
-      describe 'the current user is not the identified author' do
-        let(:authoriser) do
-          Struct.new(:guest?, :current_user).new false, 'Joe Blow'
-        end
-        let(:return_value) { obj.call call_params }
+      describe 'the current user is' do
+        describe 'not the identified author' do
+          let(:authoriser) do
+            Struct.new(:guest?, :current_user).new false, 'Joe Blow'
+          end
+          let(:return_value) { obj.call call_params }
 
-        it 'returns :precondition_failed' do
-          expect(return_value).must_equal :precondition_failed
-        end
+          it 'returns :precondition_failed' do
+            expect(return_value).must_equal :precondition_failed
+          end
 
-        it 'reports that the :author_name does not match the current user' do
-          expected = { author_name: ['not current user'] }
-          _ = return_value
-          expect(obj.notifications).must_equal expected
-        end
-      end # describe 'the current user is not the identified author'
+          it 'reports that the :author_name does not match the current user' do
+            expected = { author_name: ['not current user'] }
+            _ = return_value
+            expect(obj.notifications).must_equal expected
+          end
+        end # describe 'not the identified author'
+      end # describe 'the current user is'
     end # describe 'when called with a complete set of field values and'
   end # describe 'has a #call instance method that'
 end
