@@ -20,12 +20,13 @@ describe 'Prolog::UseCases::PublishNewArticle::FormObject' do
   let(:described_class) { Prolog::UseCases::PublishNewArticle::FormObject }
   let(:all_params) do
     { author_name: author_name, title: title, body: body,
-      image_url: image_url, current_user: current_user }
+      image_url: image_url, keywords: keywords, current_user: current_user }
   end
   let(:author_name) { 'Jane Doe' }
   let(:body) { FFaker::Lorem.paragraphs(rand(3..6)).join "\n" }
   let(:current_user) { author_name }
   let(:image_url) { "http://example.com/#{FFaker::Internet.slug}" }
+  let(:keywords) { FFaker::HipsterIpsum.words rand(0..6) }
   let(:title) { FFaker::HipsterIpsum.phrase }
   let(:obj) { described_class.new all_params }
 
@@ -171,6 +172,35 @@ describe 'Prolog::UseCases::PublishNewArticle::FormObject' do
           end
         end # describe 'missing'
       end # describe 'not valid and the body is'
-    end # describe 'image URL is
+    end # describe 'image URL is'
+
+    describe 'keywords include strings that' do
+      describe 'have leading spaces' do
+        let(:keywords) { ['  Testing', 'One', '  Two', 'Three'] }
+
+        it 'removes leading spaces from keywords' do
+          problems = obj.keywords.select { |str| str != str.lstrip }
+          expect(problems).must_be :empty?
+        end
+      end # describe 'have leading spaces'
+
+      describe 'have trailing spaces' do
+        let(:keywords) { ['Testing  ', 'One', 'Two      ', 'Three'] }
+
+        it 'removes trailing spaces from keywords' do
+          problems = obj.keywords.select { |str| str != str.rstrip }
+          expect(problems).must_be :empty?
+        end
+      end # describe 'have trailing spaces'
+
+      describe 'have embedded spaces' do
+        let(:keywords) { ['More  Testing', 'One', "Two\nAnd", "That's   All"] }
+
+        it 'removes embedded spaces from keywords' do
+          problems = obj.keywords.select { |str| str != str.gsub(/\s+/, ' ') }
+          expect(problems).must_be :empty?
+        end
+      end # describe 'have embedded spaces'
+    end # describe 'keywords include strings that'
   end # describe 'when initialised with field values where the'
 end

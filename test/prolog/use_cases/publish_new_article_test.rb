@@ -13,7 +13,21 @@ describe 'Prolog::UseCases::PublishNewArticle' do
   end
   let(:init_params) { { repository: repository, authoriser: authoriser } }
   let(:obj) { described_class.new init_params }
-  let(:repository) { Object.new }
+  let(:repository) do
+    Class.new do
+      def initialize
+        @store = []
+      end
+
+      def save(object)
+        # Always succeeds.
+        @store << object
+        object
+      end
+
+      attr_reader :store
+    end.new
+  end
 
   describe 'must be initialised with a named parameter value for' do
     after do
@@ -54,19 +68,21 @@ describe 'Prolog::UseCases::PublishNewArticle' do
     describe 'when called with a complete set of field values and' do
       let(:call_params) do
         { author_name: author_name, title: title, body: body,
-          image_url: image_url }
+          image_url: image_url, keywords: keywords }
       end
       let(:author_name) { 'Jane Doe' }
       let(:body) { FFaker::Lorem.paragraphs(rand(3..6)).join "\n" }
       let(:image_url) { "http://example.com/#{FFaker::Internet.slug}" }
+      let(:keywords) { FFaker::HipsterIpsum.words rand(0..6) }
       let(:title) { FFaker::HipsterIpsum.phrase }
 
       describe 'the current user is' do
+        let(:return_value) { obj.call call_params }
+
         describe 'not the identified author' do
           let(:authoriser) do
             Struct.new(:guest?, :current_user).new false, 'Joe Blow'
           end
-          let(:return_value) { obj.call call_params }
 
           it 'returns :precondition_failed' do
             expect(return_value).must_equal :precondition_failed
@@ -78,6 +94,20 @@ describe 'Prolog::UseCases::PublishNewArticle' do
             expect(obj.notifications).must_equal expected
           end
         end # describe 'not the identified author'
+
+        describe 'the identified author' do
+          let(:authoriser) do
+            Struct.new(:guest?, :current_user).new false, author_name
+          end
+
+          it 'stores the validated object data' do
+            expect(return_value).must_equal repository.store.first
+          end
+
+          it 'stores the validated object as a Prolog::Core::Article' do
+            expect(return_value).must_be_instance_of Prolog::Core::Article
+          end
+        end # describe 'the identified author'
       end # describe 'the current user is'
     end # describe 'when called with a complete set of field values and'
   end # describe 'has a #call instance method that'

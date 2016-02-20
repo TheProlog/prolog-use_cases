@@ -1,4 +1,6 @@
 
+require 'prolog/core'
+
 require_relative 'publish_new_article/form_object'
 
 module Prolog
@@ -18,7 +20,7 @@ module Prolog
       def call(**params)
         @params = params
         return :precondition_failed unless all_preconditions_met?
-        :oops
+        repository.save article
       end
 
       private
@@ -27,6 +29,10 @@ module Prolog
 
       def all_preconditions_met?
         logged_in? && validate_params
+      end
+
+      def article
+        Prolog::Core::Article.new form_object
       end
 
       def logged_in?

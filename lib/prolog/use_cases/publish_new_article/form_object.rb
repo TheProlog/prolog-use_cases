@@ -26,7 +26,14 @@ module Prolog
           end
         end # class ...::UseCases::PublishNewArticle::FormObject::UniqueErrors
 
-        private_constant :UniqueErrors
+        # Virtus attribute to clean up keyword strings before persistence
+        class KeywordList < Virtus::Attribute
+          def coerce(value)
+            Array(value).map { |item| item.to_s.strip.gsub(/\s+/, ' ') }
+          end
+        end
+
+        private_constant :KeywordList, :UniqueErrors
 
         include Virtus.model
         include ActiveModel::Validations
@@ -35,6 +42,7 @@ module Prolog
         attribute :body, String
         attribute :image_url, String
         attribute :author_name, String
+        attribute :keywords, KeywordList
         attribute :current_user, String, writer: :private
 
         validates :title, format: { with: /\A\S.*\S\z/ }
