@@ -1,20 +1,12 @@
 
 require 'prolog/core'
 
+require_relative 'retrieve_article/form_object'
+
 module Prolog
   module UseCases
     # Retrieve a single Article, based on search terms
     class RetrieveArticle
-      # Methods that neither affect nor are affected by instance state
-      module Internals
-        def self.article_or_error_for(article)
-          return article if article.respond_to? :image_url
-          :non_specific_search_terms
-        end
-      end
-      private_constant :Internals
-      include Internals
-
       def initialize(repository:, authoriser:)
         @repository = repository
         @authoriser = authoriser
@@ -22,19 +14,16 @@ module Prolog
       end
 
       def call(**params)
-        Internals.article_or_error_for(article(params))
+        actual_params = actual_params_for params
+        FormObject.new(actual_params).article
       end
 
       private
 
       attr_reader :authoriser, :repository
 
-      def article(params)
-        repository.where article_search_terms(params)
-      end
-
-      def article_search_terms(params_in)
-        { author_name: authoriser.current_user }.merge params_in
+      def actual_params_for(params)
+        { current_user: authoriser.current_user }.merge params
       end
     end # class Prolog::UseCases::RetrieveArticle
   end
