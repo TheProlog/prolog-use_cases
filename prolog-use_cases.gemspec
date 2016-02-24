@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "prolog_core", "~> 0.4"
   spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
   spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
+  spec.add_dependency "ox", "~> 2.3"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
