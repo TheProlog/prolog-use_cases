@@ -1,5 +1,6 @@
 
-require 'ox'
+require_relative 'markdown_to_html/container_node'
+require_relative 'markdown_to_html/dumper'
 
 module Prolog
   module Services
@@ -13,20 +14,14 @@ module Prolog
       end
 
       def call(content:)
-        @content_in = content
-        @content = Ox.dump(outer_container)
+        @content = Dumper.new(node: container_node(content)).to_s
         self
       end
 
       private
 
-      # Reek thinks this smells of :reek:FeatureEnvy because it doesn't know
-      # how blocks work? :disappointed:
-      def outer_container
-        Ox::Element.new(wrap_with).tap do |container|
-          container[:id] = 'body-content'
-          container['data-contribution-counter'] = 0
-        end
+      def container_node(content)
+        ContainerNode.new(content: content, wrap_with: wrap_with).to_node
       end
     end # class Prolog::Services::MarkdownToHtml
   end
