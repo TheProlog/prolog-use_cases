@@ -30,7 +30,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
   spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
   spec.add_dependency "ox", "~> 2.3"
-  spec.add_dependency "motion-markdown-it", "~> 4.2", ">= 4.2.2.0"
+  spec.add_dependency "html-pipeline", "~> 2.3"
+  spec.add_dependency "gemoji", "~> 2.1"
+  spec.add_dependency "github-markdown", "0.6.9"
+  spec.add_dependency "rinku", ">= 1.7.3"
+  # spec.add_dependency "motion-markdown-it", "~> 4.2", ">= 4.2.2.0"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
