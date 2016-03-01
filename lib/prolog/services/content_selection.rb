@@ -21,7 +21,7 @@ module Prolog
       def call(**params)
         update_form_object params
         update_anchor_format
-        form_obj.last_contribution_id += 1
+        update_contribution_id
         self
       end
 
@@ -36,6 +36,11 @@ module Prolog
       def update_anchor_format
         format = '<a id="selection-%d-%%s"></a>'
         @anchor_format = format format, last_contribution_id
+        self
+      end
+
+      def update_contribution_id
+        form_obj.last_contribution_id += 1 if valid?
         self
       end
 

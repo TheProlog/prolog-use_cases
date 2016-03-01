@@ -43,7 +43,7 @@ describe 'Prolog::Services::ContentSelection::FormObject' do
     end
 
     it 'an invalid :article' do
-      expect(obj.errors[:article]).must_equal %w(invalid)
+      expect(obj.errors[:article]).must_include 'invalid'
     end
 
     it 'an invalid :endpoints range' do

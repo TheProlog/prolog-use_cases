@@ -51,7 +51,7 @@ module Prolog
         end
 
         def validate_endpoints
-          return true if valid_endpoints?
+          return true if article? && valid_endpoints?
           errors.add :endpoints, 'invalid'
           false
         end

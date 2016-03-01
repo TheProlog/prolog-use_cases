@@ -111,5 +111,60 @@ describe 'Prolog::Services::ContentSelection' do
         end
       end # describe 'sets the :updated_body attribute, such that'
     end # describe 'when called with a complete set of valid parameters'
+
+    describe 'when called with parameters that are invalid due to' do
+      describe 'an invalid endpoint' do
+        let(:end_endpoint) { 14_281 }
+
+        it 'is not a valid object' do
+          expect(obj).wont_be :valid?
+        end
+
+        it 'reports endpoints as invalid' do
+          expect(obj.errors[:endpoints]).must_equal ['invalid']
+        end
+
+        it 'reports the "updated" body as identical to the original' do
+          expect(obj.updated_body).must_equal body
+        end
+
+        it 'sets the selected-markup attribute to an empty string' do
+          expect(obj.selected_markup).must_be :empty?
+        end
+
+        it 'does not change the :last_contribution_id attribute' do
+          expect(obj.last_contribution_id).must_equal last_contribution_id
+        end
+      end # describe 'an invalid endpoint'
+
+      describe 'a bogus article' do
+        let(:article) { 'bogus' }
+
+        it 'is not a valid object' do
+          expect(obj).wont_be :valid?
+        end
+
+        it 'reports an invalid article' do
+          expect(obj.errors[:article]).must_include 'invalid'
+        end
+
+        it 'reports invalid endpoints' do
+          expect(obj.errors[:endpoints]).must_equal %w(invalid)
+        end
+
+        it 'blows up when attempting to read the "updated" body' do
+          error = expect { obj.updated_body }.must_raise NoMethodError
+          expect(error.message).must_match "undefined method `body' for"
+        end
+
+        it 'sets the selected-markup attribute to an empty string' do
+          expect(obj.selected_markup).must_be :empty?
+        end
+
+        it 'does not change the :last_contribution_id attribute' do
+          expect(obj.last_contribution_id).must_equal last_contribution_id
+        end
+      end # describe 'a bogus article'
+    end # describe 'when called with parameters that are invalid due to'
   end # describe 'has a #call method that'
 end
