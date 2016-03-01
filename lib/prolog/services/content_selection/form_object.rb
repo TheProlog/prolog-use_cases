@@ -26,7 +26,7 @@ module Prolog
 
         def selected_markup
           return '' unless valid?
-          article.body[endpoints]
+          selected_body_text
         end
 
         private
@@ -40,6 +40,10 @@ module Prolog
         def coverage
           bl_range = (0..article&.body&.length.to_i)
           endpoints.grep bl_range
+        end
+
+        def selected_body_text
+          article.body[endpoints]
         end
 
         def valid_endpoints?
