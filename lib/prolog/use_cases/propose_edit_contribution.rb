@@ -11,6 +11,11 @@ module Prolog
         self
       end
 
+      def call(article_ident:, endpoints:, justification:, proposed_content:)
+        # Shut Reek up until we get real code in here
+        _ = [article_ident, endpoints, justification, proposed_content]
+      end
+
       private
 
       attr_reader :article_repo, :authoriser, :contribution_repo
