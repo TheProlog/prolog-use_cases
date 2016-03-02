@@ -46,7 +46,7 @@ module Prolog
 
       def update_form_object(**params)
         @form_obj = FormObject.new params
-        form_obj.valid?
+        valid?
         self
       end
     end # class Prolog::Services::ContentSelection
