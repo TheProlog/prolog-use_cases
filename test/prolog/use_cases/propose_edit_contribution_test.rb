@@ -1,7 +1,21 @@
 
 require 'test_helper'
 
+require 'prolog/services/markdown_to_html'
 require 'prolog/use_cases/propose_edit_contribution'
+
+# :reek:TooManyStatements: and :reek:FeatureEnvy: -- as if we care here.
+def markdown_service_with_counter
+  service = Prolog::Services::MarkdownToHtml.new
+  service.instance_variable_set :@old_call, service.method(:call)
+  service.instance_variable_set :@counter, 0
+  service.define_singleton_method :call do |content:|
+    @counter += 1
+    @old_call.call content: content
+  end
+  service.class.instance_eval { attr_reader :counter }
+  service
+end
 
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
@@ -44,9 +58,12 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       { article_ident: article_ident, endpoints: endpoints,
         justification: justification, proposed_content: proposed_content }
     end
-    let(:article) { Object.new }
     let(:article_ident) do
       Struct.new(:author_name, :title).new author_name, article_title
+    end
+    let(:article) do
+      articlass = Struct.new(:author_name, :body, :title)
+      articlass.new author_name, article_body, article_title
     end
     let(:article_repo) do
       Class.new do
@@ -62,6 +79,9 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           [article]
         end
       end.new(article)
+    end
+    let(:article_body) do
+      "This is *original*, not ~imitation~ content.\nDeal with it."
     end
     let(:article_title) { 'An Article With a Title' }
     let(:author_name) { 'J Random Author' }
@@ -100,7 +120,9 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
     let(:endpoints) { Object.new }
     let(:justification) { Object.new }
     let(:last_contribution_id) { rand(999) }
-    let(:proposed_content) { Object.new }
+    let(:proposed_content) do
+      'This is *proposed* content. That is **all for now**.'
+    end
 
     describe 'must be called with parameters for' do
       after do
@@ -129,19 +151,36 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
     describe 'when called with a complete set of valid parameters' do
       before { obj.call call_params }
 
-      it 'queries the Article Repository for the specified Article/Author' do
-        expect(article_repo.calls.count).must_equal 1
-      end
+      describe 'queries the Article Repository' do
+        it 'once' do
+          expect(article_repo.calls.count).must_equal 1
+        end
 
-      it 'queries the Authoriser for the current Member name' do
-        expect(authoriser.current_user_count).must_equal 1
-      end
+        it 'with the author name and title expected' do
+          expect(article_repo.calls.first).must_equal article_ident.to_h
+        end
+      end # describe 'queries the Article Repository'
 
-      it 'queries the Contribution Repository for the last Contribution ID' do
-        expect(contribution_repo.calls).must_equal 1
-      end
+      describe 'queries the Authoriser for' do
+        it 'the current Member name' do
+          expect(authoriser.current_user_count).must_equal 1
+        end
+      end # describe 'queries the Authoriser for'
 
-      it 'calls the service to convert replacement content to HTML'
+      describe 'queries the Contribution Repository for' do
+        it 'the last Contribution ID' do
+          expect(contribution_repo.calls).must_equal 1
+        end
+      end # describe 'queries the Contribution Repository for'
+
+      it 'calls the service to convert replacement content to HTML' do
+        subject_class = Prolog::UseCases::ProposeEditContributionTestEnhancer
+        obj = subject_class.new init_params
+        obj.markdown_converter = markdown_service_with_counter
+        expect(obj.markdown_converter.counter).must_be :zero?
+        obj.call call_params
+        expect(obj.markdown_converter.counter).wont_be :zero?
+      end
 
       describe 'uses Selection Service to update Article body based on' do
         it 'the existing body markup'

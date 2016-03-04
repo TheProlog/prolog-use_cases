@@ -23,6 +23,7 @@ require 'pry-byebug'
 require 'simplecov'
 require 'minitest/spec'
 require 'minitest/autorun'
+require 'awesome_print'
 
 uses_cova = ENV['COVERALLS_REPO_TOKEN']
 uses_cc = ENV['CODECLIMATE_REPO_TOKEN']
