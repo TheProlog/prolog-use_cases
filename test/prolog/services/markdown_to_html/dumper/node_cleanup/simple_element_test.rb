@@ -1,12 +1,12 @@
 
 require 'test_helper'
 
-require 'prolog/services/markdown_to_html/dumper/simple_element'
+require 'prolog/services/markdown_to_html/dumper/node_cleanup/simple_element'
 
-describe 'Prolog::Services::MarkdownToHtml::Dumper::SimpleElement' do
-  let(:described_class) do
-    Prolog::Services::MarkdownToHtml::Dumper::SimpleElement
-  end
+cls_name = Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup::SimpleElement
+
+describe "#{cls_name}" do
+  let(:described_class) { cls_name }
 
   it 'requires a :node parameter for initialisation' do
     error = expect { described_class.new }.must_raise ArgumentError
