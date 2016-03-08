@@ -35,8 +35,12 @@ module Prolog
               Ox.dump node, indent: -1
             end
 
+            def node_text
+              node.text.to_s.strip
+            end
+
             def replacement_text
-              ret = node.text.to_s.strip
+              ret = node_text
               return ret unless ret.empty?
               ' '
             end
