@@ -23,6 +23,7 @@ module Prolog
           attr_reader :node
 
           def cleanup_text
+            return self if void_element?
             node.replace_text replacement_text
             self
           end
@@ -33,9 +34,17 @@ module Prolog
           end
 
           def replacement_text
-            ret = node.text.strip
+            ret = node.text.to_s.strip
             return ret unless ret.empty?
             ' '
+          end
+
+          def void_element?
+            # The following HTML tags are explicitly not supported by us, and
+            # will almost certainly cause the rendered markup to be different
+            # than the user expects, without any other lasting impact.
+            #  %w(area base command embed link param source)
+            %w(br col hr img input).include? node.name
           end
         end # Prolog::Services::MarkdownToHtml::Dumper::SimpleElement
       end # Prolog::Services::MarkdownToHtml::Dumper
