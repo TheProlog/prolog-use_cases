@@ -8,10 +8,10 @@ module Prolog
         # Enforces whitespace conventions in nodes and text strings
         class NodeCleanup
           # Basic string-cleanup policy enforcement for strings within elements.
-          class StringNodeBase
-            def initialize(string:, strip_if_end:)
+          class StringNode
+            def initialize(string:, position:)
               @string = string
-              @strip_if_end = strip_if_end
+              @position = position
               self
             end
 
@@ -21,7 +21,7 @@ module Prolog
 
             private
 
-            attr_reader :strip_if_end, :string
+            attr_reader :position, :string
 
             def initial_string
               return transform.call(string) if transform
@@ -30,24 +30,24 @@ module Prolog
 
             def regex
               {
-                leading: /\s+$/,
-                neither: /\s+/,
-                trailing: /\s+/
-              }[strip_if_end]
+                initial: /\s+$/,
+                intermediate: /\s+/,
+                terminal: /\s+/
+              }[position]
             end
 
             def transform
-              transforms[strip_if_end]
+              transforms[position]
             end
 
             def transforms
               {
-                leading: -> (str) { str.lstrip },
-                trailing: -> (str) { str.rstrip },
-                neither: -> (str) { str }
+                initial: -> (str) { str.lstrip },
+                intermediate: -> (str) { str },
+                terminal: -> (str) { str.rstrip }
               }
             end
-          end # class ...::MarkdownToHtml::Dumper::NodeCleanup::StringNodeBase
+          end # class ...::MarkdownToHtml::Dumper::NodeCleanup::StringNode
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup
       end # class Prolog::Services::MarkdownToHtml::Dumper
     end # Prolog::Services::MarkdownToHtml
