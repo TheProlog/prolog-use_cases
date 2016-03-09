@@ -12,7 +12,7 @@ module Prolog
           # Cleans up a string node that is the first child node of its parent.
           class LeadingStringNode < StringNodeBase
             def initialize(string:)
-              super string: string, strip_if_end: :leading, regex: /\s+$/
+              super string: string, strip_if_end: :leading
             end
           end # class ...::Dumper::NodeCleanup::LeadingStringNode
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup

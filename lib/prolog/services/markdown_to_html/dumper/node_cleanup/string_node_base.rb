@@ -9,9 +9,8 @@ module Prolog
         class NodeCleanup
           # Basic string-cleanup policy enforcement for strings within elements.
           class StringNodeBase
-            def initialize(string:, regex:, strip_if_end:)
+            def initialize(string:, strip_if_end:)
               @string = string
-              @regex = regex
               @strip_if_end = strip_if_end
               self
             end
@@ -22,11 +21,19 @@ module Prolog
 
             private
 
-            attr_reader :regex, :strip_if_end, :string
+            attr_reader :strip_if_end, :string
 
             def initial_string
               return transform.call(string) if transform
               fail "Invalid :strip_if_end value: '#{strip_if_end}'"
+            end
+
+            def regex
+              {
+                leading: /\s+$/,
+                neither: /\s+/,
+                trailing: /\s+/
+              }[strip_if_end]
             end
 
             def transform

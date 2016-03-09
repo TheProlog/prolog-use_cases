@@ -13,7 +13,7 @@ module Prolog
           # parent.
           class IntermediateStringNode < StringNodeBase
             def initialize(string:)
-              super string: string, strip_if_end: :neither, regex: /\s+/
+              super string: string, strip_if_end: :neither
             end
           end # class ...::Dumper::NodeCleanup::IntermediateStringNode
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup

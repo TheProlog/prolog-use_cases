@@ -12,7 +12,7 @@ module Prolog
           # Cleans up a string node that is the last child node of its parent.
           class TrailingStringNode < StringNodeBase
             def initialize(string:)
-              super string: string, strip_if_end: :trailing, regex: /\s+/
+              super string: string, strip_if_end: :trailing
             end
           end # class ...::Dumper::NodeCleanup::TrailingStringNode
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup
