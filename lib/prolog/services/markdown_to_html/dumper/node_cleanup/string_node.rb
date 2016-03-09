@@ -25,7 +25,7 @@ module Prolog
 
             def initial_string
               return transform.call(string) if transform
-              fail "Invalid :strip_if_end value: '#{strip_if_end}'"
+              fail "Invalid :position value: '#{position}'"
             end
 
             def regex
