@@ -18,29 +18,33 @@ module Prolog
             # that no occurrences of multiple consecutive spaces exist.
             class BlankEnforcer
               # Hide internal implementation details from casual visibility.
+              # Reek doesn't see that this is a module, rather than a class, so
+              # it complains about :reek:UtilityFunction even though these
+              # methods are in a module that is extended, not included, in a
+              # class. Pfffft.
               module Internals
-                def self.each_child_node(node, &block)
+                def each_child_node(node, &block)
                   node.nodes.each_with_index do |child, index|
                     block.call child, index
                   end
                 end
 
-                def self.set_child_node(node, index, child)
+                def set_child_node(node, index, child)
                   node.nodes[index] = child
                 end
 
-                def self.update_child_at(root_node, index, child)
+                def update_child_at(root_node, index, child)
                   set_child_node root_node, index, Step.call(child)
                 end
               end
               private_constant :Internals
-              include Internals
+              extend Internals
 
               def self.call(root_node)
                 each_child_node(root_node) do |child, index|
                   update_child_at root_node, index, child
                 end
-                node
+                root_node
               end
             end # class ..::Dumper::NodeCleanup::Element::BlankEnforcer
           end # class ...::MarkdownToHtml::Dumper::NodeCleanup::Element

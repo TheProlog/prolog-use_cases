@@ -33,47 +33,6 @@ module Prolog
           # It Would Be Very Nice If Ox (preferably) or Nokogiri could *tell* us
           # if an element is a block element or not, but we're on our own.
           class Element
-            # Enforce policy that all string content (below an instance of
-            # `Ox::Node`) has no whitespace characters other than a space, and
-            # that no occurrences of multiple consecutive spaces exist.
-            class BlankEnforcer
-              # Hide internal implementation details from casual visibility.
-              module Internals
-                def self.all_but_spaces
-                  /[\t\r\n\f\v]/
-                end
-
-                def self.each_child_node(node, &block)
-                  node.nodes.each_with_index do |child, index|
-                    block.call child, index
-                  end
-                end
-
-                def self.step_for_string
-                  lambda do |string|
-                    string.gsub(all_but_spaces, ' ').gsub(/ {2,}/, ' ')
-                  end
-                end
-
-                def self.step_for_node
-                  -> (node) { BlankEnforcer.call node }
-                end
-
-                def self.step(child)
-                  return step_for_string unless child.respond_to? :nodes
-                  step_for_node
-                end
-              end
-              private_constant :Internals
-
-              def self.call(node)
-                Internals.each_child_node(node) do |child, index|
-                  node.nodes[index] = Internals.step(child).call child
-                end
-                node
-              end
-            end # class ..::Dumper::NodeCleanup::Element::BlankEnforcer
-
             def initialize(element:)
               @element = element
               self
