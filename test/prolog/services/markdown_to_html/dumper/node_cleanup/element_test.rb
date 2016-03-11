@@ -72,4 +72,52 @@ describe "#{cls_name}" do
       expect(dump).wont_match(/\s{2,}/)
     end
   end # describe 'replaces all in-string whitespace ... with a single space'
+
+  describe 'inspects' do
+    let(:obj) { described_class.new element: parsed }
+    let(:actual) { obj.to_node }
+    let(:parsed) { Ox.parse markup }
+    # Ignore Ox's appending a newline to anything dumped.
+    let(:rendered) { Ox.dump(actual, indent: -1)[0..-2] }
+
+    # ######################################################################## #
+    # #####     ELEMENT INITIAL STRING NODE HAS NO LEADING WHITESPACE    ##### #
+    # ######################################################################## #
+
+    describe '"initial" child strings' do
+      let(:markup) { "<p>\n\nThis is <em>another</em> test.</p>" }
+
+      it 'removing all leading whitespace' do
+        expect(parsed.nodes.first).wont_equal 'This is '
+        expect(actual.nodes.first).must_equal 'This is '
+      end
+    end # describe '"initial" child strings'
+
+    # ######################################################################## #
+    # #####    ELEMENT TERMINAL STRING NODE HAS NO TRAILING WHITESPACE   ##### #
+    # ######################################################################## #
+
+    describe '"terminal" child strings' do
+      let(:markup) { "<p>This is <em>another</em> test.\n  </p>" }
+
+      it 'removing all trailing whitespace' do
+        expect(parsed.nodes.last).wont_equal ' test.'
+        expect(actual.nodes.last).must_equal ' test.'
+      end
+    end # describe '"terminal" child strings'
+
+    # ######################################################################## #
+    # #####      WHITESPACE BETWEEN BLOCK-LEVEL ELEMENTS REMOVED         ##### #
+    # ######################################################################## #
+
+    # Remember, kids: The best code is the code you don't have to write.
+    describe 'rendering of contained block elements' do
+      let(:markup) { "<div><p>Hello.</p> \n<p>Goodbye.</p>\n</div>" }
+      let(:clean_markup) { '<div><p>Hello.</p><p>Goodbye.</p></div>' }
+
+      it 'removing all whitespace between contained block-level elements' do
+        expect(rendered).must_equal clean_markup
+      end
+    end # describe 'rendering of contained block elements'
+  end # describe 'inspects'
 end

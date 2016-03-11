@@ -1,5 +1,6 @@
 
 require_relative 'element/blank_enforcer'
+require_relative 'element/trim_enforcer'
 
 module Prolog
   module Services
@@ -33,18 +34,26 @@ module Prolog
           # It Would Be Very Nice If Ox (preferably) or Nokogiri could *tell* us
           # if an element is a block element or not, but we're on our own.
           class Element
+            # Methods that neither depend on nor affect instance state.
+            module Internals
+              def self.trimmed(element)
+                TrimEnforcer.call element
+              end
+
+              def self.with_clean_blanks(node)
+                BlankEnforcer.call node
+              end
+            end
+            private_constant :Internals
+
             def initialize(element:)
               @element = element
               self
             end
 
             def to_node
-              BlankEnforcer.call element
+              Internals.with_clean_blanks(Internals.trimmed @element)
             end
-
-            private
-
-            attr_reader :element
           end # class ...::MarkdownToHtml::Dumper::NodeCleanup::Element
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup
       end # class Prolog::Services::MarkdownToHtml::Dumper
