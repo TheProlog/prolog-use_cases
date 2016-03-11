@@ -35,24 +35,24 @@ module Prolog
           # if an element is a block element or not, but we're on our own.
           class Element
             # Methods that neither depend on nor affect instance state.
+            # Reek doesn't see that this is a module, rather than a class, so
+            # it complains about :reek:UtilityFunction even though these
+            # methods are in a module that is extended, not included, in a
+            # class. Pfffft.
             module Internals
-              def self.trimmed(element)
+              def trimmed(element)
                 TrimEnforcer.call element
               end
 
-              def self.with_clean_blanks(node)
+              def with_clean_blanks(node)
                 BlankEnforcer.call node
               end
             end
             private_constant :Internals
+            extend Internals
 
-            def initialize(element:)
-              @element = element
-              self
-            end
-
-            def to_node
-              Internals.with_clean_blanks(Internals.trimmed @element)
+            def self.to_node(element:)
+              with_clean_blanks(trimmed element)
             end
           end # class ...::MarkdownToHtml::Dumper::NodeCleanup::Element
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup

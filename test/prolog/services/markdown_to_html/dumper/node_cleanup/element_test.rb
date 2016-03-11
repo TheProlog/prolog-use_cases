@@ -48,9 +48,9 @@ describe "#{cls_name}" do
   # #####                        INITIALISATION                          ##### #
   # ############################################################################
 
-  it 'requires initialisation with an :element parameter' do
-    error = expect { described_class.new }.must_raise ArgumentError
-    expect(error.message).must_equal 'missing keyword: element'
+  it 'has no initializer method, instead using that of BasicObject' do
+    method = described_class.new.method :initialize
+    expect(method.owner).must_equal BasicObject
   end
 
   # ########################################################################## #
@@ -58,8 +58,7 @@ describe "#{cls_name}" do
   # ########################################################################## #
 
   describe 'replaces all in-string whitespace sequences with a single space' do
-    let(:obj) { described_class.new element: js_mill }
-    let(:actual) { obj.to_node }
+    let(:actual) { described_class.to_node element: js_mill }
     let(:unwanted_whitespace) { /[\t\r\n\f\v]/ }
     # `Ox.dump` *always* adds a trailing newline. Kill it.
     let(:dump) { Ox.dump(actual, indent: -1)[0..-2] }
@@ -74,8 +73,7 @@ describe "#{cls_name}" do
   end # describe 'replaces all in-string whitespace ... with a single space'
 
   describe 'inspects' do
-    let(:obj) { described_class.new element: parsed }
-    let(:actual) { obj.to_node }
+    let(:actual) { described_class.to_node element: parsed }
     let(:parsed) { Ox.parse markup }
     # Ignore Ox's appending a newline to anything dumped.
     let(:rendered) { Ox.dump(actual, indent: -1)[0..-2] }
