@@ -9,6 +9,22 @@ module Prolog
         class NodeCleanup
           # Basic string-cleanup policy enforcement for strings within elements.
           class StringNode
+            # Perform position-based transform ("change") of string value.
+            class Transformer
+              def self.call(str, position)
+                str.send _transforms[position]
+              end
+
+              def self._transforms
+                {
+                  initial: :lstrip,
+                  intermediate: :to_s,
+                  terminal: :rstrip,
+                  only: :strip
+                }
+              end
+            end # class ...::Dumper::NodeCleanup::StringNode::Transformer
+
             def initialize(string:, position:)
               @string = string
               @position = position
@@ -16,7 +32,7 @@ module Prolog
             end
 
             def to_s
-              initial_string.gsub(regex, ' ')
+              initial_string.gsub(regex, ' ').gsub(/\s+/, ' ')
             end
 
             private
@@ -24,28 +40,12 @@ module Prolog
             attr_reader :position, :string
 
             def initial_string
-              return transform.call(string) if transform
-              fail "Invalid :position value: '#{position}'"
+              Transformer.call string, position
             end
 
             def regex
-              {
-                initial: /\s+$/,
-                intermediate: /\s+/,
-                terminal: /\s+/
-              }[position]
-            end
-
-            def transform
-              transforms[position]
-            end
-
-            def transforms
-              {
-                initial: -> (str) { str.lstrip },
-                intermediate: -> (str) { str },
-                terminal: -> (str) { str.rstrip }
-              }
+              return /\s+/ unless position == :initial
+              /\s+$/
             end
           end # class ...::MarkdownToHtml::Dumper::NodeCleanup::StringNode
         end # class Prolog::Services::MarkdownToHtml::Dumper::NodeCleanup

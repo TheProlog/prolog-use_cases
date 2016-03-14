@@ -82,6 +82,14 @@ describe "#{cls_name}" do
             expect(obj.to_s[-2..-1]).must_equal expected
           end
         end # describe 'both leading and trailing ..., returns the string'
+
+        describe 'redundant whitespace, returns the string' do
+          let(:string) { 'This  is    a  raw string.' }
+
+          it 'without redundant whitespace' do
+            expect(obj.to_s).must_equal 'This is a raw string.'
+          end
+        end # describe 'redundant whitespace, returns the string'
       end # describe 'when initialised with a string which contains'
     end # describe 'has a #to_s method that'
   end # describe 'when instantiated for an initial string node in an Element'
