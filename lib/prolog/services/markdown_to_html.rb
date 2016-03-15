@@ -1,6 +1,5 @@
 
-require_relative 'markdown_to_html/container_node'
-require_relative 'markdown_to_html/dumper'
+require_relative 'markdown_to_html/renderer'
 
 module Prolog
   module Services
