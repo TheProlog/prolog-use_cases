@@ -1,6 +1,8 @@
 
 require 'ox'
 
+require_relative 'dumper/node_cleanup'
+
 module Prolog
   module Services
     # Service to convert Markdown content to equivalent HTML.
@@ -13,7 +15,7 @@ module Prolog
         end
 
         def to_s
-          stripped_lines.join
+          dump.strip
         end
 
         private
@@ -21,16 +23,8 @@ module Prolog
         attr_reader :node
 
         def dump
-          Ox.default_options = { indent: 0 }
-          Ox.dump(node)
-        end
-
-        def lines
-          dump.lines
-        end
-
-        def stripped_lines
-          lines.map(&:strip)
+          NodeCleanup.new.cleanup nodes: [node]
+          Ox.dump(node, indent: -1)
         end
       end # class Prolog::Services::MarkdownToHtml::Dumper
     end # class Prolog::Services::MarkdownToHtml
