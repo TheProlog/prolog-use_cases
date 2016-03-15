@@ -12,7 +12,19 @@ module Prolog
           # Support methods, to be hidden from outside view.
           module Internals
             def self.cleanup(content)
-              strip_lines_in(content).join
+              clean_void_elements(strip_lines_in(content).join)
+            end
+
+            # Void elements supported:
+            #   %w(br hr img)
+            # Unsupported void elements:
+            #   %w(area base col command embed input keygen link meta param
+            #      source track wbr)
+            # As per https://www.w3.org/TR/html-markup/syntax.html#void-element
+            def self.clean_void_elements(markup)
+              markup.gsub(/<br(.*?)>/, '<br\1/>')
+                .gsub(/<hr(.*?)>/, '<hr\1/>')
+                .gsub(/<img(.*?)>/, '<img\1/>')
             end
 
             def self.strip_lines_in(content)
