@@ -6,72 +6,62 @@ require 'prolog/services/markdown_to_html'
 describe 'Prolog::Services::MarkdownToHtml' do
   let(:described_class) { Prolog::Services::MarkdownToHtml }
 
-  it 'accepts a :wrap_with parameter for initialisation' do
-    expect { described_class.new wrap_with: :section }.must_be_silent
+  it 'has no initializer method, instead using that of BasicObject' do
+    method = described_class.new.method :initialize
+    expect(method.owner).must_equal BasicObject
   end
 
-  describe 'may be initialised with a :wrap_with parameter that' do
-    it 'may be omitted' do
-      expect { described_class.new }.must_be_silent
-    end
-
-    it 'may be supplied as a symbol' do
-      expect { described_class.new wrap_with: :foo }.must_be_silent
-    end
-
-    it 'populates a :wrap_with attribute on the object' do
-      obj = described_class.new wrap_with: :foo
-      expect(obj.wrap_with).must_equal :foo
-    end
-
-    it 'defaults to :div' do
-      expect(described_class.new.wrap_with).must_equal :div
-    end
-  end # describe 'may be initialised with a :wrap_with parameter that'
-
-  describe 'has a :content attribute that' do
-    it 'may be read' do
-      expect(described_class.new).must_respond_to :content
-    end
-
-    it 'may not be set' do
-      expect(described_class.new).wont_respond_to :content=
-    end
-  end # describe 'has a :content attribute that'
-
-  it 'has a #call method' do
-    expect(described_class.new).must_respond_to :call
-  end
-
-  describe 'has a #call method that' do
-    let(:obj) { described_class.new }
-
+  describe 'has a .call method that' do
     it 'requires a :content parameter' do
-      error = expect { obj.call }.must_raise ArgumentError
+      error = expect { described_class.call }.must_raise ArgumentError
       expect(error.message).must_equal 'missing keyword: content'
     end
 
-    it 'sets the :content attribute' do
-      expect(obj.content).must_be :nil?
-      obj.call content: 'This is content.'
-      expect(obj.content).wont_be :nil?
-    end
+    describe 'returns' do
+      let(:actual) { described_class.call content: @content }
 
-    describe 'sets the :content attribute such that' do
-      before do
-        obj.call content: 'This is *content*.'
+      after { expect(actual).must_equal @expected }
+
+      it 'an empty string when :content is an empty string' do
+        @content = @expected = ''
       end
 
-      it 'can be parsed as XML/HTML' do
-        expect { Ox.parse obj.content }.must_be_silent
+      it 'an HTML paragraph wrapping a simple text :content string' do
+        @content = 'This is a test.'
+        @expected = %w(<p> </p>).join @content
       end
 
-      it 'has the correct wrapper element' do
-        obj2 = described_class.new wrap_with: :section
-        markup = obj2.call(content: 'This is *content*.').content
-        content = Ox.parse markup
-        expect(content.name).must_equal 'section'
+      it 'a sequence of paragraphs wrapping double-newline-separated content' do
+        @content = "This is a test.\n\nThis is another test."
+        @expected = '<p>This is a test.</p><p>This is another test.</p>'
       end
-    end # describe 'sets the :content attribute such that'
-  end # describe 'has a #call method that'
+
+      it 'a para with content separated by a <br/> tag at an input newline' do
+        @content = "This is a test.\nThis is another test."
+        @expected = '<p>This is a test.<br/>This is another test.</p>'
+      end
+
+      it 'correct markup for more complex input' do
+        @content = <<~ENDIT
+                   # First Header
+                   ## Second Header
+                   ### Third Header
+
+                   This is an *initial* paragraph under the ~~third~~ header.
+
+                   * First Item
+                   * A *Second* Item
+                   * THe *__Last__* Item
+
+                   In closing, we thank the Academy of Lorem Ipsum.
+                   ENDIT
+        @expected = '<h1>First Header</h1><h2>Second Header</h2>' \
+                    '<h3>Third Header</h3><p>This is an <em>initial</em> ' \
+                    'paragraph under the <del>third</del> header.</p>' \
+                    '<ul><li>First Item</li><li>A <em>Second</em> Item</li>' \
+                    '<li>THe <em><strong>Last</strong></em> Item</li></ul>' \
+                    '<p>In closing, we thank the Academy of Lorem Ipsum.</p>'
+      end
+    end # describe 'returns'
+  end # describe 'has a .call method that'
 end
