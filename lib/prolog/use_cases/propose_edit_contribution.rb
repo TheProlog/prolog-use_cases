@@ -48,8 +48,11 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
+      # Reek thinks this smells of :reek:FeatureEnvy wrt `authoriser`. Pffft.
       def init_form_object(article, authoriser)
-        @form_object = FormObject.new article: article, guest: authoriser.guest?
+        @form_object = FormObject.new article: article,
+                                      guest: authoriser.guest?,
+                                      user_name: authoriser.user_name
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

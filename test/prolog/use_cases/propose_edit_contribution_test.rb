@@ -5,10 +5,13 @@ require 'prolog/use_cases/propose_edit_contribution'
 
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
-  let(:article) { Object.new }
-  let(:authoriser) do
-    Struct.new(:guest?).new is_guest
+  let(:article) do
+    Prolog::Core::Article.new author_name: author_name
   end
+  let(:authoriser) do
+    Struct.new(:guest?, :user_name).new is_guest, user_name
+  end
+  let(:author_name) { user_name }
   let(:contribution_repo) { Object.new }
   let(:init_params) do
     { article: article, authoriser: authoriser,
@@ -16,6 +19,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:is_guest) { false }
   let(:ui_gateway) { Object.new }
+  let(:user_name) { 'Clive Screwtape' }
   let(:obj) { described_class.new init_params }
 
   it 'may not be initialised without arguments' do

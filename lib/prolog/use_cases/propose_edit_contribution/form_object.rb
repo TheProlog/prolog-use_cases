@@ -17,6 +17,7 @@ module Prolog
         include Prolog::Support::FormObject
 
         attribute :guest, Boolean, default: true
+        attribute :user_name, String, default: 'Guest User'
         attribute :article, Prolog::Core::Article
         attribute :endpoints, IntegerRange
         attribute :proposed_content, String
