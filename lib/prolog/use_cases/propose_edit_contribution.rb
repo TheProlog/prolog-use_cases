@@ -30,9 +30,10 @@ module Prolog
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
     class ProposeEditContribution
-      def initialize(article:, authoriser:, contribution_repo:)
+      def initialize(article:, authoriser:, contribution_repo:, ui_gateway:)
         init_form_object article, authoriser
         @contribution_repo = contribution_repo
+        @ui_gateway = ui_gateway
         self
       end
 
@@ -45,7 +46,7 @@ module Prolog
 
       private
 
-      attr_reader :form_object
+      attr_reader :contribution_repo, :form_object, :ui_gateway
 
       def init_form_object(article, authoriser)
         @form_object = FormObject.new article: article, guest: authoriser.guest?

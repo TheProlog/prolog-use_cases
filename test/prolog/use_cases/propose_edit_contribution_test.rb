@@ -12,9 +12,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:contribution_repo) { Object.new }
   let(:init_params) do
     { article: article, authoriser: authoriser,
-      contribution_repo: contribution_repo }
+      contribution_repo: contribution_repo, ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
+  let(:ui_gateway) { Object.new }
   let(:obj) { described_class.new init_params }
 
   it 'may not be initialised without arguments' do
@@ -39,6 +40,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it ':contribution_repo' do
       @param = :contribution_repo
+    end
+
+    it ':ui_gateway' do
+      @param = :ui_gateway
     end
   end # describe 'must be initialised with parameters for'
 
