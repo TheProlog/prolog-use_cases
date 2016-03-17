@@ -37,10 +37,9 @@ module Prolog
         self
       end
 
-      def call(endpoints:, justification:, proposed_content:)
-        form_object.endpoints = endpoints
-        form_object.justification = justification
-        form_object.proposed_content = proposed_content
+      def call(endpoints:, proposed_content:, justification: '')
+        update_form_object_entering_call(endpoints, justification,
+                                         proposed_content)
         self
       end
 
@@ -53,6 +52,14 @@ module Prolog
         @form_object = FormObject.new article: article,
                                       guest: authoriser.guest?,
                                       user_name: authoriser.user_name
+      end
+
+      def update_form_object_entering_call(endpoints, proposed_content,
+                                           justification)
+        form_object.endpoints = endpoints
+        form_object.justification = justification
+        form_object.proposed_content = proposed_content
+        self
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

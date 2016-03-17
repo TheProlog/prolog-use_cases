@@ -6,12 +6,18 @@ require 'prolog/use_cases/propose_edit_contribution'
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
   let(:article) do
-    Prolog::Core::Article.new author_name: author_name
+    Prolog::Core::Article.new author_name: author_name, body: body
   end
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
   let(:author_name) { user_name }
+  let(:body) do
+    '<p>This is the first paragraph.</p>' \
+      '<ul><li>This is the first list item.</li>' \
+      '<li>This is the <em>last</em> list item.</li>' \
+      '</ul><p>This is the closing paragraph.</p>'
+  end
   let(:contribution_repo) { Object.new }
   let(:init_params) do
     { article: article, authoriser: authoriser,
@@ -54,4 +60,38 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   it 'may be initialised with valid parameters' do
     expect { described_class.new init_params }.must_be_silent
   end
+
+  describe 'has a #call method that' do
+    let(:call_params) do
+      { endpoints: endpoints, proposed_content: proposed_content }
+    end
+    let(:endpoints) { (ep_begin..ep_end) }
+    let(:justification) { 'Justification is left, right, or centred.' }
+    let(:proposed_content) { 'very last' }
+    let(:snippet) { '<em>last</em>' }
+    let(:ep_begin) { article.body.index snippet }
+    let(:ep_end) { ep_begin + snippet.length - 1 }
+
+    describe 'requires parameters for' do
+      after do
+        call_params.delete @param
+        expected = ArgumentError
+        error = expect { obj.call call_params }.must_raise expected
+        expect(error.message).must_match @param.to_s
+      end
+
+      it ':endpoints' do
+        @param = :endpoints
+      end
+
+      it 'proposed_content' do
+        @param = :proposed_content
+      end
+    end # describe 'requires parameters for'
+
+    it 'accepts a :justification parameter string' do
+      call_params[:justification] = justification
+      expect { obj.call call_params }.must_be_silent
+    end
+  end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution
