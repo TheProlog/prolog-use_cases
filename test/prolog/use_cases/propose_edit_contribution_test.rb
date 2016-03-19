@@ -8,6 +8,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:article) do
     Prolog::Core::Article.new author_name: author_name, body: body
   end
+  let(:article_repo) { Object.new }
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
@@ -21,7 +22,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:contribution_repo) { Object.new }
   let(:init_params) do
     { article: article, authoriser: authoriser,
-      contribution_repo: contribution_repo, ui_gateway: ui_gateway }
+      contribution_repo: contribution_repo, article_repo: article_repo,
+      ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
   let(:ui_gateway) { Object.new }
@@ -46,6 +48,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it ':authoriser' do
       @param = :authoriser
+    end
+
+    it ':article_repo' do
+      @param = :article_repo
     end
 
     it ':contribution_repo' do
@@ -94,4 +100,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       expect { obj.call call_params }.must_be_silent
     end
   end # describe 'has a #call method that'
+
+  describe 'when called with complete valid parameters' do
+  end # describe 'when called with complete valid parameters'
 end # Prolog::UseCases::ProposeEditContribution
