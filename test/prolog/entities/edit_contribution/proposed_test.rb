@@ -1,10 +1,10 @@
 
 require 'test_helper'
 
-require 'prolog/entities/edit_contribution'
+require 'prolog/entities/edit_contribution/proposed'
 
-describe 'Prolog::Entities::EditContribution' do
-  let(:described_class) { Prolog::Entities::EditContribution }
+describe 'Prolog::Entities::EditContribution::Proposed' do
+  let(:described_class) { Prolog::Entities::EditContribution::Proposed }
   let(:article_id) do
     Prolog::Entities::ArticleIdent.new author_name: author_name, title: title
   end
