@@ -19,6 +19,7 @@ module Prolog
           attribute :justification, String, default: ''
           attribute :proposed_content, String
           attribute :proposer_name, String
+          attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
         end
       end # class Prolog::Entities::EditContribution::Proposed
     end

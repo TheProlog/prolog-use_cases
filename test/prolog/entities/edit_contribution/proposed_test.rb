@@ -56,6 +56,12 @@ describe 'Prolog::Entities::EditContribution::Proposed' do
       it ':justification' do
         expect(described_class.new(params).justification).must_equal ''
       end
+
+      it ':proposed_at' do
+        acceptable_diff = 24 * 3600 * 1.0e-9 # 86.4 microsec, or 1 "pico-day"
+        dt = described_class.new(params).proposed_at
+        expect(DateTime.now. - dt).must_be :<, acceptable_diff
+      end
     end # describe 'has expected default values for attributes'
 
     describe 'accepts a parameter value for' do
@@ -69,6 +75,12 @@ describe 'Prolog::Entities::EditContribution::Proposed' do
         params[:justification] = justification
         obj = described_class.new params
         expect(obj.justification).must_equal justification
+      end
+
+      it ':proposed_at' do
+        params[:proposed_at] = DateTime.now
+        obj = described_class.new params
+        expect(obj.proposed_at).must_equal params[:proposed_at]
       end
     end # describe 'accepts a parameter value for'
   end # describe 'initialisation'
