@@ -25,6 +25,8 @@ module Prolog
     class ProposeEditContribution
       extend Forwardable
 
+      attr_reader :contribution
+
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
         init_form_object article, authoriser
@@ -48,10 +50,6 @@ module Prolog
 
       delegate :wrap_contribution_with, to: :@form_object
 
-      def contribution
-        @contribution ||= contribution_repo.create form_object.to_h
-      end
-
       # Reek thinks this smells of :reek:FeatureEnvy wrt `authoriser`. Pffft.
       def init_form_object(article, authoriser)
         @form_object = FormObject.new article: article,
@@ -60,7 +58,7 @@ module Prolog
       end
 
       def persist_contribution
-        contribution_repo.add contribution
+        contribution_repo.add updated_contribution
       end
 
       def update_body
@@ -73,6 +71,10 @@ module Prolog
         form_object.justification = justification
         form_object.proposed_content = proposed_content
         self
+      end
+
+      def updated_contribution
+        @contribution ||= contribution_repo.create form_object.to_h
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

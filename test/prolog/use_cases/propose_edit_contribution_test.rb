@@ -173,5 +173,16 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         end # describe 'updatexs the Article body with contribution markers for'
       end # describe 'not the article author'
     end # describe 'when the initiating member is'
+
+    describe 'affects the return value of the #contribution attr_reader' do
+      it 'which is nil before calling #call' do
+        expect(obj.contribution).must_be :nil?
+      end
+
+      it 'is the as-added Contribution object after calling #call' do
+        obj.call call_params
+        expect(obj.contribution).must_equal contribution_repo.added_data.last
+      end
+    end # describe 'affects the return value of the #contribution attr_reader'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution
