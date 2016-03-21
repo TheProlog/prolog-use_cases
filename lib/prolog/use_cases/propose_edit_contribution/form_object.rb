@@ -37,6 +37,10 @@ module Prolog
           marker.to_s
         end
 
+        def proposed_by_author?
+          user_name == article.author_name
+        end
+
         def wrap_contribution_with(id_number)
           return self if @wrapped
           article.body = body_with_markers(id_number)
@@ -51,9 +55,8 @@ module Prolog
         end
 
         def self.default_status(fo)
-          is_author = fo.user_name == fo.article.author_name
-          return :proposed unless is_author
-          :accepted
+          return :accepted if fo.proposed_by_author?
+          :proposed
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution

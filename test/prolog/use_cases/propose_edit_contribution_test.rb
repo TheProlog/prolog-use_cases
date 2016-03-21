@@ -142,75 +142,73 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       expect { obj.call call_params }.must_be_silent
     end
 
-    describe 'when the initiating member is' do
-      describe 'not the article author' do
-        let(:created_obj) { contribution_repo.created_data.first }
-        let(:user_name) { 'Wilma Wormwood' }
-        let(:last_added) { contribution_repo.added_data.last }
+    describe 'whether the initiating user is the article author or not' do
+      let(:created_obj) { contribution_repo.created_data.first }
+      let(:user_name) { 'Wilma Wormwood' }
+      let(:last_added) { contribution_repo.added_data.last }
 
-        before do
-          call_params[:justification] = justification
-          obj.call call_params
+      before do
+        call_params[:justification] = justification
+        obj.call call_params
+      end
+
+      it 'creates a Proposed Article' do
+        expect(created_obj.status).must_equal :proposed
+      end
+
+      it 'adds the newly-created Proposed Article to the repository' do
+        expect(last_added).must_equal created_obj
+      end
+
+      it 'sets the :saved_at timestamp on the persisted Article' do
+        expect(last_added.saved_at).wont_be :nil?
+      end
+
+      describe 'updatexs the Article body with contribution markers for' do
+        after do
+          body = last_added.article.body
+          marker = format '<a id="contribution-1-%s"></a>', @which_end
+          expect(body.index(marker)).must_equal @marker_index
         end
 
-        it 'creates a Proposed Article' do
-          expect(created_obj.status).must_equal :proposed
+        it 'the begin-contribution marker' do
+          @which_end = :begin
+          @marker_index = endpoints.begin
         end
 
-        it 'adds the newly-created Proposed Article to the repository' do
-          expect(last_added).must_equal created_obj
+        it 'the end-contribution marker' do
+          @which_end = :end
+          begin_marker = '<a id="contribution-1-begin"></a>'
+          @marker_index = endpoints.end + begin_marker.length
+        end
+      end # describe 'updatexs the Article body with contribution markers for'
+
+      describe 'affects the return value of the #contribution attr_reader' do
+        let(:last_added_data) { contribution_repo.added_data.last }
+
+        it 'is the as-added Contribution object after calling #call' do
+          expect(obj.contribution).must_equal last_added_data
+        end
+      end # describe 'affects the return value of the #contribution ...'
+
+      describe 'encodes a UI Gateway #success message as JSON with' do
+        let(:success_message) { ui_gateway.successes.last.first }
+        let(:data) { JSON.parse success_message, symbolize_names: true }
+
+        it 'the correct member name' do
+          expect(data[:member]).must_equal user_name
         end
 
-        it 'sets the :saved_at timestamp on the persisted Article' do
-          expect(last_added.saved_at).wont_be :nil?
+        it 'the correct :contributino_count value' do
+          expect(data[:contribution_count]).must_equal 1
         end
 
-        describe 'updatexs the Article body with contribution markers for' do
-          after do
-            body = last_added.article.body
-            marker = format '<a id="contribution-1-%s"></a>', @which_end
-            expect(body.index(marker)).must_equal @marker_index
-          end
-
-          it 'the begin-contribution marker' do
-            @which_end = :begin
-            @marker_index = endpoints.begin
-          end
-
-          it 'the end-contribution marker' do
-            @which_end = :end
-            begin_marker = '<a id="contribution-1-begin"></a>'
-            @marker_index = endpoints.end + begin_marker.length
-          end
-        end # describe 'updatexs the Article body with contribution markers for'
-
-        describe 'affects the return value of the #contribution attr_reader' do
-          let(:last_added_data) { contribution_repo.added_data.last }
-
-          it 'is the as-added Contribution object after calling #call' do
-            expect(obj.contribution).must_equal last_added_data
-          end
-        end # describe 'affects the return value of the #contribution ...'
-
-        describe 'encodes a UI Gateway #success message as JSON with' do
-          let(:success_message) { ui_gateway.successes.last.first }
-          let(:data) { JSON.parse success_message, symbolize_names: true }
-
-          it 'the correct member name' do
-            expect(data[:member]).must_equal user_name
-          end
-
-          it 'the correct :contributino_count value' do
-            expect(data[:contribution_count]).must_equal 1
-          end
-
-          it 'the correct YAML-encoded :article_id data' do
-            article_data = YAML.load data[:article_id]
-            expected = { author_name: author_name, title: title }
-            expect(article_data).must_equal expected
-          end
-        end # describe 'encodes a UI Gateway #success message as JSON with'
-      end # describe 'not the article author'
-    end # describe 'when the initiating member is'
+        it 'the correct YAML-encoded :article_id data' do
+          article_data = YAML.load data[:article_id]
+          expected = { author_name: author_name, title: title }
+          expect(article_data).must_equal expected
+        end
+      end # describe 'encodes a UI Gateway #success message as JSON with'
+    end # describe 'whether the initiating user is the article author or not'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

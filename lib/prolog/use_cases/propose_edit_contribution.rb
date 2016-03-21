@@ -39,9 +39,7 @@ module Prolog
       def call(endpoints:, proposed_content:, justification: '')
         update_form_object_entering_call(endpoints, proposed_content,
                                          justification)
-        update_body
-        persist_contribution
-        notify_success
+        steps_in_process unless inputs_invalid?
         self
       end
 
@@ -57,6 +55,17 @@ module Prolog
         @form_object = FormObject.new article: article,
                                       guest: authoriser.guest?,
                                       user_name: authoriser.user_name
+      end
+
+      def inputs_invalid?
+        false
+      end
+
+      def steps_in_process
+        update_body
+        persist_contribution
+        notify_success
+        self
       end
 
       def notify_success
