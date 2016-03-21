@@ -56,7 +56,19 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
-  let(:ui_gateway) { Object.new }
+  let(:ui_gateway) do
+    Class.new do
+      attr_reader :successes
+
+      def initialize
+        @successes = []
+      end
+
+      def success(*params)
+        @successes << params
+      end
+    end.new
+  end
   let(:user_name) { author_name }
   let(:obj) { described_class.new init_params }
 
@@ -171,18 +183,34 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
             @marker_index = endpoints.end + begin_marker.length
           end
         end # describe 'updatexs the Article body with contribution markers for'
+
+        describe 'affects the return value of the #contribution attr_reader' do
+          let(:last_added_data) { contribution_repo.added_data.last }
+
+          it 'is the as-added Contribution object after calling #call' do
+            expect(obj.contribution).must_equal last_added_data
+          end
+        end # describe 'affects the return value of the #contribution ...'
+
+        describe 'encodes a UI Gateway #success message as JSON with' do
+          let(:success_message) { ui_gateway.successes.last.first }
+          let(:data) { JSON.parse success_message, symbolize_names: true }
+
+          it 'the correct member name' do
+            expect(data[:member]).must_equal user_name
+          end
+
+          it 'the correct :contributino_count value' do
+            expect(data[:contribution_count]).must_equal 1
+          end
+
+          it 'the correct YAML-encoded :article_id data' do
+            article_data = YAML.load data[:article_id]
+            expected = { author_name: author_name, title: title }
+            expect(article_data).must_equal expected
+          end
+        end # describe 'encodes a UI Gateway #success message as JSON with'
       end # describe 'not the article author'
     end # describe 'when the initiating member is'
-
-    describe 'affects the return value of the #contribution attr_reader' do
-      it 'which is nil before calling #call' do
-        expect(obj.contribution).must_be :nil?
-      end
-
-      it 'is the as-added Contribution object after calling #call' do
-        obj.call call_params
-        expect(obj.contribution).must_equal contribution_repo.added_data.last
-      end
-    end # describe 'affects the return value of the #contribution attr_reader'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

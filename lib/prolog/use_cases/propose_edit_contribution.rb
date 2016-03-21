@@ -41,6 +41,7 @@ module Prolog
                                          justification)
         update_body
         persist_contribution
+        notify_success
         self
       end
 
@@ -48,7 +49,8 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
-      delegate :wrap_contribution_with, to: :@form_object
+      delegate :article_id, :user_name, :wrap_contribution_with,
+               to: :@form_object
 
       # Reek thinks this smells of :reek:FeatureEnvy wrt `authoriser`. Pffft.
       def init_form_object(article, authoriser)
@@ -57,8 +59,17 @@ module Prolog
                                       user_name: authoriser.user_name
       end
 
+      def notify_success
+        ui_gateway.success success_payload.to_json
+      end
+
       def persist_contribution
         contribution_repo.add updated_contribution
+      end
+
+      def success_payload
+        { member: user_name, article_id: article_id,
+          contribution_count: contribution_repo.count }
       end
 
       def update_body
