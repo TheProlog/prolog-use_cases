@@ -12,14 +12,35 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
-  let(:author_name) { user_name }
+  let(:author_name) { 'Clive Screwtape' }
   let(:body) do
     '<p>This is the first paragraph.</p>' \
       '<ul><li>This is the first list item.</li>' \
       '<li>This is the <em>last</em> list item.</li>' \
       '</ul><p>This is the closing paragraph.</p>'
   end
-  let(:contribution_repo) { Object.new }
+  let(:contribution_repo) do
+    Class.new do
+      attr_reader :added_data, :created_data
+
+      def initialize
+        @added_data = []
+        @created_data = []
+        self
+      end
+
+      def add(entity)
+        @added_data << entity
+        entity
+      end
+
+      def create(**params)
+        obj = OpenStruct.new(params)
+        @created_data << obj
+        obj
+      end
+    end.new
+  end
   let(:init_params) do
     { article: article, authoriser: authoriser,
       contribution_repo: contribution_repo, article_repo: article_repo,
@@ -28,7 +49,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
   let(:ui_gateway) { Object.new }
-  let(:user_name) { 'Clive Screwtape' }
+  let(:user_name) { author_name }
   let(:obj) { described_class.new init_params }
 
   it 'may not be initialised without arguments' do
@@ -100,8 +121,25 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       call_params[:justification] = justification
       expect { obj.call call_params }.must_be_silent
     end
-  end # describe 'has a #call method that'
 
-  describe 'when called with complete valid parameters' do
-  end # describe 'when called with complete valid parameters'
+    describe 'when the initiating member is' do
+      describe 'not the article author' do
+        let(:created_obj) { contribution_repo.created_data.first }
+        let(:user_name) { 'Wilma Wormwood' }
+
+        before do
+          call_params[:justification] = justification
+          obj.call call_params
+        end
+
+        it 'creates a Proposed Article' do
+          expect(created_obj.status).must_equal :proposed
+        end
+
+        it 'adds the newly-created Proposed Article to the repository' do
+          expect(contribution_repo.added_data.first).must_equal created_obj
+        end
+      end # describe 'not the article author'
+    end # describe 'when the initiating member is'
+  end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

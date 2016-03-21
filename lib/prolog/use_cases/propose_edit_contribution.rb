@@ -12,6 +12,8 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
+    # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
+    # about that sometime in The Glorious Future.
     class ProposeEditContribution
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
@@ -23,8 +25,9 @@ module Prolog
       end
 
       def call(endpoints:, proposed_content:, justification: '')
-        update_form_object_entering_call(endpoints, justification,
-                                         proposed_content)
+        update_form_object_entering_call(endpoints, proposed_content,
+                                         justification)
+        persist_contribution
         self
       end
 
@@ -32,11 +35,19 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
+      def contribution
+        @contribution ||= contribution_repo.create form_object.to_h
+      end
+
       # Reek thinks this smells of :reek:FeatureEnvy wrt `authoriser`. Pffft.
       def init_form_object(article, authoriser)
         @form_object = FormObject.new article: article,
                                       guest: authoriser.guest?,
                                       user_name: authoriser.user_name
+      end
+
+      def persist_contribution
+        contribution_repo.add contribution
       end
 
       def update_form_object_entering_call(endpoints, proposed_content,
