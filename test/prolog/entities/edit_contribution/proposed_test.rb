@@ -13,10 +13,10 @@ describe 'Prolog::Entities::EditContribution::Proposed' do
   let(:endpoints) { (0..5) }
   let(:justification) { 'This is a justification.' }
   let(:proposed_content) { 'This is proposed content.' }
-  let(:proposer_name) { 'Somebody Else' }
+  let(:user_name) { 'Somebody Else' }
   let(:params) do
     { article_id: article_id, proposed_content: proposed_content,
-      proposer_name: proposer_name }
+      user_name: user_name }
   end
 
   describe 'initialisation' do
@@ -43,8 +43,8 @@ describe 'Prolog::Entities::EditContribution::Proposed' do
         @param = :proposed_content
       end
 
-      it ':proposer_name' do
-        @param = :proposer_name
+      it ':user_name' do
+        @param = :user_name
       end
     end # describe 'requires a parameter value for'
 
