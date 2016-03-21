@@ -6,7 +6,7 @@ require 'prolog/use_cases/propose_edit_contribution'
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
   let(:article) do
-    Prolog::Core::Article.new author_name: author_name, body: body
+    Struct.new(:author_name, :body, :title).new author_name, body, title
   end
   let(:article_repo) { Object.new }
   let(:authoriser) do
@@ -26,6 +26,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
+  let(:title) { 'Article Title' }
   let(:ui_gateway) { Object.new }
   let(:user_name) { 'Clive Screwtape' }
   let(:obj) { described_class.new init_params }
