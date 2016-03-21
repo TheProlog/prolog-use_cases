@@ -1,4 +1,12 @@
 
+require 'forwardable'
+
+# Hack to use Rails' broken :delegate rather than the standard library's.
+# Yes, this is obscene.
+module Forwardable
+  remove_method :delegate
+end
+
 require_relative 'propose_edit_contribution/form_object'
 
 # "Propose Edit Contribution" use case.
@@ -15,6 +23,8 @@ module Prolog
     # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
     # about that sometime in The Glorious Future.
     class ProposeEditContribution
+      extend Forwardable
+
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
         init_form_object article, authoriser
@@ -27,6 +37,7 @@ module Prolog
       def call(endpoints:, proposed_content:, justification: '')
         update_form_object_entering_call(endpoints, proposed_content,
                                          justification)
+        update_body
         persist_contribution
         self
       end
@@ -34,6 +45,8 @@ module Prolog
       private
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
+
+      delegate :wrap_contribution_with, to: :@form_object
 
       def contribution
         @contribution ||= contribution_repo.create form_object.to_h
@@ -48,6 +61,10 @@ module Prolog
 
       def persist_contribution
         contribution_repo.add contribution
+      end
+
+      def update_body
+        wrap_contribution_with contribution_repo.count + 1
       end
 
       def update_form_object_entering_call(endpoints, proposed_content,

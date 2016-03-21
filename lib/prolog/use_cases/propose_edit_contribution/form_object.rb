@@ -5,6 +5,8 @@ require 'virtus'
 require 'prolog/entities/edit_contribution/proposed'
 require 'prolog/support/form_object/integer_range'
 
+require_relative 'form_object/body_marker'
+
 module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
@@ -28,6 +30,19 @@ module Prolog
                   writer: :private
         attribute :status, Symbol, default: -> (fo, _) { default_status(fo) },
                                    writer: :private
+
+        def body_with_markers(id_number)
+          marker = BodyMarker.new body: article.body, endpoints: endpoints,
+                                  id_number: id_number
+          marker.to_s
+        end
+
+        def wrap_contribution_with(id_number)
+          return self if @wrapped
+          article.body = body_with_markers(id_number)
+          @wrapped = true
+          self
+        end
 
         def self.default_article_id(fo)
           article = fo.article

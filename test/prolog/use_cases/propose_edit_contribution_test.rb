@@ -26,12 +26,20 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       def initialize
         @added_data = []
         @created_data = []
+        @contribution_id = 0
         self
       end
 
       def add(entity)
+        @contribution_id += 1
+        entity.contribution_id = @contribution_id
+        entity.saved_at = DateTime.now
         @added_data << entity
         entity
+      end
+
+      def count
+        @added_data.count
       end
 
       def create(**params)
@@ -126,6 +134,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       describe 'not the article author' do
         let(:created_obj) { contribution_repo.created_data.first }
         let(:user_name) { 'Wilma Wormwood' }
+        let(:last_added) { contribution_repo.added_data.last }
 
         before do
           call_params[:justification] = justification
@@ -137,8 +146,31 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         end
 
         it 'adds the newly-created Proposed Article to the repository' do
-          expect(contribution_repo.added_data.first).must_equal created_obj
+          expect(last_added).must_equal created_obj
         end
+
+        it 'sets the :saved_at timestamp on the persisted Article' do
+          expect(last_added.saved_at).wont_be :nil?
+        end
+
+        describe 'updatexs the Article body with contribution markers for' do
+          after do
+            body = last_added.article.body
+            marker = format '<a id="contribution-1-%s"></a>', @which_end
+            expect(body.index(marker)).must_equal @marker_index
+          end
+
+          it 'the begin-contribution marker' do
+            @which_end = :begin
+            @marker_index = endpoints.begin
+          end
+
+          it 'the end-contribution marker' do
+            @which_end = :end
+            begin_marker = '<a id="contribution-1-begin"></a>'
+            @marker_index = endpoints.end + begin_marker.length
+          end
+        end # describe 'updatexs the Article body with contribution markers for'
       end # describe 'not the article author'
     end # describe 'when the initiating member is'
   end # describe 'has a #call method that'
