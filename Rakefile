@@ -28,7 +28,7 @@ end
 
 Reek::Rake::Task.new do |t|
 t.config_file = 'config.reek'
-t.source_files = '{app,lib,test}/**/*.rb'
+t.source_files = 'lib/**/*.rb'
 t.reek_opts = '--sort-by smelliness -s'
 end
 

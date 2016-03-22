@@ -3,6 +3,53 @@ require 'test_helper'
 
 require 'prolog/use_cases/propose_edit_contribution'
 
+# rubocop:disable Metrocs/AbcSize, Metrics/MethodLength
+def verify_error(message)
+  it 'does not create a new Contribution' do
+    expect(contribution_repo.created_data).must_be :empty?
+  end
+
+  it 'does not change the article body' do
+    expect(article.body).must_equal body
+  end
+
+  it 'does not set the :saved_at timestamp on the Article' do
+    is_clean = !article.respond_to?(:saved_at) || article.saved_at.nil?
+    expect(is_clean).must_equal true
+  end
+
+  it "has the reason as '#{message}'" do
+    expect(failure_data[:failure]).must_equal message
+  end
+
+  describe 'has a YAML-encoded Article ID object with' do
+    let(:failed_article_id) { YAML.load failure_data[:article_id] }
+
+    it 'has the correct article title' do
+      expect(failed_article_id[:title]).must_equal article.title
+    end
+
+    it 'has the correct author name' do
+      expect(failed_article_id[:author_name]).must_equal author_name
+    end
+  end # describe 'has a YAML-encoded Article ID object with'
+end
+
+def verify_invalid_content_handling(reason, content, message)
+  describe reason.to_s do
+    let(:failure_message) { ui_gateway.failures.last.first }
+    let(:failure_data) do
+      JSON.parse failure_message, symbolize_names: true
+    end
+    let(:proposed_content) { content }
+
+    before { obj.call call_params }
+
+    verify_error message
+  end # describe reason.to_s
+end
+# rubocop:enable Metrocs/AbcSize, Metrics/MethodLength
+
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
   let(:article) do
@@ -222,45 +269,25 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       describe 'no user is logged in, or a session expired; it' do
         let(:user_name) { guest_name }
         let(:is_guest) { true }
+        let(:failure_message) { ui_gateway.failures.last.first }
+        let(:failure_data) do
+          JSON.parse failure_message, symbolize_names: true
+        end
 
         before { obj.call call_params }
 
-        it 'does not create a new Contribution' do
-          expect(contribution_repo.created_data).must_be :empty?
-        end
-
-        it 'does not change the article body' do
-          expect(article.body).must_equal body
-        end
-
-        it 'does not set the :saved_at timestamp on the Article' do
-          is_clean = !article.respond_to?(:saved_at) || article.saved_at.nil?
-          expect(is_clean).must_equal true
-        end
-
-        describe 'reports a failure to the UI Gateway that' do
-          let(:failure_message) { ui_gateway.failures.last.first }
-          let(:failure_data) do
-            JSON.parse failure_message, symbolize_names: true
-          end
-
-          it 'has the reason as "not logged in"' do
-            expect(failure_data[:failure]).must_equal 'not logged in'
-          end
-
-          describe 'has a YAML-encoded Article ID object with' do
-            let(:failed_article_id) { YAML.load failure_data[:article_id] }
-
-            it 'has the correct article title' do
-              expect(failed_article_id[:title]).must_equal article.title
-            end
-
-            it 'has the correct author name' do
-              expect(failed_article_id[:author_name]).must_equal author_name
-            end
-          end # describe 'has a YAML-encoded Article ID object with'
-        end # describe 'reports a failure to the UI Gateway that'
+        verify_error 'not logged in'
       end # describe 'no user is logged in, or a session expired; it'
+
+      describe 'the Proposed Content is' do
+        [
+          [:empty, '', 'empty proposed content'],
+          [:blank, '     ', 'blank proposed content'],
+          [:missing, nil, 'missing proposed content']
+        ].each do |reason, content, message|
+          verify_invalid_content_handling reason, content, message
+        end
+      end # describe 'the Proposed Content is'
     end # describe 'reports failures and performs no updates when'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

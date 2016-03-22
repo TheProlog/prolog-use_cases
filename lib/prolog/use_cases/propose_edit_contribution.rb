@@ -23,13 +23,66 @@ module Prolog
     # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
     # about that sometime in The Glorious Future.
     class ProposeEditContribution
+      # Defines our two-stage initialisation of the form object. The first step
+      # is to be called from the use case `#initialize` method; the second, from
+      # the beginning of `#call`.
+      class FormObjectTwoStage
+        def self.init(article, authoriser)
+          FormObject.new(article: article, guest: authoriser.guest?,
+                         user_name: authoriser.user_name)
+        end
+
+        # No, this doesn't have much in the way of added value, except for
+        # grouping the second "stage" of initialisation into one place.
+        def self.update(fo, endpoints, proposed_content, justification)
+          fo.endpoints = endpoints
+          fo.justification = justification
+          fo.proposed_content = proposed_content
+        end
+      end # class Prolog::UseCases::ProposeEditContribution::FormObjectTwoStage
+
+      # Class to validate proposed content and complain if invalid.
+      class ContentValidator
+        def initialize(ui_gateway, user_name, article_id)
+          @ui_gateway = ui_gateway
+          @user_name = user_name
+          @article_id = article_id
+          self
+        end
+
+        def invalid?(content)
+          return false unless content.to_s.strip.empty?
+          @content = content
+          @ui_gateway.failure invalid_content_payload
+          true
+        end
+
+        private
+
+        def invalid_content_payload
+          { failure: invalid_content_reason, member_name: @user_name,
+            article_id: @article_id }.to_json
+        end
+
+        # Reek doesn't like :reek:NilCheck; too bad.
+        def invalid_content_reason
+          case @content
+          when nil then 'missing proposed content'
+          when /\A\s+\z/ then 'blank proposed content'
+          when '' then 'empty proposed content'
+          else "unknown invalid proposed content: '#{@content}'"
+          end
+        end
+      end # class Prolog::UseCases::ProposeEditContribution::ContentValidator
+
       extend Forwardable
 
       attr_reader :contribution
 
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        init_form_object article, authoriser
+        @form_object = FormObjectTwoStage.init(article, authoriser)
+        # init_form_object article, authoriser
         @contribution_repo = contribution_repo
         @article_reop = article_repo
         @ui_gateway = ui_gateway
@@ -37,8 +90,8 @@ module Prolog
       end
 
       def call(endpoints:, proposed_content:, justification: '')
-        update_form_object_entering_call(endpoints, proposed_content,
-                                         justification)
+        FormObjectTwoStage.update(@form_object, endpoints, proposed_content,
+                                  justification)
         steps_in_process unless inputs_invalid?
         self
       end
@@ -47,19 +100,12 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
-      delegate :article_id, :user_name, :wrap_contribution_with,
-               to: :@form_object
-
-      # Reek thinks this smells of :reek:FeatureEnvy wrt `authoriser`. Pffft.
-      def init_form_object(article, authoriser)
-        @form_object = FormObject.new article: article,
-                                      guest: authoriser.guest?,
-                                      user_name: authoriser.user_name
-      end
+      delegate :article_id, :guest, :proposed_content, :user_name,
+               :wrap_contribution_with, to: :@form_object
 
       def inputs_invalid?
-        return true if guest_user?
-        false
+        validator = ContentValidator.new(ui_gateway, user_name, article_id)
+        guest_user? || validator.invalid?(proposed_content)
       end
 
       def failure_payload
@@ -67,7 +113,7 @@ module Prolog
       end
 
       def guest_user?
-        return false unless form_object.guest
+        return false unless guest
         ui_gateway.failure failure_payload.to_json
         true
       end
@@ -94,14 +140,6 @@ module Prolog
 
       def update_body
         wrap_contribution_with contribution_repo.count + 1
-      end
-
-      def update_form_object_entering_call(endpoints, proposed_content,
-                                           justification)
-        form_object.endpoints = endpoints
-        form_object.justification = justification
-        form_object.proposed_content = proposed_content
-        self
       end
 
       def updated_contribution
