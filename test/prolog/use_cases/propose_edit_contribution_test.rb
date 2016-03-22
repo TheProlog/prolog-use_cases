@@ -3,7 +3,6 @@ require 'test_helper'
 
 require 'prolog/use_cases/propose_edit_contribution'
 
-# rubocop:disable Metrocs/AbcSize, Metrics/MethodLength
 def verify_error(message)
   it 'does not create a new Contribution' do
     expect(contribution_repo.created_data).must_be :empty?
@@ -48,7 +47,6 @@ def verify_invalid_content_handling(reason, content, message)
     verify_error message
   end # describe reason.to_s
 end
-# rubocop:enable Metrocs/AbcSize, Metrics/MethodLength
 
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
