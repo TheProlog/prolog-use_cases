@@ -3,8 +3,7 @@ require 'active_model'
 require 'virtus'
 
 require 'prolog/core'
-
-require_relative 'form_object/integer_range'
+require 'prolog/support/form_object/integer_range'
 
 module Prolog
   module Services
@@ -15,6 +14,7 @@ module Prolog
       class FormObject
         include Virtus.model
         include ActiveModel::Validations
+        include Prolog::Support::FormObject
 
         attribute :article, Prolog::Core::Article
         attribute :last_contribution_id, Integer
