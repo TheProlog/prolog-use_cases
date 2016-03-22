@@ -170,7 +170,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
     let(:proposed_content) { 'very last' }
     let(:snippet) { '<em>last</em>' }
     let(:ep_begin) { article.body.index snippet }
-    let(:ep_end) { ep_begin + snippet.length - 1 }
+    let(:ep_end) { ep_begin + snippet.length }
 
     describe 'requires parameters for' do
       after do
@@ -204,15 +204,15 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         obj.call call_params
       end
 
-      it 'creates a Proposed Article' do
+      it 'creates a Proposed Contribution' do
         expect(created_obj.status).must_equal :proposed
       end
 
-      it 'adds the newly-created Proposed Article to the repository' do
+      it 'adds the newly-created Proposed Contribution to the repository' do
         expect(last_added).must_equal created_obj
       end
 
-      it 'sets the :saved_at timestamp on the persisted Article' do
+      it 'sets the :saved_at timestamp on the persisted Contribution' do
         expect(last_added.saved_at).wont_be :nil?
       end
 
