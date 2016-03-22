@@ -49,6 +49,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       end
     end.new
   end
+  let(:guest_name) { 'Guest User' }
   let(:init_params) do
     { article: article, authoriser: authoriser,
       contribution_repo: contribution_repo, article_repo: article_repo,
@@ -58,14 +59,20 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:title) { 'Article Title' }
   let(:ui_gateway) do
     Class.new do
-      attr_reader :successes
+      attr_reader :failures, :successes
 
       def initialize
+        @failures = []
         @successes = []
+        self
       end
 
       def success(*params)
         @successes << params
+      end
+
+      def failure(*params)
+        @failures << params
       end
     end.new
   end
@@ -142,7 +149,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       expect { obj.call call_params }.must_be_silent
     end
 
-    describe 'whether the initiating user is the article author or not' do
+    describe 'whether or not the initiating user is the article author' do
       let(:created_obj) { contribution_repo.created_data.first }
       let(:user_name) { 'Wilma Wormwood' }
       let(:last_added) { contribution_repo.added_data.last }
@@ -209,6 +216,51 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(article_data).must_equal expected
         end
       end # describe 'encodes a UI Gateway #success message as JSON with'
-    end # describe 'whether the initiating user is the article author or not'
+    end # describe 'whether or not the initiating user is the article author'
+
+    describe 'reports failures and performs no updates when' do
+      describe 'no user is logged in, or a session expired; it' do
+        let(:user_name) { guest_name }
+        let(:is_guest) { true }
+
+        before { obj.call call_params }
+
+        it 'does not create a new Contribution' do
+          expect(contribution_repo.created_data).must_be :empty?
+        end
+
+        it 'does not change the article body' do
+          expect(article.body).must_equal body
+        end
+
+        it 'does not set the :saved_at timestamp on the Article' do
+          is_clean = !article.respond_to?(:saved_at) || article.saved_at.nil?
+          expect(is_clean).must_equal true
+        end
+
+        describe 'reports a failure to the UI Gateway that' do
+          let(:failure_message) { ui_gateway.failures.last.first }
+          let(:failure_data) do
+            JSON.parse failure_message, symbolize_names: true
+          end
+
+          it 'has the reason as "not logged in"' do
+            expect(failure_data[:failure]).must_equal 'not logged in'
+          end
+
+          describe 'has a YAML-encoded Article ID object with' do
+            let(:failed_article_id) { YAML.load failure_data[:article_id] }
+
+            it 'has the correct article title' do
+              expect(failed_article_id[:title]).must_equal article.title
+            end
+
+            it 'has the correct author name' do
+              expect(failed_article_id[:author_name]).must_equal author_name
+            end
+          end # describe 'has a YAML-encoded Article ID object with'
+        end # describe 'reports a failure to the UI Gateway that'
+      end # describe 'no user is logged in, or a session expired; it'
+    end # describe 'reports failures and performs no updates when'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

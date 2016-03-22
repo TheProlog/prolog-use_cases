@@ -58,7 +58,18 @@ module Prolog
       end
 
       def inputs_invalid?
+        return true if guest_user?
         false
+      end
+
+      def failure_payload
+        { failure: 'not logged in', article_id: article_id }
+      end
+
+      def guest_user?
+        return false unless form_object.guest
+        ui_gateway.failure failure_payload.to_json
+        true
       end
 
       def steps_in_process
