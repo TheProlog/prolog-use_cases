@@ -3,8 +3,6 @@ require 'test_helper'
 
 require 'ffaker'
 
-require 'prolog/core'
-
 require 'prolog/use_cases/register_new_member'
 
 describe 'Prolog::UseCases::RegisterNewMember' do
@@ -14,10 +12,18 @@ describe 'Prolog::UseCases::RegisterNewMember' do
   let(:obj) { described_class.new init_params }
   let(:repository) do
     Class.new do
-      def initialize(user_present, save_succeeds)
+      attr_reader :saved_entities
+
+      def initialize(user_present, add_succeeds)
         @user_present = user_present
-        @save_succeeds = save_succeeds
+        @add_succeeds = add_succeeds
+        @saved_entities = []
         self
+      end
+
+      def create(**params)
+        OpenStruct.new params
+        # Prolog::Core::User.new params
       end
 
       def query_user_by_name(_name)
@@ -25,14 +31,14 @@ describe 'Prolog::UseCases::RegisterNewMember' do
         :user_instance_should_be_here
       end
 
-      def save_user(entity)
-        return :save_failed unless @save_succeeds
+      def add(entity)
+        return :add_failed unless @add_succeeds
+        @saved_entities << entity
         entity
       end
-    end.new(user_present, save_succeeds)
+    end.new(user_present, add_succeeds)
   end
-  let(:save_succeeds) { true }
-  let(:user_class) { Prolog::Core::User }
+  let(:add_succeeds) { true }
   let(:user_present) { false }
 
   describe 'must be initialised with a named parameter value for' do
@@ -62,7 +68,7 @@ describe 'Prolog::UseCases::RegisterNewMember' do
     let(:password) { FFaker::Internet.password }
     let(:password_confirmation) { password }
     let(:profile) { FFaker::HipsterIpsum.phrase }
-    let(:user_name) { FFaker::Name.name }
+    let(:user_name) { 'J Random User' }
 
     it 'takes one parameter, marked as a "variable number of arguments"' do
       method = obj.method :call
@@ -111,19 +117,21 @@ describe 'Prolog::UseCases::RegisterNewMember' do
       describe 'not present, it' do
         let(:user_present) { false }
 
-        it 'returns a User instance' do
-          expect(obj.call params).must_be_instance_of user_class
+        it 'saves a user to the repository' do
+          expect(repository.saved_entities).must_be :empty?
+          obj.call params
+          expect(repository.saved_entities.count).must_equal 1
         end
       end # describe 'not present, it'
     end # describe 'when called with a user name that is'
 
     describe 'when persisting a newly-built User entity, if' do
-      describe 'the save attempt is unsuccessful' do
-        let(:save_succeeds) { false }
+      describe 'the add attempt is unsuccessful' do
+        let(:add_succeeds) { false }
         let(:authoriser) { Struct.new(:guest?).new true }
 
-        it 'returns :save_failed' do
-          expect(obj.call params).must_equal :save_failed
+        it 'returns :add_failed' do
+          expect(obj.call params).must_equal :add_failed
         end
       end # describe 'the save attempt is unsuccessful'
     end # describe 'when persisting a newly-built User entity, if'

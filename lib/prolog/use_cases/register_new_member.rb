@@ -1,6 +1,4 @@
 
-require 'prolog/core'
-
 require_relative 'register_new_member/form_object'
 
 module Prolog
@@ -20,7 +18,7 @@ module Prolog
       def call(**params)
         @params = params
         return :precondition_failed unless all_preconditions_met?
-        repository.save_user(new_entity)
+        repository.add new_entity
       end
 
       private
@@ -49,7 +47,7 @@ module Prolog
       end
 
       def new_entity
-        Prolog::Core::User.new @params
+        repository.create @params
       end
 
       def validate_params
