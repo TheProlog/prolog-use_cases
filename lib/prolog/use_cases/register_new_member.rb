@@ -15,8 +15,7 @@ module Prolog
       end
 
       def call(**params)
-        @form_object ||= FormObject.new params
-        @form_object.valid?
+        init_form_object(params)
         return :precondition_failed unless all_preconditions_met?
         repository.add new_entity(params)
       end
@@ -35,9 +34,17 @@ module Prolog
         false
       end
 
+      def init_form_object(params)
+        @form_object = FormObject.new(params)
+        @form_object.valid?
+      end
+
       def name_available?
-        user = repository.query_user_by_name form_object.name
-        user == :not_present
+        !named_user.respond_to? :name
+      end
+
+      def named_user
+        repository.find(name: form_object.name)
       end
 
       def new_entity(params)

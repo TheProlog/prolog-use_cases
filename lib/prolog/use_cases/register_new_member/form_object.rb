@@ -24,25 +24,37 @@ module Prolog
         validates :password, confirmation: true, length: { minimum: 8 }
         validates :password_confirmation, presence: true
 
-        # This method smells of :reek:DuplicateMethodCall; errors.messages 2x
         def error_notifications
           valid?
-          return {} if valid?
-          unique_errors
+          unique_error_messages
         end
 
         private
 
-        def unique_errors
-          ret = {}
-          errors.messages.each { |key, messages| ret[key] = messages.uniq }
-          ret
+        def email_errors
+          ValidatesEmailFormatOf.validate_email_format(email)
+        end
+
+        def report_email_error
+          errors.add :email, email_errors.first
+        end
+
+        # Why not do something simple like
+        #   errors.messages.each_key { |k| errors.messages[k].uniq! }
+        # Simple; we don't own `errors`, so we don't want to screw with its
+        # memory management.
+        def unique_error_messages
+          hash = {}
+          errors.keys.each { |key| hash[key] = uniques_for key }
+          hash
+        end
+
+        def uniques_for(key)
+          errors.messages[key].uniq
         end
 
         def validate_email
-          email_errors = ValidatesEmailFormatOf.validate_email_format(email)
-          return unless email_errors
-          errors.add :email, email_errors.first
+          report_email_error if email_errors
         end
       end # class Prolog::UseCases::RegisterNewMember::FormObject
     end # class Prolog::UseCases::RegisterNewMember

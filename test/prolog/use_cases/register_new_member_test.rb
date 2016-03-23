@@ -26,9 +26,9 @@ describe 'Prolog::UseCases::RegisterNewMember' do
         # Prolog::Core::User.new params
       end
 
-      def query_user_by_name(_name)
+      def find(**attribs)
         return :not_present unless @user_present
-        :user_instance_should_be_here
+        OpenStruct.new attribs
       end
 
       def add(entity)
