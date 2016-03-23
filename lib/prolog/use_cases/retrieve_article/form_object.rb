@@ -10,16 +10,19 @@ module Prolog
     class RetrieveArticle
       # Form object for all your data validation and massaging needs. :grinning:
       class FormObject
-        include Virtus.model
+        include Virtus.value_object
         include ActiveModel::Validations
 
-        attribute :current_user, String
-        attribute :author_name, String, default: -> (fo, _) { fo.current_user }
-        attribute :title, String
-        attribute :body, String
-        attribute :image_url, String
-        attribute :repository, Object
-        # FIXME: No keywords yet...
+        values do
+          attribute :current_user, String
+          attribute :author_name, String,
+                    default: -> (fo, _) { fo.current_user }
+          attribute :title, String
+          attribute :body, String
+          attribute :image_url, String
+          attribute :repository, Object
+          # FIXME: No keywords yet...
+        end
 
         def article
           if_valid_repository { match_article }
@@ -37,11 +40,11 @@ module Prolog
         end
 
         def query_repository
-          repository.where attributes
+          repository.find attributes
         end
 
         def repository?
-          repository.respond_to? :where
+          repository.respond_to? :find
         end
       end # class Prolog::UseCases::RetrieveArticle::FormObject
     end # class Prolog::UseCases::RetrieveArticle

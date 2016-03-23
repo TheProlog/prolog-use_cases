@@ -49,7 +49,7 @@ describe 'Prolog::UseCases::RetrieveArticle' do
           @called_with = []
         end
 
-        def where(**_params)
+        def find(**_params)
           [@result].flatten.freeze
         end
       end.new result: result
