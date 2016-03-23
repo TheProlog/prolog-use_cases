@@ -18,7 +18,9 @@ module Prolog
           end
 
           def self.if_article(obj)
-            return :not_an_article unless obj.respond_to?(:image_url)
+            methods = [:author_name, :body, :image_url, :keywords, :title]
+            actual = methods.reject { |sym| obj.respond_to? sym }
+            return :not_an_article unless actual.empty?
             obj
           end
 
@@ -31,8 +33,8 @@ module Prolog
             return :non_specific_search_terms unless enum.count == 1
             yield enum.first
           end
-        end # clas Prolog::UseCases::RetrieveArticle::FormObject::ArticleMatcher
-      end # clas Prolog::UseCases::RetrieveArticle::FormObject
-    end # clas Prolog::UseCases::RetrieveArticle
+        end # class ...::UseCases::RetrieveArticle::FormObject::ArticleMatcher
+      end # class Prolog::UseCases::RetrieveArticle::FormObject
+    end # class Prolog::UseCases::RetrieveArticle
   end
 end
