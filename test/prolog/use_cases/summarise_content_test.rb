@@ -37,17 +37,6 @@ describe 'Prolog::UseCases::SummariseContent' do
   end
 
   describe 'has a #call method that' do
-    let(:current_user_listener) do
-      Class.new do
-        attr_reader :current_user_name
-
-        def current_user_is(user_name)
-          @current_user_name = user_name
-          self
-        end
-      end
-    end
-
     it 'returns a Hash with four entries' do
       expect(obj.call.keys.count).must_equal 4
     end
