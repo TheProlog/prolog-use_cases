@@ -13,6 +13,7 @@ describe 'Prolog::UseCases::SummariseContent' do
     Class.new do
       def initialize(articles)
         @articles = articles
+        @articles.freeze
         self
       end
 
