@@ -9,14 +9,16 @@ module Prolog
     class RegisterNewMember
       # Form object for all your data validation and massaging needs. :grinning:
       class FormObject
-        include Virtus.model
+        include Virtus.value_object
         include ActiveModel::Validations
 
-        attribute :name, String
-        attribute :email, String
-        attribute :profile, String
-        attribute :password, String
-        attribute :password_confirmation, String
+        values do
+          attribute :name, String
+          attribute :email, String
+          attribute :profile, String
+          attribute :password, String
+          attribute :password_confirmation, String
+        end
 
         validates :name, format: { with: /\A([[:alpha:]][\.\- \w]{4,}\w)\z/ }
         validates :name, format: { without: /\s{2,}/ }
