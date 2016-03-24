@@ -134,6 +134,78 @@ describe 'Prolog::UseCases::ProposeEditContribution::ContentValidator' do
           end # describe 'with a JSON-encoded payload including'
         end # describe 'calls the ui_gateway#failure method'
       end # describe 'empty'
+
+      describe 'blank' do
+        before { @ret = obj.invalid? '     ' }
+
+        it 'returns true' do
+          expect(@ret).must_equal true
+        end
+
+        describe 'calls the ui_gateway#failure method' do
+          let(:failure_data) { ui_gateway.method_calls.first }
+
+          it 'once' do
+            expect(ui_gateway.method_calls.count).must_equal 1
+            expect(failure_data.first).must_equal :failure
+          end
+
+          describe 'with a JSON-encoded payload including' do
+            let(:payload) do
+              JSON.parse ui_gateway.method_calls.first[1].first,
+                         symbolize_names: true
+            end
+
+            it 'a :failure field of "blank proposed content"' do
+              expect(payload[:failure]).must_equal 'blank proposed content'
+            end
+
+            it 'a :member_name field with the member name' do
+              expect(payload[:member_name]).must_equal user_name
+            end
+
+            it 'an :article_ident field matching what was passed in' do
+              expect(payload[:article_id]).must_equal article_id.to_s
+            end
+          end # describe 'with a JSON-encoded payload including'
+        end # describe 'calls the ui_gateway#failure method'
+      end # describe 'blank'
+
+      describe 'missing' do
+        before { @ret = obj.invalid? nil }
+
+        it 'returns true' do
+          expect(@ret).must_equal true
+        end
+
+        describe 'calls the ui_gateway#failure method' do
+          let(:failure_data) { ui_gateway.method_calls.first }
+
+          it 'once' do
+            expect(ui_gateway.method_calls.count).must_equal 1
+            expect(failure_data.first).must_equal :failure
+          end
+
+          describe 'with a JSON-encoded payload including' do
+            let(:payload) do
+              JSON.parse ui_gateway.method_calls.first[1].first,
+                         symbolize_names: true
+            end
+
+            it 'a :failure field of "missing proposed content"' do
+              expect(payload[:failure]).must_equal 'missing proposed content'
+            end
+
+            it 'a :member_name field with the member name' do
+              expect(payload[:member_name]).must_equal user_name
+            end
+
+            it 'an :article_ident field matching what was passed in' do
+              expect(payload[:article_id]).must_equal article_id.to_s
+            end
+          end # describe 'with a JSON-encoded payload including'
+        end # describe 'calls the ui_gateway#failure method'
+      end # describe 'missing'
     end # describe 'when called with a string that is'
   end # describe 'has an #invalid? method that'
 end

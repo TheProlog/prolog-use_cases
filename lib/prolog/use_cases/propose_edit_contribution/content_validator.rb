@@ -36,7 +36,7 @@ module Prolog
           when nil then 'missing proposed content'
           when /\A\s+\z/ then 'blank proposed content'
           when '' then 'empty proposed content'
-          else "unknown invalid proposed content: '#{@content}'"
+            # else "unknown invalid proposed content: '#{@content}'"
           end
         end
       end # class Prolog::UseCases::ProposeEditContribution::ContentValidator
