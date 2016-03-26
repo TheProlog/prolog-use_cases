@@ -1,4 +1,6 @@
 
+require 'forwardable'
+
 require 'active_model'
 require 'virtus'
 
@@ -17,13 +19,14 @@ module Prolog
         include Virtus.model
         include ActiveModel::Validations
         include Prolog::Support::FormObject
+        extend Forwardable
 
-        attribute :guest, Boolean, default: true
-        attribute :user_name, String, default: 'Guest User'
+        attribute :authoriser, Object
         attribute :article, Object # formerly Prolog::Core::Article
         attribute :endpoints, IntegerRange
         attribute :proposed_content, String
         attribute :justification, String
+
         attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
         attribute :article_id, Prolog::Entities::ArticleIdent,
                   default: -> (fo, _) { default_article_id(fo) },
@@ -31,10 +34,10 @@ module Prolog
         attribute :status, Symbol, default: -> (fo, _) { default_status(fo) },
                                    writer: :private
 
+        delegate :guest?, :user_name, to: :authoriser
+
         def body_with_markers(id_number)
-          marker = BodyMarker.new body: article.body, endpoints: endpoints,
-                                  id_number: id_number
-          marker.to_s
+          body_marker_for(id_number).to_s
         end
 
         def proposed_by_author?
@@ -57,6 +60,13 @@ module Prolog
         def self.default_status(fo)
           return :accepted if fo.proposed_by_author?
           :proposed
+        end
+
+        private
+
+        def body_marker_for(id_number)
+          BodyMarker.new body: article.body, endpoints: endpoints,
+                         id_number: id_number
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution

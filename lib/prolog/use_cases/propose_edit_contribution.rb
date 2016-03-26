@@ -9,7 +9,6 @@ end
 
 require_relative 'propose_edit_contribution/content_validator'
 require_relative 'propose_edit_contribution/form_object'
-require_relative 'propose_edit_contribution/form_object_two_stage'
 
 # "Propose Edit Contribution" use case.
 #
@@ -31,8 +30,7 @@ module Prolog
 
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @form_object = FormObjectTwoStage.init(article, authoriser)
-        # init_form_object article, authoriser
+        @form_object = FormObject.new article: article, authoriser: authoriser
         @contribution_repo = contribution_repo
         @article_reop = article_repo
         @ui_gateway = ui_gateway
@@ -40,8 +38,9 @@ module Prolog
       end
 
       def call(endpoints:, proposed_content:, justification: '')
-        FormObjectTwoStage.update(@form_object, endpoints, proposed_content,
-                                  justification)
+        @form_object = FormObject.new full_form_params(endpoints,
+                                                       proposed_content,
+                                                       justification)
         steps_in_process unless inputs_invalid?
         self
       end
@@ -50,8 +49,14 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
-      delegate :article_id, :guest, :proposed_content, :user_name,
+      delegate :article_id, :guest?, :proposed_content, :user_name,
                :wrap_contribution_with, to: :@form_object
+
+      def full_form_params(endpoints, proposed_content, justification)
+        { article: @form_object.article, authoriser: @form_object.authoriser,
+          endpoints: endpoints, proposed_content: proposed_content,
+          justification: justification }
+      end
 
       def inputs_invalid?
         guest_user? || content_validator.invalid?(proposed_content)
@@ -66,7 +71,7 @@ module Prolog
       end
 
       def guest_user?
-        return false unless guest
+        return false unless guest?
         ui_gateway.failure guest_failure_payload.to_json
         true
       end
