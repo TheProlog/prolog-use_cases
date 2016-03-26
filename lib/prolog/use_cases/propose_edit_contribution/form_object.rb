@@ -1,6 +1,13 @@
 
 require 'forwardable'
 
+# Hack to use Rails' broken :delegate rather than the standard library's.
+# Yes, this is obscene. Not least because it must be done *once and only once*,
+# at the *first* relevant leaf node of the required source tree. :rage:
+module Forwardable
+  remove_method :delegate
+end
+
 require 'active_model'
 require 'virtus'
 
@@ -37,6 +44,7 @@ module Prolog
         end
 
         delegate :guest?, :user_name, to: :authoriser
+        validate :logged_in?
 
         def body_with_markers(id_number)
           body_marker_for(id_number).to_s
@@ -69,6 +77,16 @@ module Prolog
         def body_marker_for(id_number)
           BodyMarker.new body: article.body, endpoints: endpoints,
                          id_number: id_number
+        end
+
+        def not_logged_in_failure_message
+          { failure: 'not logged in', article_id: article_id }.to_json
+        end
+
+        def logged_in?
+          return true unless guest?
+          errors.add :authoriser, not_logged_in_failure_message
+          false
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution

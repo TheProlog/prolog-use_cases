@@ -1,12 +1,6 @@
 
 require 'forwardable'
 
-# Hack to use Rails' broken :delegate rather than the standard library's.
-# Yes, this is obscene.
-module Forwardable
-  remove_method :delegate
-end
-
 require_relative 'propose_edit_contribution/content_validator'
 require_relative 'propose_edit_contribution/form_object'
 
@@ -50,7 +44,7 @@ module Prolog
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
       delegate :article_id, :guest?, :proposed_content, :user_name,
-               :wrap_contribution_with, to: :@form_object
+               :wrap_contribution_with, :errors, :valid?, to: :@form_object
 
       def full_form_params(endpoints, proposed_content, justification)
         { article: @form_object.article, authoriser: @form_object.authoriser,
@@ -67,12 +61,13 @@ module Prolog
       end
 
       def guest_failure_payload
-        { failure: 'not logged in', article_id: article_id }
+        valid?
+        errors[:authoriser].first
       end
 
       def guest_user?
         return false unless guest?
-        ui_gateway.failure guest_failure_payload.to_json
+        ui_gateway.failure guest_failure_payload
         true
       end
 
