@@ -16,23 +16,25 @@ module Prolog
     class ProposeEditContribution
       # Form object for data validation and organisation.
       class FormObject
-        include Virtus.model
+        include Virtus.value_object
         include ActiveModel::Validations
         include Prolog::Support::FormObject
         extend Forwardable
 
-        attribute :authoriser, Object
-        attribute :article, Object # formerly Prolog::Core::Article
-        attribute :endpoints, IntegerRange
-        attribute :proposed_content, String
-        attribute :justification, String
+        values do
+          attribute :authoriser, Object
+          attribute :article, Object # formerly Prolog::Core::Article
+          attribute :endpoints, IntegerRange
+          attribute :proposed_content, String
+          attribute :justification, String
 
-        attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
-        attribute :article_id, Prolog::Entities::ArticleIdent,
-                  default: -> (fo, _) { default_article_id(fo) },
-                  writer: :private
-        attribute :status, Symbol, default: -> (fo, _) { default_status(fo) },
-                                   writer: :private
+          attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
+          attribute :article_id, Prolog::Entities::ArticleIdent,
+                    default: -> (fo, _) { default_article_id(fo) },
+                    writer: :private
+          attribute :status, Symbol, default: -> (fo, _) { default_status(fo) },
+                                     writer: :private
+        end
 
         delegate :guest?, :user_name, to: :authoriser
 
