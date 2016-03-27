@@ -46,16 +46,16 @@ module Prolog
         delegate :guest?, :user_name, to: :authoriser
         validate :logged_in?
 
-        def body_with_markers(id_number)
-          body_marker_for(id_number).to_s
-        end
-
-        def proposed_by_author?
-          user_name == article.author_name
-        end
-
+        # The only non-attribute public action method in the class. Given an ID
+        # number and an otherwise-correctly-populated set of attributes,
+        # modifies the article content, wrapping identified anchor tag pairs
+        # around the range of content specified by the endpoint values (which
+        # are not otherwise checked). Responsibility is *ON THE CALLER* to
+        # ensure that everything is valid. Since this is memoised, after a
+        # fashion, screwups can be rectified only by creating a new instance of
+        # this class. YHBW.
         def wrap_contribution_with(id_number)
-          return self if @wrapped
+          return self if !valid? || @wrapped
           article.body = body_with_markers(id_number)
           @wrapped = true
           self
@@ -68,15 +68,25 @@ module Prolog
         end
 
         def self.default_status(fo)
-          return :accepted if fo.proposed_by_author?
+          return :accepted if fo._proposed_by_author?
           :proposed
+        end
+
+        # This is a public method only because it's called by `.default_status`
+        # using its FormObject parameter instance. It *SHOULD NOT* be called
+        # directly by the containing class' (or other) code.
+        def _proposed_by_author?
+          user_name == article.author_name
         end
 
         private
 
-        def body_marker_for(id_number)
-          BodyMarker.new body: article.body, endpoints: endpoints,
-                         id_number: id_number
+        def body_with_markers(id_number)
+          BodyMarker.new(bwm_params id_number).to_s
+        end
+
+        def bwm_params(id_number)
+          { body: article.body, endpoints: endpoints, id_number: id_number }
         end
 
         def not_logged_in_failure_message
