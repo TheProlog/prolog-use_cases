@@ -25,7 +25,7 @@ module Prolog
                      ui_gateway:)
         @form_object = FormObject.new article: article, authoriser: authoriser
         @contribution_repo = contribution_repo
-        @article_reop = article_repo
+        @article_repo = article_repo
         @ui_gateway = ui_gateway
         self
       end
@@ -41,14 +41,10 @@ module Prolog
 
       private
 
-      attr_reader :contribution_repo, :form_object, :ui_gateway
+      attr_reader :article_repo, :contribution_repo, :form_object, :ui_gateway
 
-      # Needed for content validator:
-      # :article_id, :proposed_content, :user_name,
-      # Needed for #guest_user?: )called by #inputs_invalid?)
-      # :guest?, :errors, :valid?
-      delegate :article_id, :guest?, :proposed_content, :status, :user_name,
-               :wrap_contribution_with, :errors, :valid?, to: :@form_object
+      delegate :article_id, :proposed_content, :status, :user_name,
+               :wrap_contribution_with, to: :@form_object
 
       def full_form_params(endpoints, proposed_content, justification)
         { article: @form_object.article, authoriser: @form_object.authoriser,
@@ -59,12 +55,17 @@ module Prolog
       def steps_in_process
         update_body
         persist_contribution
+        persist_article
         notify_success
         self
       end
 
       def notify_success
         ui_gateway.success success_payload.to_json
+      end
+
+      def persist_article
+        article_repo.add form_object.article
       end
 
       def persist_contribution

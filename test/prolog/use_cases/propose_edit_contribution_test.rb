@@ -17,6 +17,10 @@ def verify_error(message)
     expect(is_clean).must_equal true
   end
 
+  it 'does not persist the Article to the Article Repository' do
+    expect(article_repo.added_data).must_be :empty?
+  end
+
   it "has the reason as '#{message}'" do
     expect(failure_data[:failure]).must_equal message
   end
@@ -53,7 +57,21 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:article) do
     Struct.new(:author_name, :body, :title).new author_name, body, title
   end
-  let(:article_repo) { Object.new }
+  let(:article_repo) do
+    Class.new do
+      attr_reader :added_data
+
+      def initialize
+        @added_data = []
+        self
+      end
+
+      def add(entity)
+        @added_data << entity
+        entity
+      end
+    end.new
+  end
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
@@ -261,6 +279,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(article_data).must_equal expected
         end
       end # describe 'encodes a UI Gateway #success message as JSON with'
+
+      it 'persists an (updated) entity to the Article Repository' do
+        expect(article_repo.added_data.count).must_equal 1
+      end
     end # describe 'whether or not the initiating user is the article author'
 
     describe 'reports failures and performs no updates when' do
