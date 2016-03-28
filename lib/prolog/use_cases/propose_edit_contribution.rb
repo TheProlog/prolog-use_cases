@@ -1,7 +1,6 @@
 
 require 'forwardable'
 
-# require_relative 'propose_edit_contribution/content_validator'
 require_relative 'propose_edit_contribution/form_object'
 
 # "Propose Edit Contribution" use case.
@@ -35,7 +34,7 @@ module Prolog
         @form_object = FormObject.new full_form_params(endpoints,
                                                        proposed_content,
                                                        justification)
-        steps_in_process unless inputs_invalid?
+        steps_in_process if form_object.valid?
         transfer_errors
         self
       end
@@ -56,14 +55,6 @@ module Prolog
           endpoints: endpoints, proposed_content: proposed_content,
           justification: justification }
       end
-
-      def inputs_invalid?
-        !form_object.valid? # || content_validator.invalid?(proposed_content)
-      end
-
-      # def content_validator
-      #   ContentValidator.new(ui_gateway, user_name, article_id)
-      # end
 
       def steps_in_process
         update_body
