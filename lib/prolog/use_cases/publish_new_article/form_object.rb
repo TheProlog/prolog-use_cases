@@ -35,25 +35,22 @@ module Prolog
 
         private_constant :KeywordList, :UniqueErrors
 
-        include Virtus.model
+        include Virtus.value_object
         include ActiveModel::Validations
 
-        attribute :title, String
-        attribute :body, String
-        attribute :image_url, String
-        attribute :author_name, String
-        attribute :keywords, KeywordList
-        attribute :current_user, String, writer: :private
+        values do
+          attribute :title, String
+          attribute :body, String
+          attribute :image_url, String
+          attribute :author_name, String
+          attribute :keywords, KeywordList
+          attribute :current_user, String, writer: :private
+        end
 
         validates :title, format: { with: /\A\S.*\S\z/ }
         validates :title, format: { without: /\s{2,}/ }
         validate :author_is_current_user
         validate :body_or_image_url_must_exist
-
-        def initialize(**attribs)
-          super
-          @current_user = attribs[:current_user]
-        end
 
         def error_notifications
           valid?

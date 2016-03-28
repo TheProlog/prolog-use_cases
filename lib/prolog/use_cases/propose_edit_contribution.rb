@@ -1,15 +1,7 @@
 
 require 'forwardable'
 
-# Hack to use Rails' broken :delegate rather than the standard library's.
-# Yes, this is obscene.
-module Forwardable
-  remove_method :delegate
-end
-
-require_relative 'propose_edit_contribution/content_validator'
 require_relative 'propose_edit_contribution/form_object'
-require_relative 'propose_edit_contribution/form_object_two_stage'
 
 # "Propose Edit Contribution" use case.
 #
@@ -31,8 +23,7 @@ module Prolog
 
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @form_object = FormObjectTwoStage.init(article, authoriser)
-        # init_form_object article, authoriser
+        @form_object = FormObject.new article: article, authoriser: authoriser
         @contribution_repo = contribution_repo
         @article_reop = article_repo
         @ui_gateway = ui_gateway
@@ -40,9 +31,11 @@ module Prolog
       end
 
       def call(endpoints:, proposed_content:, justification: '')
-        FormObjectTwoStage.update(@form_object, endpoints, proposed_content,
-                                  justification)
-        steps_in_process unless inputs_invalid?
+        @form_object = FormObject.new full_form_params(endpoints,
+                                                       proposed_content,
+                                                       justification)
+        steps_in_process if form_object.valid?
+        transfer_errors
         self
       end
 
@@ -50,25 +43,17 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
-      delegate :article_id, :guest, :proposed_content, :user_name,
-               :wrap_contribution_with, to: :@form_object
+      # Needed for content validator:
+      # :article_id, :proposed_content, :user_name,
+      # Needed for #guest_user?: )called by #inputs_invalid?)
+      # :guest?, :errors, :valid?
+      delegate :article_id, :guest?, :proposed_content, :status, :user_name,
+               :wrap_contribution_with, :errors, :valid?, to: :@form_object
 
-      def inputs_invalid?
-        guest_user? || content_validator.invalid?(proposed_content)
-      end
-
-      def content_validator
-        ContentValidator.new(ui_gateway, user_name, article_id)
-      end
-
-      def guest_failure_payload
-        { failure: 'not logged in', article_id: article_id }
-      end
-
-      def guest_user?
-        return false unless guest
-        ui_gateway.failure guest_failure_payload.to_json
-        true
+      def full_form_params(endpoints, proposed_content, justification)
+        { article: @form_object.article, authoriser: @form_object.authoriser,
+          endpoints: endpoints, proposed_content: proposed_content,
+          justification: justification }
       end
 
       def steps_in_process
@@ -89,6 +74,12 @@ module Prolog
       def success_payload
         { member: user_name, article_id: article_id,
           contribution_count: contribution_repo.count }
+      end
+
+      def transfer_errors
+        form_object.all_error_messages.each do |payload|
+          ui_gateway.failure payload
+        end
       end
 
       def update_body

@@ -1,12 +1,9 @@
 
-require 'prolog/core'
-
 require_relative 'register_new_member/form_object'
 
 module Prolog
   module UseCases
     # Encapsulates domain logic for registration of new member.
-    # FIXME: This class smells of :reek:TooManyInstanceVariables
     class RegisterNewMember
       attr_reader :notifications
 
@@ -18,14 +15,14 @@ module Prolog
       end
 
       def call(**params)
-        @params = params
+        init_form_object(params)
         return :precondition_failed unless all_preconditions_met?
-        repository.save_user(new_entity)
+        repository.add new_entity(params)
       end
 
       private
 
-      attr_reader :authoriser, :repository
+      attr_reader :authoriser, :form_object, :repository
 
       def all_preconditions_met?
         current_user_is_permitted? && validate_params && name_available?
@@ -37,19 +34,21 @@ module Prolog
         false
       end
 
-      def form_object
-        @form_obj ||= FormObject.new @params
-        @form_obj.valid?
-        @form_obj
+      def init_form_object(params)
+        @form_object = FormObject.new(params)
+        @form_object.valid?
       end
 
       def name_available?
-        user = repository.query_user_by_name form_object.name
-        user == :not_present
+        !named_user.respond_to? :name
       end
 
-      def new_entity
-        Prolog::Core::User.new @params
+      def named_user
+        repository.find(name: form_object.name)
+      end
+
+      def new_entity(params)
+        repository.create params
       end
 
       def validate_params
