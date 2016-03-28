@@ -1,7 +1,7 @@
 
 require 'forwardable'
 
-require_relative 'propose_edit_contribution/content_validator'
+# require_relative 'propose_edit_contribution/content_validator'
 require_relative 'propose_edit_contribution/form_object'
 
 # "Propose Edit Contribution" use case.
@@ -36,6 +36,7 @@ module Prolog
                                                        proposed_content,
                                                        justification)
         steps_in_process unless inputs_invalid?
+        transfer_errors
         self
       end
 
@@ -43,7 +44,11 @@ module Prolog
 
       attr_reader :contribution_repo, :form_object, :ui_gateway
 
-      delegate :article_id, :guest?, :proposed_content, :user_name,
+      # Needed for content validator:
+      # :article_id, :proposed_content, :user_name,
+      # Needed for #guest_user?: )called by #inputs_invalid?)
+      # :guest?, :errors, :valid?
+      delegate :article_id, :guest?, :proposed_content, :status, :user_name,
                :wrap_contribution_with, :errors, :valid?, to: :@form_object
 
       def full_form_params(endpoints, proposed_content, justification)
@@ -53,23 +58,12 @@ module Prolog
       end
 
       def inputs_invalid?
-        guest_user? || content_validator.invalid?(proposed_content)
+        !form_object.valid? # || content_validator.invalid?(proposed_content)
       end
 
-      def content_validator
-        ContentValidator.new(ui_gateway, user_name, article_id)
-      end
-
-      def guest_failure_payload
-        valid?
-        errors[:authoriser].first
-      end
-
-      def guest_user?
-        return false unless guest?
-        ui_gateway.failure guest_failure_payload
-        true
-      end
+      # def content_validator
+      #   ContentValidator.new(ui_gateway, user_name, article_id)
+      # end
 
       def steps_in_process
         update_body
@@ -89,6 +83,12 @@ module Prolog
       def success_payload
         { member: user_name, article_id: article_id,
           contribution_count: contribution_repo.count }
+      end
+
+      def transfer_errors
+        form_object.all_error_messages.each do |payload|
+          ui_gateway.failure payload
+        end
       end
 
       def update_body

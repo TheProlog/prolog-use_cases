@@ -280,8 +280,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       describe 'the Proposed Content is' do
         [
           [:empty, '', 'empty proposed content'],
-          [:blank, '     ', 'blank proposed content'],
-          [:missing, nil, 'missing proposed content']
+          # [:blank, '     ', 'blank proposed content'],
+          # [:missing, nil, 'missing proposed content']
         ].each do |reason, content, message|
           verify_invalid_content_handling reason, content, message
         end

@@ -72,7 +72,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
       end
 
       it 'reports a single error' do
-        expect(obj.errors.count).must_equal 1
+        expect(obj.errors[:authoriser].count).must_equal 1
       end
 
       describe 'reports an error' do
@@ -176,5 +176,66 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
         expect(error_info[:failure]).must_equal 'not logged in'
       end
     end # describe 'when called while no member is logged in/authorised'
+
+    # Tested separately as an earlier implementation had varying error messages
+    # for each of the three error conditions, even though ActiveModel::Errors
+    # by default does not. (Were we using, say, Dry::Validation, however...)
+    describe 'when called with proposed input that is' do
+      let(:payload) do
+        JSON.parse obj.errors[:proposed_content].first, symbolize_names: true
+      end
+      let(:article_id) { YAML.load payload[:article_id] }
+      let(:expected_article_id) do
+        { author_name: article.author_name, title: article.title }
+      end
+
+      describe 'missing' do
+        let(:proposed_content) { nil }
+
+        it 'makes no modification to the article body' do
+          expect(obj.article.body).must_equal original_body
+        end
+
+        it 'reports that proposed content is missing' do
+          expect(payload[:failure]).must_equal 'missing proposed content'
+        end
+
+        it 'reports the correct article-ID data' do
+          expect(article_id).must_equal expected_article_id
+        end
+      end # describe 'missing'
+
+      describe 'empty' do
+        let(:proposed_content) { '' }
+
+        it 'makes no modification to the article body' do
+          expect(obj.article.body).must_equal original_body
+        end
+
+        it 'reports that proposed content is empty' do
+          expect(payload[:failure]).must_equal 'empty proposed content'
+        end
+
+        it 'reports the correct article-ID data' do
+          expect(article_id).must_equal expected_article_id
+        end
+      end # describe 'empty'
+
+      describe 'blank' do
+        let(:proposed_content) { '   ' }
+
+        it 'makes no modification to the article body' do
+          expect(obj.article.body).must_equal original_body
+        end
+
+        it 'reports that proposed content is blank' do
+          expect(payload[:failure]).must_equal 'blank proposed content'
+        end
+
+        it 'reports the correct article-ID data' do
+          expect(article_id).must_equal expected_article_id
+        end
+      end # describe 'blank'
+    end # describe 'when called with proposed input that is'
   end # describe 'has a #wrap_contribution_with method that'
 end

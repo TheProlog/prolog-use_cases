@@ -44,7 +44,7 @@ module Prolog
         end
 
         delegate :guest?, :user_name, to: :authoriser
-        validate :logged_in?
+        validate :logged_in?, :valid_proposed_content?
 
         # The only non-attribute public action method in the class. Given an ID
         # number and an otherwise-correctly-populated set of attributes,
@@ -59,6 +59,10 @@ module Prolog
           article.body = body_with_markers(id_number)
           @wrapped = true
           self
+        end
+
+        def all_error_messages
+          errors.messages.values.flatten
         end
 
         def self.default_article_id(fo)
@@ -96,6 +100,32 @@ module Prolog
         def logged_in?
           return true unless guest?
           errors.add :authoriser, not_logged_in_failure_message
+          false
+        end
+
+        def proposed_content_failure_message
+          [proposed_content_invalid_reason, 'proposed content'].join(' ')
+        end
+
+        def proposed_content_invalid_reason
+          return 'empty' if proposed_content == ''
+          return 'missing' if proposed_content.to_s.empty? # was nil
+          'blank'
+        end
+
+        def proposed_content_payload
+          { article_id: article_id }.tap do |payload|
+            payload[:failure] = proposed_content_failure_message
+          end
+        end
+
+        def proposed_content_is_valid?
+          !proposed_content.to_s.strip.empty?
+        end
+
+        def valid_proposed_content?
+          return true if proposed_content_is_valid?
+          errors.add :proposed_content, JSON.dump(proposed_content_payload)
           false
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
