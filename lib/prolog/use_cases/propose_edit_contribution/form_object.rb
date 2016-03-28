@@ -15,6 +15,7 @@ require 'prolog/entities/edit_contribution/proposed'
 require 'prolog/support/form_object/integer_range'
 
 require_relative 'form_object/body_marker'
+require_relative 'form_object/proposed_content_validator'
 
 module Prolog
   module UseCases
@@ -46,14 +47,13 @@ module Prolog
         delegate :guest?, :user_name, to: :authoriser
         validate :logged_in?, :valid_proposed_content?
 
-        # The only non-attribute public action method in the class. Given an ID
-        # number and an otherwise-correctly-populated set of attributes,
-        # modifies the article content, wrapping identified anchor tag pairs
-        # around the range of content specified by the endpoint values (which
-        # are not otherwise checked). Responsibility is *ON THE CALLER* to
-        # ensure that everything is valid. Since this is memoised, after a
-        # fashion, screwups can be rectified only by creating a new instance of
-        # this class. YHBW.
+        # The only "command" method in the class. Given an ID number and an
+        # otherwise-correctly-populated set of attributes, modifies the article
+        # content, wrapping identified anchor tag pairs around the range of
+        # content specified by the endpoint values (which are not otherwise
+        # checked). Responsibility is *ON THE CALLER* to ensure that everything
+        # is valid. Since this is memoised, after a fashion, screwups can be
+        # rectified only by creating a new instance of this class. YHBW.
         def wrap_contribution_with(id_number)
           return self if !valid? || @wrapped
           article.body = body_with_markers(id_number)
@@ -61,16 +61,21 @@ module Prolog
           self
         end
 
+        # Since all error messages, regardless of field, are JSON payloads,
+        # reading all error messages, regardless of field, as a unified array
+        # fits well with our current metaphor for UI gateway notifications.
         def all_error_messages
           errors.messages.values.flatten
         end
 
+        # Populates default/only `:article_id` attribute value.
         def self.default_article_id(fo)
           article = fo.article
           attribs = { author_name: article.author_name, title: article.title }
           Prolog::Entities::ArticleIdent.new attribs
         end
 
+        # Populates default/only `:status` attribute value.
         def self.default_status(fo)
           return :accepted if fo._proposed_by_author?
           :proposed
@@ -85,17 +90,13 @@ module Prolog
 
         private
 
+        # Primary worker.
+
         def body_with_markers(id_number)
           BodyMarker.new(bwm_params id_number).to_s
         end
 
-        def bwm_params(id_number)
-          { body: article.body, endpoints: endpoints, id_number: id_number }
-        end
-
-        def not_logged_in_failure_message
-          { failure: 'not logged in', article_id: article_id }.to_json
-        end
+        # Direct validation methods
 
         def logged_in?
           return true unless guest?
@@ -103,30 +104,32 @@ module Prolog
           false
         end
 
-        def proposed_content_failure_message
-          [proposed_content_invalid_reason, 'proposed content'].join(' ')
-        end
-
-        def proposed_content_invalid_reason
-          return 'empty' if proposed_content == ''
-          return 'missing' if proposed_content.to_s.empty? # was nil
-          'blank'
-        end
-
-        def proposed_content_payload
-          { article_id: article_id }.tap do |payload|
-            payload[:failure] = proposed_content_failure_message
-          end
-        end
-
-        def proposed_content_is_valid?
-          !proposed_content.to_s.strip.empty?
-        end
-
         def valid_proposed_content?
-          return true if proposed_content_is_valid?
-          errors.add :proposed_content, JSON.dump(proposed_content_payload)
+          return true if validator.valid?
+          errors.add :proposed_content, validator.payload
           false
+        end
+
+        def validator
+          return @pcv if @pcv
+          @pcv = ProposedContentValidator.new article_id: article_id,
+                                              proposed_content: proposed_content
+        end
+
+        # Support methods for the above; extract as sensible.
+
+        # ... for `#body_with_markers`; gets article/endpoints dependencies out
+        #     of the way. No supporting methods of its own.
+
+        def bwm_params(id_number)
+          { body: article.body, endpoints: endpoints, id_number: id_number }
+        end
+
+        # ... for `#logged_in?`; builds JSON payload using `article_id`. No
+        #     supporting methods of its own.
+
+        def not_logged_in_failure_message
+          { failure: 'not logged in', article_id: article_id }.to_json
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution
