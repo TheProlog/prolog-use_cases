@@ -5,7 +5,7 @@ require 'forwardable'
 # Yes, this is obscene. Not least because it must be done *once and only once*,
 # at the *first* relevant leaf node of the required source tree. :rage:
 module Forwardable
-  remove_method :delegate
+  remove_method :delegate if Forwardable.respond_to?(:delegate)
 end
 
 require 'active_model'
