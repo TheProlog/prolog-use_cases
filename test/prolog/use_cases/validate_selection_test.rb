@@ -1,8 +1,6 @@
 
 require 'test_helper'
 
-require 'forwardable'
-
 require 'prolog/use_cases/validate_selection'
 
 describe 'Prolog::UseCases::ValidateSelection' do
