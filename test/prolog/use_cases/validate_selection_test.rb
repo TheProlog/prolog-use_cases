@@ -1,6 +1,8 @@
 
 require 'test_helper'
 
+require 'forwardable'
+
 require 'prolog/use_cases/validate_selection'
 
 describe 'Prolog::UseCases::ValidateSelection' do
@@ -12,17 +14,19 @@ describe 'Prolog::UseCases::ValidateSelection' do
         endpoints: endpoints, authoriser: authoriser,
         contribution_repo: contribution_repo, ui_gateway: ui_gateway }
     end
-    let(:article) { Object.new }
+    let(:article) { Struct.new(:body).new 'Body Content is Here.' }
     let(:authoriser) { Object.new }
     let(:contribution_repo) { Object.new }
-    let(:endpoints) { Object.new }
+    let(:endpoints) { (7..11) }
     let(:replacement_content) { Object.new }
     let(:ui_gateway) { Object.new }
 
-    it 'article' do
-      params.delete :article
-      error = expect { described_class.new params }.must_raise KeyError
-      expect(error.message).must_equal 'key not found: :article'
+    [:article, :endpoints].each do |attrib|
+      it "#{attrib}" do
+        params.delete attrib
+        obj = described_class.new params
+        expect(obj).wont_be :valid?
+      end
     end
   end # describe 'initialisation requires parameters for'
 end
