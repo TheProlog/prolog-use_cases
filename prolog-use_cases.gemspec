@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "prolog_core", "~> 0.4"
+  spec.add_dependency 'pandoc-ruby', '~> 2.0'
   spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
   spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
   spec.add_dependency "ox", "~> 2.3"
@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "gemoji", "~> 2.1"
   spec.add_dependency "github-markdown", "0.6.9"
   spec.add_dependency "rinku", "~> 1.7", ">= 1.7.3"
+  spec.add_dependency "prolog_core", "~> 0.4"
   spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0"
   # spec.add_dependency "motion-markdown-it", "~> 4.2", ">= 4.2.2.0"
 
