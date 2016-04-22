@@ -4,7 +4,7 @@ require 'virtus'
 
 require 'prolog/support/form_object/integer_range'
 
-require_relative 'form_object/body_replacement_validator'
+require_relative './form_object/proposal_field_tester'
 
 module Prolog
   module UseCases
@@ -73,9 +73,7 @@ module Prolog
 
         def _replacement_valid?
           return false unless replacement_content
-          v7r = BodyReplacementValidator.build self
-          v7r.valid?
-          !v7r.errors.key?(:replacement)
+          ProposalFieldTester.accepts? self, :replacement
         end
       end # class Prolog::UseCases::ValidateSelection::FormObject
     end # class Prolog::UseCases::ValidateSelection
