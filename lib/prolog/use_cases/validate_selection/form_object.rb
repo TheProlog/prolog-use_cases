@@ -4,6 +4,8 @@ require 'virtus'
 
 require 'prolog/support/form_object/integer_range'
 
+require_relative 'form_object/body_replacement_validator'
+
 module Prolog
   module UseCases
     # Validate selection parameters for eventual Contribution proposal.
@@ -18,14 +20,18 @@ module Prolog
           attribute :article, Object
           attribute :endpoints, IntegerRange
           attribute :authoriser, Object
+          attribute :replacement_content, String
         end
 
         ATTR_REQUIRED = '%{value} is required.'
         validates_presence_of :article, message: ATTR_REQUIRED
         validates_presence_of :authoriser, message: ATTR_REQUIRED
+        validates_presence_of :replacement_content, message: ATTR_REQUIRED
+
         validate :authoriser_logged_in
         validate :endpoints_supplied
         validate :endpoints_within_article_body
+        validate :body_valid_after_replacement
 
         private
 
@@ -33,6 +39,12 @@ module Prolog
           return false unless authoriser.respond_to? :guest?
           return true unless authoriser.guest?
           errors.add :current_user, 'not logged in'
+          false
+        end
+
+        def body_valid_after_replacement
+          return true if _replacement_valid?
+          errors.add :replacement_content, 'invalid'
           false
         end
 
@@ -57,6 +69,13 @@ module Prolog
           return true if end_endpoint_less_than_length?
           errors.add :endpoints, 'must not extend past end of body content'
           false
+        end
+
+        def _replacement_valid?
+          return false unless replacement_content
+          v7r = BodyReplacementValidator.build self
+          v7r.valid?
+          !v7r.errors.key?(:replacement)
         end
       end # class Prolog::UseCases::ValidateSelection::FormObject
     end # class Prolog::UseCases::ValidateSelection

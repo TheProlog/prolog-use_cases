@@ -14,8 +14,10 @@ describe 'Prolog::UseCases::ValidateSelection::FormObject' do
   let(:endpoints) { (begin_endpoint..end_endpoint) }
   let(:is_guest) { false }
   let(:params) do
-    { article: article, authoriser: authoriser, endpoints: endpoints }
+    { article: article, authoriser: authoriser, endpoints: endpoints,
+      replacement_content: replacement_content }
   end
+  let(:replacement_content) { '<em>sample</em>' }
   let(:obj) { described_class.new params }
 
   describe 'initialisation' do
@@ -24,7 +26,7 @@ describe 'Prolog::UseCases::ValidateSelection::FormObject' do
         expect(obj.send(@index)).must_equal params[@index]
       end
 
-      [:article, :endpoints].each do |attrib|
+      [:article, :authoriser, :endpoints, :replacement_content].each do |attrib|
         it "#{attrib}" do
           @index = attrib
         end
@@ -48,6 +50,10 @@ describe 'Prolog::UseCases::ValidateSelection::FormObject' do
 
       it 'the ending endpoint exceeds the allowable range' do
         params[:endpoints] = (begin_endpoint..article.body.length + 2)
+      end
+
+      it 'the replacement content includes bad HTML' do
+        params[:replacement_content] = '<em>invalid</i>'
       end
     end # describe 'invalidates the instance when'
   end # describe 'initialisation'
