@@ -17,23 +17,40 @@ module Prolog
         values do
           attribute :article, Object
           attribute :endpoints, IntegerRange
+          attribute :authoriser, Object
         end
 
         ATTR_REQUIRED = '%{value} is required.'
         validates_presence_of :article, message: ATTR_REQUIRED
+        validates_presence_of :authoriser, message: ATTR_REQUIRED
+        validate :authoriser_logged_in
         validate :endpoints_supplied
         validate :endpoints_within_article_body
 
         private
 
+        def authoriser_logged_in
+          return false unless authoriser.respond_to? :guest?
+          return true unless authoriser.guest?
+          errors.add :current_user, 'not logged in'
+          false
+        end
+
         def endpoints_supplied
           return true unless endpoints == (-1..-1)
           errors.add :endpoints, 'must be specified.'
+          false
+        end
+
+        def _end_endpoint_within_body?
+          length = article&.body&.length.to_i
+          endpoints.end <= length
         end
 
         def end_endpoint_less_than_length?
-          length = article&.body&.length.to_i
-          endpoints.end <= length
+          return true if _end_endpoint_within_body?
+          errors.add :endpoint, 'end out of range'
+          false
         end
 
         def endpoints_within_article_body
