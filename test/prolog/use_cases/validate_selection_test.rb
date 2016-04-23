@@ -9,12 +9,10 @@ describe 'Prolog::UseCases::ValidateSelection' do
   describe 'initialisation requires parameters for' do
     let(:params) do
       { article: article, replacement_content: replacement_content,
-        endpoints: endpoints, authoriser: authoriser,
-        contribution_repo: contribution_repo, ui_gateway: ui_gateway }
+        endpoints: endpoints, authoriser: authoriser, ui_gateway: ui_gateway }
     end
     let(:article) { Struct.new(:body).new 'Body Content is Here.' }
     let(:authoriser) { Object.new }
-    let(:contribution_repo) { Object.new }
     let(:endpoints) { (7..11) }
     let(:replacement_content) { Object.new }
     let(:ui_gateway) { Object.new }
