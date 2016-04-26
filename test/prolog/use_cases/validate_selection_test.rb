@@ -7,31 +7,15 @@ describe 'Prolog::UseCases::ValidateSelection' do
   let(:described_class) { Prolog::UseCases::ValidateSelection }
   let(:params) do
     { article: article, replacement_content: replacement_content,
-      endpoints: endpoints, authoriser: authoriser, ui_gateway: ui_gateway }
+      endpoints: endpoints, authoriser: authoriser }
   end
   let(:article) { Struct.new(:body).new body_content }
-  let(:error_container) do
-    Class.new do
-      attr_reader :errors
-
-      def initialize
-        @errors = {}
-        self
-      end
-
-      def add(key, values)
-        data = errors[key] || []
-        errors[key] = data.merge(values).uniq
-      end
-    end.new
-  end
 
   describe 'initialisation requires parameters for' do
     let(:authoriser) { Object.new }
     let(:body_content) { 'Body Content is Here.' }
     let(:endpoints) { (7..11) }
     let(:replacement_content) { "replacement content in #{__FILE__}" }
-    let(:ui_gateway) { Object.new }
 
     [:article, :endpoints].each do |attrib|
       it "#{attrib}" do
@@ -51,21 +35,11 @@ describe 'Prolog::UseCases::ValidateSelection' do
       let(:ep_end) { body_content.index ' content' }
       let(:is_guest) { false }
       let(:replacement_content) { 'basic' }
-      let(:ui_gateway) do
-        Class.new do
-          attr_reader :errors
-
-          def initialize(error_container)
-            @errors = error_container
-            self
-          end
-        end.new(error_container)
-      end
       let(:call_params) do
         { replacement_content: replacement_content, endpoints: endpoints }
       end
       let(:init_params) do
-        { article: article, authoriser: authoriser, ui_gateway: ui_gateway }
+        { article: article, authoriser: authoriser }
       end
       let(:obj) { described_class.new init_params }
 
@@ -98,20 +72,31 @@ describe 'Prolog::UseCases::ValidateSelection' do
           end
         end # describe 'no logged-in Member'
 
-        [:article, :authoriser].each do |attrib|
-          describe "a missing :#{attrib} attribute" do
-            before { init_params.delete attrib }
+        describe 'missing initialisation attributes for' do
+          let(:call_result) { obj.call call_params }
+          let(:call_errors) do
+            obj.call call_params
+            obj.errors
+          end
 
-            it 'returns failure' do
-              expect(obj.call call_params).must_equal false
-            end
+          # No, we don't test the UI gateway instance. How do you report an
+          # error when the error-reporting mechanism is not hooked up?
+          [:article, :authoriser].each do |attrib|
+            describe "a missing :#{attrib} attribute" do
+              before { init_params.delete attrib }
 
-            it 'reports a missing :article attribute as an error' do
-              obj.call call_params
-              expect(obj.errors[attrib]).must_equal [' is required.']
-            end
-          end # describe "a missing :#{attrib} attribute"
-        end
+              it 'returns failure' do
+                expect(call_result).must_equal false
+                expect(obj.call call_params).must_equal false
+              end
+
+              it 'reports a missing :article attribute as an error' do
+                obj.call call_params
+                expect(obj.errors[attrib]).must_equal [' is required.']
+              end
+            end # describe "a missing :#{attrib} attribute"
+          end
+        end # describe 'missing initialisation attributes for'
       end # describe 'are invalid due to'
     end # describe 'when initialised with parameters that'
   end # describe 'has a #call method that'
