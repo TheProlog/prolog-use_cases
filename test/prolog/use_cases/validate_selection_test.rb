@@ -92,9 +92,26 @@ describe 'Prolog::UseCases::ValidateSelection' do
           end
 
           it 'reports no current logged-in user as an error' do
-            expect(obj.errors[:current_user]).must_equal ['not logged in']
+            obj.call call_params
+            expected = { current_user: 'not logged in' }
+            expect(obj.errors.to_h).must_equal expected
           end
         end # describe 'no logged-in Member'
+
+        [:article, :authoriser].each do |attrib|
+          describe "a missing :#{attrib} attribute" do
+            before { init_params.delete attrib }
+
+            it 'returns failure' do
+              expect(obj.call call_params).must_equal false
+            end
+
+            it 'reports a missing :article attribute as an error' do
+              obj.call call_params
+              expect(obj.errors[attrib]).must_equal [' is required.']
+            end
+          end # describe "a missing :#{attrib} attribute"
+        end
       end # describe 'are invalid due to'
     end # describe 'when initialised with parameters that'
   end # describe 'has a #call method that'
