@@ -18,17 +18,40 @@ module Prolog
       extend Forwardable
       delegate :invalid?, :valid?, :errors, to: :form_object
 
+      # Per the spec:
+      #
+      # > When the Use Case is successfully completed, the passed-in Article,
+      # > unmodified, will be made available as an attribute; should the
+      # > validation of preconditions listed above fail for any reason, that
+      # > attribute will instead have a symbolic value such as
+      # > `:validation_failed`.
+      attr_reader :result
+
       def initialize(**params)
-        @form_object = FormObject.new params
-        valid?
+        @result = :validation_failed # until proven otherwise
+        update_attributes_with params
         self
+      end
+
+      def call(**params)
+        update_attributes_with params
       end
 
       private
 
-      delegate :article, to: :form_object
-
       attr_reader :form_object
+
+      def update_attributes_with(params)
+        attrib_hash = form_object ? form_object.to_hash : {}
+        @form_object = FormObject.new attrib_hash.merge(params)
+        update_result
+      end
+
+      def update_result
+        ret = form_object.valid?
+        @result = ret ? form_object.article : :validation_failed
+        ret
+      end
     end # class Prolog::UseCases::ValidateSelection
   end
 end
