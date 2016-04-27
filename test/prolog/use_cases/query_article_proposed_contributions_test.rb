@@ -7,20 +7,22 @@ GUEST_USER_NAME = 'Guest User'
 
 describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   let(:described_class) { Prolog::UseCases::QueryArticleProposedContributions }
-  let(:article_repo) { Object.new }
-  let(:article_repo_class) do
+  let(:article_repo) { repo_class.new found_articles }
+  let(:found_articles) { :not_found }
+  let(:repo_class) do
     Class.new do
       attr_reader :find_params
-      def initialize(article)
-        @article = article
+
+      def initialize(entities)
+        @entities = entities
         @find_params = []
         self
       end
 
-      # def find(**params)
-      #   find_params << params
-      #   article
-      # end
+      def find(**params)
+        find_params << params
+        entities
+      end
     end
   end
   let(:authoriser) do
@@ -28,7 +30,8 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
   let(:call_params) { { article_id: article_id } }
-  let(:contribution_repo) { Object.new }
+  let(:contribution_repo) { repo_class.new found_contributions }
+  let(:found_contributions) { :not_found }
   let(:init_params) do
     { article_repo: article_repo, contribution_repo: contribution_repo,
       authoriser: authoriser }
@@ -54,8 +57,7 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
       let(:article_id) do
         Prolog::Entities::ArticleIdent.new author_name: user_name, title: title
       end
-      let(:article_repo) { article_repo_class.new found_article }
-      let(:found_article) { article_id }
+      let(:found_articles) { [article_id] }
       let(:obj) { described_class.new init_params }
       let(:title) { 'A Title' }
       let(:user_name) { 'J Random Author' }
