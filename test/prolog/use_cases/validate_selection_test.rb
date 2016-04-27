@@ -72,31 +72,42 @@ describe 'Prolog::UseCases::ValidateSelection' do
           end
         end # describe 'no logged-in Member'
 
-        describe 'missing initialisation attributes for' do
+        describe 'missing' do
           let(:call_result) { obj.call call_params }
-          let(:call_errors) do
-            obj.call call_params
-            obj.errors
-          end
 
-          # No, we don't test the UI gateway instance. How do you report an
-          # error when the error-reporting mechanism is not hooked up?
-          [:article, :authoriser].each do |attrib|
-            describe "a missing :#{attrib} attribute" do
-              before { init_params.delete attrib }
+          describe 'initialisation attributes for' do
+            [:article, :authoriser].each do |attrib|
+              describe "a missing :#{attrib} attribute" do
+                it 'returns failure' do
+                  init_params.delete attrib
+                  expect(call_result).must_equal false
+                  expect(obj.call call_params).must_equal false
+                end
 
+                it "reports a missing :#{attrib} attribute as an error" do
+                  init_params.delete attrib
+                  obj.call call_params
+                  expect(obj.errors[attrib]).must_equal [' is required.']
+                end
+              end # describe "a missing :#{attrib} attribute"
+            end
+          end # describe 'initialisation attributes for'
+
+          describe '#call attributes for' do
+            [:endpoints, :replacement_content].each do |attrib|
               it 'returns failure' do
-                expect(call_result).must_equal false
+                call_params.delete attrib
                 expect(obj.call call_params).must_equal false
               end
 
-              it 'reports a missing :article attribute as an error' do
+              it "reports a missing :#{attrib} attribute as an error" do
+                call_params.delete attrib
                 obj.call call_params
-                expect(obj.errors[attrib]).must_equal [' is required.']
+                expect(obj.errors[attrib]).must_include ' is required.'
               end
-            end # describe "a missing :#{attrib} attribute"
-          end
-        end # describe 'missing initialisation attributes for'
+            end
+          end # describe '#call attributes for'
+        end # describe 'missing'
       end # describe 'are invalid due to'
     end # describe 'when initialised with parameters that'
   end # describe 'has a #call method that'

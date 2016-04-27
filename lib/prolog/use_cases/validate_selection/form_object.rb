@@ -50,7 +50,7 @@ module Prolog
 
         def endpoints_supplied
           return true unless endpoints == (-1..-1)
-          errors.add :endpoints, 'must be specified.'
+          errors.add :endpoints, ' is required.'
           false
         end
 
