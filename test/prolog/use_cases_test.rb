@@ -1,6 +1,8 @@
 
 require 'test_helper'
 
+require 'prolog/use_cases' # needed when running as single test file
+
 module Prolog
   # Reformatted, as-generated test for version string.
   class UseCasesTest < Minitest::Test
