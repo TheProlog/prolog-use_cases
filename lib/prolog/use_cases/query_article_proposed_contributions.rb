@@ -7,6 +7,19 @@ module Prolog
     # Responded to, that are Proposed against an Article published by the
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
+      # Result notification encapsulation for query.
+      class Result
+        attr_reader :errors
+
+        def initialize(errors:)
+          @errors = errors
+          self
+        end
+
+        def success?
+          errors.empty?
+        end
+      end # class Prolog::UseCases::QueryArticleProposedContributions::Result
       def initialize(article_repo:, authoriser:, contribution_repo:)
         @article_repo = article_repo
         @authoriser = authoriser
@@ -17,7 +30,7 @@ module Prolog
       # Reek thinks this stub of a method is a :reek:UtilityFunction -- for now.
       def call(article_id:)
         _ = article_id
-        Struct.new(:success?).new true
+        Result.new errors: []
       end
 
       private

@@ -17,10 +17,10 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
         self
       end
 
-      def find(**params)
-        find_params << params
-        article
-      end
+      # def find(**params)
+      #   find_params << params
+      #   article
+      # end
     end
   end
   let(:authoriser) do
@@ -62,6 +62,10 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
 
       it 'reports a successful result' do
         expect(obj.call(call_params)).must_be :success?
+      end
+
+      it 'reports no errors' do
+        expect(obj.call(call_params).errors).must_be :empty?
       end
     end # describe 'when initialised using valid parameter values and'
   end # describe 'has a #call method that'
