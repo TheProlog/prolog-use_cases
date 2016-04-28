@@ -1,26 +1,25 @@
 
 require 'prolog/entities/proposal'
 
+require_relative 'query_article_proposed_contributions/result'
+
 module Prolog
   module UseCases
     # Queries for Contribution Proposals that have been submitted but not yet
     # Responded to, that are Proposed against an Article published by the
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
-      # Result notification encapsulation for query.
-      class Result
-        attr_reader :errors, :proposals
-
-        def initialize(errors:, proposals:)
-          @errors = errors
-          @proposals = proposals
-          self
+      # Methods that neither depend on nor affect instance state.
+      module Internals
+        def self.contrib_search_params(article_id)
+          article_id.to_hash.merge(responded_at: nil)
         end
 
-        def success?
-          errors.empty?
+        def self.search_result_as_array(results)
+          results == :not_found ? [] : results
         end
-      end # class Prolog::UseCases::QueryArticleProposedContributions::Result
+      end
+      private_constant :Internals
 
       def initialize(article_repo:, authoriser:, contribution_repo:)
         @article_repo = article_repo
@@ -40,9 +39,9 @@ module Prolog
       attr_reader :article_repo, :authoriser, :contribution_repo
 
       def proposals_for(article_id)
-        params = article_id.to_hash.merge(responded_at: nil)
+        params = Internals.contrib_search_params(article_id)
         proposals = contribution_repo.find(params)
-        proposals == :not_found ? [] : proposals
+        Internals.search_result_as_array proposals
       end
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end
