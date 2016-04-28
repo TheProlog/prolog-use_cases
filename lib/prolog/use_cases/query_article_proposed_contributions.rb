@@ -29,9 +29,10 @@ module Prolog
       end
 
       def call(article_id:)
+        errors = validate
         # articles = article_repo.find(article_id)
-        proposals = proposals_for article_id
-        Result.new errors: [], proposals: proposals
+        proposals = errors.empty? ? proposals_for(article_id) : []
+        Result.new errors: errors, proposals: proposals
       end
 
       private
@@ -42,6 +43,12 @@ module Prolog
         params = Internals.contrib_search_params(article_id)
         proposals = contribution_repo.find(params)
         Internals.search_result_as_array proposals
+      end
+
+      def validate
+        ret = {}
+        ret[:current_user] = ['not logged in'] if authoriser.guest?
+        ret
       end
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end
