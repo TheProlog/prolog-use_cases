@@ -9,8 +9,9 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   let(:described_class) { Prolog::UseCases::QueryArticleProposedContributions }
   let(:article_id) do
     Prolog::Entities::ArticleIdent.new author_name: author_name,
-                                       title: title
+                                       title: article_title
   end
+  let(:article_title) { title }
   let(:title) { 'A Title' }
   let(:article_repo) { repo_class.new found_articles }
   let(:found_articles) { :not_found }
@@ -149,6 +150,25 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
           expect(obj.call(call_params).proposals).must_be :empty?
         end
       end # describe 'a ... user not the Author of the specified Article, it'
+
+      describe 'no Article matching the specification is found' do
+        let(:article_titlie) { 'Some Different Title; You Screwed Up' }
+        let(:found_articles) { :not_found }
+        let(:user_name) { 'J Random User' }
+
+        it 'reports failure' do
+          expect(obj.call call_params).wont_be :success?
+        end
+
+        it 'reports an error that the article was not found' do
+          actual = obj.call(call_params).errors[:article]
+          expect(actual).must_equal ['not found']
+        end
+
+        it 'returns no #propoosals' do
+          expect(obj.call(call_params).proposals).must_be :empty?
+        end
+      end # describe 'no Article matching the specification is found'
     end # describe 'on an instance initialised with'
   end # describe 'has a #call method that'
 end

@@ -30,7 +30,6 @@ module Prolog
 
       def call(article_id:)
         errors = validate article_id
-        # articles = article_repo.find(article_id)
         proposals = errors.empty? ? proposals_for(article_id) : []
         Result.new errors: errors, proposals: proposals
       end
@@ -46,7 +45,12 @@ module Prolog
       end
 
       def validate(article_id)
-        current_user_errors article_id
+        current_user_errors(article_id).merge article_errors(article_id)
+      end
+
+      def article_errors(article_id)
+        article = article_repo.find article_id
+        article == :not_found ? { article: ['not found'] } : {}
       end
 
       def current_user_errors(article_id)
