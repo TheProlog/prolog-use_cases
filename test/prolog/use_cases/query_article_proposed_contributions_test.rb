@@ -8,7 +8,7 @@ GUEST_USER_NAME = 'Guest User'
 describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   let(:described_class) { Prolog::UseCases::QueryArticleProposedContributions }
   let(:article_id) do
-    Prolog::Entities::ArticleIdent.new author_name: user_name,
+    Prolog::Entities::ArticleIdent.new author_name: author_name,
                                        title: title
   end
   let(:title) { 'A Title' }
@@ -43,6 +43,7 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   end
   let(:obj) { described_class.new init_params }
   let(:user_name) { GUEST_USER_NAME }
+  let(:author_name) { user_name }
 
   describe 'initialisation' do
     describe 'requires specified keyword parameters for' do
@@ -130,6 +131,24 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
           expect(obj.call(call_params).proposals).must_be :empty?
         end
       end # describe 'no Member presently logged in, it'
+
+      describe 'a current user not the Author of the specified Article, it' do
+        let(:author_name) { 'Marcus Tullius Cicero' }
+        let(:user_name) { 'J Random User' }
+
+        it 'reports failure' do
+          expect(obj.call call_params).wont_be :success?
+        end
+
+        it 'reports an error that the current user is not the author' do
+          actual = obj.call(call_params).errors[:current_user]
+          expect(actual).must_equal ['not author']
+        end
+
+        it 'returns no #propoosals' do
+          expect(obj.call(call_params).proposals).must_be :empty?
+        end
+      end # describe 'a ... user not the Author of the specified Article, it'
     end # describe 'on an instance initialised with'
   end # describe 'has a #call method that'
 end
