@@ -60,9 +60,15 @@ module Prolog
       end
 
       def validate_current_user(article_id)
-        return ['not logged in'] if authoriser.guest?
-        return ['not author'] if authoriser.user_name != article_id.author_name
-        []
+        verify_logged_in + verify_author(article_id)
+      end
+
+      def verify_author(article_id)
+        authoriser.user_name == article_id.author_name ? [] : ['not author']
+      end
+
+      def verify_logged_in
+        authoriser.guest? ? ['not logged in'] : []
       end
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end
