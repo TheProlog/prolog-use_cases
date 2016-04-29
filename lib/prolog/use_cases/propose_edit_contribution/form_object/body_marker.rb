@@ -13,8 +13,7 @@ module Prolog
             @id_number = id_number
             @body = body
             @endpoints = endpoints
-            @format_str = '<a id="contribution-%d-%s"></a>'
-            self
+            init_other_ivars
           end
 
           def to_s
@@ -38,6 +37,12 @@ module Prolog
 
           def end_content
             format format_str, id_number, 'end'
+          end
+
+          def init_other_ivars
+            @str = nil
+            @format_str = '<a id="contribution-%d-%s"></a>'
+            self
           end
         end # class ...::ProposeEditContribution::FormObject::BodyMarker
       end # class Prolog::UseCases::ProposeEditContribution::FormObject

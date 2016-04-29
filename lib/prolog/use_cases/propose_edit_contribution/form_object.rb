@@ -47,6 +47,12 @@ module Prolog
         delegate :guest?, :user_name, to: :authoriser
         validate :logged_in?, :valid_proposed_content?
 
+        def initialize(**params)
+          @pcv = nil
+          @wrapped = false
+          super
+        end
+
         # The only "command" method in the class. Given an ID number and an
         # otherwise-correctly-populated set of attributes, modifies the article
         # content, wrapping identified anchor tag pairs around the range of
