@@ -1,4 +1,7 @@
 
+AllCops:
+  TargetRubyVersion: 2.3
+
 Metrics/AbcSize:
   Exclude:
     - test/prolog/use_cases/propose_edit_contribution_test.rb
@@ -6,3 +9,11 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Exclude:
     - test/prolog/use_cases/propose_edit_contribution_test.rb
+
+# New to 0.39.x
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NestedParenthesizedCalls:
+  Enabled: false

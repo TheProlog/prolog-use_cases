@@ -27,7 +27,7 @@ describe 'Prolog::UseCases::ValidateSelection::FormObject' do
       end
 
       [:article, :authoriser, :endpoints, :replacement_content].each do |attrib|
-        it "#{attrib}" do
+        it attrib.to_s do
           @index = attrib
         end
       end
