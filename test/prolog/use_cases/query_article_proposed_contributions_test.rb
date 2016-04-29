@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 
 require 'test_helper'
 
 require 'prolog/use_cases/query_article_proposed_contributions'
 
-GUEST_USER_NAME = 'Guest User'.freeze
+GUEST_USER_NAME = 'Guest User'
 
 describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   let(:described_class) { Prolog::UseCases::QueryArticleProposedContributions }

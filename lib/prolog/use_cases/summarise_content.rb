@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require_relative 'summarise_content/article_lister'
 require_relative 'summarise_content/article_sorter'

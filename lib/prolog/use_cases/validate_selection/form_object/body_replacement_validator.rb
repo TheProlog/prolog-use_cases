@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'prolog/services/replace_content'
 

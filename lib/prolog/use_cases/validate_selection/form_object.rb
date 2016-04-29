@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'active_model'
 require 'virtus'
@@ -23,7 +24,7 @@ module Prolog
           attribute :replacement_content, String
         end
 
-        ATTR_REQUIRED = '%{value} is required.'.freeze
+        ATTR_REQUIRED = '%{value} is required.'
         validates_presence_of :article, message: ATTR_REQUIRED
         validates_presence_of :authoriser, message: ATTR_REQUIRED
         validates_presence_of :replacement_content, message: ATTR_REQUIRED

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Prolog
   module UseCases
@@ -28,7 +29,10 @@ module Prolog
           attr_reader :endpoints, :format_str, :id_number
 
           def add_endpoint(which_end, content)
-            @body.insert endpoints.send(which_end), content
+            index = endpoints.send(which_end)
+            new_body = @body[0...index] + content + @body[index..-1]
+            @body = new_body
+            # @body.insert endpoints.send(which_end), content
           end
 
           def begin_content

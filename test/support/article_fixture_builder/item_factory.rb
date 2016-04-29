@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Builds a sequence containing a specified number of `Article` instances with
 # fixture data, suitable for persisting as YAML.

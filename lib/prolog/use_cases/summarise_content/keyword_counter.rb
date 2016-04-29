@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require_relative 'keyword_counter/counts'
 require_relative 'keyword_counter/list_builder'
