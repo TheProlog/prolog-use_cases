@@ -1,4 +1,5 @@
 
+# frozen_string_literal: true
 require 'test_helper'
 
 require 'prolog/use_cases/propose_edit_contribution/form_object/body_marker'
@@ -23,7 +24,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject::BodyMarker' do
     end
 
     [:body, :endpoints, :id_number].each do |param|
-      it "#{param}" do
+      it param.to_s do
         @param = param
       end
     end
@@ -36,7 +37,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject::BodyMarker' do
     let(:end_fragment_offset) do
       ending_ep + start_marker.length + end_marker.length
     end
-    let(:end_fragment) { body[end_fragment_offset..-1] }
+    let(:end_fragment) { obj.to_s[end_fragment_offset..-1] }
 
     before { @actual = obj.to_s }
 

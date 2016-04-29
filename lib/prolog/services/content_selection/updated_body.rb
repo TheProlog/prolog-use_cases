@@ -20,7 +20,7 @@ module Prolog
           parts.join
         end
 
-        alias_method :to_str, :to_s
+        alias to_str to_s
 
         delegate :article, :endpoints, :errors, :last_contribution_id,
                  :selected_markup, :valid?, to: :@form_obj

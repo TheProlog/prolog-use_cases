@@ -50,7 +50,7 @@ module Prolog
             'blank': -> (content) { content.strip == '' },
             # fall-through default
             'should be valid': -> (_) { true }
-          }
+          }.freeze
         end # class ...::FormObject::ProposedContentValidator
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution

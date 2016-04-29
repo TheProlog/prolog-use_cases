@@ -18,7 +18,7 @@ describe 'Prolog::UseCases::ValidateSelection' do
     let(:replacement_content) { "replacement content in #{__FILE__}" }
 
     [:article, :endpoints].each do |attrib|
-      it "#{attrib}" do
+      it attrib.to_s do
         params.delete attrib
         obj = described_class.new params
         expect(obj).wont_be :valid?
