@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'json'
 
@@ -17,7 +18,7 @@ module Prolog
           end
 
           def valid?
-            !proposed_content.to_s.strip.empty?
+            Internals.present? proposed_content.to_s
           end
 
           def payload
@@ -51,6 +52,14 @@ module Prolog
             # fall-through default
             'should be valid': -> (_) { true }
           }.freeze
+
+          # Methods neither affecting nor affected by instance state.
+          module Internals
+            def self.present?(str)
+              !str.strip.empty?
+            end
+          end
+          private_constant :Internals
         end # class ...::FormObject::ProposedContentValidator
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution

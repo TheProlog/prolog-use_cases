@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'forwardable'
 
@@ -110,10 +111,13 @@ module Prolog
           false
         end
 
-        def valid_proposed_content?
-          return true if validator.valid?
+        def report_invalid_proposed_content
           errors.add :proposed_content, validator.payload
           false
+        end
+
+        def valid_proposed_content?
+          validator.valid? || report_invalid_proposed_content
         end
 
         def validator

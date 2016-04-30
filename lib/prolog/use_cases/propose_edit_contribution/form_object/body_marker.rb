@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Prolog
   module UseCases
@@ -28,7 +29,9 @@ module Prolog
           attr_reader :endpoints, :format_str, :id_number
 
           def add_endpoint(which_end, content)
-            @body.insert endpoints.send(which_end), content
+            index = endpoint_at which_end
+            @body = insert_within_body index, content
+            self
           end
 
           def begin_content
@@ -39,10 +42,18 @@ module Prolog
             format format_str, id_number, 'end'
           end
 
+          def endpoint_at(which_end)
+            endpoints.send(which_end)
+          end
+
           def init_other_ivars
             @str = nil
             @format_str = '<a id="contribution-%d-%s"></a>'
             self
+          end
+
+          def insert_within_body(index, content)
+            @body[0...index] + content + @body[index..-1]
           end
         end # class ...::ProposeEditContribution::FormObject::BodyMarker
       end # class Prolog::UseCases::ProposeEditContribution::FormObject

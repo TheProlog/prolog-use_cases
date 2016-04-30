@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require_relative 'keyword_counter/counts'
 require_relative 'keyword_counter/list_builder'
@@ -35,20 +36,19 @@ module Prolog
           self
         end
 
-        def list_keywords_by_count
-          init_kbc_hash.tap do |keywords_by_count|
-            keyword_counts.each do |word, count|
-              keywords_by_count[count] << word
-            end
-          end
+        def build_indexes
+          ret = {}
+          keyword_counts.each_value { |index| ret[index] = [] }
+          ret
         end
 
-        def init_kbc_hash
-          {}.tap do |keywords_by_count|
-            (1..keyword_counts.values.max).each do |index|
-              keywords_by_count[index] = []
-            end
-          end
+        def load_indexes(result)
+          keyword_counts.each { |str, index| result[index] << str }
+          result
+        end
+
+        def list_keywords_by_count
+          load_indexes(build_indexes)
         end
       end # class Prolog::UseCases::SummariseContent::KeywordCounter
     end # class Prolog::UseCases::SummariseContent

@@ -12,8 +12,5 @@ Metrics/MethodLength:
 
 # New to 0.39.x
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Style/NestedParenthesizedCalls:
   Enabled: false

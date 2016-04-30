@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Prolog
   module UseCases
@@ -15,18 +16,19 @@ module Prolog
           end
 
           def call
-            {}.tap do |keyword_counts|
-              keywords_as_set.each { |kw| keyword_counts[kw] = 0 }
-              keywords.each { |kw| keyword_counts[kw] += 1 }
-            end
+            keywords_as_set.map { |kw| keyword_with_count(kw) }.to_h
           end
 
           private
 
           attr_reader :keywords
 
+          def keyword_with_count(keyword)
+            [keyword, keywords.count(keyword)]
+          end
+
           def keywords_as_set
-            @kw_as_set ||= Set.new(keywords)
+            Set.new(keywords)
           end
         end # class Prolog::UseCases::SummariseContent::KeywordCounter::Counts
       end # class Prolog::UseCases::SummariseContent::KeywordCounter

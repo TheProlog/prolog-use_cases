@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'prolog/services/replace_content'
 
@@ -12,16 +13,28 @@ module Prolog
         class BodyReplacementValidator
           def self.build(form_obj)
             params = _params_from form_obj
-            _replacer(params).tap(&:convert)
+            _replace_and_convert params
+          end
+
+          def self._article_body_from(fo)
+            fo.article&.body.to_s
+          end
+
+          def self._article_replacement_content_from(fo)
+            fo.replacement_content.to_s
           end
 
           def self._params_from(fo)
-            { content: fo.article&.body.to_s, endpoints: fo.endpoints,
-              replacement: fo.replacement_content.to_s }
+            { content: _article_body_from(fo), endpoints: fo.endpoints,
+              replacement: _article_replacement_content_from(fo) }
           end
 
           def self._replacer(params)
             Prolog::Services::ReplaceContent.new(params)
+          end
+
+          def self._replace_and_convert(params)
+            _replacer(params).tap(&:convert)
           end
         end # class ...::ValidateSelection::FormObject::BodyReplacementValidator
       end # class Prolog::UseCases::ValidateSelection::FormObject

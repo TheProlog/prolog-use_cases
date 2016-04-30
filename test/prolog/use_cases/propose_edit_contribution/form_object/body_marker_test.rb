@@ -1,5 +1,5 @@
-
 # frozen_string_literal: true
+
 require 'test_helper'
 
 require 'prolog/use_cases/propose_edit_contribution/form_object/body_marker'

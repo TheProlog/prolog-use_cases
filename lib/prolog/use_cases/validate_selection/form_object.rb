@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'active_model'
 require 'virtus'
@@ -23,7 +24,7 @@ module Prolog
           attribute :replacement_content, String
         end
 
-        ATTR_REQUIRED = '%{value} is required.'.freeze
+        ATTR_REQUIRED = '%{value} is required.'
         validates_presence_of :article, message: ATTR_REQUIRED
         validates_presence_of :authoriser, message: ATTR_REQUIRED
         validates_presence_of :replacement_content, message: ATTR_REQUIRED
@@ -35,10 +36,19 @@ module Prolog
 
         private
 
+        def article_body_length
+          article&.body&.length.to_i
+        end
+
         def authoriser_logged_in
-          return false unless authoriser.respond_to? :guest?
-          return true unless authoriser.guest?
+          return true if logged_in?
           errors.add :current_user, 'not logged in'
+          false
+        end
+
+        def logged_in?
+          !authoriser.guest?
+        rescue NoMethodError
           false
         end
 
@@ -55,8 +65,7 @@ module Prolog
         end
 
         def _end_endpoint_within_body?
-          length = article&.body&.length.to_i
-          endpoints.end <= length
+          endpoints.end <= article_body_length
         end
 
         def end_endpoint_less_than_length?
