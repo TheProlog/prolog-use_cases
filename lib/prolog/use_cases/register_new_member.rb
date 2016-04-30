@@ -18,12 +18,16 @@ module Prolog
       def call(**params)
         init_form_object(params)
         return :precondition_failed unless all_preconditions_met?
-        repository.add new_entity(params)
+        add_new_entity_for(params)
       end
 
       private
 
       attr_reader :authoriser, :form_object, :repository
+
+      def add_new_entity_for(params)
+        repository.add new_entity(params)
+      end
 
       def all_preconditions_met?
         current_user_is_permitted? && validate_params && name_available?

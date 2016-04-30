@@ -32,11 +32,8 @@ module Prolog
       end
 
       def call(endpoints:, proposed_content:, justification: '')
-        @form_object = FormObject.new full_form_params(endpoints,
-                                                       proposed_content,
-                                                       justification)
-        steps_in_process if form_object.valid?
-        transfer_errors
+        build_form endpoints, proposed_content, justification
+        run_steps
         self
       end
 
@@ -44,13 +41,25 @@ module Prolog
 
       attr_reader :article_repo, :contribution_repo, :form_object, :ui_gateway
 
-      delegate :article_id, :proposed_content, :status, :user_name,
-               :wrap_contribution_with, to: :@form_object
+      delegate :all_error_messages, :article, :article_id, :proposed_content,
+               :status, :user_name, :wrap_contribution_with, to: :@form_object
 
-      def full_form_params(endpoints, proposed_content, justification)
-        { article: @form_object.article, authoriser: @form_object.authoriser,
-          endpoints: endpoints, proposed_content: proposed_content,
-          justification: justification }
+      def build_form(endpoints, proposed_content, justification)
+        params = { endpoints: endpoints, proposed_content: proposed_content,
+                   justification: justification }
+        @form_object = FormObject.new merged_form_params(params)
+        self
+      end
+
+      def merged_form_params(**params)
+        ret = { article: article, authoriser: form_object.authoriser }
+        ret.merge params
+      end
+
+      def run_steps
+        steps_in_process if form_object.valid?
+        transfer_errors
+        self
       end
 
       def steps_in_process
@@ -66,7 +75,7 @@ module Prolog
       end
 
       def persist_article
-        article_repo.add form_object.article
+        article_repo.add article
       end
 
       def persist_contribution
@@ -79,17 +88,19 @@ module Prolog
       end
 
       def transfer_errors
-        form_object.all_error_messages.each do |payload|
-          ui_gateway.failure payload
-        end
+        all_error_messages.each { |payload| ui_gateway.failure payload }
       end
 
       def update_body
-        wrap_contribution_with contribution_repo.count + 1
+        wrap_contribution_with updated_count_from_repo
       end
 
       def updated_contribution
         @contribution ||= contribution_repo.create form_object.to_h
+      end
+
+      def updated_count_from_repo
+        contribution_repo.count + 1
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

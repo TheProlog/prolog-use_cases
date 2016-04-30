@@ -3,7 +3,8 @@
 require 'active_model'
 require 'virtus'
 
-require 'prolog/core'
+require 'prolog/core' unless defined?(Prolog::Core)
+
 require 'prolog/support/form_object/integer_range'
 
 module Prolog

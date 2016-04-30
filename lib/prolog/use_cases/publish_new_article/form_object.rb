@@ -29,8 +29,18 @@ module Prolog
 
         # Virtus attribute to clean up keyword strings before persistence
         class KeywordList < Virtus::Attribute
+          # Methods neither affecting nor affected by instance state. Since
+          # this is on a Virtus::Attribute, there is *no* mutable state.
+          module Internals
+            def self.squish(str)
+              str.strip.gsub(/\s+/, ' ')
+            end
+          end
+          private_constant :Internals
+
           def coerce(value)
-            Array(value).map { |item| item.to_s.strip.gsub(/\s+/, ' ') }
+            Array(value).map { |item| Internals.squish item.to_s }
+            # Array(value).map { |item| item.to_s.strip.gsub(/\s+/, ' ') }
           end
         end
 
@@ -61,22 +71,28 @@ module Prolog
 
         private
 
-        def unique_errors
-          UniqueErrors.new.call(errors).store
-        end
-
         def author_is_current_user
           return if author_name == current_user
-          errors.add :author_name, 'not current user'
+          report_invalid_author_name
         end
 
         def body_or_image_url_must_exist
+          strip_body
           if_invalid_image_url { report_if_body_also_empty }
         end
 
         def if_invalid_image_url
-          @body = body.to_s.strip
           yield unless image_url_is_valid?
+        end
+
+        def image_uri_scheme
+          URI.parse(image_url).scheme
+        end
+
+        def image_url_is_valid?
+          return %w(http https).include?(image_uri_scheme)
+        rescue URI::InvalidURIError
+          false
         end
 
         def report_if_body_also_empty
@@ -85,11 +101,17 @@ module Prolog
           errors.add :image_url, 'is not valid; it or body content must be'
         end
 
-        def image_url_is_valid?
-          uri = URI.parse(image_url)
-          return %w(http https).include?(uri.scheme)
-        rescue URI::InvalidURIError
-          false
+        def report_invalid_author_name
+          errors.add :author_name, 'not current user'
+        end
+
+        def strip_body
+          @body = body.to_s.strip
+          self
+        end
+
+        def unique_errors
+          UniqueErrors.new.call(errors).store
         end
       end # class Prolog::UseCases::PublishNewArticle::FormObject
     end # class Prolog::UseCases::PublishNewArticle

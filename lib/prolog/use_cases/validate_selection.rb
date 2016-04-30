@@ -35,9 +35,13 @@ module Prolog
 
       attr_reader :form_object
 
+      def attributes_including(params)
+        existing = form_object ? form_object.to_hash : {}
+        existing.merge params
+      end
+
       def update_attributes_with(params)
-        attrib_hash = form_object ? form_object.to_hash : {}
-        @form_object = FormObject.new attrib_hash.merge(params)
+        @form_object = FormObject.new attributes_including(params)
         update_result
       end
 
