@@ -4,8 +4,7 @@ require "rake/testtask"
 
 require 'rake/tasklib'
 require 'flay_task'
-require 'flog'
-require 'flog_task'
+require 'tasks/prolog_flog_task'
 require 'reek/rake/task'
 require 'rubocop/rake_task'
 
@@ -38,10 +37,10 @@ t.dirs = %w(app lib)
 end
 
 FlogTask.new do |t|
-t.verbose = true
-t.threshold = 700 # default is 200
-t.instance_variable_set :@methods_only, true
-t.dirs = %w(app lib) # Look, Ma; no tests! Run the tool manually every so often for those.
+  t.verbose = true
+  t.threshold = 700 # default is 200
+  t.methods_only = true
+  t.dirs = %w(app lib) # Look, Ma; no tests! Run the tool manually every so often for those.
 end
 
 task(:default).clear
