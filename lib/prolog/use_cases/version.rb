@@ -4,6 +4,6 @@
 module Prolog
   # Module containing collected Meldd application use cases.
   module UseCases
-    VERSION = '0.9.0'
+    VERSION = '0.10.0'
   end
 end
