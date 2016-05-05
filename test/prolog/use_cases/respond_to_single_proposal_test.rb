@@ -3,6 +3,7 @@
 require 'test_helper'
 require 'matchers/raise_with_message'
 require 'matchers/raise_with_message_part'
+require 'matchers/success_with_no_errors'
 
 require 'prolog/use_cases/respond_to_single_proposal'
 
@@ -39,13 +40,17 @@ describe 'Prolog::UseCases::RespondToSingleProposal' do
     let(:article_repo) { Object.new }
     let(:authoriser) { Object.new }
     let(:contribution_repo) { Object.new }
-    let(:call_params) { { proposal: proposal } }
+    let(:call_params) { { proposal: proposal, accepted: accepted } }
+    let(:accepted) { true }
     let(:proposal) { Object.new }
 
     describe 'when called' do
-      it 'without a :proposal parameter, raises an error' do
-        message = 'missing keyword: proposal'
-        expect { obj.call }.must_raise_with_message message
+      [:proposal, :accepted].each do |param|
+        it "without a :#{param} parameter, raises an error" do
+          call_params.delete param
+          message = "missing keyword: #{param}"
+          expect { obj.call call_params }.must_raise_with_message message
+        end
       end
 
       it 'with a valid :proposal parameter, returns a Result instance' do
@@ -53,5 +58,13 @@ describe 'Prolog::UseCases::RespondToSingleProposal' do
         expect(obj.call call_params).must_be_instance_of result_class
       end
     end # describe 'when called'
+
+    describe 'when called with valid parameters, returns a Result that' do
+      let(:call_result) { obj.call call_params }
+
+      it 'is successful with no errors' do
+        expect { call_result }.must_be_success_with_no_errors
+      end
+    end # describe 'when called with valid parameters, returns a Result that'
   end # describe 'has a #call method that'
 end
