@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'prolog/entities/proposal'
-
 require_relative 'query_article_proposed_contributions/result'
 
 module Prolog

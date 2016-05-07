@@ -2,6 +2,8 @@
 
 require 'test_helper'
 
+require 'prolog/entities/edit_contribution/proposed'
+
 require 'prolog/use_cases/query_article_proposed_contributions'
 
 GUEST_USER_NAME = 'Guest User'
@@ -96,15 +98,17 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
             end # describe 'no ... proposals active by reporting #proposals'
 
             describe 'existing submitted proposals by reporting #proposals' do
-              let(:contrib_class) { Prolog::Entities::Proposal }
+              let(:contrib_class) do
+                Prolog::Entities::EditContribution::Proposed
+              end
               let(:endpoints) { (0..-1) }
               let(:justification) { 'Because we can.' }
               let(:proposed_content) { 'basic' }
               let(:found_contributions) do
-                params = { article_id: article_id, proposer: 'Somebody Else',
+                params = { article_id: article_id, user_name: 'Somebody Else',
                            endpoints: endpoints, justification: justification,
                            proposed_content: proposed_content }
-                proposal = Prolog::Entities::Proposal.new params
+                proposal = contrib_class.new params
                 [proposal]
               end
 
