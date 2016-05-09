@@ -11,8 +11,8 @@ GUEST_USER_NAME = 'Guest User'
 describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   let(:described_class) { Prolog::UseCases::QueryArticleProposedContributions }
   let(:article_id) do
-    Prolog::Entities::ArticleIdent.new author_name: author_name,
-                                       title: article_title
+    Prolog::Entities::ArticleIdentV.new author_name: author_name,
+                                        title: article_title
   end
   let(:article_title) { title }
   let(:title) { 'A Title' }
