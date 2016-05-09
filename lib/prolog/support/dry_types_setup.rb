@@ -19,7 +19,7 @@ module Types
     elsif value.to_i == 0
       -1..-1
     else
-      o..value.to_i
+      0..value.to_i
     end
   end
 
