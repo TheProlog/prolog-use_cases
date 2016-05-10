@@ -22,9 +22,8 @@ module Prolog
 
       attr_reader :contribution
 
-      def initialize(article:, authoriser:, contribution_repo:, article_repo:,
+      def initialize(authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @article = article
         @authoriser = authoriser
         @contribution_repo = contribution_repo
         @article_repo = article_repo
@@ -32,8 +31,8 @@ module Prolog
         self
       end
 
-      def call(endpoints:, proposed_content:, justification: '')
-        build_form endpoints, proposed_content, justification
+      def call(article:, endpoints:, proposed_content:, justification: '')
+        build_form article, endpoints, proposed_content, justification
         run_steps
         self
       end
@@ -45,9 +44,9 @@ module Prolog
       delegate :all_error_messages, :article, :article_id, :proposed_content,
                :status, :user_name, :wrap_contribution_with, to: :@form_object
 
-      def build_form(endpoints, proposed_content, justification)
+      def build_form(article, endpoints, proposed_content, justification)
         params = { endpoints: endpoints, proposed_content: proposed_content,
-                   justification: justification, article: @article,
+                   justification: justification, article: article,
                    authoriser: @authoriser }
         @form_object = FormObject.new params
         self

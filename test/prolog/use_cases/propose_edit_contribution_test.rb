@@ -115,9 +115,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
-    { article: article, authoriser: authoriser,
-      contribution_repo: contribution_repo, article_repo: article_repo,
-      ui_gateway: ui_gateway }
+    { authoriser: authoriser, contribution_repo: contribution_repo,
+      article_repo: article_repo, ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
@@ -155,10 +154,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       expect(error.message).must_match @param.to_s
     end
 
-    it ':article' do
-      @param = :article
-    end
-
     it ':authoriser' do
       @param = :authoriser
     end
@@ -182,7 +177,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
   describe 'has a #call method that' do
     let(:call_params) do
-      { endpoints: endpoints, proposed_content: proposed_content }
+      { endpoints: endpoints, proposed_content: proposed_content,
+        article: article }
     end
     let(:endpoints) { (ep_begin..ep_end) }
     let(:justification) { 'Justification is left, right, or centred.' }
@@ -197,6 +193,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         expected = ArgumentError
         error = expect { obj.call call_params }.must_raise expected
         expect(error.message).must_match @param.to_s
+      end
+
+      it ':article' do
+        @param = :article
       end
 
       it ':endpoints' do

@@ -12,6 +12,7 @@ end
 require 'active_model'
 require 'virtus'
 
+require 'prolog/entities/article_ident'
 require 'prolog/support/form_object/integer_range'
 
 require_relative 'form_object/body_marker'
