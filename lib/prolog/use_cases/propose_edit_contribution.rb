@@ -2,8 +2,8 @@
 
 require 'forwardable'
 
-require 'prolog/support/dry_types_setup'
-
+require_relative 'propose_edit_contribution/attributes'
+require_relative 'propose_edit_contribution/collaborators'
 require_relative 'propose_edit_contribution/form_object'
 
 # "Propose Edit Contribution" use case.
@@ -19,15 +19,9 @@ module Prolog
     # for an Edit Contribution.
     # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
     # about that sometime in The Glorious Future.
+    # Reek also says that this smells of :reek:DataClump as we transition from
+    # the form object to the value objects; FIXME.
     class ProposeEditContribution
-      # Objects providing services to the use case.
-      class Collaborators < Dry::Types::Value
-        attribute :authoriser, Types::Class
-        attribute :contribution_repo, Types::Class
-        attribute :article_repo, Types::Class
-        attribute :ui_gateway, Types::Class
-      end # class Prolog::UseCases::ProposeEditContribution::Collaborators
-
       extend Forwardable
 
       attr_reader :contribution
@@ -41,6 +35,7 @@ module Prolog
       end
 
       def call(article:, endpoints:, proposed_content:, justification: '')
+        build_attributes article, endpoints, proposed_content, justification
         build_form article, endpoints, proposed_content, justification
         run_steps
         self
@@ -50,11 +45,20 @@ module Prolog
 
       delegate :article_repo, :authoriser, :contribution_repo, :ui_gateway,
                to: :@collaborators
+      delegate :article, :endpoints, :justification, # :article_id
+               :proposed_content, to: :@attributes
 
       attr_reader :form_object
 
-      delegate :all_error_messages, :article, :article_id, :proposed_content,
-               :status, :user_name, :wrap_contribution_with, to: :@form_object
+      delegate :all_error_messages, :status, :user_name, :article_id,
+               :wrap_contribution_with, to: :@form_object
+
+      def build_attributes(article, endpoints, proposed_content, justification)
+        @attributes = Attributes.new article: article, endpoints: endpoints,
+                                     justification: justification,
+                                     proposed_content: proposed_content
+        self
+      end
 
       def build_form(article, endpoints, proposed_content, justification)
         params = { endpoints: endpoints, proposed_content: proposed_content,
@@ -91,7 +95,7 @@ module Prolog
       end
 
       def success_payload
-        { member: user_name, article_id: article_id,
+        { member: user_name, article_id: @attributes.article_id,
           contribution_count: contribution_repo.count }
       end
 

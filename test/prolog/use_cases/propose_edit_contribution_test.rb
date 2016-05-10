@@ -172,7 +172,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end # describe 'must be initialised with parameters for'
 
   it 'may be initialised with valid parameters' do
-    expect { described_class.new init_params }.must_be_silent
+    expect(described_class.new init_params).must_be_instance_of described_class
   end
 
   describe 'has a #call method that' do
@@ -210,7 +210,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it 'accepts a :justification parameter string' do
       call_params[:justification] = justification
-      expect { obj.call call_params }.must_be_silent
+      expect(obj.call call_params).must_equal obj
     end
 
     describe 'whether or not the initiating user is the article author' do
@@ -270,7 +270,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(data[:member]).must_equal user_name
         end
 
-        it 'the correct :contributino_count value' do
+        it 'the correct :contribution_count value' do
           expect(data[:contribution_count]).must_equal 1
         end
 
