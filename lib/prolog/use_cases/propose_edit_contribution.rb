@@ -24,7 +24,8 @@ module Prolog
 
       def initialize(article:, authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @form_object = FormObject.new article: article, authoriser: authoriser
+        @article = article
+        @authoriser = authoriser
         @contribution_repo = contribution_repo
         @article_repo = article_repo
         @ui_gateway = ui_gateway
@@ -46,14 +47,10 @@ module Prolog
 
       def build_form(endpoints, proposed_content, justification)
         params = { endpoints: endpoints, proposed_content: proposed_content,
-                   justification: justification }
-        @form_object = FormObject.new merged_form_params(params)
+                   justification: justification, article: @article,
+                   authoriser: @authoriser }
+        @form_object = FormObject.new params
         self
-      end
-
-      def merged_form_params(**params)
-        ret = { article: article, authoriser: form_object.authoriser }
-        ret.merge params
       end
 
       def run_steps
