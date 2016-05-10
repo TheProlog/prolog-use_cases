@@ -2,6 +2,8 @@
 
 require 'forwardable'
 
+require 'prolog/support/dry_types_setup'
+
 require_relative 'propose_edit_contribution/form_object'
 
 # "Propose Edit Contribution" use case.
@@ -18,16 +20,23 @@ module Prolog
     # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
     # about that sometime in The Glorious Future.
     class ProposeEditContribution
+      # Objects providing services to the use case.
+      class Collaborators < Dry::Types::Value
+        attribute :authoriser, Types::Class
+        attribute :contribution_repo, Types::Class
+        attribute :article_repo, Types::Class
+        attribute :ui_gateway, Types::Class
+      end # class Prolog::UseCases::ProposeEditContribution::Collaborators
+
       extend Forwardable
 
       attr_reader :contribution
 
       def initialize(authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @authoriser = authoriser
-        @contribution_repo = contribution_repo
-        @article_repo = article_repo
-        @ui_gateway = ui_gateway
+        params = { authoriser: authoriser, contribution_repo: contribution_repo,
+                   article_repo: article_repo, ui_gateway: ui_gateway }
+        @collaborators = Collaborators.new params
         self
       end
 
@@ -39,7 +48,10 @@ module Prolog
 
       private
 
-      attr_reader :article_repo, :contribution_repo, :form_object, :ui_gateway
+      delegate :article_repo, :authoriser, :contribution_repo, :ui_gateway,
+               to: :@collaborators
+
+      attr_reader :form_object
 
       delegate :all_error_messages, :article, :article_id, :proposed_content,
                :status, :user_name, :wrap_contribution_with, to: :@form_object
@@ -47,7 +59,7 @@ module Prolog
       def build_form(article, endpoints, proposed_content, justification)
         params = { endpoints: endpoints, proposed_content: proposed_content,
                    justification: justification, article: article,
-                   authoriser: @authoriser }
+                   authoriser: authoriser }
         @form_object = FormObject.new params
         self
       end
