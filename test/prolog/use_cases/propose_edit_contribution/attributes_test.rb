@@ -15,11 +15,14 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
   let(:title) { 'A Title' }
   let(:endpoints) { (0..-1) }
   let(:justification) { 'Just because.' }
+  let(:proposed_at) { nil } # use default value
+  let(:proposed_by) { 'P Random Member' }
   let(:proposed_content) { '<p>Complete replacement.</p>' }
   let(:obj) { described_class.new params }
   let(:params) do
     { article: article, endpoints: endpoints, justification: justification,
-      proposed_content: proposed_content }
+      proposed_content: proposed_content, proposed_at: proposed_at,
+      proposed_by: proposed_by }
   end
 
   describe 'initialisation' do

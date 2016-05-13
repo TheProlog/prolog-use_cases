@@ -30,12 +30,12 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
         expect(error.message).must_match @message
       end
 
-      it 'authoriser' do
-        @error = Module::DelegationError
-        @message = 'user_name delegated to authoriser.user_name, but' \
-          ' authoriser is nil'
-        @param = :authoriser
-      end
+      # it 'authoriser' do
+      #   @error = Module::DelegationError
+      #   @message = 'user_name delegated to authoriser.user_name, but' \
+      #     ' authoriser is nil'
+      #   @param = :authoriser
+      # end
 
       it 'article' do
         @error = NoMethodError

@@ -35,28 +35,29 @@ module Prolog
       end
 
       def call(article:, endpoints:, proposed_content:, justification: '')
-        build_attributes article, endpoints, proposed_content, justification
         build_form article, endpoints, proposed_content, justification
+        build_attributes article, endpoints, proposed_content, justification
         run_steps
         self
       end
 
       private
 
-      delegate :article_repo, :authoriser, :contribution_repo, :ui_gateway,
-               to: :@collaborators
-      delegate :article, :endpoints, :justification, # :article_id
-               :proposed_content, to: :@attributes
+      def_delegators :@collaborators, :article_repo, :authoriser,
+                     :contribution_repo, :ui_gateway
+      def_delegators :@attributes, :article, :endpoints, :justification,
+                     :proposed_content
 
       attr_reader :form_object
 
-      delegate :all_error_messages, :status, :user_name, :article_id,
-               :wrap_contribution_with, to: :@form_object
+      def_delegators :form_object, :all_error_messages, :status, :user_name,
+                     :article_id, :wrap_contribution_with
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
-                                     proposed_content: proposed_content
+                                     proposed_content: proposed_content,
+                                     proposed_at: nil, proposed_by: user_name
         self
       end
 

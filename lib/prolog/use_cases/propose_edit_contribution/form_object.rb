@@ -45,7 +45,7 @@ module Prolog
                                      writer: :private
         end
 
-        delegate :guest?, :user_name, to: :authoriser
+        def_delegators :authoriser, :guest?, :user_name
         validate :logged_in?, :valid_proposed_content?
 
         def initialize(**params)
