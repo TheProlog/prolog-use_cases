@@ -68,13 +68,6 @@ module Prolog
           self
         end
 
-        # Since all error messages, regardless of field, are JSON payloads,
-        # reading all error messages, regardless of field, as a unified array
-        # fits well with our current metaphor for UI gateway notifications.
-        def all_error_messages
-          errors.messages.values.flatten
-        end
-
         # Populates default/only `:article_id` attribute value.
         def self.default_article_id(fo)
           article = fo.article

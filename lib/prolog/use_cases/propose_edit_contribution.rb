@@ -5,6 +5,8 @@ require 'forwardable'
 require_relative 'propose_edit_contribution/attributes'
 require_relative 'propose_edit_contribution/collaborators'
 require_relative 'propose_edit_contribution/form_object'
+require_relative 'propose_edit_contribution/transfer_errors'
+require_relative 'propose_edit_contribution/validate_attributes'
 
 # "Propose Edit Contribution" use case.
 #
@@ -18,7 +20,9 @@ module Prolog
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
     # Reek says this class smells of :reek:TooManyMethods as we transition away
-    # from using the form object.
+    # from using the form object. FIXME
+    # Reek says this class smells of :reek:TooManyInstanceVariables as we
+    # transition away from using the form object. FIXME
     # Reek also says that this smells of :reek:DataClump as we transition from
     # the form object to the value objects; FIXME.
     class ProposeEditContribution
@@ -50,8 +54,8 @@ module Prolog
 
       attr_reader :form_object
 
-      def_delegators :form_object, :all_error_messages, :status, :user_name,
-                     :article_id, :wrap_contribution_with
+      def_delegators :form_object, :status, :user_name, :article_id,
+                     :wrap_contribution_with
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
@@ -82,8 +86,7 @@ module Prolog
 
       # FIXME: Replace call to #form_object_valid? with this when FO goes away.
       def validator_valid?
-        validator = ValidateAttributes.new.call(@attributes)
-        validator.valid?
+        ValidateAttributes.new.call(@attributes).valid?
       end
 
       def steps_in_process
@@ -112,7 +115,8 @@ module Prolog
       end
 
       def transfer_errors
-        all_error_messages.each { |payload| ui_gateway.failure payload }
+        TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
+        self
       end
 
       def update_body
