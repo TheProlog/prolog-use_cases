@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 require_relative 'validate_attributes/check_content'
+require_relative 'validate_attributes/check_endpoints'
 require_relative 'validate_attributes/check_proposer'
 
 # "Propose Edit Contribution" use case.
@@ -35,36 +38,54 @@ module Prolog
 
         private
 
+        extend Forwardable
+
         GUEST_USER_NAME = 'Guest User'
 
         attr_reader :attributes
 
+        def_delegators :attributes, :article, :article_id, :endpoints,
+                       :proposed_by, :proposed_content
+
         def validate
-          proposed_by_member? && proposed_content?
+          proposed_by_member? && proposed_content? && endpoints_ok?
+        end
+
+        def check_attribute(error_key, checker_sym)
+          error_data = method(checker_sym).call
+          return true if error_data.empty?
+          errors[error_key] = error_data
+          false
         end
 
         def proposed_by_member?
-          error_data = check_proposer
-          return true if error_data.empty?
-          errors[:authoriser] = error_data
-          false
+          check_attribute :authoriser, :check_proposer
         end
 
         def check_proposer
-          CheckProposer.call(proposed_by: attributes&.proposed_by,
-                             article_id: attributes.article_id)
+          CheckProposer.call(proposed_by: proposed_by, article_id: article_id)
         end
 
         def proposed_content?
-          error_data = check_content
-          return true if error_data.empty?
-          errors[:proposed_content] = error_data
-          false
+          check_attribute :proposed_content, :check_content
         end
 
         def check_content
-          CheckContent.call(proposed_content: attributes&.proposed_content,
-                            article_id: attributes.article_id)
+          CheckContent.call(proposed_content: proposed_content,
+                            article_id: article_id)
+        end
+
+        def endpoints_ok?
+          check_attribute :endpoints, :check_endpoints
+        end
+
+        def check_endpoints
+          CheckEndpoints.call check_endpoints_params
+        end
+
+        def check_endpoints_params
+          { article_body: article.body, endpoints: endpoints,
+            article_id: article_id }
         end
       end # class Prolog::UseCases::ProposeEditContribution::ValidateAttributes
     end # class Prolog::UseCases::ProposeEditContribution

@@ -30,7 +30,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
   let(:author_name) { 'J Random Author' }
   let(:body) { 'Article Body' }
   let(:title) { 'Article Title' }
-  let(:endpoints) { Object.new }
+  let(:endpoints) { (0..-1) }
   let(:proposed_by) { 'P Random Proposer' }
   let(:proposed_content) { '<p>Entire replacement.</p>' }
   let(:justification) { 'Just because.' }
@@ -112,6 +112,38 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
           end
         end # describe 'missing'
       end # describe 'the proposed content is'
+
+      # NOTE: We can accept empty replacement text, but *not* an empty selection
+      # within the article body. If we use the endpoints to extract a selection
+      # from the article body and it hands us back an empty string, that's a
+      # Problem.
+      describe 'endpoints specifying an empty string within article body' do
+        let(:endpoints) { (427..-1) }
+
+        it 'reports being invalid' do
+          expect(obj).wont_be :valid?
+        end
+
+        it 'reports a single error' do
+          expect(obj.errors.count).must_equal 1
+        end
+
+        describe 'reports the correct error data, including the' do
+          let(:error) do
+            JSON.parse obj.errors[:endpoints], symbolize_names: true
+          end
+
+          it 'reason for failure' do
+            expect(error[:failure]).must_equal 'invalid endpoints'
+          end
+
+          it 'YAML-encoded article ID' do
+            actual = error[:article_id]
+            expected = YAML.dump attributes.article_id
+            expect(actual).must_equal expected
+          end
+        end # describe 'reports the correct error data, including the'
+      end # describe 'endpoints specifying an empty string within article body'
     end # describe 'parameters which are invalid due to'
   end # describe 'when calling the #call method with'
 end
