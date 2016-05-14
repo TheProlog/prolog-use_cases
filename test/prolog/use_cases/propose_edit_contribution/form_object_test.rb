@@ -30,13 +30,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
         expect(error.message).must_match @message
       end
 
-      # it 'authoriser' do
-      #   @error = Module::DelegationError
-      #   @message = 'user_name delegated to authoriser.user_name, but' \
-      #     ' authoriser is nil'
-      #   @param = :authoriser
-      # end
-
       it 'article' do
         @error = NoMethodError
         @message = %(undefined method `author_name' for nil:NilClass)
@@ -61,52 +54,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
       end
     end # describe 'accepts parameter values for'
   end # describe 'initialisation'
-
-  describe 'has a #valid? method that' do
-    before { obj.valid? }
-
-    describe 'when no member is logged in/authorised' do
-      let(:user_name) { guest_user_name }
-
-      it 'returns false from the method' do
-        expect(obj).wont_be :valid?
-      end
-
-      it 'reports a single error' do
-        expect(obj.errors[:authoriser].count).must_equal 1
-      end
-
-      describe 'reports an error' do
-        it 'associated with the authoriser' do
-          expect(obj.errors.keys.first).must_equal :authoriser
-        end
-
-        describe 'whose message text is a JSON string encoding' do
-          let(:payload) do
-            JSON.parse obj.errors[:authoriser].first, symbolize_names: true
-          end
-
-          describe 'a Hash containing' do
-            it 'a :failure entry reading "not logged in"' do
-              expect(payload[:failure]).must_equal 'not logged in'
-            end
-
-            describe 'an :article_id entry encoding' do
-              let(:article_id) { YAML.load payload[:article_id] }
-
-              it 'an :author_name string' do
-                expect(article_id[:author_name]).must_equal author_name
-              end
-
-              it 'a :title string' do
-                expect(article_id[:title]).must_equal title
-              end
-            end # describe 'an :article_id entry encoding'
-          end # describe 'a Hash containing'
-        end # describe 'whose message text is a JSON string encoding'
-      end # describe 'reports an error'
-    end # describe 'when no member is logged in/authorised'
-  end # describe 'has a #valid? method that'
 
   describe 'has a #status attribute that, when called while' do
     it 'cannot be set' do
@@ -163,42 +110,5 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
         expect(obj.article.body).must_equal expected
       end
     end # describe 'when called while a member is logged in/authorised'
-
-    describe 'when called while no member is logged in/authorised' do
-      let(:user_name) { guest_user_name }
-
-      it 'makes no modification to the article body' do
-        expect(obj.article.body).must_equal original_body
-      end
-
-      it 'reports an authorisation error: that no member is logged in' do
-        encoded_message = obj.errors[:authoriser].first
-        error_info = JSON.parse encoded_message, symbolize_names: true
-        expect(error_info[:failure]).must_equal 'not logged in'
-      end
-    end # describe 'when called while no member is logged in/authorised'
-
-    describe 'when called with invalid proposed input' do
-      let(:payload) do
-        JSON.parse obj.errors[:proposed_content].first, symbolize_names: true
-      end
-      let(:article_id) { YAML.load payload[:article_id] }
-      let(:expected_article_id) do
-        { author_name: article.author_name, title: article.title }
-      end
-      let(:proposed_content) { nil }
-
-      it 'makes no modification to the article body' do
-        expect(obj.article.body).must_equal original_body
-      end
-
-      it 'reports that proposed content is not valid' do
-        expect(payload[:failure]).must_equal 'missing proposed content'
-      end
-
-      it 'reports the correct article-ID data' do
-        expect(article_id).must_equal expected_article_id
-      end
-    end # describe 'when called with invalid proposed input'
   end # describe 'has a #wrap_contribution_with method that'
 end

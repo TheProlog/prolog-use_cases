@@ -16,7 +16,6 @@ require 'prolog/entities/article_ident'
 require 'prolog/support/form_object/integer_range'
 
 require_relative 'form_object/body_marker'
-require_relative 'form_object/proposed_content_validator'
 
 module Prolog
   module UseCases
@@ -46,7 +45,6 @@ module Prolog
         end
 
         def_delegators :authoriser, :guest?, :user_name
-        validate :logged_in?, :valid_proposed_content?
 
         def initialize(**params)
           @pcv = nil
@@ -96,29 +94,6 @@ module Prolog
           BodyMarker.new(bwm_params id_number).to_s
         end
 
-        # Direct validation methods
-
-        def logged_in?
-          return true unless guest?
-          errors.add :authoriser, not_logged_in_failure_message
-          false
-        end
-
-        def report_invalid_proposed_content
-          errors.add :proposed_content, validator.payload
-          false
-        end
-
-        def valid_proposed_content?
-          validator.valid? || report_invalid_proposed_content
-        end
-
-        def validator
-          return @pcv if @pcv
-          @pcv = ProposedContentValidator.new article_id: article_id,
-                                              proposed_content: proposed_content
-        end
-
         # Support methods for the above; extract as sensible.
 
         # ... for `#body_with_markers`; gets article/endpoints dependencies out
@@ -126,13 +101,6 @@ module Prolog
 
         def bwm_params(id_number)
           { body: article.body, endpoints: endpoints, id_number: id_number }
-        end
-
-        # ... for `#logged_in?`; builds JSON payload using `article_id`. No
-        #     supporting methods of its own.
-
-        def not_logged_in_failure_message
-          { failure: 'not logged in', article_id: article_id }.to_json
         end
       end # class Prolog::UseCases::ProposeEditContribution::FormObject
     end # class Prolog::UseCases::ProposeEditContribution
