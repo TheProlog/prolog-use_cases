@@ -12,7 +12,6 @@ end
 require 'active_model'
 require 'virtus'
 
-require 'prolog/entities/article_ident'
 require 'prolog/support/form_object/integer_range'
 
 require_relative 'form_object/body_marker'
@@ -37,11 +36,6 @@ module Prolog
           attribute :justification, String
 
           attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
-          attribute :article_id, Prolog::Entities::ArticleIdent,
-                    default: -> (fo, _) { default_article_id(fo) },
-                    writer: :private
-          attribute :status, Symbol, default: -> (fo, _) { default_status(fo) },
-                                     writer: :private
         end
 
         def_delegators :authoriser, :guest?, :user_name
@@ -64,26 +58,6 @@ module Prolog
           article.body = body_with_markers(id_number)
           @wrapped = true
           self
-        end
-
-        # Populates default/only `:article_id` attribute value.
-        def self.default_article_id(fo)
-          article = fo.article
-          attribs = { author_name: article.author_name, title: article.title }
-          Prolog::Entities::ArticleIdent.new attribs
-        end
-
-        # Populates default/only `:status` attribute value.
-        def self.default_status(fo)
-          return :accepted if fo._proposed_by_author?
-          :proposed
-        end
-
-        # This is a public method only because it's called by `.default_status`
-        # using its FormObject parameter instance. It *SHOULD NOT* be called
-        # directly by the containing class' (or other) code.
-        def _proposed_by_author?
-          user_name == article.author_name
         end
 
         private

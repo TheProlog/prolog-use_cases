@@ -23,20 +23,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
   let(:obj) { described_class.new params }
 
   describe 'initialisation' do
-    describe 'requires parameters for' do
-      after do
-        params.delete @param
-        error = expect { described_class.new params }.must_raise @error
-        expect(error.message).must_match @message
-      end
-
-      it 'article' do
-        @error = NoMethodError
-        @message = %(undefined method `author_name' for nil:NilClass)
-        @param = :article
-      end
-    end # describe 'requires parameters for'
-
     describe 'accepts parameter values for' do
       it ':endpoints' do
         params[:endpoints] = (5..7)
@@ -54,26 +40,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
       end
     end # describe 'accepts parameter values for'
   end # describe 'initialisation'
-
-  describe 'has a #status attribute that, when called while' do
-    it 'cannot be set' do
-      expect { obj.status = :proposed }.must_raise NoMethodError
-    end
-
-    describe 'a member other than the author is logged in' do
-      let(:author_name) { 'Somebody Else' }
-
-      it 'has the value :proposed' do
-        expect(obj.status).must_equal :proposed
-      end
-    end # describe 'a member other than the author is logged in'
-
-    describe 'the author is logged in' do
-      it 'has the value :accepted' do
-        expect(obj.status).must_equal :accepted
-      end
-    end # describe 'the author is logged in'
-  end # describe 'has a #status attribute that, when called while'
 
   # NOTE: `#wrap_contribution_with` has *NO PROTECTIONS*. It *will* insert the
   #       identified-anchor tag pairs *exactly* where you tell it to. If that

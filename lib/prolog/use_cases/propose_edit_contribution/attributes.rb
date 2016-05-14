@@ -23,10 +23,23 @@ module Prolog
           Prolog::Entities::ArticleIdentV.new article_id_attribs
         end
 
+        def status
+          return :accepted if proposed_by_author?
+          :proposed
+        end
+
+        def to_hash
+          { status: status, article_id: article_id }.merge super
+        end
+
         private
 
         def article_id_attribs
           { author_name: article.author_name, title: article.title }
+        end
+
+        def proposed_by_author?
+          article.author_name == proposed_by
         end
       end # class Prolog::useCases::ProposeEditContribution::Attributes
     end # class Prolog::useCases::ProposeEditContribution
