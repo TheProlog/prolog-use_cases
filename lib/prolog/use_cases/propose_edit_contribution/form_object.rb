@@ -14,7 +14,7 @@ require 'virtus'
 
 require 'prolog/support/form_object/integer_range'
 
-require_relative 'form_object/body_marker'
+require_relative './body_marker'
 
 module Prolog
   module UseCases

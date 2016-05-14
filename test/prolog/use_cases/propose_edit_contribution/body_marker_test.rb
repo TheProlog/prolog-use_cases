@@ -2,11 +2,11 @@
 
 require 'test_helper'
 
-require 'prolog/use_cases/propose_edit_contribution/form_object/body_marker'
+require 'prolog/use_cases/propose_edit_contribution/body_marker'
 
-describe 'Prolog::UseCases::ProposeEditContribution::FormObject::BodyMarker' do
+describe 'Prolog::UseCases::ProposeEditContribution::BodyMarker' do
   let(:described_class) do
-    Prolog::UseCases::ProposeEditContribution::FormObject::BodyMarker
+    Prolog::UseCases::ProposeEditContribution::BodyMarker
   end
   let(:body_content) { '<p>This is some <em>example</em> content.' }
   let(:body) { body_content.dup }
