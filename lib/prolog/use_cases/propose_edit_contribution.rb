@@ -17,8 +17,8 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
-    # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
-    # about that sometime in The Glorious Future.
+    # Reek says this class smells of :reek:TooManyMethods as we transition away
+    # from using the form object.
     # Reek also says that this smells of :reek:DataClump as we transition from
     # the form object to the value objects; FIXME.
     class ProposeEditContribution
@@ -70,9 +70,20 @@ module Prolog
       end
 
       def run_steps
-        steps_in_process if form_object.valid?
+        steps_in_process if form_object_valid?
         transfer_errors
         self
+      end
+
+      def form_object_valid?
+        form_object.valid? # because we're still using #transfer_errors
+        validator_valid?
+      end
+
+      # FIXME: Replace call to #form_object_valid? with this when FO goes away.
+      def validator_valid?
+        validator = ValidateAttributes.new.call(@attributes)
+        validator.valid?
       end
 
       def steps_in_process
