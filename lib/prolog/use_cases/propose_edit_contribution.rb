@@ -48,13 +48,13 @@ module Prolog
       private
 
       def_delegators :@collaborators, :article_repo, :authoriser,
-                     :contribution_repo, :ui_gateway
+                     :contribution_repo, :ui_gateway, :user_name
       def_delegators :@attributes, :article, :article_id, :endpoints,
                      :justification, :proposed_content, :status
 
       attr_reader :form_object
 
-      def_delegators :form_object, :user_name, :wrap_contribution_with
+      def_delegators :form_object, :wrap_contribution_with
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,

@@ -33,11 +33,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::FormObject' do
         params[:proposed_content] = 'Proposed Content'
         expect(obj.proposed_content).must_equal params[:proposed_content]
       end
-
-      it 'justification' do
-        params[:justification] = 'Justification'
-        expect(obj.justification).must_equal params[:justification]
-      end
     end # describe 'accepts parameter values for'
   end # describe 'initialisation'
 

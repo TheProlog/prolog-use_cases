@@ -29,16 +29,12 @@ module Prolog
         extend Forwardable
 
         values do
-          attribute :authoriser, Object
           attribute :article, Object # formerly Prolog::Core::Article
           attribute :endpoints, IntegerRange
           attribute :proposed_content, String
-          attribute :justification, String
-
-          attribute :proposed_at, DateTime, default: -> (_, _) { DateTime.now }
         end
 
-        def_delegators :authoriser, :guest?, :user_name
+        # def_delegators :authoriser, :guest?, :user_name
 
         def initialize(**params)
           @pcv = nil
