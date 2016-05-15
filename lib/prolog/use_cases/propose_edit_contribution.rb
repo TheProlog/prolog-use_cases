@@ -4,9 +4,9 @@ require 'forwardable'
 
 require_relative 'propose_edit_contribution/attributes'
 require_relative 'propose_edit_contribution/collaborators'
-require_relative 'propose_edit_contribution/form_object'
 require_relative 'propose_edit_contribution/transfer_errors'
 require_relative 'propose_edit_contribution/validate_attributes'
+require_relative 'propose_edit_contribution/wrap_contribution'
 
 # "Propose Edit Contribution" use case.
 #
@@ -39,7 +39,6 @@ module Prolog
       end
 
       def call(article:, endpoints:, proposed_content:, justification: '')
-        build_form article, endpoints, proposed_content, justification
         build_attributes article, endpoints, proposed_content, justification
         run_steps
         self
@@ -52,10 +51,6 @@ module Prolog
       def_delegators :@attributes, :article, :article_id, :endpoints,
                      :justification, :proposed_content, :status
 
-      attr_reader :form_object
-
-      def_delegators :form_object, :wrap_contribution_with
-
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
@@ -64,23 +59,10 @@ module Prolog
         self
       end
 
-      def build_form(article, endpoints, proposed_content, justification)
-        params = { endpoints: endpoints, proposed_content: proposed_content,
-                   justification: justification, article: article,
-                   authoriser: authoriser }
-        @form_object = FormObject.new params
-        self
-      end
-
       def run_steps
-        steps_in_process if form_object_valid?
+        steps_in_process if validator_valid?
         transfer_errors
         self
-      end
-
-      def form_object_valid?
-        form_object.valid? # because we're still using #transfer_errors
-        validator_valid?
       end
 
       # FIXME: Replace call to #form_object_valid? with this when FO goes away.
@@ -89,7 +71,7 @@ module Prolog
       end
 
       def steps_in_process
-        update_body
+        update_article_with_marked_body
         persist_contribution
         persist_article
         notify_success
@@ -118,8 +100,22 @@ module Prolog
         self
       end
 
-      def update_body
-        wrap_contribution_with updated_count_from_repo
+      def update_article_with_marked_body
+        article = updated_article(updated_count_from_repo)
+        attribs = updated_article_attributes article
+        @attributes = Attributes.new attribs
+        self
+      end
+
+      def updated_article(count)
+        WrapContribution.call id_number: count,
+                              attributes: @attributes
+      end
+
+      def updated_article_attributes(article)
+        attribs = @attributes.to_h
+        attribs[:article] = article
+        attribs
       end
 
       def updated_contribution
