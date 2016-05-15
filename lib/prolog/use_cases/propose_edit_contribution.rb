@@ -2,11 +2,14 @@
 
 require 'forwardable'
 
-require_relative 'propose_edit_contribution/attributes'
-require_relative 'propose_edit_contribution/collaborators'
-require_relative 'propose_edit_contribution/transfer_errors'
-require_relative 'propose_edit_contribution/validate_attributes'
-require_relative 'propose_edit_contribution/wrap_contribution'
+%w(attributes
+   collaborators
+   transfer_errors
+   transfer_errors
+   update_article_with_marked_body
+   validate_attributes).each do |fname|
+     require_relative "./propose_edit_contribution/#{fname}"
+   end
 
 # "Propose Edit Contribution" use case.
 #
@@ -19,12 +22,6 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
-    # Reek says this class smells of :reek:TooManyMethods as we transition away
-    # from using the form object. FIXME
-    # Reek says this class smells of :reek:TooManyInstanceVariables as we
-    # transition away from using the form object. FIXME
-    # Reek also says that this smells of :reek:DataClump as we transition from
-    # the form object to the value objects; FIXME.
     class ProposeEditContribution
       extend Forwardable
 
@@ -65,7 +62,6 @@ module Prolog
         self
       end
 
-      # FIXME: Replace call to #form_object_valid? with this when FO goes away.
       def validator_valid?
         ValidateAttributes.new.call(@attributes).valid?
       end
@@ -101,29 +97,14 @@ module Prolog
       end
 
       def update_article_with_marked_body
-        article = updated_article(updated_count_from_repo)
-        attribs = updated_article_attributes article
-        @attributes = Attributes.new attribs
+        params = { attributes: @attributes,
+                   contribution_repo: contribution_repo }
+        @attributes = UpdateAttributesWithMarkedBody.call params
         self
-      end
-
-      def updated_article(count)
-        WrapContribution.call id_number: count,
-                              attributes: @attributes
-      end
-
-      def updated_article_attributes(article)
-        attribs = @attributes.to_h
-        attribs[:article] = article
-        attribs
       end
 
       def updated_contribution
         @contribution ||= contribution_repo.create @attributes
-      end
-
-      def updated_count_from_repo
-        contribution_repo.count + 1
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end
