@@ -68,9 +68,14 @@ module Prolog
 
       private
 
+      # NOTE: We know this doesn't really make any Forwardable methods private.
+      # It does, however, show that our delegations are to be treated as though
+      # they are to be used as though they were private methods.
+      extend Forwardable
+
       attr_reader :authoriser, :repository
 
-      delegate :articles, :errors, to: :@list
+      def_delegators :@list, :articles, :errors
 
       def articles_by(author_name)
         params = { author_name: author_name, authoriser: authoriser,

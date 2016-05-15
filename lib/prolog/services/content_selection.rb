@@ -10,8 +10,10 @@ module Prolog
     # Encapsulates logic for extracting a section of content from an Article
     # body.
     class ContentSelection
-      delegate :article, :errors, :last_contribution_id, :selected_markup,
-               :valid?, to: :@form_obj
+      extend Forwardable
+
+      def_delegators :@form_obj, :article, :errors, :last_contribution_id,
+                     :selected_markup, :valid?
 
       def initialize
         @form_obj = FormObject.new last_contribution_id: 0, endpoints: (-1..-1)
