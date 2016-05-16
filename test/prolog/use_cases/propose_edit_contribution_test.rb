@@ -115,9 +115,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
-    { article: article, authoriser: authoriser,
-      contribution_repo: contribution_repo, article_repo: article_repo,
-      ui_gateway: ui_gateway }
+    { authoriser: authoriser, contribution_repo: contribution_repo,
+      article_repo: article_repo, ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
@@ -155,10 +154,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       expect(error.message).must_match @param.to_s
     end
 
-    it ':article' do
-      @param = :article
-    end
-
     it ':authoriser' do
       @param = :authoriser
     end
@@ -177,12 +172,13 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end # describe 'must be initialised with parameters for'
 
   it 'may be initialised with valid parameters' do
-    expect { described_class.new init_params }.must_be_silent
+    expect(described_class.new init_params).must_be_instance_of described_class
   end
 
   describe 'has a #call method that' do
     let(:call_params) do
-      { endpoints: endpoints, proposed_content: proposed_content }
+      { endpoints: endpoints, proposed_content: proposed_content,
+        article: article }
     end
     let(:endpoints) { (ep_begin..ep_end) }
     let(:justification) { 'Justification is left, right, or centred.' }
@@ -199,6 +195,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         expect(error.message).must_match @param.to_s
       end
 
+      it ':article' do
+        @param = :article
+      end
+
       it ':endpoints' do
         @param = :endpoints
       end
@@ -210,7 +210,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it 'accepts a :justification parameter string' do
       call_params[:justification] = justification
-      expect { obj.call call_params }.must_be_silent
+      expect(obj.call call_params).must_equal obj
     end
 
     describe 'whether or not the initiating user is the article author' do
@@ -270,7 +270,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(data[:member]).must_equal user_name
         end
 
-        it 'the correct :contributino_count value' do
+        it 'the correct :contribution_count value' do
           expect(data[:contribution_count]).must_equal 1
         end
 

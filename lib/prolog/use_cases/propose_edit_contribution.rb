@@ -2,7 +2,14 @@
 
 require 'forwardable'
 
-require_relative 'propose_edit_contribution/form_object'
+%w(attributes
+   collaborators
+   transfer_errors
+   transfer_errors
+   update_article_with_marked_body
+   validate_attributes).each do |fname|
+     require_relative "./propose_edit_contribution/#{fname}"
+   end
 
 # "Propose Edit Contribution" use case.
 #
@@ -15,55 +22,52 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
-    # Reek says this class smells of :reek:TooManyInstanceVariables; we'll worry
-    # about that sometime in The Glorious Future.
     class ProposeEditContribution
       extend Forwardable
 
       attr_reader :contribution
 
-      def initialize(article:, authoriser:, contribution_repo:, article_repo:,
+      def initialize(authoriser:, contribution_repo:, article_repo:,
                      ui_gateway:)
-        @form_object = FormObject.new article: article, authoriser: authoriser
-        @contribution_repo = contribution_repo
-        @article_repo = article_repo
-        @ui_gateway = ui_gateway
+        params = { authoriser: authoriser, contribution_repo: contribution_repo,
+                   article_repo: article_repo, ui_gateway: ui_gateway }
+        @collaborators = Collaborators.new params
         self
       end
 
-      def call(endpoints:, proposed_content:, justification: '')
-        build_form endpoints, proposed_content, justification
+      def call(article:, endpoints:, proposed_content:, justification: '')
+        build_attributes article, endpoints, proposed_content, justification
         run_steps
         self
       end
 
       private
 
-      attr_reader :article_repo, :contribution_repo, :form_object, :ui_gateway
+      def_delegators :@collaborators, :article_repo, :authoriser,
+                     :contribution_repo, :ui_gateway, :user_name
+      def_delegators :@attributes, :article, :article_id, :endpoints,
+                     :justification, :proposed_content, :status
 
-      delegate :all_error_messages, :article, :article_id, :proposed_content,
-               :status, :user_name, :wrap_contribution_with, to: :@form_object
-
-      def build_form(endpoints, proposed_content, justification)
-        params = { endpoints: endpoints, proposed_content: proposed_content,
-                   justification: justification }
-        @form_object = FormObject.new merged_form_params(params)
+      def build_attributes(article, endpoints, proposed_content, justification)
+        @attributes = Attributes.new article: article, endpoints: endpoints,
+                                     justification: justification,
+                                     proposed_content: proposed_content,
+                                     proposed_at: nil, proposed_by: user_name
         self
       end
 
-      def merged_form_params(**params)
-        ret = { article: article, authoriser: form_object.authoriser }
-        ret.merge params
-      end
-
       def run_steps
-        steps_in_process if form_object.valid?
+        steps_in_process if validator_valid?
         transfer_errors
         self
       end
 
+      def validator_valid?
+        ValidateAttributes.new.call(@attributes).valid?
+      end
+
       def steps_in_process
-        update_body
+        update_article_with_marked_body
         persist_contribution
         persist_article
         notify_success
@@ -83,24 +87,24 @@ module Prolog
       end
 
       def success_payload
-        { member: user_name, article_id: article_id,
+        { member: user_name, article_id: @attributes.article_id,
           contribution_count: contribution_repo.count }
       end
 
       def transfer_errors
-        all_error_messages.each { |payload| ui_gateway.failure payload }
+        TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
+        self
       end
 
-      def update_body
-        wrap_contribution_with updated_count_from_repo
+      def update_article_with_marked_body
+        params = { attributes: @attributes,
+                   contribution_repo: contribution_repo }
+        @attributes = UpdateAttributesWithMarkedBody.call params
+        self
       end
 
       def updated_contribution
-        @contribution ||= contribution_repo.create form_object.to_h
-      end
-
-      def updated_count_from_repo
-        contribution_repo.count + 1
+        @contribution ||= contribution_repo.create @attributes
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

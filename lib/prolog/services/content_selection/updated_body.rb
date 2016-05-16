@@ -2,8 +2,6 @@
 
 require 'forwardable'
 
-# require_relative 'content_selection/form_object'
-
 module Prolog
   module Services
     # Encapsulates logic for extracting a section of content from an Article
@@ -11,6 +9,8 @@ module Prolog
     class ContentSelection
       # Wraps identified anchor pairs around endpoint-defined selection.
       class UpdatedBody
+        extend Forwardable
+
         def initialize(form_obj, anchor_format)
           @form_obj = form_obj
           @anchor_format = anchor_format
@@ -23,8 +23,8 @@ module Prolog
 
         alias to_str to_s
 
-        delegate :article, :endpoints, :errors, :last_contribution_id,
-                 :selected_markup, :valid?, to: :@form_obj
+        def_delegators :@form_obj, :article, :endpoints, :errors,
+                       :last_contribution_id, :selected_markup, :valid?
 
         private
 

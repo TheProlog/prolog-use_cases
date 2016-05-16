@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rinku", "~> 1.7", ">= 1.7.3"
   spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0"
   spec.add_dependency "prolog-services-replace_content", "0.1.2"
+  spec.add_dependency "uuid", "~> 2.3", ">= 2.3.8"
 
   spec.add_dependency "dry-validation", "~> 0.7", ">= 0.7.4"
 
