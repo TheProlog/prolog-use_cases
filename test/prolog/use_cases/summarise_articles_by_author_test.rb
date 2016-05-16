@@ -128,7 +128,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           end # describe 'calls the repository #find method'
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'no articles' do
@@ -157,7 +158,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           end # describe 'calls the repository #find method'
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'articles' do
@@ -173,7 +175,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           let(:articles) { published_articles }
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'articles' do
@@ -189,7 +192,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           let(:articles) { mixed_articles }
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'articles' do
@@ -222,7 +226,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           end # describe 'calls the repository #find method'
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'no articles' do
@@ -251,7 +256,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           end # describe 'calls the repository #find method'
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'no articles' do
@@ -267,7 +273,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           let(:articles) { published_articles }
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'articles' do
@@ -289,7 +296,8 @@ describe 'Prolog::UseCases::SummariseArticlesByAuthor' do
           end
 
           it 'a successful result with no errors' do
-            expect(obj).must_be_success_with_no_errors(author_name)
+            params = { author_name: author_name }
+            expect { obj.call params }.must_be_success_with_no_errors
           end
 
           it 'published articles only' do
