@@ -1,5 +1,6 @@
-
 # frozen_string_literal: true
+
+require 'forwardable'
 require 'uuid'
 
 require 'prolog/support/dry_types_setup'
@@ -11,6 +12,8 @@ module Prolog
     module Contribution
       # Proposed-Contribution entity;
       class Proposed < Dry::Types::Value
+        extend Forwardable
+
         attribute :article_id, ArticleIdentV
         attribute :endpoints, Types::IntegerRange
         attribute :justification, Types::Strict::String.default('')
@@ -19,6 +22,8 @@ module Prolog
         # attribute :type, Types::Symbol.default(:edit)
         attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
         attribute :identifier, Types::UUID
+
+        def_delegators :article_id, :author_name, :title
 
         def type # Not settable as an attribute...yet.
           :edit
