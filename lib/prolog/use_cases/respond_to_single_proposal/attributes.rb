@@ -12,10 +12,6 @@ module Prolog
         attribute :proposal, Types::Class
         attribute :responder, Types::Class
 
-        def response
-          responder.call proposal
-        end
-
         # def to_h
         #   { proposal: proposal, response: response }
         # end

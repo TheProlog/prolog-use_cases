@@ -9,8 +9,10 @@ module Prolog
     class RespondToSingleProposal
       # Encapsulates result reported from use case.
       class Result < Dry::Types::Value
-        attribute :errors, Types::Strict::Array.member(Types::Strict::String)
+        # FIXME: Type definition for :errors?
+        attribute :errors, Types::Strict::Array.member(Types::Strict::Hash)
         attribute :response, Types::Strict::Symbol
+        attribute :original_proposal, Types::Class
 
         def accepted?
           response == :accepted
@@ -18,6 +20,10 @@ module Prolog
 
         def rejected?
           response == :rejected
+        end
+
+        def responded?
+          [:accepted, :rejected].include? response
         end
 
         def success?
