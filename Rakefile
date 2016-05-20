@@ -3,6 +3,7 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 
 require 'rake/tasklib'
+require 'flay'
 require 'flay_task'
 require 'tasks/prolog_flog_task'
 require 'reek/rake/task'
