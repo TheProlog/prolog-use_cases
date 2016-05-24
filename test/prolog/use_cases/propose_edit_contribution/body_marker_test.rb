@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'uuid'
 
 require 'prolog/use_cases/propose_edit_contribution/body_marker'
 
@@ -12,7 +13,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::BodyMarker' do
   let(:body) { body_content.dup }
   let(:ending_ep) { body.index ' content' }
   let(:endpoints) { (starting_ep..ending_ep) }
-  let(:id_number) { 42 }
+  let(:id_number) { UUID.generate }
   let(:params) { { body: body, endpoints: endpoints, id_number: id_number } }
   let(:starting_ep) { body.index '<em>' }
 
@@ -40,6 +41,14 @@ describe 'Prolog::UseCases::ProposeEditContribution::BodyMarker' do
     let(:end_fragment) { obj.to_s[end_fragment_offset..-1] }
 
     before { @actual = obj.to_s }
+
+    describe 'with the Contribution ID as a UUID for' do
+      it 'contribution-*-begin' do
+        expr = /id="contribution-(.+?)-begin"/
+        found = @actual.match expr
+        expect(UUID.validate(found[1])).wont_be_nil
+      end
+    end # describe 'with the Contribution ID as a UUID for'
 
     describe 'renders the markup' do
       it 'before the starting endpoint without change' do

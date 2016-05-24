@@ -106,6 +106,18 @@ describe 'Prolog::Entities::Contribution::Proposed' do
     expect(described_class.new(required_params).type).must_equal :edit
   end
 
+  describe 'delegates to the :article_id attribute methods for' do
+    let(:obj) { described_class.new required_params }
+
+    it ':author_name' do
+      expect(obj.author_name).must_equal author_name
+    end
+
+    it ':title' do
+      expect(obj.title).must_equal title
+    end
+  end # describe 'delegates to the :article_id attribute methods for'
+
   describe 'has a #to_h method that' do
     it 'returns a hash including a :type value of :edit' do
       obj = described_class.new required_params

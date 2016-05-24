@@ -2,6 +2,8 @@
 
 require 'test_helper'
 
+require 'uuid'
+
 require 'prolog/use_cases/propose_edit_contribution'
 
 def verify_error(message)
@@ -238,19 +240,17 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       describe 'updatexs the Article body with contribution markers for' do
         after do
           body = last_added.article.body
-          marker = format '<a id="contribution-1-%s"></a>', @which_end
-          expect(body.index(marker)).must_equal @marker_index
+          marker = format '.*<a id="contribution-(.+?)-%s"></a>', @which_end
+          uuid = body.match(marker)[1]
+          expect(UUID.validate uuid).wont_be :nil?
         end
 
         it 'the begin-contribution marker' do
           @which_end = :begin
-          @marker_index = endpoints.begin
         end
 
         it 'the end-contribution marker' do
           @which_end = :end
-          begin_marker = '<a id="contribution-1-begin"></a>'
-          @marker_index = endpoints.end + begin_marker.length
         end
       end # describe 'updatexs the Article body with contribution markers for'
 
@@ -281,9 +281,18 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         end
       end # describe 'encodes a UI Gateway #success message as JSON with'
 
-      it 'persists an (updated) entity to the Article Repository' do
-        expect(article_repo.added_data.count).must_equal 1
-      end
+      describe 'persists an (updated) entity' do
+        it 'to the Article Repository' do
+          expect(article_repo.added_data.count).must_equal 1
+        end
+
+        it 'with a UUID as the Contribution ID' do
+          article_body = article_repo.added_data.first[:body]
+          expr = /id="contribution-(.+?)-begin"/
+          found = article_body.match(expr)[1]
+          expect(UUID.validate(found)).wont_be_nil
+        end
+      end # describe 'persists an (updated) entity'
     end # describe 'whether or not the initiating user is the article author'
 
     describe 'reports failures and performs no updates when' do

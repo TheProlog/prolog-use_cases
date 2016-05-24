@@ -46,7 +46,7 @@ module Prolog
 
         def init_other_ivars
           @str = nil
-          @format_str = '<a id="contribution-%d-%s"></a>'
+          @format_str = '<a id="contribution-%s-%s"></a>'
           self
         end
 
