@@ -32,10 +32,6 @@ module Prolog
 
         attr_reader :attributes, :contribution_repo
 
-        def next_sequence_from_repo
-          contribution_repo.count + 1
-        end
-
         def update_attributes_with(article)
           attribs = attributes.to_h
           attribs[:article] = article
@@ -43,13 +39,21 @@ module Prolog
         end
 
         def updated_article
-          WrapContribution.call id_number: next_sequence_from_repo,
+          WrapContribution.call id_number: Internals.new_contribution_id,
                                 attributes: attributes
         end
 
         def updated_attributes
           update_attributes_with updated_article
         end
+
+        # Methods neither affecting nor affected by instance state.
+        module Internals
+          def self.new_contribution_id
+            UUID.generate
+          end
+        end
+        private_constant :Internals
       end # class ...::ProposeEditContribution::UpdateAttributesWithMarkedBody
     end # class Prolog::UseCases::ProposeEditContribution
   end
