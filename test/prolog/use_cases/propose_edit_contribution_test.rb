@@ -225,6 +225,54 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           it 'has a :proposed status' do
             expect(result_contribution.status).must_equal :proposed
           end
+
+          it 'has the correct values in its :article_id attribute' do
+            expected = { author_name: author_name, title: title }
+            expect(result_contribution.article_id.to_h).must_equal expected
+          end
+
+          it 'has the correct :article attribute' do
+            expected = result.article.to_h
+            expect(result_contribution.article.to_h).must_equal expected
+          end
+
+          describe 'has the correct attribute values from the proposal for' do
+            it 'endpoints' do
+              expect(result_contribution.endpoints).must_equal endpoints
+            end
+
+            it 'proposed content' do
+              actual = result_contribution.proposed_content
+              expect(actual).must_equal proposed_content
+            end
+
+            it 'proposer name' do
+              expect(result_contribution.proposed_by).must_equal user_name
+            end
+
+            it 'proposed at' do
+              actual = result_contribution.proposed_at.to_time
+              current = DateTime.now.to_time
+              expect(current - actual).must_be :<, 30.0 # seconds
+            end
+
+            it 'justification' do
+              skip 'FIXME: Justification attribute is lost; why?'
+              expect(result_contribution.justification).must_equal justification
+            end
+
+            it 'contribution ID as a UUID' do
+              actual = result_contribution.contribution_id
+              expected_pattern = /\A\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12}\z/
+              skip 'FIXME: Contribution ID is old-style sequence, not UUID.'
+              expect(actual).must_match expected_pattern
+            end
+          end # describe 'has the correct attribute values...for'
+
+          it 'has no :saved_at attribute' do
+            skip "FIXME: We shouldn't have a `:saved_at` attribute!"
+            expect(result_contribution.to_h.key? :saved_at).must_equal false
+          end
         end # describe 'includes a :contribution value object that'
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
