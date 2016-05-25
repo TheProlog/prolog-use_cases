@@ -53,30 +53,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
-    { authoriser: authoriser, contribution_repo: contribution_repo,
-      ui_gateway: ui_gateway }
+    { authoriser: authoriser, contribution_repo: contribution_repo }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
-  let(:ui_gateway) do
-    Class.new do
-      attr_reader :failures, :successes
-
-      def initialize
-        @failures = []
-        @successes = []
-        self
-      end
-
-      def success(*params)
-        @successes << params
-      end
-
-      def failure(*params)
-        @failures << params
-      end
-    end.new
-  end
   let(:user_name) { author_name }
   let(:obj) { described_class.new init_params }
 
@@ -98,10 +78,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it ':contribution_repo' do
       @param = :contribution_repo
-    end
-
-    it ':ui_gateway' do
-      @param = :ui_gateway
     end
   end # describe 'must be initialised with parameters for'
 

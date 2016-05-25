@@ -27,9 +27,9 @@ module Prolog
 
       attr_reader :contribution
 
-      def initialize(authoriser:, contribution_repo:, ui_gateway:)
-        params = { authoriser: authoriser, contribution_repo: contribution_repo,
-                   ui_gateway: ui_gateway }
+      def initialize(authoriser:, contribution_repo:)
+        params = { authoriser: authoriser,
+                   contribution_repo: contribution_repo }
         @collaborators = Collaborators.new params
         self
       end
@@ -43,7 +43,7 @@ module Prolog
       private
 
       def_delegators :@collaborators, :authoriser, :contribution_repo,
-                     :ui_gateway, :user_name
+                     :user_name
       def_delegators :@attributes, :article, :article_id, :endpoints,
                      :justification, :proposed_content, :status
 
