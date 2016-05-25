@@ -21,27 +21,14 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       '<li>This is the <em>last</em> list item.</li>' \
       '</ul><p>This is the closing paragraph.</p>'
   end
+  # FIXME: No spec tests for created data. Should it?
   let(:contribution_repo) do
     Class.new do
       attr_reader :added_data, :created_data
 
       def initialize
-        @added_data = []
         @created_data = []
-        @contribution_id = 0
         self
-      end
-
-      def add(entity)
-        @contribution_id += 1
-        entity.contribution_id = @contribution_id
-        entity.saved_at = DateTime.now
-        @added_data << entity
-        entity
-      end
-
-      def count
-        @added_data.count
       end
 
       def create(**params)

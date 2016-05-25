@@ -12,8 +12,8 @@ module Prolog
       # supplied instance, containing an  "updated" article entity with range of
       # body content marked as the subject of a Proposed Contribution.
       class UpdateAttributesWithMarkedBody
-        def self.call(attributes:, contribution_repo:)
-          UpdateAttributesWithMarkedBody.new(attributes, contribution_repo).call
+        def self.call(attributes:)
+          UpdateAttributesWithMarkedBody.new(attributes).call
         end
 
         def call
@@ -22,15 +22,14 @@ module Prolog
 
         protected
 
-        def initialize(attributes, contribution_repo)
+        def initialize(attributes)
           @attributes = attributes
-          @contribution_repo = contribution_repo
           self
         end
 
         private
 
-        attr_reader :attributes, :contribution_repo
+        attr_reader :attributes
 
         def update_attributes_with(article)
           attribs = attributes.to_h

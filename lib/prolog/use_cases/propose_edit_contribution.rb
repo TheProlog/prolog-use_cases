@@ -72,32 +72,17 @@ module Prolog
 
       def steps_in_process
         update_article_with_marked_body
-        persist_contribution
-        # notify_success
         self
       end
 
-      # def notify_success
-      #   ui_gateway.success success_payload.to_json
-      # end
-
-      def persist_contribution
-        contribution_repo.add updated_contribution
-      end
-
-      def success_payload
-        { member: user_name, article_id: @attributes.article_id,
-          contribution_count: contribution_repo.count }
-      end
-
       def update_article_with_marked_body
-        params = { attributes: @attributes,
-                   contribution_repo: contribution_repo }
+        params = { attributes: @attributes }
         @attributes = UpdateAttributesWithMarkedBody.call params
         self
       end
 
       def updated_contribution
+        # NOTE: The one and only method still used on `contribution_repo`.
         @contribution ||= contribution_repo.create @attributes
       end
     end # class Prolog::UseCases::ProposeEditContribution

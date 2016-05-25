@@ -16,6 +16,9 @@ module Prolog
         extend Forwardable
 
         attribute :authoriser, Types::Class
+        # Contribution repository now needed only to build new objects from
+        # attributes. We might prefer to have a factory class instead, and have
+        # the repo's #create method use that as well. FIXME?
         attribute :contribution_repo, Types::Class
 
         def_delegators :authoriser, :user_name
