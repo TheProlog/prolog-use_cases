@@ -190,28 +190,29 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(result).wont_be :failure?
         end
 
-        describe 'by a Proposing Member who' do
-          describe 'is not the Author of the Article' do
-            describe 'include an :article value object that' do
-              describe 'contains marker tag pairs for' do
-                it 'the beginning endpoint of a Proposed Contribution'
+        describe 'includes an :article value object whose body' do
+          let(:article_body) { result.article.body }
 
-                it 'the ending endpoint of a Proposed Contribution'
-              end # describe 'contains marker tag pairs for'
-            end # describe 'includes an :article value object that'
+          describe 'contains marker tag pairs for' do
+            let(:begin_pattern) do
+              /id="contribution-(\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12})-begin"/
+            end
+            let(:end_pattern) do
+              /id="contribution-(\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12})-end"/
+            end
 
-            describe 'includes a :contribution value object that' do
-            end # describe 'includes a :contribution value object that'
-          end # describe 'is not the Author of the Article'
+            it 'the beginning endpoint of a Proposed Contribution' do
+              expect(article_body.match begin_pattern).wont_be :nil?
+            end
 
-          describe 'is the Author of the Article' do
-            describe 'include an :article value object that' do
-            end # describe 'includes an :article value object that'
+            it 'the ending endpoint of a Proposed Contribution' do
+              expect(article_body.match end_pattern).wont_be :nil?
+            end
+          end # describe 'contains marker tag pairs for'
+        end # describe 'includes an :article value object whose body'
 
-            describe 'includes a :contribution value object that' do
-            end # describe 'includes a :contribution value object that'
-          end # describe 'is the Author of the Article'
-        end # describe 'by a Proposing Member who'
+        describe 'includes a :contribution value object that' do
+        end # describe 'includes a :contribution value object that'
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'

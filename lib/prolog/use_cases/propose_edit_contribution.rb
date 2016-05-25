@@ -57,7 +57,7 @@ module Prolog
       end
 
       def build_result
-        Result.new errors: @errors
+        Result.new errors: @errors, article: article
       end
 
       def run_steps

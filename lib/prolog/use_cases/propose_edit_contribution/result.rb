@@ -9,6 +9,7 @@ module Prolog
     class ProposeEditContribution
       # Reports results from execution of `#call` method.
       class Result < Dry::Types::Value
+        attribute :article, Types::Class
         attribute :errors, Types::Strict::Array.member(Types::Strict::Hash)
 
         def success
