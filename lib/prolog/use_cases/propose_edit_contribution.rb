@@ -36,7 +36,7 @@ module Prolog
       def call(article:, endpoints:, proposed_content:, justification: '')
         build_attributes article, endpoints, proposed_content, justification
         run_steps
-        self
+        Struct.new(:errors).new @errors
       end
 
       private
@@ -56,7 +56,7 @@ module Prolog
 
       def run_steps
         steps_in_process if validator_valid?
-        transfer_errors
+        @errors = []
         self
       end
 
@@ -69,7 +69,7 @@ module Prolog
         persist_contribution
         persist_article
         # notify_success
-        Struct.new(:errors).new @errors
+        self
       end
 
       # def notify_success
@@ -87,12 +87,6 @@ module Prolog
       def success_payload
         { member: user_name, article_id: @attributes.article_id,
           contribution_count: contribution_repo.count }
-      end
-
-      def transfer_errors
-        @errors = []
-        # TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
-        self
       end
 
       def update_article_with_marked_body

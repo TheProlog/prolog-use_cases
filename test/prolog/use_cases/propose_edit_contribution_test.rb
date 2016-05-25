@@ -163,7 +163,17 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it 'accepts a :justification parameter string' do
       call_params[:justification] = justification
-      expect(obj.call call_params).must_equal obj
+      expect { obj.call call_params }.must_be_silent
     end
+
+    describe 'returns a "result" object that' do
+      let(:result) { obj.call call_params }
+
+      describe 'when called with valid parameters' do
+        it 'reports no errors' do
+          expect(result.errors).must_be :empty?
+        end
+      end # describe 'when called with valid parameters'
+    end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution
