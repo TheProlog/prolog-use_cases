@@ -4,8 +4,6 @@ require 'forwardable'
 
 %w(attributes
    collaborators
-   transfer_errors
-   transfer_errors
    update_article_with_marked_body
    validate_attributes).each do |fname|
      require_relative "./propose_edit_contribution/#{fname}"
@@ -70,13 +68,13 @@ module Prolog
         update_article_with_marked_body
         persist_contribution
         persist_article
-        notify_success
-        self
+        # notify_success
+        Struct.new(:errors).new @errors
       end
 
-      def notify_success
-        ui_gateway.success success_payload.to_json
-      end
+      # def notify_success
+      #   ui_gateway.success success_payload.to_json
+      # end
 
       def persist_article
         article_repo.add article
@@ -92,7 +90,8 @@ module Prolog
       end
 
       def transfer_errors
-        TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
+        @errors = []
+        # TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
         self
       end
 
