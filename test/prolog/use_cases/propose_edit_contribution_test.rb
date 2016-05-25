@@ -177,6 +177,18 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         it 'reports success' do
           expect(result.success).must_equal true
         end
+
+        it 'reports being successful via a query method' do
+          expect(result).must_be :success?
+        end
+
+        it 'reports no failure' do
+          expect(result.failure).must_equal false
+        end
+
+        it 'reports not having failed via a query method' do
+          expect(result).wont_be :failure?
+        end
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'

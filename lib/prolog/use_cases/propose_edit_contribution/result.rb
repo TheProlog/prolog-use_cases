@@ -15,6 +15,11 @@ module Prolog
           errors.empty?
         end
         alias success? success
+
+        def failure
+          !success
+        end
+        alias failure? failure
       end # class Prolog::UseCases::ProposeEditContribution::Result
     end # class Prolog::UseCases::ProposeEditContribution
   end
