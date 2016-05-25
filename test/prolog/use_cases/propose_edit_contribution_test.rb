@@ -220,6 +220,11 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         end # describe 'includes an :article value object whose'
 
         describe 'includes a :contribution value object that' do
+          let(:result_contribution) { result.contribution }
+
+          it 'has a :proposed status' do
+            expect(result_contribution.status).must_equal :proposed
+          end
         end # describe 'includes a :contribution value object that'
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
