@@ -173,6 +173,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         it 'reports no errors' do
           expect(result.errors).must_be :empty?
         end
+
+        it 'reports success' do
+          expect(result.success).must_equal true
+        end
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'

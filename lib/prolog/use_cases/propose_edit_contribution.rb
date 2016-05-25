@@ -2,6 +2,8 @@
 
 require 'forwardable'
 
+require_relative './propose_edit_contribution/result'
+
 %w(attributes
    collaborators
    update_article_with_marked_body
@@ -36,7 +38,7 @@ module Prolog
       def call(article:, endpoints:, proposed_content:, justification: '')
         build_attributes article, endpoints, proposed_content, justification
         run_steps
-        Struct.new(:errors).new @errors
+        build_result
       end
 
       private
@@ -52,6 +54,10 @@ module Prolog
                                      proposed_content: proposed_content,
                                      proposed_at: nil, proposed_by: user_name
         self
+      end
+
+      def build_result
+        Result.new errors: @errors
       end
 
       def run_steps
