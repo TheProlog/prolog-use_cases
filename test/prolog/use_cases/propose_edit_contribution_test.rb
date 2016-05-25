@@ -189,6 +189,29 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         it 'reports not having failed via a query method' do
           expect(result).wont_be :failure?
         end
+
+        describe 'by a Proposing Member who' do
+          describe 'is not the Author of the Article' do
+            describe 'include an :article value object that' do
+              describe 'contains marker tag pairs for' do
+                it 'the beginning endpoint of a Proposed Contribution'
+
+                it 'the ending endpoint of a Proposed Contribution'
+              end # describe 'contains marker tag pairs for'
+            end # describe 'includes an :article value object that'
+
+            describe 'includes a :contribution value object that' do
+            end # describe 'includes a :contribution value object that'
+          end # describe 'is not the Author of the Article'
+
+          describe 'is the Author of the Article' do
+            describe 'include an :article value object that' do
+            end # describe 'includes an :article value object that'
+
+            describe 'includes a :contribution value object that' do
+            end # describe 'includes a :contribution value object that'
+          end # describe 'is the Author of the Article'
+        end # describe 'by a Proposing Member who'
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'
