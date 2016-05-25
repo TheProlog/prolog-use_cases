@@ -190,10 +190,18 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(result).wont_be :failure?
         end
 
-        describe 'includes an :article value object whose body' do
-          let(:article_body) { result.article.body }
+        describe 'includes an :article value object whose' do
+          it 'title matches that of the article passed in to #call' do
+            expect(result.article.title).must_equal article.title
+          end
 
-          describe 'contains marker tag pairs for' do
+          it 'author name matches that of the article passed in to #call' do
+            expect(result.article.author_name).must_equal article.author_name
+          end
+
+          describe 'body contains marker tag pairs for' do
+            let(:article_body) { result.article.body }
+
             let(:begin_pattern) do
               /id="contribution-(\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12})-begin"/
             end
@@ -208,8 +216,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
             it 'the ending endpoint of a Proposed Contribution' do
               expect(article_body.match end_pattern).wont_be :nil?
             end
-          end # describe 'contains marker tag pairs for'
-        end # describe 'includes an :article value object whose body'
+          end # describe 'body contains marker tag pairs for'
+        end # describe 'includes an :article value object whose'
 
         describe 'includes a :contribution value object that' do
         end # describe 'includes a :contribution value object that'
