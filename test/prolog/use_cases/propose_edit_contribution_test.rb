@@ -11,21 +11,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:article) do
     Struct.new(:author_name, :body, :title).new author_name, body, title
   end
-  let(:article_repo) do
-    Class.new do
-      attr_reader :added_data
-
-      def initialize
-        @added_data = []
-        self
-      end
-
-      def add(entity)
-        @added_data << entity
-        entity
-      end
-    end.new
-  end
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
   end
@@ -69,7 +54,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
     { authoriser: authoriser, contribution_repo: contribution_repo,
-      article_repo: article_repo, ui_gateway: ui_gateway }
+      ui_gateway: ui_gateway }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
@@ -109,10 +94,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it ':authoriser' do
       @param = :authoriser
-    end
-
-    it ':article_repo' do
-      @param = :article_repo
     end
 
     it ':contribution_repo' do

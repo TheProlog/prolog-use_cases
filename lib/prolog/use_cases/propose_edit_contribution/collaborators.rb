@@ -17,7 +17,6 @@ module Prolog
 
         attribute :authoriser, Types::Class
         attribute :contribution_repo, Types::Class
-        attribute :article_repo, Types::Class
 
         def_delegators :authoriser, :user_name
       end # class Prolog::UseCases::ProposeEditContribution::Collaborators

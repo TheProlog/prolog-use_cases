@@ -27,10 +27,9 @@ module Prolog
 
       attr_reader :contribution
 
-      def initialize(authoriser:, contribution_repo:, article_repo:,
-                     ui_gateway:)
+      def initialize(authoriser:, contribution_repo:, ui_gateway:)
         params = { authoriser: authoriser, contribution_repo: contribution_repo,
-                   article_repo: article_repo, ui_gateway: ui_gateway }
+                   ui_gateway: ui_gateway }
         @collaborators = Collaborators.new params
         self
       end
@@ -43,8 +42,8 @@ module Prolog
 
       private
 
-      def_delegators :@collaborators, :article_repo, :authoriser,
-                     :contribution_repo, :ui_gateway, :user_name
+      def_delegators :@collaborators, :authoriser, :contribution_repo,
+                     :ui_gateway, :user_name
       def_delegators :@attributes, :article, :article_id, :endpoints,
                      :justification, :proposed_content, :status
 
@@ -74,7 +73,6 @@ module Prolog
       def steps_in_process
         update_article_with_marked_body
         persist_contribution
-        persist_article
         # notify_success
         self
       end
@@ -82,10 +80,6 @@ module Prolog
       # def notify_success
       #   ui_gateway.success success_payload.to_json
       # end
-
-      def persist_article
-        article_repo.add article
-      end
 
       def persist_contribution
         contribution_repo.add updated_contribution
