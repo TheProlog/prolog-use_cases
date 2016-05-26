@@ -201,7 +201,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
             end
 
             it 'justification' do
-              skip 'FIXME: Justification attribute is lost; why?'
+              call_params[:justification] = justification
               expect(result_contribution.justification).must_equal justification
             end
 
@@ -214,7 +214,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           end # describe 'has the correct attribute values...for'
 
           it 'has no :saved_at attribute' do
-            skip "FIXME: We shouldn't have a `:saved_at` attribute!"
             expect(result_contribution.to_h.key? :saved_at).must_equal false
           end
         end # describe 'includes a :contribution value object that'
