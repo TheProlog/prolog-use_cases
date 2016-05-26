@@ -226,8 +226,16 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         describe 'the Authoriser says the Author is not the current user' do
           let(:user_name) { 'Somebody Else' } # Could be guest user...
 
-          it 'reports errors' do
-            expect(result.errors).wont_be :empty?
+          it 'reports one error' do
+            expect(result.errors.count).must_equal 1
+          end
+
+          it 'reports that the author is not logged in, with the article ID' do
+            actual = result.errors.first
+            article_id = { author_name: author_name, title: title }
+            article_id = Prolog::Entities::ArticleIdentV.new article_id
+            expected = { not_logged_in: article_id }
+            expect(actual).must_equal expected
           end
         end # describe 'the Authoriser says the Author is not the current user'
       end # describe 'when called with parameters that are invalid because'
