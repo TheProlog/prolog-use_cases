@@ -221,6 +221,16 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           expect(contribution_repo.created_data.count).must_equal 1
         end
       end # describe 'when called with valid parameters'
+
+      describe 'when called with parameters that are invalid because' do
+        describe 'the Authoriser says the Author is not the current user' do
+          let(:user_name) { 'Somebody Else' } # Could be guest user...
+
+          it 'reports errors' do
+            expect(result.errors).wont_be :empty?
+          end
+        end # describe 'the Authoriser says the Author is not the current user'
+      end # describe 'when called with parameters that are invalid because'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

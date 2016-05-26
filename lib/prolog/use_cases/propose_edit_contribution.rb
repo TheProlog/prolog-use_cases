@@ -22,6 +22,9 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
+    # FIXME: Reek complains that this has :reek:TooManyMethods, ,saying "at
+    # least 17 methods". It does need to be broken out more **or** the Flay
+    # score ignored.
     class ProposeEditContribution
       extend Forwardable
 
@@ -66,18 +69,44 @@ module Prolog
       end
 
       def run_steps
-        steps_in_process if validator_valid?
+        steps_in_process if valid_inputs?
         self
       end
 
-      def validator_valid?
-        validator = ValidateAttributes.new.call(attributes)
-        return true if validator.valid?
-        # Why do the rest of this? If this method gets called multiple times
-        # with errors each time, each error will only be added to the list once.
-        all_errors = @errors + validator.errors
-        @errors = Set.new(all_errors).to_a
-        false
+      def add_errors(new_errors)
+        @errors << new_errors # unless new_errors.empty?
+        normalize_errors
+        @errors.empty?
+      end
+
+      def attribute_errors
+        ValidateAttributes.new.call(attributes).errors
+      end
+
+      def attributes_valid?
+        add_errors attribute_errors
+        @errors.empty?
+      end
+
+      def author_is_current_user?
+        article.author_name == user_name
+      end
+
+      def author_not_logged_in_error
+        { not_logged_in: article_id }
+      end
+
+      def current_user_valid?
+        add_errors(author_not_logged_in_error) unless author_is_current_user?
+        @errors.empty?
+      end
+
+      def normalize_errors
+        @errors = unique_errors.reject(&:empty?)
+      end
+
+      def unique_errors
+        Set.new(@errors).to_a.flatten
       end
 
       def steps_in_process
@@ -93,6 +122,10 @@ module Prolog
       def updated_contribution
         # NOTE: The one and only method still used on `contribution_repo`.
         @contribution ||= contribution_repo.create attributes
+      end
+
+      def valid_inputs?
+        attributes_valid? && current_user_valid?
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end
