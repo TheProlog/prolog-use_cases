@@ -24,7 +24,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   # FIXME: No spec tests for created data. Should it?
   let(:contribution_repo) do
     Class.new do
-      attr_reader :added_data, :created_data
+      attr_reader :created_data
 
       def initialize
         @created_data = []
@@ -215,6 +215,11 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
             expect(result_contribution.to_h.key? :saved_at).must_equal false
           end
         end # describe 'includes a :contribution value object that'
+
+        it 'creates exactly one Contribution entity via the repository' do
+          _result = obj.call call_params
+          expect(contribution_repo.created_data.count).must_equal 1
+        end
       end # describe 'when called with valid parameters'
     end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'

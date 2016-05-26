@@ -31,6 +31,8 @@ module Prolog
         params = { authoriser: authoriser,
                    contribution_repo: contribution_repo }
         @collaborators = Collaborators.new params
+        @contribution = @attributes = nil
+        @errors = []
         self
       end
 
@@ -65,12 +67,17 @@ module Prolog
 
       def run_steps
         steps_in_process if validator_valid?
-        @errors = []
         self
       end
 
       def validator_valid?
-        ValidateAttributes.new.call(attributes).valid?
+        validator = ValidateAttributes.new.call(attributes)
+        return true if validator.valid?
+        # Why do the rest of this? If this method gets called multiple times
+        # with errors each time, each error will only be added to the list once.
+        all_errors = @errors + validator.errors
+        @errors = Set.new(all_errors).to_a
+        false
       end
 
       def steps_in_process
