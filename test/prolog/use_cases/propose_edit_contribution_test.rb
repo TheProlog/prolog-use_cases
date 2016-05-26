@@ -207,9 +207,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
             it 'contribution ID as a UUID' do
               actual = result_contribution.contribution_id
-              expected_pattern = /\A\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12}\z/
-              skip 'FIXME: Contribution ID is old-style sequence, not UUID.'
-              expect(actual).must_match expected_pattern
+              expect(UUID.validate actual).wont_be :nil?
             end
           end # describe 'has the correct attribute values...for'
 

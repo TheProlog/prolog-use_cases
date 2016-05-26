@@ -18,6 +18,7 @@ module Prolog
         attribute :proposed_content, Types::Strict::String
         attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
         attribute :proposed_by, Types::Strict::String
+        attribute :contribution_id, Types::UUID # generates by default
 
         def article_id
           Prolog::Entities::ArticleIdentV.new article_id_attribs

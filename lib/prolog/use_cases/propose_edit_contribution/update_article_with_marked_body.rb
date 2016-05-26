@@ -38,21 +38,15 @@ module Prolog
         end
 
         def updated_article
-          WrapContribution.call id_number: Internals.new_contribution_id,
+          # FIXME: We've added `contribution_id` to `attributes, but the
+          # `WrapContribution` class doesn't know that yet.
+          WrapContribution.call id_number: attributes.contribution_id,
                                 attributes: attributes
         end
 
         def updated_attributes
           update_attributes_with updated_article
         end
-
-        # Methods neither affecting nor affected by instance state.
-        module Internals
-          def self.new_contribution_id
-            UUID.generate
-          end
-        end
-        private_constant :Internals
       end # class ...::ProposeEditContribution::UpdateAttributesWithMarkedBody
     end # class Prolog::UseCases::ProposeEditContribution
   end

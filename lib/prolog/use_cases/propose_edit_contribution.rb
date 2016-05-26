@@ -42,16 +42,19 @@ module Prolog
 
       private
 
+      attr_reader :attributes
+
       def_delegators :@collaborators, :authoriser, :contribution_repo,
                      :user_name
-      def_delegators :@attributes, :article, :article_id, :endpoints,
-                     :justification, :proposed_content, :status
+      def_delegators :@attributes, :article, :article_id, :contribution_id,
+                     :endpoints, :justification, :proposed_content, :status
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
                                      proposed_content: proposed_content,
-                                     proposed_at: nil, proposed_by: user_name
+                                     proposed_at: nil, proposed_by: user_name,
+                                     contribution_id: nil
         self
       end
 
@@ -67,7 +70,7 @@ module Prolog
       end
 
       def validator_valid?
-        ValidateAttributes.new.call(@attributes).valid?
+        ValidateAttributes.new.call(attributes).valid?
       end
 
       def steps_in_process
@@ -76,14 +79,13 @@ module Prolog
       end
 
       def update_article_with_marked_body
-        params = { attributes: @attributes }
-        @attributes = UpdateAttributesWithMarkedBody.call params
+        @attributes = UpdateAttributesWithMarkedBody.call attributes: attributes
         self
       end
 
       def updated_contribution
         # NOTE: The one and only method still used on `contribution_repo`.
-        @contribution ||= contribution_repo.create @attributes
+        @contribution ||= contribution_repo.create attributes
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end
