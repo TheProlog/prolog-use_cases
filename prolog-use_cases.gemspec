@@ -33,8 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "html-pipeline", "~> 2.3"
   spec.add_dependency "gemoji", "~> 2.1"
   spec.add_dependency "github-markdown", "0.6.9"
-  spec.add_dependency "rinku", "~> 1.7", ">= 1.7.3"
-  spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0"
+  spec.add_dependency "rinku", "~> 2.0", ">= 2.0.0"
+  spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0", ">= 1.0.2"
   spec.add_dependency "prolog-services-replace_content", "0.1.2"
   spec.add_dependency "uuid", "~> 2.3", ">= 2.3.8"
 

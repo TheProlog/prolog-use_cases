@@ -2,10 +2,10 @@
 
 require 'forwardable'
 
+require_relative './propose_edit_contribution/result'
+
 %w(attributes
    collaborators
-   transfer_errors
-   transfer_errors
    update_article_with_marked_body
    validate_attributes).each do |fname|
      require_relative "./propose_edit_contribution/#{fname}"
@@ -22,89 +22,109 @@ module Prolog
   module UseCases
     # Use case encapsulating all domain logic involved in submitting a proposal
     # for an Edit Contribution.
+    # FIXME: Reek complains that this has :reek:TooManyMethods, ,saying "at
+    # least 17 methods". It does need to be broken out more **or** the Flay
+    # score ignored.
     class ProposeEditContribution
       extend Forwardable
 
       attr_reader :contribution
 
-      def initialize(authoriser:, contribution_repo:, article_repo:,
-                     ui_gateway:)
-        params = { authoriser: authoriser, contribution_repo: contribution_repo,
-                   article_repo: article_repo, ui_gateway: ui_gateway }
+      def initialize(authoriser:, contribution_factory:)
+        params = { authoriser: authoriser,
+                   contribution_factory: contribution_factory }
         @collaborators = Collaborators.new params
+        @contribution = @attributes = nil
+        @errors = []
         self
       end
 
       def call(article:, endpoints:, proposed_content:, justification: '')
         build_attributes article, endpoints, proposed_content, justification
         run_steps
-        self
+        build_result
       end
 
       private
 
-      def_delegators :@collaborators, :article_repo, :authoriser,
-                     :contribution_repo, :ui_gateway, :user_name
-      def_delegators :@attributes, :article, :article_id, :endpoints,
-                     :justification, :proposed_content, :status
+      attr_reader :attributes
+
+      def_delegators :@collaborators, :authoriser, :contribution_factory,
+                     :user_name
+      def_delegators :@attributes, :article, :article_id, :contribution_id,
+                     :endpoints, :justification, :proposed_content, :status
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
                                      proposed_content: proposed_content,
-                                     proposed_at: nil, proposed_by: user_name
+                                     proposed_at: nil, proposed_by: user_name,
+                                     contribution_id: nil
         self
+      end
+
+      def build_result
+        Result.new errors: @errors, article: article,
+                   contribution: updated_contribution
       end
 
       def run_steps
-        steps_in_process if validator_valid?
-        transfer_errors
+        steps_in_process if valid_inputs?
         self
       end
 
-      def validator_valid?
-        ValidateAttributes.new.call(@attributes).valid?
+      def add_errors(new_errors)
+        @errors << new_errors # unless new_errors.empty?
+        normalize_errors
+        @errors.empty?
+      end
+
+      def attribute_errors
+        ValidateAttributes.new.call(attributes).errors
+      end
+
+      def attributes_valid?
+        add_errors attribute_errors
+        @errors.empty?
+      end
+
+      def author_is_current_user?
+        article.author_name == user_name
+      end
+
+      def author_not_logged_in_error
+        { not_logged_in: article_id }
+      end
+
+      def current_user_valid?
+        add_errors(author_not_logged_in_error) unless author_is_current_user?
+        @errors.empty?
+      end
+
+      def normalize_errors
+        @errors = unique_errors.reject(&:empty?)
+      end
+
+      def unique_errors
+        Set.new(@errors).to_a.flatten
       end
 
       def steps_in_process
         update_article_with_marked_body
-        persist_contribution
-        persist_article
-        notify_success
-        self
-      end
-
-      def notify_success
-        ui_gateway.success success_payload.to_json
-      end
-
-      def persist_article
-        article_repo.add article
-      end
-
-      def persist_contribution
-        contribution_repo.add updated_contribution
-      end
-
-      def success_payload
-        { member: user_name, article_id: @attributes.article_id,
-          contribution_count: contribution_repo.count }
-      end
-
-      def transfer_errors
-        TransferErrors.call attributes: @attributes, ui_gateway: ui_gateway
         self
       end
 
       def update_article_with_marked_body
-        params = { attributes: @attributes,
-                   contribution_repo: contribution_repo }
-        @attributes = UpdateAttributesWithMarkedBody.call params
+        @attributes = UpdateAttributesWithMarkedBody.call attributes: attributes
         self
       end
 
       def updated_contribution
-        @contribution ||= contribution_repo.create @attributes
+        @contribution ||= contribution_factory.call attributes
+      end
+
+      def valid_inputs?
+        attributes_valid? && current_user_valid?
       end
     end # class Prolog::UseCases::ProposeEditContribution
   end

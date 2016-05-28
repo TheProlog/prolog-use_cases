@@ -16,9 +16,7 @@ module Prolog
         extend Forwardable
 
         attribute :authoriser, Types::Class
-        attribute :contribution_repo, Types::Class
-        attribute :article_repo, Types::Class
-        attribute :ui_gateway, Types::Class
+        attribute :contribution_factory, Types::Class
 
         def_delegators :authoriser, :user_name
       end # class Prolog::UseCases::ProposeEditContribution::Collaborators

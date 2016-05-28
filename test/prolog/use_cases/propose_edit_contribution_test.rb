@@ -6,74 +6,10 @@ require 'uuid'
 
 require 'prolog/use_cases/propose_edit_contribution'
 
-def verify_error(message)
-  it 'does not create a new Contribution' do
-    expect(contribution_repo.created_data).must_be :empty?
-  end
-
-  it 'does not change the article body' do
-    expect(article.body).must_equal body
-  end
-
-  it 'does not set the :saved_at timestamp on the Article' do
-    is_clean = !article.respond_to?(:saved_at) || article.saved_at.nil?
-    expect(is_clean).must_equal true
-  end
-
-  it 'does not persist the Article to the Article Repository' do
-    expect(article_repo.added_data).must_be :empty?
-  end
-
-  it "has the reason as '#{message}'" do
-    expect(failure_data[:failure]).must_equal message
-  end
-
-  describe 'has a YAML-encoded Article ID object with' do
-    let(:failed_article_id) { YAML.load failure_data[:article_id] }
-
-    it 'has the correct article title' do
-      expect(failed_article_id[:title]).must_equal article.title
-    end
-
-    it 'has the correct author name' do
-      expect(failed_article_id[:author_name]).must_equal author_name
-    end
-  end # describe 'has a YAML-encoded Article ID object with'
-end
-
-def verify_invalid_content_handling(reason, content, message)
-  describe reason.to_s do
-    let(:failure_message) { ui_gateway.failures.last.first }
-    let(:failure_data) do
-      JSON.parse failure_message, symbolize_names: true
-    end
-    let(:proposed_content) { content }
-
-    before { obj.call call_params }
-
-    verify_error message
-  end # describe reason.to_s
-end
-
 describe 'Prolog::UseCases::ProposeEditContribution' do
   let(:described_class) { Prolog::UseCases::ProposeEditContribution }
   let(:article) do
     Struct.new(:author_name, :body, :title).new author_name, body, title
-  end
-  let(:article_repo) do
-    Class.new do
-      attr_reader :added_data
-
-      def initialize
-        @added_data = []
-        self
-      end
-
-      def add(entity)
-        @added_data << entity
-        entity
-      end
-    end.new
   end
   let(:authoriser) do
     Struct.new(:guest?, :user_name).new is_guest, user_name
@@ -85,30 +21,16 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       '<li>This is the <em>last</em> list item.</li>' \
       '</ul><p>This is the closing paragraph.</p>'
   end
-  let(:contribution_repo) do
+  let(:contribution_factory) do
     Class.new do
-      attr_reader :added_data, :created_data
+      attr_reader :created_data
 
       def initialize
-        @added_data = []
         @created_data = []
-        @contribution_id = 0
         self
       end
 
-      def add(entity)
-        @contribution_id += 1
-        entity.contribution_id = @contribution_id
-        entity.saved_at = DateTime.now
-        @added_data << entity
-        entity
-      end
-
-      def count
-        @added_data.count
-      end
-
-      def create(**params)
+      def call(**params)
         obj = OpenStruct.new(params)
         @created_data << obj
         obj
@@ -117,30 +39,10 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
-    { authoriser: authoriser, contribution_repo: contribution_repo,
-      article_repo: article_repo, ui_gateway: ui_gateway }
+    { authoriser: authoriser, contribution_factory: contribution_factory }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
-  let(:ui_gateway) do
-    Class.new do
-      attr_reader :failures, :successes
-
-      def initialize
-        @failures = []
-        @successes = []
-        self
-      end
-
-      def success(*params)
-        @successes << params
-      end
-
-      def failure(*params)
-        @failures << params
-      end
-    end.new
-  end
   let(:user_name) { author_name }
   let(:obj) { described_class.new init_params }
 
@@ -160,16 +62,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       @param = :authoriser
     end
 
-    it ':article_repo' do
-      @param = :article_repo
-    end
-
-    it ':contribution_repo' do
-      @param = :contribution_repo
-    end
-
-    it ':ui_gateway' do
-      @param = :ui_gateway
+    it ':contribution_factory' do
+      @param = :contribution_factory
     end
   end # describe 'must be initialised with parameters for'
 
@@ -212,112 +106,138 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
     it 'accepts a :justification parameter string' do
       call_params[:justification] = justification
-      expect(obj.call call_params).must_equal obj
+      expect { obj.call call_params }.must_be_silent
     end
 
-    describe 'whether or not the initiating user is the article author' do
-      let(:created_obj) { contribution_repo.created_data.first }
-      let(:user_name) { 'Wilma Wormwood' }
-      let(:last_added) { contribution_repo.added_data.last }
+    describe 'returns a "result" object that' do
+      let(:result) { obj.call call_params }
 
-      before do
-        call_params[:justification] = justification
-        obj.call call_params
-      end
-
-      it 'creates a Proposed Contribution' do
-        expect(created_obj.status).must_equal :proposed
-      end
-
-      it 'adds the newly-created Proposed Contribution to the repository' do
-        expect(last_added).must_equal created_obj
-      end
-
-      it 'sets the :saved_at timestamp on the persisted Contribution' do
-        expect(last_added.saved_at).wont_be :nil?
-      end
-
-      describe 'updatexs the Article body with contribution markers for' do
-        after do
-          body = last_added.article.body
-          marker = format '.*<a id="contribution-(.+?)-%s"></a>', @which_end
-          uuid = body.match(marker)[1]
-          expect(UUID.validate uuid).wont_be :nil?
+      describe 'when called with valid parameters' do
+        it 'reports no errors' do
+          expect(result.errors).must_be :empty?
         end
 
-        it 'the begin-contribution marker' do
-          @which_end = :begin
+        it 'reports success' do
+          expect(result.success).must_equal true
         end
 
-        it 'the end-contribution marker' do
-          @which_end = :end
-        end
-      end # describe 'updatexs the Article body with contribution markers for'
-
-      describe 'affects the return value of the #contribution attr_reader' do
-        let(:last_added_data) { contribution_repo.added_data.last }
-
-        it 'is the as-added Contribution object after calling #call' do
-          expect(obj.contribution).must_equal last_added_data
-        end
-      end # describe 'affects the return value of the #contribution ...'
-
-      describe 'encodes a UI Gateway #success message as JSON with' do
-        let(:success_message) { ui_gateway.successes.last.first }
-        let(:data) { JSON.parse success_message, symbolize_names: true }
-
-        it 'the correct member name' do
-          expect(data[:member]).must_equal user_name
+        it 'reports being successful via a query method' do
+          expect(result).must_be :success?
         end
 
-        it 'the correct :contribution_count value' do
-          expect(data[:contribution_count]).must_equal 1
+        it 'reports no failure' do
+          expect(result.failure).must_equal false
         end
 
-        it 'the correct YAML-encoded :article_id data' do
-          article_data = YAML.load data[:article_id]
-          expected = { author_name: author_name, title: title }
-          expect(article_data).must_equal expected
-        end
-      end # describe 'encodes a UI Gateway #success message as JSON with'
-
-      describe 'persists an (updated) entity' do
-        it 'to the Article Repository' do
-          expect(article_repo.added_data.count).must_equal 1
+        it 'reports not having failed via a query method' do
+          expect(result).wont_be :failure?
         end
 
-        it 'with a UUID as the Contribution ID' do
-          article_body = article_repo.added_data.first[:body]
-          expr = /id="contribution-(.+?)-begin"/
-          found = article_body.match(expr)[1]
-          expect(UUID.validate(found)).wont_be_nil
+        describe 'includes an :article value object whose' do
+          it 'title matches that of the article passed in to #call' do
+            expect(result.article.title).must_equal article.title
+          end
+
+          it 'author name matches that of the article passed in to #call' do
+            expect(result.article.author_name).must_equal article.author_name
+          end
+
+          describe 'body contains marker tag pairs for' do
+            let(:article_body) { result.article.body }
+
+            let(:begin_pattern) do
+              /id="contribution-(\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12})-begin"/
+            end
+            let(:end_pattern) do
+              /id="contribution-(\h{8}\-\h{4}\-\h{4}\-\h{4}\-\h{12})-end"/
+            end
+
+            it 'the beginning endpoint of a Proposed Contribution' do
+              expect(article_body.match begin_pattern).wont_be :nil?
+            end
+
+            it 'the ending endpoint of a Proposed Contribution' do
+              expect(article_body.match end_pattern).wont_be :nil?
+            end
+          end # describe 'body contains marker tag pairs for'
+        end # describe 'includes an :article value object whose'
+
+        describe 'includes a :contribution value object that' do
+          let(:result_contribution) { result.contribution }
+
+          it 'has a :proposed status' do
+            expect(result_contribution.status).must_equal :proposed
+          end
+
+          it 'has the correct values in its :article_id attribute' do
+            expected = { author_name: author_name, title: title }
+            expect(result_contribution.article_id.to_h).must_equal expected
+          end
+
+          it 'has the correct :article attribute' do
+            expected = result.article.to_h
+            expect(result_contribution.article.to_h).must_equal expected
+          end
+
+          describe 'has the correct attribute values from the proposal for' do
+            it 'endpoints' do
+              expect(result_contribution.endpoints).must_equal endpoints
+            end
+
+            it 'proposed content' do
+              actual = result_contribution.proposed_content
+              expect(actual).must_equal proposed_content
+            end
+
+            it 'proposer name' do
+              expect(result_contribution.proposed_by).must_equal user_name
+            end
+
+            it 'proposed at' do
+              actual = result_contribution.proposed_at.to_time
+              current = DateTime.now.to_time
+              expect(current - actual).must_be :<, 30.0 # seconds
+            end
+
+            it 'justification' do
+              call_params[:justification] = justification
+              expect(result_contribution.justification).must_equal justification
+            end
+
+            it 'contribution ID as a UUID' do
+              actual = result_contribution.contribution_id
+              expect(UUID.validate actual).wont_be :nil?
+            end
+          end # describe 'has the correct attribute values...for'
+
+          it 'has no :saved_at attribute' do
+            expect(result_contribution.to_h.key? :saved_at).must_equal false
+          end
+        end # describe 'includes a :contribution value object that'
+
+        it 'creates exactly one Contribution entity via the repository' do
+          _result = obj.call call_params
+          expect(contribution_factory.created_data.count).must_equal 1
         end
-      end # describe 'persists an (updated) entity'
-    end # describe 'whether or not the initiating user is the article author'
+      end # describe 'when called with valid parameters'
 
-    describe 'reports failures and performs no updates when' do
-      describe 'no user is logged in, or a session expired; it' do
-        let(:user_name) { guest_name }
-        let(:is_guest) { true }
-        let(:failure_message) { ui_gateway.failures.last.first }
-        let(:failure_data) do
-          JSON.parse failure_message, symbolize_names: true
-        end
+      describe 'when called with parameters that are invalid because' do
+        describe 'the Authoriser says the Author is not the current user' do
+          let(:user_name) { 'Somebody Else' } # Could be guest user...
 
-        before { obj.call call_params }
+          it 'reports one error' do
+            expect(result.errors.count).must_equal 1
+          end
 
-        verify_error 'not logged in'
-      end # describe 'no user is logged in, or a session expired; it'
-
-      describe 'the Proposed Content is' do
-        [
-          [:empty, '', 'empty proposed content'],
-          # [:blank, '     ', 'blank proposed content'],
-          # [:missing, nil, 'missing proposed content']
-        ].each do |reason, content, message|
-          verify_invalid_content_handling reason, content, message
-        end
-      end # describe 'the Proposed Content is'
-    end # describe 'reports failures and performs no updates when'
+          it 'reports that the author is not logged in, with the article ID' do
+            actual = result.errors.first
+            article_id = { author_name: author_name, title: title }
+            article_id = Prolog::Entities::ArticleIdentV.new article_id
+            expected = { not_logged_in: article_id }
+            expect(actual).must_equal expected
+          end
+        end # describe 'the Authoriser says the Author is not the current user'
+      end # describe 'when called with parameters that are invalid because'
+    end # describe 'returns a "result" object that'
   end # describe 'has a #call method that'
 end # Prolog::UseCases::ProposeEditContribution

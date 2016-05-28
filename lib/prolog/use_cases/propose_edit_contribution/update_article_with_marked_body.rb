@@ -12,8 +12,8 @@ module Prolog
       # supplied instance, containing an  "updated" article entity with range of
       # body content marked as the subject of a Proposed Contribution.
       class UpdateAttributesWithMarkedBody
-        def self.call(attributes:, contribution_repo:)
-          UpdateAttributesWithMarkedBody.new(attributes, contribution_repo).call
+        def self.call(attributes:)
+          UpdateAttributesWithMarkedBody.new(attributes).call
         end
 
         def call
@@ -22,15 +22,14 @@ module Prolog
 
         protected
 
-        def initialize(attributes, contribution_repo)
+        def initialize(attributes)
           @attributes = attributes
-          @contribution_repo = contribution_repo
           self
         end
 
         private
 
-        attr_reader :attributes, :contribution_repo
+        attr_reader :attributes
 
         def update_attributes_with(article)
           attribs = attributes.to_h
@@ -39,21 +38,15 @@ module Prolog
         end
 
         def updated_article
-          WrapContribution.call id_number: Internals.new_contribution_id,
+          # FIXME: We've added `contribution_id` to `attributes, but the
+          # `WrapContribution` class doesn't know that yet.
+          WrapContribution.call id_number: attributes.contribution_id,
                                 attributes: attributes
         end
 
         def updated_attributes
           update_attributes_with updated_article
         end
-
-        # Methods neither affecting nor affected by instance state.
-        module Internals
-          def self.new_contribution_id
-            UUID.generate
-          end
-        end
-        private_constant :Internals
       end # class ...::ProposeEditContribution::UpdateAttributesWithMarkedBody
     end # class Prolog::UseCases::ProposeEditContribution
   end

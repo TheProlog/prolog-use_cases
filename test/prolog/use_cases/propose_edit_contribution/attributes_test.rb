@@ -2,6 +2,8 @@
 
 require 'test_helper'
 
+require 'uuid'
+
 require 'prolog/use_cases/propose_edit_contribution/attributes'
 
 describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
@@ -12,6 +14,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
     Struct.new(:author_name, :title).new author_name, title
   end
   let(:author_name) { 'j Random Author' }
+  let(:contribution_id) { nil }
   let(:title) { 'A Title' }
   let(:endpoints) { (0..-1) }
   let(:justification) { 'Just because.' }
@@ -22,7 +25,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
   let(:params) do
     { article: article, endpoints: endpoints, justification: justification,
       proposed_content: proposed_content, proposed_at: proposed_at,
-      proposed_by: proposed_by }
+      proposed_by: proposed_by, contribution_id: contribution_id }
   end
 
   describe 'initialisation' do

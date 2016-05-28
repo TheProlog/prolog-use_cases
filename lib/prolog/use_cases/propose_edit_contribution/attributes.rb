@@ -18,13 +18,13 @@ module Prolog
         attribute :proposed_content, Types::Strict::String
         attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
         attribute :proposed_by, Types::Strict::String
+        attribute :contribution_id, Types::UUID # generates by default
 
         def article_id
           Prolog::Entities::ArticleIdentV.new article_id_attribs
         end
 
         def status
-          return :accepted if proposed_by_author?
           :proposed
         end
 
@@ -36,10 +36,6 @@ module Prolog
 
         def article_id_attribs
           { author_name: article.author_name, title: article.title }
-        end
-
-        def proposed_by_author?
-          article.author_name == proposed_by
         end
       end # class Prolog::useCases::ProposeEditContribution::Attributes
     end # class Prolog::useCases::ProposeEditContribution
