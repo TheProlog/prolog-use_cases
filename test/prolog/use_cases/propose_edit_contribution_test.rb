@@ -21,8 +21,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       '<li>This is the <em>last</em> list item.</li>' \
       '</ul><p>This is the closing paragraph.</p>'
   end
-  # FIXME: No spec tests for created data. Should it?
-  let(:contribution_repo) do
+  let(:contribution_factory) do
     Class.new do
       attr_reader :created_data
 
@@ -31,7 +30,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         self
       end
 
-      def create(**params)
+      def call(**params)
         obj = OpenStruct.new(params)
         @created_data << obj
         obj
@@ -40,7 +39,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
   end
   let(:guest_name) { 'Guest User' }
   let(:init_params) do
-    { authoriser: authoriser, contribution_repo: contribution_repo }
+    { authoriser: authoriser, contribution_factory: contribution_factory }
   end
   let(:is_guest) { false }
   let(:title) { 'Article Title' }
@@ -63,8 +62,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       @param = :authoriser
     end
 
-    it ':contribution_repo' do
-      @param = :contribution_repo
+    it ':contribution_factory' do
+      @param = :contribution_factory
     end
   end # describe 'must be initialised with parameters for'
 
@@ -218,7 +217,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
         it 'creates exactly one Contribution entity via the repository' do
           _result = obj.call call_params
-          expect(contribution_repo.created_data.count).must_equal 1
+          expect(contribution_factory.created_data.count).must_equal 1
         end
       end # describe 'when called with valid parameters'
 

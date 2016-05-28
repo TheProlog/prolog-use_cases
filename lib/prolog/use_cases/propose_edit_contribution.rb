@@ -30,9 +30,9 @@ module Prolog
 
       attr_reader :contribution
 
-      def initialize(authoriser:, contribution_repo:)
+      def initialize(authoriser:, contribution_factory:)
         params = { authoriser: authoriser,
-                   contribution_repo: contribution_repo }
+                   contribution_factory: contribution_factory }
         @collaborators = Collaborators.new params
         @contribution = @attributes = nil
         @errors = []
@@ -49,7 +49,7 @@ module Prolog
 
       attr_reader :attributes
 
-      def_delegators :@collaborators, :authoriser, :contribution_repo,
+      def_delegators :@collaborators, :authoriser, :contribution_factory,
                      :user_name
       def_delegators :@attributes, :article, :article_id, :contribution_id,
                      :endpoints, :justification, :proposed_content, :status
@@ -120,8 +120,7 @@ module Prolog
       end
 
       def updated_contribution
-        # NOTE: The one and only method still used on `contribution_repo`.
-        @contribution ||= contribution_repo.create attributes
+        @contribution ||= contribution_factory.call attributes
       end
 
       def valid_inputs?
