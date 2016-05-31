@@ -9,8 +9,7 @@ module Prolog
     class RespondToSingleProposal
       # Encapsulates result reported from use case.
       class Result < Dry::Types::Value
-        # FIXME: Type definition for :errors?
-        attribute :errors, Types::Strict::Array.member(Types::Strict::Hash)
+        attribute :errors, Types::ErrorArray
         attribute :response, Types::Strict::Symbol
         attribute :original_proposal, Types::Class
 
