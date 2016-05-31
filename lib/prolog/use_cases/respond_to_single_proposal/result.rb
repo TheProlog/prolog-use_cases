@@ -10,8 +10,8 @@ module Prolog
       # Encapsulates result reported from use case.
       class Result < Dry::Types::Value
         attribute :errors, Types::ErrorArray
-        attribute :response, Types::Strict::Symbol
         attribute :original_proposal, Types::Class
+        attribute :response, Types::Strict::Symbol
 
         def accepted?
           response == :accepted

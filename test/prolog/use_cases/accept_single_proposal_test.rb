@@ -68,9 +68,14 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
           expect(call_result.original_proposal).must_equal proposal
         end
 
-        it 'an :article attribute'
+        it 'an :article attribute' do
+          # FIXME: Lame spec for "what is an Article instance?"
+          expect(call_result.article).must_respond_to :body
+        end
 
-        it 'an :original_content attribute'
+        it 'an :original_content attribute that is not empty' do
+          expect(call_result.original_content).wont_be :empty?
+        end
 
         # -- helper methods --
 
