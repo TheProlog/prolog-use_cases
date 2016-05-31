@@ -3,6 +3,7 @@
 require 'forwardable'
 
 require_relative './accept_single_proposal/collaborators'
+require_relative './accept_single_proposal/result'
 
 module Prolog
   module UseCases
@@ -14,6 +15,18 @@ module Prolog
                    contribution_repo: contribution_repo }
         @collaborators = Collaborators.new params
         self
+      end
+
+      def call(proposal:)
+        dummy_result_for(proposal)
+      end
+
+      private
+
+      # FIXME: Reek sees this as a :reek:UtilityFunction -- for now.
+      def dummy_result_for(proposal)
+        Result.new errors: [], original_proposal: proposal,
+                   article: proposal.article, original_content: 'Original Here'
       end
     end # class Prolog::UseCases::AcceptSingleProposal
   end

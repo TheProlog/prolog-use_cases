@@ -51,4 +51,49 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
       expect(described_class.new params).must_be_instance_of described_class
     end
   end # describe 'initialisation'
+
+  describe 'has a #call method that' do
+    let(:obj) { described_class.new init_params }
+    let(:call_params) { { proposal: proposal } }
+    let(:call_result) { obj.call call_params }
+    let(:proposal) { Struct.new(:article).new 'FIXME: PROPOSAL ARTICLE' }
+
+    describe 'when called with a fully-valid :proposal parameter' do
+      describe 'returns a Result object with' do
+        it 'no :errors' do
+          expect(call_result.errors).must_be :empty?
+        end
+
+        it 'an :original_proposal matching the passed-in proposal' do
+          expect(call_result.original_proposal).must_equal proposal
+        end
+
+        it 'an :article attribute'
+
+        it 'an :original_content attribute'
+
+        # -- helper methods --
+
+        it 'a #response of :accepted' do
+          expect(call_result.response).must_equal :accepted
+        end
+
+        it 'an #accepted? method returning true' do
+          expect(call_result).must_be :accepted?
+        end
+
+        it 'a #rejected? method returning false' do
+          expect(call_result).wont_be :rejected?
+        end
+
+        it 'a #responded? method returning true' do
+          expect(call_result).must_be :responded?
+        end
+
+        it 'a #success? method returning true' do
+          expect(call_result).must_be :success?
+        end
+      end # describe 'returns a Result object with'
+    end # describe 'when called with a fully-valid :proposal parameter'
+  end # describe 'has a #call method that'
 end
