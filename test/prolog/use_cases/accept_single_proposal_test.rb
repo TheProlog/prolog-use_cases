@@ -4,6 +4,8 @@ require 'test_helper'
 require 'matchers/raise_with_message_part'
 require 'matchers/requires_initialize_parameter'
 
+require 'prolog/entities/contribution/proposed'
+
 require 'prolog/use_cases/accept_single_proposal'
 
 describe 'Prolog::UseCases::AcceptSingleProposal' do
@@ -56,7 +58,25 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:obj) { described_class.new init_params }
     let(:call_params) { { proposal: proposal } }
     let(:call_result) { obj.call call_params }
-    let(:proposal) { Struct.new(:article).new 'FIXME: PROPOSAL ARTICLE' }
+    let(:proposal) { proposal_class.new proposal_params }
+    let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
+    let(:proposal_params) do
+      { article_id: article_id, endpoints: endpoints,
+        proposed_content: proposed_content, proposer: proposer,
+        justification: justification, proposed_at: proposed_at,
+        identifier: identifier }
+    end
+    let(:artid_class) { Prolog::Entities::ArticleIdentV }
+    let(:article_id) { artid_class.new title: title, author_name: author_name }
+    let(:title) { 'A Title' }
+    let(:author_name) { current_user }
+    let(:body_content) { '<p>This is content.</p>' }
+    let(:endpoints) { (3..18) } # 'T'..'.'
+    let(:proposed_content) { 'This is <em>updated</em> content.' }
+    let(:proposer) { 'J Random Proposer' }
+    let(:justification) { nil } # defaults to empty string
+    let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
+    let(:identifier) { nil } # defaults to generating a new UUID
 
     describe 'when called with a fully-valid :proposal parameter' do
       describe 'returns a Result object with' do

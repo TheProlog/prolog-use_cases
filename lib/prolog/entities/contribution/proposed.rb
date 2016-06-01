@@ -16,12 +16,12 @@ module Prolog
 
         attribute :article_id, ArticleIdentV
         attribute :endpoints, Types::IntegerRange
+        attribute :identifier, Types::UUID
         attribute :justification, Types::Strict::String.default('')
+        attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
         attribute :proposed_content, Types::Strict::String
         attribute :proposer, Types::Strict::String
         # attribute :type, Types::Symbol.default(:edit)
-        attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
-        attribute :identifier, Types::UUID
 
         def_delegators :article_id, :author_name, :title
 
