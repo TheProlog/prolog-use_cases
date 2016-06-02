@@ -1,5 +1,5 @@
-
 # frozen_string_literal: true
+
 require 'test_helper'
 
 require 'matchers/raise_with_message'
