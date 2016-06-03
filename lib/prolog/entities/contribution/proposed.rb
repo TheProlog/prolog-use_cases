@@ -18,7 +18,7 @@ module Prolog
         attribute :endpoints, Types::IntegerRange
         attribute :identifier, Types::UUID
         attribute :justification, Types::Strict::String.default('')
-        attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
+        attribute :proposed_at, Types::DateTimeOrNow
         attribute :proposed_content, Types::Strict::String
         attribute :proposer, Types::Strict::String
         # attribute :type, Types::Symbol.default(:edit)
