@@ -79,18 +79,30 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:identifier) { nil } # defaults to generating a new UUID
 
     describe 'when called with a fully-valid :proposal parameter' do
+      let(:article) do
+        params = [author_name, body_content, title, article_id]
+        Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
+      end
+      let(:article_repo) do
+        Class.new do
+          attr_reader :find_params
+
+          def initialize(results)
+            @results = results
+            @find_params = []
+          end
+
+          def find(*params)
+            find_params << params
+            @results
+          end
+        end.new [article]
+      end
+      let(:current_user) { 'J Random Author' }
+
       describe 'returns a Result object with' do
         it 'no :errors' do
           expect(call_result.errors).must_be :empty?
-        end
-
-        it 'an :original_proposal matching the passed-in proposal' do
-          expect(call_result.original_proposal).must_equal proposal
-        end
-
-        it 'an :article attribute' do
-          # FIXME: Lame spec for "what is an Article instance?"
-          expect(call_result.article).must_respond_to :body
         end
 
         it 'an :original_content attribute that is not empty' do

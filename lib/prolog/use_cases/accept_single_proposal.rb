@@ -2,7 +2,9 @@
 
 require 'forwardable'
 
-require_relative './accept_single_proposal/attributes'
+require 'prolog/entities/contribution/accepted'
+
+# require_relative './accept_single_proposal/attributes'
 require_relative './accept_single_proposal/collaborators'
 require_relative './accept_single_proposal/result'
 
@@ -21,21 +23,46 @@ module Prolog
       end
 
       def call(proposal:)
-        update_attributes_from(proposal)
+        @proposal = proposal
         result
       end
 
       private
 
-      def_delegators :@attributes, :article, :errors, :original_content,
-                     :proposal
+      attr_reader :proposal
+
+      # def_delegators :@attributes, :article, :errors, :original_content,
+      #                :proposal
+
+      def_delegators :proposal, :endpoints
 
       def_delegators :@collaborators, :article_repo, :authoriser,
                      :contribution_repo
 
-      def content_from_proposal
-        # FIXME: Pull selected content out of `proposal.article.body`. Hmm. LOD?
-        'Dummy Original Content'
+      def accepted_entity
+        Prolog::Entities::Contribution::Accepted.new accepted_entity_attribs
+      end
+
+      def accepted_entity_attribs
+        { article_id: proposal.article_id, proposal_id: proposal.identifier,
+          updated_body: '<p>This is <em>updated</em> content.</p>',
+          identifier: nil, responded_at: nil, response_text: nil }
+      end
+
+      def article
+        find_article.first
+      end
+
+      def errors
+        @errors ||= []
+      end
+
+      def find_article
+        article_repo.find(proposal.article_id)
+      end
+
+      def original_content
+        article.body[endpoints]
       end
 
       def result
@@ -43,20 +70,8 @@ module Prolog
       end
 
       def result_params
-        { article: article, errors: errors, original_content: original_content,
-          original_proposal: proposal }
-      end
-
-      def update_attributes_from(proposal)
-        params = { article: updated_article, errors: [],
-                   original_content: content_from_proposal, proposal: proposal }
-        @attributes = Attributes.new params
-        self
-      end
-
-      # FIXME: Reek sees this as a :reek:UtilityFunction -- for now.
-      def updated_article
-        Struct.new(:body).new 'FIXME: DUMMY UPDATED ARTICLE'
+        { entity: accepted_entity, errors: errors, proposal: proposal,
+          original_content: original_content }
       end
     end # class Prolog::UseCases::AcceptSingleProposal
   end

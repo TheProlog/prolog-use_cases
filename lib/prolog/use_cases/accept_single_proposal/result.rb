@@ -9,10 +9,10 @@ module Prolog
     class AcceptSingleProposal
       # Encapsulates result reported from use case.
       class Result < Dry::Types::Value
+        attribute :entity, Types::Class # Accepted-Contribution entity
         attribute :errors, Types::ErrorArray
-        attribute :original_proposal, Types::Class
-        attribute :article, Types::Class
         attribute :original_content, Types::Strict::String
+        attribute :proposal, Types::Class
 
         def response
           :accepted
