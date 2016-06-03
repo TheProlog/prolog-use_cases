@@ -18,8 +18,7 @@ module Prolog
         attribute :article_id, Prolog::Entities::ArticleIdentV
         attribute :identifier, Types::UUID
         attribute :proposal_id, Types::UUID
-        attribute :responded_at,
-                  Types::Strict::DateTime.default { DateTime.now }
+        attribute :responded_at, Types::DateTimeOrNow
         attribute :response_text, Types::Strict::String.default('')
         attribute :updated_body, Types::Strict::String.constrained(min_size: 1)
 
