@@ -58,7 +58,7 @@ module Prolog
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
                                      proposed_content: proposed_content,
-                                     proposed_at: nil, proposed_by: user_name,
+                                     proposed_at: nil, proposer: user_name,
                                      contribution_id: nil
         self
       end

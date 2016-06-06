@@ -9,7 +9,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
     Prolog::UseCases::ProposeEditContribution::ValidateAttributes
   end
   let(:required_attributes) do
-    params = { article: article, endpoints: endpoints, proposed_by: proposed_by,
+    params = { article: article, endpoints: endpoints, proposer: proposer,
                proposed_content: proposed_content }
     OpenStruct.new(params).freeze
   end
@@ -31,7 +31,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
   let(:body) { 'Article Body' }
   let(:title) { 'Article Title' }
   let(:endpoints) { (0..-1) }
-  let(:proposed_by) { 'P Random Proposer' }
+  let(:proposer) { 'P Random Proposer' }
   let(:proposed_content) { '<p>Entire replacement.</p>' }
   let(:justification) { 'Just because.' }
   let(:proposed_at) { DateTime.parse '13 May 2016 12:34:56 SGT' }
@@ -67,7 +67,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
       let(:obj) { described_class.new.call(attributes) }
 
       describe 'the proposer not being a logged-in member' do
-        let(:proposed_by) { 'Guest User' }
+        let(:proposer) { 'Guest User' }
 
         it 'reports being invalid' do
           expect(obj).wont_be :valid?

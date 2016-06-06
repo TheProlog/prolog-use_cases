@@ -4,6 +4,7 @@ require 'test_helper'
 
 require 'uuid'
 
+require 'prolog/entities/contribution/proposed'
 require 'prolog/use_cases/propose_edit_contribution'
 
 describe 'Prolog::UseCases::ProposeEditContribution' do
@@ -31,7 +32,9 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       end
 
       def call(**params)
-        obj = OpenStruct.new(params)
+        full_params = { identifier: params[:contribution_id] }
+        full_params = full_params.merge params
+        obj = Prolog::Entities::Contribution::Proposed.new full_params
         @created_data << obj
         obj
       end
@@ -165,18 +168,9 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
         describe 'includes a :contribution value object that' do
           let(:result_contribution) { result.contribution }
 
-          it 'has a :proposed status' do
-            expect(result_contribution.status).must_equal :proposed
-          end
-
           it 'has the correct values in its :article_id attribute' do
             expected = { author_name: author_name, title: title }
             expect(result_contribution.article_id.to_h).must_equal expected
-          end
-
-          it 'has the correct :article attribute' do
-            expected = result.article.to_h
-            expect(result_contribution.article.to_h).must_equal expected
           end
 
           describe 'has the correct attribute values from the proposal for' do
@@ -190,7 +184,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
             end
 
             it 'proposer name' do
-              expect(result_contribution.proposed_by).must_equal user_name
+              expect(result_contribution.proposer).must_equal user_name
             end
 
             it 'proposed at' do
@@ -204,8 +198,8 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
               expect(result_contribution.justification).must_equal justification
             end
 
-            it 'contribution ID as a UUID' do
-              actual = result_contribution.contribution_id
+            it 'contribution :identifier as a UUID' do
+              actual = result_contribution.identifier
               expect(UUID.validate actual).wont_be :nil?
             end
           end # describe 'has the correct attribute values...for'

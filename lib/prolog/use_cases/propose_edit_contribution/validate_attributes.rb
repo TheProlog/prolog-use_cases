@@ -45,7 +45,7 @@ module Prolog
         attr_reader :attributes
 
         def_delegators :attributes, :article, :article_id, :endpoints,
-                       :proposed_by, :proposed_content
+                       :proposed_content, :proposer
 
         def validate
           proposed_by_member? && proposed_content? && endpoints_ok?
@@ -63,7 +63,7 @@ module Prolog
         end
 
         def check_proposer
-          CheckProposer.call(proposed_by: proposed_by, article_id: article_id)
+          CheckProposer.call(proposed_by: proposer, article_id: article_id)
         end
 
         def proposed_content?

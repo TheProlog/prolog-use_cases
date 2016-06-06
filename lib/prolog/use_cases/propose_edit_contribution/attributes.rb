@@ -17,7 +17,7 @@ module Prolog
         attribute :justification, Types::Strict::String.default('')
         attribute :proposed_content, Types::Strict::String
         attribute :proposed_at, Types::DateTimeOrNow
-        attribute :proposed_by, Types::Strict::String
+        attribute :proposer, Types::Strict::String
         attribute :contribution_id, Types::UUID # generates by default
 
         def article_id
