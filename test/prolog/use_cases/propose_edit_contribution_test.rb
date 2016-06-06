@@ -32,9 +32,9 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
       end
 
       def call(**params)
-        full_params = { identifier: params[:contribution_id] }
-        full_params = full_params.merge params
-        obj = Prolog::Entities::Contribution::Proposed.new full_params
+        # full_params = { identifier: params[:contribution_id] }
+        # full_params = full_params.merge params
+        obj = Prolog::Entities::Contribution::Proposed.new params
         @created_data << obj
         obj
       end

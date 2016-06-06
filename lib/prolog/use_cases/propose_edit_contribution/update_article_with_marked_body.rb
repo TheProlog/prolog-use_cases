@@ -40,7 +40,7 @@ module Prolog
         def updated_article
           # FIXME: We've added `contribution_id` to `attributes, but the
           # `WrapContribution` class doesn't know that yet.
-          WrapContribution.call id_number: attributes.contribution_id,
+          WrapContribution.call id_number: attributes.identifier,
                                 attributes: attributes
         end
 

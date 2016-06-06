@@ -51,15 +51,15 @@ module Prolog
 
       def_delegators :@collaborators, :authoriser, :contribution_factory,
                      :user_name
-      def_delegators :@attributes, :article, :article_id, :contribution_id,
-                     :endpoints, :justification, :proposed_content, :status
+      def_delegators :@attributes, :article, :article_id, :endpoints,
+                     :identifier, :justification, :proposed_content, :status
 
       def build_attributes(article, endpoints, proposed_content, justification)
         @attributes = Attributes.new article: article, endpoints: endpoints,
                                      justification: justification,
                                      proposed_content: proposed_content,
                                      proposed_at: nil, proposer: user_name,
-                                     contribution_id: nil
+                                     identifier: nil
         self
       end
 

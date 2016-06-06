@@ -14,11 +14,11 @@ module Prolog
       class Attributes < Dry::Types::Value
         attribute :article, Types::Class
         attribute :endpoints, Types::IntegerRange
+        attribute :identifier, Types::UUID # generates by default
         attribute :justification, Types::Strict::String.default('')
         attribute :proposed_content, Types::Strict::String
         attribute :proposed_at, Types::DateTimeOrNow
         attribute :proposer, Types::Strict::String
-        attribute :contribution_id, Types::UUID # generates by default
 
         def article_id
           Prolog::Entities::ArticleIdentV.new article_id_attribs

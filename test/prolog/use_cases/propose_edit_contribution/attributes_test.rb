@@ -14,7 +14,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
     Struct.new(:author_name, :title).new author_name, title
   end
   let(:author_name) { 'j Random Author' }
-  let(:contribution_id) { nil }
+  let(:identifier) { nil }
   let(:title) { 'A Title' }
   let(:endpoints) { (0..-1) }
   let(:justification) { 'Just because.' }
@@ -25,7 +25,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
   let(:params) do
     { article: article, endpoints: endpoints, justification: justification,
       proposed_content: proposed_content, proposed_at: proposed_at,
-      proposer: proposer, contribution_id: contribution_id }
+      proposer: proposer, identifier: identifier }
   end
 
   describe 'initialisation' do
