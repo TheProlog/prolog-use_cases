@@ -16,25 +16,25 @@ Rake::TestTask.new(:test) do |t|
 end
 
 RuboCop::RakeTask.new(:rubocop) do |task|
-task.patterns = [
-  'lib/**/*.rb',
-  'test/**/*.rb'
-]
-task.formatters = ['simple', 'd']
-task.fail_on_error = true
-# task.options << '--rails'
-task.options << '--display-cop-names'
-end
+  task.patterns = [
+    'lib/**/*.rb',
+    'test/**/*.rb'
+  ]
+  task.formatters = ['simple', 'd']
+  task.fail_on_error = true
+  # task.options << '--rails'
+  task.options << '--display-cop-names'
+  end
 
-Reek::Rake::Task.new do |t|
-t.config_file = 'config.reek'
-t.source_files = 'lib/**/*.rb'
-t.reek_opts = '--sort-by smelliness -s'
+  Reek::Rake::Task.new do |t|
+  t.config_file = 'config.reek'
+  t.source_files = 'lib/**/*.rb'
+  t.reek_opts = '--sort-by smelliness -s'
 end
 
 FlayTask.new do |t|
-t.verbose = true
-t.dirs = %w(app lib)
+  t.verbose = true
+  t.dirs = %w(app lib)
 end
 
 FlogTask.new do |t|
