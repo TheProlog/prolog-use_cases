@@ -43,7 +43,7 @@ module Prolog
         def article_id_attribs
           { author_name: article.author_name, title: article.title }
         end
-      end # class Prolog::useCases::ProposeEditContribution::Attributes
-    end # class Prolog::useCases::ProposeEditContribution
+      end # class Prolog::UseCases::ProposeEditContribution::Attributes
+    end # class Prolog::UseCases::ProposeEditContribution
   end
 end

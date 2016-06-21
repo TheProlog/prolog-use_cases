@@ -15,9 +15,9 @@ module Prolog
         extend Forwardable
 
         attribute :article_id, ArticleIdentV
-        attribute :endpoints, Types::IntegerRange
         attribute :identifier, Types::UUID
         attribute :justification, Types::Strict::String.default('')
+        attribute :original_content, Types::Strict::String
         attribute :proposed_at, Types::DateTimeOrNow
         attribute :proposed_content, Types::Strict::String
         attribute :proposer, Types::Strict::String

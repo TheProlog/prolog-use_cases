@@ -174,10 +174,6 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
           end
 
           describe 'has the correct attribute values from the proposal for' do
-            it 'endpoints' do
-              expect(result_contribution.endpoints).must_equal endpoints
-            end
-
             it 'proposed content' do
               actual = result_contribution.proposed_content
               expect(actual).must_equal proposed_content

@@ -16,15 +16,16 @@ describe 'Prolog::Entities::Contribution::Proposed' do
     required_params.merge optionals
   end
   let(:required_params) do
-    { article_id: article_id, endpoints: endpoints, proposer: proposer,
-      proposed_content: proposed_content, justification: nil, proposed_at: nil,
-      identifier: nil }
+    { article_id: article_id, original_content: original_content,
+      proposed_content: proposed_content, proposer: proposer,
+      justification: nil, proposed_at: nil, identifier: nil }
   end
   let(:article_id) { artid_class.new author_name: author_name, title: title }
   let(:author_name) { 'J Random Author' }
   let(:endpoints) { (0..-1) }
   let(:identifier) { '12345678-1234-5678-9012-123456789012' }
-  let(:justification) { 'Just because.' }
+  let(:justification) { '' }
+  let(:original_content) { '<p>This is <em>original</em> content.</p>' }
   let(:proposed_at) { DateTime.parse '9 May 2016 12:34:56 SGT' }
   let(:proposed_content) { '<p>Complete replacement.</p>' }
   let(:proposer) { 'T Random Member' }
