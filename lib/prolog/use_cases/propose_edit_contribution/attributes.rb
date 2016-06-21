@@ -24,12 +24,18 @@ module Prolog
           Prolog::Entities::ArticleIdentV.new article_id_attribs
         end
 
+        def original_content
+          article.body[endpoints]
+        end
+
         def status
           :proposed
         end
 
         def to_hash
-          { status: status, article_id: article_id }.merge super
+          others = { article_id: article_id, original_content: original_content,
+                     status: status }
+          others.merge super
         end
 
         private
