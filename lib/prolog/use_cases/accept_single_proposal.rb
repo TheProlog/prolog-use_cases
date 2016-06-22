@@ -34,7 +34,7 @@ module Prolog
       # def_delegators :@attributes, :article, :errors, :original_content,
       #                :proposal
 
-      def_delegators :proposal, :endpoints
+      def_delegators :proposal, :original_content
 
       def_delegators :@collaborators, :article_repo, :authoriser,
                      :contribution_repo
@@ -59,10 +59,6 @@ module Prolog
 
       def find_article
         article_repo.find(proposal.article_id)
-      end
-
-      def original_content
-        article.body[endpoints]
       end
 
       def result

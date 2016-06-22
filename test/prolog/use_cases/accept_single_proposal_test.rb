@@ -61,7 +61,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:proposal) { proposal_class.new proposal_params }
     let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
     let(:proposal_params) do
-      { article_id: article_id, endpoints: endpoints,
+      { article_id: article_id, original_content: article.body[endpoints],
         proposed_content: proposed_content, proposer: proposer,
         justification: justification, proposed_at: proposed_at,
         identifier: identifier }
@@ -79,8 +79,6 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:identifier) { nil } # defaults to generating a new UUID
 
     describe 'when called with a fully-valid :proposal parameter' do
-      before { skip 'Proposed-contribution entity has changed' }
-
       let(:article) do
         params = [author_name, body_content, title, article_id]
         Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
