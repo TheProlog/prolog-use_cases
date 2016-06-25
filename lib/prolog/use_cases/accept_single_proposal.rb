@@ -5,6 +5,7 @@ require 'forwardable'
 require 'prolog/entities/contribution/accepted'
 
 # require_relative './accept_single_proposal/attributes'
+require_relative './accept_single_proposal/build_updated_body'
 require_relative './accept_single_proposal/collaborators'
 require_relative './accept_single_proposal/result'
 
@@ -31,10 +32,7 @@ module Prolog
 
       attr_reader :proposal
 
-      # def_delegators :@attributes, :article, :errors, :original_content,
-      #                :proposal
-
-      def_delegators :proposal, :original_content
+      def_delegators :proposal, :article_id, :original_content
 
       def_delegators :@collaborators, :article_repo, :authoriser,
                      :contribution_repo
@@ -44,21 +42,25 @@ module Prolog
       end
 
       def accepted_entity_attribs
-        { article_id: proposal.article_id, proposal_id: proposal.identifier,
-          updated_body: '<p>This is <em>updated</em> content.</p>',
-          identifier: nil, responded_at: nil, response_text: nil }
+        { article_id: article_id, proposal_id: proposal_id,
+          updated_body: updated_body, identifier: identifier, responded_at: nil,
+          response_text: nil }
       end
 
-      def article
-        find_article.first
+      def article_finder
+        article_repo.method(:find)
       end
 
       def errors
         @errors ||= []
       end
 
-      def find_article
-        article_repo.find(proposal.article_id)
+      def identifier
+        @identifier ||= UUID.generate
+      end
+
+      def proposal_id
+        proposal.identifier
       end
 
       def result
@@ -68,6 +70,15 @@ module Prolog
       def result_params
         { entity: accepted_entity, errors: errors, proposal: proposal,
           original_content: original_content }
+      end
+
+      def updated_body
+        BuildUpdatedBody.new(updated_body_params).call
+      end
+
+      def updated_body_params
+        { find_article: article_finder, identifier: identifier,
+          proposal: proposal }
       end
     end # class Prolog::UseCases::AcceptSingleProposal
   end

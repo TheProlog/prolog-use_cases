@@ -61,7 +61,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:proposal) { proposal_class.new proposal_params }
     let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
     let(:proposal_params) do
-      { article_id: article_id, original_content: article.body[endpoints],
+      { article_id: article_id, original_content: original_content,
         proposed_content: proposed_content, proposer: proposer,
         justification: justification, proposed_at: proposed_at,
         identifier: identifier }
@@ -72,15 +72,16 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:author_name) { current_user }
     let(:body_content) { '<p>This is content.</p>' }
     let(:endpoints) { (3..18) } # 'T'..'.'
+    let(:original_content) { body_content[endpoints] }
     let(:proposed_content) { 'This is <em>updated</em> content.' }
     let(:proposer) { 'J Random Proposer' }
     let(:justification) { nil } # defaults to empty string
     let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
-    let(:identifier) { nil } # defaults to generating a new UUID
+    let(:identifier) { UUID.generate }
 
     describe 'when called with a fully-valid :proposal parameter' do
       let(:article) do
-        params = [author_name, body_content, title, article_id]
+        params = [author_name, proposed_body, title, article_id]
         Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
       end
       let(:article_repo) do
@@ -99,6 +100,12 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         end.new [article]
       end
       let(:current_user) { 'J Random Author' }
+      let(:proposed_body) do
+        outer_parts = body_content.split original_content
+        format_str = %(<a id="contribution-#{identifier}-%s"></a>)
+        mtp = [format(format_str, 'begin'), format(format_str, 'end')]
+        outer_parts.join(mtp.join(original_content))
+      end
 
       describe 'returns a Result object with' do
         it 'no :errors' do
