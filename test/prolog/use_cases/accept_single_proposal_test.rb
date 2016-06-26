@@ -78,7 +78,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:justification) { nil } # defaults to empty string
     let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
     let(:identifier) { UUID.generate }
-    let(:response_text) { 'Thank you for your contribution.' }
+    let(:response_text) { nil }
 
     describe 'when called with a fully-valid :proposal parameter' do
       let(:article) do
@@ -120,9 +120,29 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         describe 'an accepted-proposal :entity that' do
           let(:entity) { call_result.entity }
 
-          it 'contains the submitted author-response content' do
-            expect(entity.response_text).must_equal response_text
-          end
+          describe 'when an explicit author response is' do
+            let(:expected_text) { '' }
+
+            after do
+              expect(entity.response_text).must_equal expected_text
+            end
+
+            describe 'provided' do
+              let(:response_text) { 'Thank you for your contribution.' }
+              let(:expected_text) { response_text }
+
+              it 'the entity contains the provided message content' do
+              end
+            end # describe 'provided'
+
+            describe 'not provided' do
+              let(:response_text) { nil }
+              let(:expected_text) { '' }
+
+              it 'the entity contains an empty string for the response' do
+              end
+            end # describe 'not provided'
+          end # describe 'when an explicit author response is'
 
           it 'contains the original proposal ID' do
             expect(entity.proposal_id).must_equal identifier
