@@ -56,7 +56,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
 
   describe 'has a #call method that' do
     let(:obj) { described_class.new init_params }
-    let(:call_params) { { proposal: proposal } }
+    let(:call_params) { { proposal: proposal, response_text: response_text } }
     let(:call_result) { obj.call call_params }
     let(:proposal) { proposal_class.new proposal_params }
     let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
@@ -78,6 +78,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:justification) { nil } # defaults to empty string
     let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
     let(:identifier) { UUID.generate }
+    let(:response_text) { 'Thank you for your contribution.' }
 
     describe 'when called with a fully-valid :proposal parameter' do
       let(:article) do
@@ -115,6 +116,22 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         it 'an :original_content attribute that is not empty' do
           expect(call_result.original_content).wont_be :empty?
         end
+
+        describe 'an accepted-proposal :entity that' do
+          let(:entity) { call_result.entity }
+
+          it 'contains the submitted author-response content' do
+            expect(entity.response_text).must_equal response_text
+          end
+
+          it 'contains the original proposal ID' do
+            expect(entity.proposal_id).must_equal identifier
+          end
+
+          it 'contains a different value for the accepted-contribution ID' do
+            expect(entity.identifier).wont_equal entity.proposal_id
+          end
+        end # describe 'an accepted-proposal :entity that'
 
         # -- helper methods --
 

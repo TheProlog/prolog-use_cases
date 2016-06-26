@@ -13,6 +13,7 @@ module Prolog
   module UseCases
     # Encapsulates logic whereby an Author of an Article may Accept a
     # Contribution that has been Proposed against it.
+    # FIXME: Reek complains about :reek:TooManyInstanceVariables
     class AcceptSingleProposal
       extend Forwardable
 
@@ -23,16 +24,18 @@ module Prolog
         self
       end
 
-      def call(proposal:)
+      def call(proposal:, response_text:)
         @proposal = proposal
+        @response_text = response_text
         result
       end
 
       private
 
-      attr_reader :proposal
+      attr_reader :proposal, :response_text
 
       def_delegators :proposal, :article_id, :original_content
+      def_delegator :proposal, :identifier, :proposal_id
 
       def_delegators :@collaborators, :article_repo, :authoriser,
                      :contribution_repo
@@ -43,8 +46,8 @@ module Prolog
 
       def accepted_entity_attribs
         { article_id: article_id, proposal_id: proposal_id,
-          updated_body: updated_body, identifier: identifier, responded_at: nil,
-          response_text: nil }
+          updated_body: updated_body, identifier: identifier,
+          response_text: response_text, responded_at: nil }
       end
 
       def article_finder
@@ -57,10 +60,6 @@ module Prolog
 
       def identifier
         @identifier ||= UUID.generate
-      end
-
-      def proposal_id
-        proposal.identifier
       end
 
       def result

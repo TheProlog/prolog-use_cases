@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 require_relative './build_updated_body/accepted_mtp'
 require_relative './build_updated_body/proposed_mtp'
 
@@ -9,6 +11,8 @@ require_relative './build_updated_body/proposed_mtp'
 #   3. the proposed (now accepted) replacement content; and
 #   4. the content previously following the content selected for proposal.
 class BuildUpdatedBody
+  extend Forwardable
+
   def initialize(find_article:, identifier:, proposal:)
     @find_article = find_article
     @identifier = identifier
@@ -23,6 +27,9 @@ class BuildUpdatedBody
   private
 
   attr_reader :find_article, :identifier, :proposal
+
+  def_delegator :proposal, :identifier, :proposal_identifier
+  def_delegator :proposal, :proposed_content
 
   def accepted_mtp
     AcceptedMTP.new identifier
@@ -47,14 +54,6 @@ class BuildUpdatedBody
 
   def paired_marker(which_end)
     ProposedMTP.new proposal_identifier, which_end
-  end
-
-  def proposal_identifier
-    proposal.identifier
-  end
-
-  def proposed_content
-    proposal.proposed_content
   end
 
   def tail
