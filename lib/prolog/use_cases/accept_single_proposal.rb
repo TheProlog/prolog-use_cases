@@ -4,7 +4,7 @@ require 'forwardable'
 
 require 'prolog/entities/contribution/accepted'
 
-# require_relative './accept_single_proposal/attributes'
+require_relative './accept_single_proposal/attributes'
 require_relative './accept_single_proposal/build_updated_body'
 require_relative './accept_single_proposal/collaborators'
 require_relative './accept_single_proposal/result'
@@ -13,7 +13,6 @@ module Prolog
   module UseCases
     # Encapsulates logic whereby an Author of an Article may Accept a
     # Contribution that has been Proposed against it.
-    # FIXME: Reek complains about :reek:TooManyInstanceVariables
     class AcceptSingleProposal
       extend Forwardable
 
@@ -25,15 +24,14 @@ module Prolog
       end
 
       def call(proposal:, response_text:)
-        @proposal = proposal
-        @response_text = response_text
+        @attributes = Attributes.new proposal: proposal, identifier: nil,
+                                     response_text: response_text
         result
       end
 
       private
 
-      attr_reader :proposal, :response_text
-
+      def_delegators :@attributes, :identifier, :proposal, :response_text
       def_delegators :proposal, :article_id, :original_content
       def_delegator :proposal, :identifier, :proposal_id
 
@@ -56,10 +54,6 @@ module Prolog
 
       def errors
         @errors ||= []
-      end
-
-      def identifier
-        @identifier ||= UUID.generate
       end
 
       def result

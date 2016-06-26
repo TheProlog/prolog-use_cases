@@ -9,11 +9,9 @@ module Prolog
     class AcceptSingleProposal
       # Encapsulates attributes used during use case.
       class Attributes < Dry::Types::Struct
-        attribute :article, Types::Class
-        attribute :errors, Types::ErrorArray
-        attribute :original_content,
-                  Types::Strict::String.constrained(min_size: 1)
+        attribute :identifier, Types::UUID
         attribute :proposal, Types::Class
+        attribute :response_text, Types::Strict::String.default('')
       end # class Prolog::UseCases::RespondToSingleProposal::Attributes
     end # class Prolog::UseCases::RespondToSingleProposal
   end
