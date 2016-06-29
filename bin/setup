@@ -10,4 +10,4 @@ then
   rbenv rehash
 fi
 
-bundle binstub --force flay flog rake reek rubocop
+bundle binstub --force flay flog pry rake reek rubocop
