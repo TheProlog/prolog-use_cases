@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+# NOTE: The use case being tested here NO LONGER performs error-checking which
+#       was specified in early drafts of the Wiki spec (prior to 30 Jun 2016).
+#       Those have been repackaged into the new "Authorise Contribution
+#       Response" use case, greatly simplifying the logic which would otherwise
+#       be tested here.
+
 require 'test_helper'
 require 'matchers/raise_with_message_part'
 require 'matchers/requires_initialize_parameter'
@@ -14,13 +20,15 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     { article_repo: article_repo, authoriser: authoriser,
       contribution_repo: contribution_repo }
   end
-  let(:article_repo) { 'Article Repo' }
+  let(:article_repo) { 'Dummy Article Repo' }
   let(:authoriser) do
     Struct.new(:current_user, :guest?).new current_user, is_guest
   end
-  let(:current_user) { 'Guest User' }
+  let(:contribution_repo) { repo_class.new found_contributions }
+  let(:current_user) { 'J Random Author' }
+  let(:found_contributions) { [] }
   let(:is_guest) { current_user == 'Guest User' }
-  let(:contribution_repo) do
+  let(:repo_class) do
     Class.new do
       attr_reader :find_params
 
@@ -29,13 +37,12 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         @find_params = []
       end
 
-      # def find(*params)
-      #   find_params << params
-      #   @results
-      # end
-    end.new found_contributions
+      def find(*params)
+        find_params << params
+        @results
+      end
+    end
   end
-  let(:found_contributions) { [] }
 
   describe 'initialisation' do
     let(:params) { init_params }
@@ -56,8 +63,20 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
 
   describe 'has a #call method that' do
     let(:obj) { described_class.new init_params }
+    let(:article) do
+      params = [author_name, proposed_body, title, article_id]
+      Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
+    end
+    let(:article_id) { artid_class.new title: title, author_name: author_name }
+    let(:article_repo) { repo_class.new [article] }
+    let(:artid_class) { Prolog::Entities::ArticleIdentV }
+    let(:author_name) { current_user }
+    let(:body_content) { '<p>This is content.</p>' }
     let(:call_params) { { proposal: proposal, response_text: response_text } }
     let(:call_result) { obj.call call_params }
+    let(:endpoints) { (3..18) } # 'T'..'.'
+    let(:justification) { nil } # defaults to empty string
+    let(:original_content) { body_content[endpoints] }
     let(:proposal) { proposal_class.new proposal_params }
     let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
     let(:proposal_params) do
@@ -66,115 +85,85 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         justification: justification, proposed_at: proposed_at,
         identifier: identifier }
     end
-    let(:artid_class) { Prolog::Entities::ArticleIdentV }
-    let(:article_id) { artid_class.new title: title, author_name: author_name }
-    let(:title) { 'A Title' }
-    let(:author_name) { current_user }
-    let(:body_content) { '<p>This is content.</p>' }
-    let(:endpoints) { (3..18) } # 'T'..'.'
-    let(:original_content) { body_content[endpoints] }
+    let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
+    let(:proposed_body) do
+      outer_parts = body_content.split original_content
+      format_str = %(<a id="contribution-#{identifier}-%s"></a>)
+      mtp = [format(format_str, 'begin'), format(format_str, 'end')]
+      outer_parts.join(mtp.join(original_content))
+    end
     let(:proposed_content) { 'This is <em>updated</em> content.' }
     let(:proposer) { 'J Random Proposer' }
-    let(:justification) { nil } # defaults to empty string
-    let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
+    let(:title) { 'A Title' }
     let(:identifier) { UUID.generate }
     let(:response_text) { nil }
 
-    describe 'when called with a fully-valid :proposal parameter' do
-      let(:article) do
-        params = [author_name, proposed_body, title, article_id]
-        Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
+    describe 'returns a Result object with' do
+      it 'no :errors' do
+        expect(call_result.errors).must_be :empty?
       end
-      let(:article_repo) do
-        Class.new do
-          attr_reader :find_params
 
-          def initialize(results)
-            @results = results
-            @find_params = []
+      it 'an :original_content attribute that is not empty' do
+        expect(call_result.original_content).wont_be :empty?
+      end
+
+      describe 'an accepted-proposal :entity that' do
+        let(:entity) { call_result.entity }
+
+        describe 'when an explicit author response is' do
+          let(:expected_text) { '' }
+
+          after do
+            expect(entity.response_text).must_equal expected_text
           end
 
-          def find(*params)
-            find_params << params
-            @results
-          end
-        end.new [article]
-      end
-      let(:current_user) { 'J Random Author' }
-      let(:proposed_body) do
-        outer_parts = body_content.split original_content
-        format_str = %(<a id="contribution-#{identifier}-%s"></a>)
-        mtp = [format(format_str, 'begin'), format(format_str, 'end')]
-        outer_parts.join(mtp.join(original_content))
-      end
+          describe 'provided' do
+            let(:response_text) { 'Thank you for your contribution.' }
+            let(:expected_text) { response_text }
 
-      describe 'returns a Result object with' do
-        it 'no :errors' do
-          expect(call_result.errors).must_be :empty?
-        end
+            it 'the entity contains the provided message content' do
+            end
+          end # describe 'provided'
 
-        it 'an :original_content attribute that is not empty' do
-          expect(call_result.original_content).wont_be :empty?
-        end
-
-        describe 'an accepted-proposal :entity that' do
-          let(:entity) { call_result.entity }
-
-          describe 'when an explicit author response is' do
+          describe 'not provided' do
+            let(:response_text) { nil }
             let(:expected_text) { '' }
 
-            after do
-              expect(entity.response_text).must_equal expected_text
+            it 'the entity contains an empty string for the response' do
             end
+          end # describe 'not provided'
+        end # describe 'when an explicit author response is'
 
-            describe 'provided' do
-              let(:response_text) { 'Thank you for your contribution.' }
-              let(:expected_text) { response_text }
-
-              it 'the entity contains the provided message content' do
-              end
-            end # describe 'provided'
-
-            describe 'not provided' do
-              let(:response_text) { nil }
-              let(:expected_text) { '' }
-
-              it 'the entity contains an empty string for the response' do
-              end
-            end # describe 'not provided'
-          end # describe 'when an explicit author response is'
-
-          it 'contains the original proposal ID' do
-            expect(entity.proposal_id).must_equal identifier
-          end
-
-          it 'contains a different value for the accepted-contribution ID' do
-            expect(entity.identifier).wont_equal entity.proposal_id
-          end
-        end # describe 'an accepted-proposal :entity that'
-
-        # -- helper methods --
-
-        it 'a #response of :accepted' do
-          expect(call_result.response).must_equal :accepted
+        it 'contains the original proposal ID' do
+          expect(entity.proposal_id).must_equal identifier
         end
 
-        it 'an #accepted? method returning true' do
-          expect(call_result).must_be :accepted?
+        it 'contains a different value for the accepted-contribution ID' do
+          expect(entity.identifier).wont_equal entity.proposal_id
         end
+      end # describe 'an accepted-proposal :entity that'
 
-        it 'a #rejected? method returning false' do
-          expect(call_result).wont_be :rejected?
-        end
+      # -- helper methods --
 
-        it 'a #responded? method returning true' do
-          expect(call_result).must_be :responded?
-        end
+      it 'a #response of :accepted' do
+        expect(call_result.response).must_equal :accepted
+      end
 
-        it 'a #success? method returning true' do
-          expect(call_result).must_be :success?
-        end
-      end # describe 'returns a Result object with'
-    end # describe 'when called with a fully-valid :proposal parameter'
+      it 'an #accepted? method returning true' do
+        expect(call_result).must_be :accepted?
+      end
+
+      it 'a #rejected? method returning false' do
+        expect(call_result).wont_be :rejected?
+      end
+
+      it 'a #responded? method returning true' do
+        expect(call_result).must_be :responded?
+      end
+
+      it 'a #success? method returning true' do
+        expect(call_result).must_be :success?
+      end
+    end # describe 'returns a Result object with'
   end # describe 'has a #call method that'
 end

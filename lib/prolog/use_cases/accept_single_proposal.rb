@@ -12,7 +12,9 @@ require_relative './accept_single_proposal/result'
 module Prolog
   module UseCases
     # Encapsulates logic whereby an Author of an Article may Accept a
-    # Contribution that has been Proposed against it.
+    # Contribution that has been Proposed against it. Presumes that the use case
+    # "Authorise Contribution Response" has already been executed successfully,
+    # and thus performs *no* error checking.
     class AcceptSingleProposal
       extend Forwardable
 
