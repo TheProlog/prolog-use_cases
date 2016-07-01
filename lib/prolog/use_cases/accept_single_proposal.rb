@@ -46,16 +46,17 @@ module Prolog
           response_text: response_text, responded_at: nil }
       end
 
-      def errors
-        @errors ||= []
-      end
-
       def result
         Result.new result_params
       end
 
+      # We no longer have *any* validation in this class so, as far as
+      # we know, nothing can go wrong...or be recovered from if it does.
+      #
+      # However, we retain the `:errors` attribute by convention, just in
+      # case that changes in future.
       def result_params
-        { entity: accepted_entity, errors: errors, proposal: proposal,
+        { entity: accepted_entity, errors: [], proposal: proposal,
           original_content: original_content }
       end
 
