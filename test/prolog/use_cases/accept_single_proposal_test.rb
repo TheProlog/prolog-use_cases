@@ -16,47 +16,17 @@ require 'prolog/use_cases/accept_single_proposal'
 
 describe 'Prolog::UseCases::AcceptSingleProposal' do
   let(:described_class) { Prolog::UseCases::AcceptSingleProposal }
-  let(:init_params) do
-    { article_repo: article_repo, authoriser: authoriser,
-      contribution_repo: contribution_repo }
-  end
-  let(:article_repo) { 'Dummy Article Repo' }
-  let(:authoriser) do
-    Struct.new(:current_user, :guest?).new current_user, is_guest
-  end
-  let(:contribution_repo) { repo_class.new found_contributions }
-  let(:current_user) { 'J Random Author' }
-  let(:found_contributions) { [] }
-  let(:is_guest) { current_user == 'Guest User' }
-  let(:repo_class) do
-    Class.new do
-      attr_reader :find_params
-
-      def initialize(results)
-        @results = results
-        @find_params = []
-      end
-
-      def find(*params)
-        find_params << params
-        @results
-      end
-    end
-  end
+  let(:init_params) { { article: article } }
+  let(:article) { 'Dummy Article' }
 
   describe 'initialisation' do
     let(:params) { init_params }
 
-    describe 'requires a parameter value for' do
-      [:article_repo, :authoriser, :contribution_repo].each do |param|
-        it ":#{param}" do
-          expect(described_class).must_require_initialize_parameter params,
-                                                                    param
-        end
-      end
-    end # describe 'requires a parameter value for'
+    it 'requires an :article parameter' do
+      expect(described_class).must_require_initialize_parameter params, :article
+    end
 
-    it 'succeeds when values for all parameters are specified' do
+    it 'succeeds when an :article parameter is specified' do
       expect(described_class.new params).must_be_instance_of described_class
     end
   end # describe 'initialisation'
@@ -68,9 +38,8 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
       Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
     end
     let(:article_id) { artid_class.new title: title, author_name: author_name }
-    let(:article_repo) { repo_class.new [article] }
     let(:artid_class) { Prolog::Entities::ArticleIdentV }
-    let(:author_name) { current_user }
+    let(:author_name) { 'J Random Author' }
     let(:body_content) { '<p>This is content.</p>' }
     let(:call_params) { { proposal: proposal, response_text: response_text } }
     let(:call_result) { obj.call call_params }

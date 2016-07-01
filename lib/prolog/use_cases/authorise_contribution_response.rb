@@ -2,8 +2,7 @@
 
 require 'forwardable'
 
-require 'prolog/use_cases/accept_single_proposal/collaborators'
-
+require_relative './authorise_contribution_response/collaborators'
 require_relative './authorise_contribution_response/result'
 require_relative './authorise_contribution_response/verify_not_yet_responded'
 
@@ -17,8 +16,7 @@ module Prolog
       def initialize(article_repo:, authoriser:, contribution_repo:)
         params = { article_repo: article_repo, authoriser: authoriser,
                    contribution_repo: contribution_repo }
-        collab_class = Prolog::UseCases::AcceptSingleProposal::Collaborators
-        @collaborators = collab_class.new params
+        @collaborators = Collaborators.new params
         self
       end
 

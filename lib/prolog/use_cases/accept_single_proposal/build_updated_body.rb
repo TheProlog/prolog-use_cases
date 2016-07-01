@@ -13,8 +13,8 @@ require_relative './build_updated_body/proposed_mtp'
 class BuildUpdatedBody
   extend Forwardable
 
-  def initialize(find_article:, identifier:, proposal:)
-    @find_article = find_article
+  def initialize(article:, identifier:, proposal:)
+    @article = article
     @identifier = identifier
     @proposal = proposal
     self
@@ -26,7 +26,7 @@ class BuildUpdatedBody
 
   private
 
-  attr_reader :find_article, :identifier, :proposal
+  attr_reader :article, :identifier, :proposal
 
   def_delegator :proposal, :identifier, :proposal_identifier
   def_delegator :proposal, :proposed_content
@@ -39,12 +39,8 @@ class BuildUpdatedBody
     [lead, accepted_mtp, proposed_content, tail]
   end
 
-  def article
-    find_article.call proposal.article_id
-  end
-
   def article_body
-    @article_body ||= article&.first&.body.to_s
+    @article_body ||= article&.body.to_s
   end
 
   def lead

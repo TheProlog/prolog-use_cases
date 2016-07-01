@@ -6,7 +6,6 @@ require 'prolog/entities/contribution/accepted'
 
 require_relative './accept_single_proposal/attributes'
 require_relative './accept_single_proposal/build_updated_body'
-require_relative './accept_single_proposal/collaborators'
 require_relative './accept_single_proposal/result'
 
 module Prolog
@@ -18,10 +17,8 @@ module Prolog
     class AcceptSingleProposal
       extend Forwardable
 
-      def initialize(article_repo:, authoriser:, contribution_repo:)
-        params = { article_repo: article_repo, authoriser: authoriser,
-                   contribution_repo: contribution_repo }
-        @collaborators = Collaborators.new params
+      def initialize(article:)
+        @article = article
         self
       end
 
@@ -33,12 +30,11 @@ module Prolog
 
       private
 
+      attr_reader :article
+
       def_delegators :@attributes, :identifier, :proposal, :response_text
       def_delegators :proposal, :article_id, :original_content
       def_delegator :proposal, :identifier, :proposal_id
-
-      def_delegators :@collaborators, :article_repo, :authoriser,
-                     :contribution_repo
 
       def accepted_entity
         Prolog::Entities::Contribution::Accepted.new accepted_entity_attribs
@@ -48,10 +44,6 @@ module Prolog
         { article_id: article_id, proposal_id: proposal_id,
           updated_body: updated_body, identifier: identifier,
           response_text: response_text, responded_at: nil }
-      end
-
-      def article_finder
-        article_repo.method(:find)
       end
 
       def errors
@@ -72,8 +64,7 @@ module Prolog
       end
 
       def updated_body_params
-        { find_article: article_finder, identifier: identifier,
-          proposal: proposal }
+        { article: article, identifier: identifier, proposal: proposal }
       end
     end # class Prolog::UseCases::AcceptSingleProposal
   end

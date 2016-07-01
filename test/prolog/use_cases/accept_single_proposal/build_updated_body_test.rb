@@ -8,10 +8,10 @@ describe 'BuildUpdatedBody' do
   let(:described_class) { BuildUpdatedBody }
   let(:obj) { described_class.new valid_params }
   let(:valid_params) do
-    { find_article: find_article, identifier: identifier,
+    { article: article, identifier: identifier,
       proposal: proposal }
   end
-  let(:find_article) { :find_article_value }
+  let(:article) { :article_value }
   let(:identifier) { 'ACCEPTED-IDENTIFIER' }
   let(:proposal) { :proposal_value }
 
@@ -37,7 +37,7 @@ describe 'BuildUpdatedBody' do
         expect(error.message).must_match(/ #{param}/)
       end
 
-      [:find_article, :identifier, :proposal].each do |param|
+      [:article, :identifier, :proposal].each do |param|
         it ":#{param}" do
         end
       end
@@ -52,17 +52,6 @@ describe 'BuildUpdatedBody' do
     let(:article) do
       body = %(<p>Blah #{proposed_mtp_begin}blah#{proposed_mtp_end}.</p>)
       Struct.new(:article_id, :body).new article_id, body
-    end
-    let(:find_article) do
-      Class.new do
-        def initialize(call_result)
-          @call_result = call_result
-        end
-
-        def call(*_params)
-          @call_result
-        end
-      end.new([article])
     end
     let(:article_id) { 'ARTICLE-ID' }
     let(:proposal) do
