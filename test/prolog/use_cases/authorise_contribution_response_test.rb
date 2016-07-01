@@ -26,11 +26,13 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
       attr_reader :find_params
 
       def initialize(results)
-        @results = results
+        @results = Array(results)
         @find_params = []
       end
 
       def add(entry)
+        @results = @results.dup + Array(entry)
+        @results.freeze
       end
 
       def create(**params)
@@ -88,6 +90,15 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
     let(:justification) { nil } # defaults to empty string
     let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
     let(:identifier) { UUID.generate }
+    let(:found_article) do
+      mtp_format = %(<a id="contribution-#{proposal.identifier}-%s"></a>)
+      prop_markup = format(mtp_format, 'begin') + original_content +
+                    format(mtp_format, 'end')
+      new_body = body_content.dup
+      new_body[endpoints] = prop_markup
+      params = [author_name, new_body, title, article_id]
+      Struct.new(:author_name, :body, :title, :article_id).new(*params).freeze
+    end
 
     it 'requires a :proposal keyword parameter' do
       expect(call_method.parameters).must_equal [[:keyreq, :proposal]]
@@ -95,6 +106,7 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
 
     describe 'when called with a fully-valid :proposal parameter' do
       let(:current_user) { proposal.author_name }
+      let(:found_articles) { [found_article] }
 
       describe 'returns a Result object with' do
         let(:call_result) { obj.call proposal: proposal }
@@ -106,10 +118,17 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
         it 'a #success? method returning true' do
           expect(call_result).must_be :success?
         end
+
+        it 'an article which contains the proposal' do
+          parts = call_result.article.body.split proposal.identifier
+          expect(parts.count).must_equal 3 # i.e., identifier occurred twice
+        end
       end # describe 'returns a Result object with'
     end # describe 'when called with a fully-valid :proposal parameter'
 
     describe 'reports failure when' do
+      let(:found_articles) { [found_article] }
+
       describe 'the current (logged-in) member is not the article author but' do
         let(:not_author) { [{ current_user: :not_author }] }
 
@@ -124,6 +143,10 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
           it 'returns false from the #success? method' do
             expect(call_result).wont_be :success?
           end
+
+          it 'reports the article as the original, with-proposal article' do
+            expect(call_result.article).must_equal found_article
+          end
         end # describe 'is a different Member'
 
         describe 'is the Guest User' do
@@ -135,6 +158,10 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
 
           it 'returns false from the #success? method' do
             expect(call_result).wont_be :success?
+          end
+
+          it 'reports the article as the original, with-proposal article' do
+            expect(call_result.article).must_equal found_article
           end
         end # describe 'is a different Member'
       end # describe 'the current ... member is not the article author but'
@@ -154,7 +181,7 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
                              updated_body: q.freeze,
                              responded_at: nil, response_text: nil }
           contrib = contribution_repo.create contrib_params
-          contribution_repo.instance_variable_get(:@results) << contrib
+          contribution_repo.add contrib
         end
 
         describe 'has only a Hash-like entry in the #errors array with' do
@@ -175,6 +202,10 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
 
         it 'returns false from the #success? method' do
           expect(call_result).wont_be :success?
+        end
+
+        it 'reports the article as the original, with-proposal article' do
+          expect(call_result.article).must_equal found_article
         end
       end # describe 'the proposal has already been responded to'
     end # describe 'reports failure when'

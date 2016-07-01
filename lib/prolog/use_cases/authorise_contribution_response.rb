@@ -23,13 +23,19 @@ module Prolog
       end
 
       def call(proposal:)
-        Result.new errors: find_errors(proposal)
+        Result.new errors: find_errors(proposal),
+                   article: article_from_repo(proposal)
       end
 
       private
 
       def_delegators :@collaborators, :article_repo, :authoriser,
                      :contribution_repo
+
+      def article_from_repo(proposal)
+        ret = article_repo.find(proposal.article_id).first
+        ret || :no_article_found
+      end
 
       def find_errors(proposal)
         find_errors_for(proposal).reject(&:empty?)

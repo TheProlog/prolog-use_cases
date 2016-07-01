@@ -39,7 +39,7 @@ end
 
 FlogTask.new do |t|
   t.verbose = true
-  t.threshold = 1000 # default is 200(!)
+  t.threshold = 1100 # default is 200(!)
   t.methods_only = true
   t.dirs = %w(app lib) # Look, Ma; no tests! Run the tool manually every so often for those.
 end
