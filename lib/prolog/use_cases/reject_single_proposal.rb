@@ -4,6 +4,8 @@ require 'forwardable'
 
 require 'prolog/entities/contribution/rejected'
 
+require_relative './reject_single_proposal/result'
+
 module Prolog
   module UseCases
     # Encapsulates logic whereby an Author of an Article may Reject a
@@ -19,12 +21,13 @@ module Prolog
       def call(proposal:, response_text:)
         @proposal = proposal
         @response_text = response_text
-        Struct.new(:errors, :original_content).new [], proposal.original_content
+        Result.new errors: [], entity: article, proposal: proposal,
+                   original_content: proposal.original_content
       end
 
       private
 
-      attr_reader :proposal, :response_text
+      attr_reader :article, :proposal, :response_text
     end # class Prolog::UseCases::RejectSingleProposal
   end
 end

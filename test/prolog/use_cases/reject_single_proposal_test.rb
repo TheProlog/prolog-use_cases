@@ -73,5 +73,66 @@ describe 'Prolog::UseCases::RejectSingleProposal' do
     it 'an :original_content attribute that is not empty' do
       expect(call_result.original_content).wont_be :empty?
     end
+
+    describe 'a responded-proposal :entity that' do
+      let(:entity) { call_result.entity }
+
+      describe 'when an explicit author response is' do
+        let(:expected_text) { '' }
+
+        after do
+          skip
+          expect(entity.response_text).must_equal expected_text
+        end
+
+        describe 'provided' do
+          let(:response_text) { 'Thank you for your contribution.' }
+          let(:expected_text) { response_text }
+
+          it 'the entity contains the provided message content' do
+          end
+        end # describe 'provided'
+
+        describe 'not provided' do
+          let(:response_text) { nil }
+          let(:expected_text) { '' }
+
+          it 'the entity contains an empty string for the response' do
+          end
+        end # describe 'not provided'
+      end # describe 'when an explicit author response is'
+
+      it 'contains the original proposal ID' do
+        skip
+        expect(entity.proposal_id).must_equal identifier
+      end
+
+      it 'contains a different value for the responded-contribution ID' do
+        skip
+        expect(entity.identifier).wont_equal entity.proposal_id
+      end
+
+      # -- helper methods --
+
+      it 'a #response of :rejected' do
+        expect(call_result.response).must_equal :rejected
+      end
+
+      it 'an #accepted? method returning false' do
+        expect(call_result).wont_be :accepted?
+      end
+
+      it 'a #rejected? method returning true' do
+        expect(call_result).must_be :rejected?
+      end
+
+      it 'a #responded? method returning true' do
+        expect(call_result).must_be :responded?
+      end
+
+      it 'a #success? method returning true' do
+        expect(call_result).must_be :success?
+      end
+    end # describe 'a responded-proposal :entity that'
   end # describe 'returns a Result object with'
 end

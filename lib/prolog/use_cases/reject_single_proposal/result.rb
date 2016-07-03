@@ -4,9 +4,9 @@ require 'prolog/support/dry_types_setup'
 
 module Prolog
   module UseCases
-    # Encapsulates logic whereby an Author of an Article may Accept a
+    # Encapsulates logic whereby an Author of an Article may Reject a
     # Contribution that has been Proposed against it.
-    class AcceptSingleProposal
+    class RejectSingleProposal
       # Encapsulates result reported from use case.
       class Result < Dry::Types::Value
         attribute :entity, Types::Class # Accepted-Contribution entity
@@ -15,15 +15,15 @@ module Prolog
         attribute :proposal, Types::Class
 
         def response
-          :accepted
+          :rejected
         end
 
         def accepted?
-          true
+          false
         end
 
         def rejected?
-          false
+          true
         end
 
         def responded?
@@ -37,7 +37,7 @@ module Prolog
         # def to_h
         #   super.merge(success: success?)
         # end
-      end # class Prolog::UseCases::AcceptSingleProposal::Result
-    end # class Prolog::UseCases::AcceptSingleProposal
+      end # class Prolog::UseCases::RejectSingleProposal::Result
+    end # class Prolog::UseCases::RejectSingleProposal
   end
 end
