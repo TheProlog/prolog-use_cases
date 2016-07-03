@@ -23,8 +23,7 @@ module Prolog
       def call(proposal:, response_text:)
         @proposal = proposal
         @response_text = response_text
-        Result.new errors: [], entity: rejected_entity, proposal: proposal,
-                   original_content: proposal.original_content
+        Result.new result_params
       end
 
       private
@@ -46,6 +45,11 @@ module Prolog
         { article_id: article_id, proposal_id: proposal_id,
           updated_body: article.body, identifier: identifier,
           response_text: response_text, responded_at: nil }
+      end
+
+      def result_params
+        { response: :rejected, errors: [], entity: rejected_entity,
+          proposal: proposal, original_content: proposal.original_content }
       end
     end # class Prolog::UseCases::RejectSingleProposal
   end

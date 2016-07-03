@@ -57,7 +57,7 @@ module Prolog
       # case that changes in future.
       def result_params
         { entity: accepted_entity, errors: [], proposal: proposal,
-          original_content: original_content }
+          original_content: original_content, response: :accepted }
       end
 
       def updated_body

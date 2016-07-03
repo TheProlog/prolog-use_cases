@@ -13,17 +13,14 @@ module Prolog
         attribute :errors, Types::ErrorArray
         attribute :original_content, Types::Strict::String
         attribute :proposal, Types::Class
-
-        def response
-          :rejected
-        end
+        attribute :response, Types::ContributionResponse
 
         def accepted?
-          false
+          response == :accepted
         end
 
         def rejected?
-          true
+          response == :rejected
         end
 
         def responded?

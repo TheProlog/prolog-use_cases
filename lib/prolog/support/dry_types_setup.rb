@@ -29,4 +29,6 @@ module Types
   UUID_FORMAT = /\A\h{8}(-\h{4}){3}\-\h{12}\z/
   UUID = Types::Strict::String.default { ::UUID.generate }
                               .constrained(format: UUID_FORMAT)
+
+  ContributionResponse = Types::Strict::Symbol.enum(:accepted, :rejected)
 end
