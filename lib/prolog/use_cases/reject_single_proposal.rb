@@ -22,35 +22,36 @@ module Prolog
       def call(proposal:, response_text:)
         @proposal = proposal
         @response_text = response_text
+        @identifier = UUID.generate
         Result.new result_params
       end
 
       private
 
-      attr_reader :article, :proposal, :response_text
+      attr_reader :article, :identifier, :proposal, :response_text
 
       Result = Prolog::Entities::Result::Response
 
-      def_delegators :proposal, :article_id, :original_content
+      def_delegators :proposal, :article_id
       def_delegator :proposal, :identifier, :proposal_id
 
-      def identifier
-        @identifier ||= UUID.generate
+      def entity
+        Prolog::Entities::Contribution::Rejected.new entity_attribs
       end
 
-      def rejected_entity
-        Prolog::Entities::Contribution::Rejected.new rejected_entity_attribs
-      end
-
-      def rejected_entity_attribs
+      def entity_attribs
         { article_id: article_id, proposal_id: proposal_id,
-          updated_body: article.body, identifier: identifier,
+          updated_body: updated_body, identifier: identifier,
           response_text: response_text, responded_at: nil }
       end
 
       def result_params
-        { response: :rejected, errors: [], entity: rejected_entity,
-          proposal: proposal, original_content: proposal.original_content }
+        { response: :rejected, errors: [], entity: entity, proposal: proposal,
+          original_content: proposal.original_content }
+      end
+
+      def updated_body
+        article.body
       end
     end # class Prolog::UseCases::RejectSingleProposal
   end

@@ -25,7 +25,7 @@ module Prolog
       def call(proposal:, response_text:)
         @attributes = Attributes.new proposal: proposal, identifier: nil,
                                      response_text: response_text
-        result
+        Result.new result_params
       end
 
       private
@@ -38,18 +38,14 @@ module Prolog
       def_delegators :proposal, :article_id, :original_content
       def_delegator :proposal, :identifier, :proposal_id
 
-      def accepted_entity
-        Prolog::Entities::Contribution::Accepted.new accepted_entity_attribs
+      def entity
+        Prolog::Entities::Contribution::Accepted.new entity_attribs
       end
 
-      def accepted_entity_attribs
+      def entity_attribs
         { article_id: article_id, proposal_id: proposal_id,
           updated_body: updated_body, identifier: identifier,
           response_text: response_text, responded_at: nil }
-      end
-
-      def result
-        Result.new result_params
       end
 
       # We no longer have *any* validation in this class so, as far as
@@ -58,8 +54,8 @@ module Prolog
       # However, we retain the `:errors` attribute by convention, just in
       # case that changes in future.
       def result_params
-        { entity: accepted_entity, errors: [], proposal: proposal,
-          original_content: original_content, response: :accepted }
+        { response: :accepted, entity: entity, errors: [], proposal: proposal,
+          original_content: original_content }
       end
 
       def updated_body
