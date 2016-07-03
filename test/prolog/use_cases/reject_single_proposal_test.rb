@@ -81,7 +81,6 @@ describe 'Prolog::UseCases::RejectSingleProposal' do
         let(:expected_text) { '' }
 
         after do
-          skip
           expect(entity.response_text).must_equal expected_text
         end
 
@@ -103,12 +102,10 @@ describe 'Prolog::UseCases::RejectSingleProposal' do
       end # describe 'when an explicit author response is'
 
       it 'contains the original proposal ID' do
-        skip
         expect(entity.proposal_id).must_equal identifier
       end
 
       it 'contains a different value for the responded-contribution ID' do
-        skip
         expect(entity.identifier).wont_equal entity.proposal_id
       end
 
