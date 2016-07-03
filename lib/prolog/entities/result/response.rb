@@ -3,12 +3,11 @@
 require 'prolog/support/dry_types_setup'
 
 module Prolog
-  module UseCases
-    # Encapsulates logic whereby an Author of an Article may Reject a
-    # Contribution that has been Proposed against it.
-    class RejectSingleProposal
-      # Encapsulates result reported from use case.
-      class Result < Dry::Types::Value
+  module Entities
+    module Result
+      # Encapsulates result of an action where an Author of an Article has
+      # Accepted or Rejected a Contribution that has been Proposed against it.
+      class Response < Dry::Types::Value
         attribute :entity, Types::Class # Accepted-Contribution entity
         attribute :errors, Types::ErrorArray
         attribute :original_content, Types::Strict::String
@@ -34,7 +33,7 @@ module Prolog
         # def to_h
         #   super.merge(success: success?)
         # end
-      end # class Prolog::UseCases::RejectSingleProposal::Result
-    end # class Prolog::UseCases::RejectSingleProposal
+      end # class Prolog::Entities::Result::Response
+    end
   end
 end

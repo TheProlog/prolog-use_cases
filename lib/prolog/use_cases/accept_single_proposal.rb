@@ -3,10 +3,10 @@
 require 'forwardable'
 
 require 'prolog/entities/contribution/accepted'
+require 'prolog/entities/result/response'
 
 require_relative './accept_single_proposal/attributes'
 require_relative './accept_single_proposal/build_updated_body'
-require_relative './accept_single_proposal/result'
 
 module Prolog
   module UseCases
@@ -31,6 +31,8 @@ module Prolog
       private
 
       attr_reader :article
+
+      Result = Prolog::Entities::Result::Response
 
       def_delegators :@attributes, :identifier, :proposal, :response_text
       def_delegators :proposal, :article_id, :original_content
