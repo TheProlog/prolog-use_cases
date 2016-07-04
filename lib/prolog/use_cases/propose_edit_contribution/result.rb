@@ -11,7 +11,7 @@ module Prolog
       class Result < Dry::Types::Value
         attribute :article, Types::Class
         attribute :contribution, Types::Class
-        attribute :errors, Types::Strict::Array.member(Types::Strict::Hash)
+        attribute :errors, Types::ErrorArray
 
         def success
           errors.empty?

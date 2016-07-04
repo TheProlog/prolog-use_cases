@@ -14,14 +14,18 @@ module Prolog
       class Attributes < Dry::Types::Value
         attribute :article, Types::Class
         attribute :endpoints, Types::IntegerRange
+        attribute :identifier, Types::UUID # generates by default
         attribute :justification, Types::Strict::String.default('')
         attribute :proposed_content, Types::Strict::String
-        attribute :proposed_at, Types::Strict::DateTime.default { DateTime.now }
-        attribute :proposed_by, Types::Strict::String
-        attribute :contribution_id, Types::UUID # generates by default
+        attribute :proposed_at, Types::DateTimeOrNow
+        attribute :proposer, Types::Strict::String
 
         def article_id
           Prolog::Entities::ArticleIdentV.new article_id_attribs
+        end
+
+        def original_content
+          article.body[endpoints]
         end
 
         def status
@@ -29,7 +33,9 @@ module Prolog
         end
 
         def to_hash
-          { status: status, article_id: article_id }.merge super
+          others = { article_id: article_id, original_content: original_content,
+                     status: status }
+          others.merge super
         end
 
         private
@@ -37,7 +43,7 @@ module Prolog
         def article_id_attribs
           { author_name: article.author_name, title: article.title }
         end
-      end # class Prolog::useCases::ProposeEditContribution::Attributes
-    end # class Prolog::useCases::ProposeEditContribution
+      end # class Prolog::UseCases::ProposeEditContribution::Attributes
+    end # class Prolog::UseCases::ProposeEditContribution
   end
 end

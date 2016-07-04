@@ -106,7 +106,8 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
               let(:proposed_content) { 'basic' }
               let(:found_contributions) do
                 params = { article_id: article_id, proposer: 'Somebody Else',
-                           endpoints: endpoints, justification: justification,
+                           justification: justification,
+                           original_content: 'FIXME: DUMMY ORIGINAL CONTENT',
                            proposed_content: proposed_content, proposed_at: nil,
                            identifier: nil }
                 proposal = contrib_class.new params

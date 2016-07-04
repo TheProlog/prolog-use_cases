@@ -11,22 +11,28 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
     Prolog::UseCases::ProposeEditContribution::Attributes
   end
   let(:article) do
-    Struct.new(:author_name, :title).new author_name, title
+    Struct.new(:author_name, :body, :title).new author_name, body, title
   end
   let(:author_name) { 'j Random Author' }
-  let(:contribution_id) { nil }
-  let(:title) { 'A Title' }
-  let(:endpoints) { (0..-1) }
+  let(:body) { '<p>This is an Article body.</p>' }
+  let(:endpoints) do
+    ep_begin = body.index 'an Article'
+    ep_end = body.index '</p>'
+    (ep_begin...ep_end)
+  end
+  let(:identifier) { nil }
   let(:justification) { 'Just because.' }
   let(:proposed_at) { nil } # use default value
-  let(:proposed_by) { 'P Random Member' }
-  let(:proposed_content) { '<p>Complete replacement.</p>' }
+  let(:proposer) { 'P Random Member' }
+  let(:proposed_content) { 'updated content.' }
+  let(:title) { 'A Title' }
   let(:obj) { described_class.new params }
   let(:params) do
     { article: article, endpoints: endpoints, justification: justification,
       proposed_content: proposed_content, proposed_at: proposed_at,
-      proposed_by: proposed_by, contribution_id: contribution_id }
+      proposer: proposer, identifier: identifier }
   end
+  let(:original_content) { obj.article.body[endpoints] }
 
   describe 'initialisation' do
     describe 'with a complete set of valid parameters' do
@@ -76,4 +82,14 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
       end
     end # describe 'has Struct-like reader methods for'
   end # describe 'has an #article_id method that'
+
+  it 'has an :original_content attribute reader returning expected content' do
+    expect(obj.original_content).must_equal original_content
+  end
+
+  describe 'has a #to_hash method returning correct entries for' do
+    it ':original_content' do
+      expect(obj[:original_content]).must_equal original_content
+    end
+  end # describe 'has a #to_hash method returning correct entries for'
 end

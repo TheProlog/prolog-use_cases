@@ -11,7 +11,7 @@ module Prolog
     # for an Edit Contribution.
     class ProposeEditContribution
       # Wrap contributionn target in content with marker tag pairs. This needs
-      # to "return" an entity with `:argicle`, `:endpoints`, and
+      # to "return" an entity with `:article`, `:endpoints`, and
       # `:proposed_content` attributes, *but not* `:id_number`
       class WrapContribution
         extend Forwardable

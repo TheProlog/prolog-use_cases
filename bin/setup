@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
-set -vx
+# set -euo pipefail
+# IFS=$'\n\t'
+# set -vx
 
 bundle install
 
-# Do any other automated setup that you need to do here
+if [[ -d $RBENV_ROOT ]]
+then
+  rbenv rehash
+fi
+
+bundle binstub --force flay flog pry rake reek rubocop
