@@ -48,9 +48,29 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
         it 'reports no errors' do
           expect(obj.errors).must_be :empty?
         end
+
+        describe 'including instances where' do
+          describe 'the proposed content is' do
+            describe 'empty' do
+              let(:proposed_content) { '' }
+
+              it 'reports being valid' do
+                expect(obj).must_be :valid?
+              end
+            end # describe 'empty'
+
+            describe 'blank' do
+              let(:proposed_content) { ' ' }
+
+              it 'reports being valid' do
+                expect(obj).must_be :valid?
+              end
+            end # describe 'blank'
+          end # describe 'the proposed content is'
+        end # describe 'including instances where'
       end # describe 'valid required parameters'
 
-      describe 'all supported valid  parameters' do
+      describe 'all supported valid parameters' do
         let(:obj) { described_class.new.call attributes }
 
         it 'reports being valid' do
@@ -93,25 +113,6 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
           end
         end # describe 'reports the correct error data, including the'
       end # describe 'the proposer not being a logged-in member'
-
-      describe 'the proposed content is' do
-        # NOTE: We believe that real-world use will eventually show that
-        # requiring proposed content not to be an empty string will be
-        # desirable; members will (or can easily be encouraged to) select the
-        # words before and/or after content that they wish to delete. However,
-        # that will have to wait for The Glorious Future.
-        let(:error) do
-          JSON.parse obj.errors[:proposed_content], symbolize_names: true
-        end
-
-        describe 'missing' do
-          let(:proposed_content) { nil }
-
-          it 'reports being invalid' do
-            expect(obj).wont_be :valid?
-          end
-        end # describe 'missing'
-      end # describe 'the proposed content is'
 
       # NOTE: We can accept empty replacement text, but *not* an empty selection
       # within the article body. If we use the endpoints to extract a selection
