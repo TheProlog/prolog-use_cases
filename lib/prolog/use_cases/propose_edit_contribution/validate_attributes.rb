@@ -2,7 +2,6 @@
 
 require 'forwardable'
 
-require_relative 'validate_attributes/check_content'
 require_relative 'validate_attributes/check_endpoints'
 require_relative 'validate_attributes/check_proposer'
 
@@ -44,11 +43,10 @@ module Prolog
 
         attr_reader :attributes
 
-        def_delegators :attributes, :article, :article_id, :endpoints,
-                       :proposed_content, :proposer
+        def_delegators :attributes, :article, :article_id, :endpoints, :proposer
 
         def validate
-          proposed_by_member? && proposed_content? && endpoints_ok?
+          proposed_by_member? && endpoints_ok?
         end
 
         def check_attribute(error_key, checker_sym)
@@ -64,15 +62,6 @@ module Prolog
 
         def check_proposer
           CheckProposer.call(proposed_by: proposer, article_id: article_id)
-        end
-
-        def proposed_content?
-          check_attribute :proposed_content, :check_content
-        end
-
-        def check_content
-          CheckContent.call(proposed_content: proposed_content,
-                            article_id: article_id)
         end
 
         def endpoints_ok?
