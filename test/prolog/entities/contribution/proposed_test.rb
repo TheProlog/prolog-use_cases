@@ -22,7 +22,6 @@ describe 'Prolog::Entities::Contribution::Proposed' do
   end
   let(:article_id) { artid_class.new author_name: author_name, title: title }
   let(:author_name) { 'J Random Author' }
-  let(:endpoints) { (0..-1) }
   let(:identifier) { '12345678-1234-5678-9012-123456789012' }
   let(:justification) { '' }
   let(:original_content) { '<p>This is <em>original</em> content.</p>' }
@@ -34,7 +33,6 @@ describe 'Prolog::Entities::Contribution::Proposed' do
   let(:ten_seconds) { 10.0 / (24 * 3600) }
 
   describe 'initialisation' do
-    let(:endpoints) { -1 } # just to prove integer-to-range works
     let(:obj) { described_class.new required_params }
 
     it 'succeeds with all required and optional parameters' do
@@ -95,10 +93,6 @@ describe 'Prolog::Entities::Contribution::Proposed' do
 
       it ':proposed_at' do
         @bad_value = 'this is an invalid DateTiem specification'
-      end
-
-      it ':endpoints' do
-        @bad_value = 'this is a bad value'
       end
     end
   end # describe 'initialisation'
