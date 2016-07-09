@@ -4,7 +4,9 @@ require 'test_helper'
 
 require 'matchers/requires_initialize_parameter'
 
+require 'prolog/entities/contribution/accepted'
 require 'prolog/entities/contribution/proposed'
+require 'prolog/entities/contribution/rejected'
 require 'prolog/use_cases/summarise_own_contrib_history'
 
 describe 'Prolog::UseCases::SummariseOwnContribHistory' do
@@ -78,6 +80,14 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
 
         describe 'when the current Member has' do
           let(:contribs) { call_result.contributions }
+          let(:article_id) do
+            artid_params = { title: 'A Title', author_name: 'N Author' }
+            Prolog::Entities::ArticleIdentV.new artid_params
+          end
+          let(:identifier) { UUID.generate }
+          let(:original_content) { 'original content' }
+          let(:proposed_content) { 'replacement content' }
+          let(:proposer) { 'Joe Bazooka' }
 
           describe 'no history of Contributions' do
             describe 'reports no Contributions have been' do
@@ -96,17 +106,12 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
           end # describe 'no history of Contributions'
 
           describe 'Proposed Contributions not yet Responded to' do
-            let(:article_id) do
-              artid_params = { title: 'A Title', author_name: 'N Author' }
-              Prolog::Entities::ArticleIdentV.new artid_params
-            end
             let(:contrib_params) do
               { article_id: article_id, identifier: identifier,
-                original_content: 'original content',
-                proposed_content: 'replacement content',
-                proposer: 'Joe Bazooka', justification: nil, proposed_at: nil }
+                original_content: original_content,
+                proposed_content: proposed_content,
+                proposer: proposer, justification: nil, proposed_at: nil }
             end
-            let(:identifier) { UUID.generate }
             let(:proposed_contributions) do
               [Prolog::Entities::Contribution::Proposed.new(contrib_params)]
             end
@@ -117,6 +122,45 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
               expect(contribs[:proposed]).must_equal proposed_contributions
             end
           end # describe 'Proposed Contributions not yet Responded to'
+
+          describe 'Accepted Contributions' do
+            let(:proposed_contributions) { [] }
+            let(:rejected_contributions) { [] }
+            let(:accepted_contributions) do
+              [Prolog::Entities::Contribution::Accepted.new(contrib_params)]
+            end
+            let(:contrib_params) do
+              { article_id: article_id, identifier: identifier,
+                proposal_id: proposal_id, response_text: response_text,
+                updated_body: updated_body, responded_at: nil }
+            end
+            let(:proposal_id) { UUID.generate }
+            let(:response_text) { 'Good catch.' }
+            let(:updated_body) { 'This is a complete updated body.' }
+
+            it 'returns the correct values as :accepted Contributions' do
+              expect(contribs[:accepted]).must_equal accepted_contributions
+            end
+          end # describe 'Accepted Contributions'
+
+          describe 'Rejected Contributions' do
+            let(:accepted_contributions) { [] }
+            let(:proposed_contributions) { [] }
+            let(:rejected_contributions) do
+              [Prolog::Entities::Contribution::Rejected.new(contrib_params)]
+            end
+            let(:contrib_params) do
+              { article_id: article_id, identifier: identifier,
+                proposal_id: proposal_id, response_text: response_text,
+                responded_at: nil }
+            end
+            let(:proposal_id) { UUID.generate }
+            let(:response_text) { 'Sorry, not even close.' }
+
+            it 'returns the correct values as :rejected Contributions' do
+              expect(contribs[:rejected]).must_equal rejected_contributions
+            end
+          end # describe 'Rejected Contributions'
         end # describe 'when the current Member has'
       end # describe 'returns a result object that'
     end # describe 'when the :authoriser indicates that a Member is logged in'
