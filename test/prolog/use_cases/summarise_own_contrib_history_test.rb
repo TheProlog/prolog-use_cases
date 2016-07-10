@@ -164,5 +164,44 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
         end # describe 'when the current Member has'
       end # describe 'returns a result object that'
     end # describe 'when the :authoriser indicates that a Member is logged in'
+
+    describe 'when the :authoriser indicates that no Member is logged in' do
+      let(:user_name) { guest_name }
+
+      describe 'returns a result object that' do
+        let(:call_result) { described_class.call call_params }
+
+        describe 'has an :errors attribute that' do
+          it 'contains a single entry' do
+            expect(call_result.errors.count).must_equal 1
+          end
+
+          it 'contains an entry indicating no user is logged in' do
+            expected = { current_user: :not_logged_in }
+            expect(call_result.errors.first).must_equal expected
+          end
+        end # describe 'has an :errors attribute that'
+
+        it 'has a :success attribute returning false' do
+          expect(call_result.success).must_equal false
+        end
+
+        it 'also returns false from #success?' do
+          expect(call_result).wont_be :success?
+        end
+
+        it 'has a :failure attribute returning true' do
+          expect(call_result.failure).must_equal true
+        end
+
+        it 'also returns true from #failure?' do
+          expect(call_result).must_be :failure?
+        end
+
+        it 'returns an empty :contributions attribute' do
+          expect(call_result.contributions).must_be :empty?
+        end
+      end # describe 'returns a result object that'
+    end # describe 'when the :authoriser indicates that no Member is logged in'
   end # describe 'has a .call method that'
 end
