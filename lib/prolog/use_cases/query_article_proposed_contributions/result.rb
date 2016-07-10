@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'prolog/support/dry_types_setup'
+
 module Prolog
   module UseCases
     # Queries for Contribution Proposals that have been submitted but not yet
@@ -7,14 +9,9 @@ module Prolog
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
       # Result notification encapsulation for query.
-      class Result
-        attr_reader :errors, :proposals
-
-        def initialize(errors:, proposals:)
-          @errors = errors
-          @proposals = proposals
-          self
-        end
+      class Result < Dry::Types::Value
+        attribute :errors, Types::ErrorArray
+        attribute :proposals, Types::Strict::Array
 
         def success?
           errors.empty?
