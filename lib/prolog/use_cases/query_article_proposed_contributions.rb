@@ -28,7 +28,8 @@ module Prolog
       end
 
       def call(article_id:)
-        errors = validate article_id
+        # errors = validate article_id
+        errors = []
         proposals = errors.empty? ? proposals_for(article_id) : []
         Result.new errors: errors, proposals: proposals
       end
@@ -41,32 +42,6 @@ module Prolog
         params = Internals.contrib_search_params(article_id)
         proposals = contribution_repo.find(params)
         Internals.search_result_as_array proposals
-      end
-
-      def validate(article_id)
-        current_user_errors(article_id).merge article_errors(article_id)
-      end
-
-      def article_errors(article_id)
-        article = article_repo.find article_id
-        article == :not_found ? { article: ['not found'] } : {}
-      end
-
-      def current_user_errors(article_id)
-        errors = validate_current_user(article_id)
-        errors.empty? ? {} : { current_user: errors }
-      end
-
-      def validate_current_user(article_id)
-        verify_logged_in + verify_author(article_id)
-      end
-
-      def verify_author(article_id)
-        authoriser.user_name == article_id.author_name ? [] : ['not author']
-      end
-
-      def verify_logged_in
-        authoriser.guest? ? ['not logged in'] : []
       end
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end
