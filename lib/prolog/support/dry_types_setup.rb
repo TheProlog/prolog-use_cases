@@ -13,6 +13,15 @@ Dry::Types.register 'strict.range',
 module Types
   include Dry::Types.module
 
+  # Declaration of internal constants, support methods, etc, that neither affect
+  # nor depend on module-external state.
+  module Internals
+    def self.contrib_schema
+      { accepted: Types::Array, proposed: Types::Array, rejected: Types::Array }
+    end
+  end
+  private_constant :Internals
+
   DateTimeOrNow = Types::Strict::DateTime.default { ::DateTime.now }
   ErrorArray = Types::Strict::Array.member(Types::Strict::Hash)
 
@@ -31,4 +40,5 @@ module Types
                               .constrained(format: UUID_FORMAT)
 
   ContributionResponse = Types::Strict::Symbol.enum(:accepted, :rejected)
+  ContributionHash = Types::Hash.schema(Internals.contrib_schema)
 end
