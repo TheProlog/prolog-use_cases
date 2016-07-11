@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'query_article_proposed_contributions/result'
+require_relative 'query_article_proposed_contributions/search_result'
+require_relative 'query_article_proposed_contributions/verify_authentication'
 
 module Prolog
   module UseCases
@@ -8,14 +10,21 @@ module Prolog
     # Responded to, that are Proposed against an Article published by the
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
+      # Runs validation steps for use case.
+      class Validator
+        def self.call(authoriser)
+          _to_hash Array(VerifyAuthentication.call(authoriser))
+        end
+
+        def self._to_hash(errors)
+          errors.map { |error| { error.first => error.last } }
+        end
+      end # class Prolog::UseCases::QueryArticleProposedContributions::Validator
+
       # Methods that neither depend on nor affect instance state.
       module Internals
         def self.contrib_search_params(article_id)
           article_id.to_hash.merge(responded_at: nil)
-        end
-
-        def self.search_result_as_array(results)
-          results == :not_found ? [] : results
         end
       end
       private_constant :Internals
@@ -28,20 +37,26 @@ module Prolog
       end
 
       def call(article_id:)
-        # errors = validate article_id
-        errors = []
-        proposals = errors.empty? ? proposals_for(article_id) : []
+        @article_id = article_id
         Result.new errors: errors, proposals: proposals
       end
 
       private
 
-      attr_reader :article_repo, :authoriser, :contribution_repo
+      attr_reader :article_id, :article_repo, :authoriser, :contribution_repo
 
-      def proposals_for(article_id)
+      def errors
+        Validator.call authoriser
+      end
+
+      def proposals
+        return [] unless errors.empty?
+        proposals_for_article
+      end
+
+      def proposals_for_article
         params = Internals.contrib_search_params(article_id)
-        proposals = contribution_repo.find(params)
-        Internals.search_result_as_array proposals
+        SearchResult.call repo: contribution_repo, search_params: params
       end
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end

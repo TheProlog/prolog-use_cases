@@ -64,17 +64,22 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
   end # describe 'initialisation'
 
   describe 'has a #call method that' do
+    let(:call_result) { obj.call call_params }
+    let(:proposals) { call_result.proposals }
+
     describe 'on an instance initialised with' do
+      let(:actual_errors) { call_result.errors }
+
       describe 'valid parameter values, it' do
         let(:found_articles) { [article_id] }
         let(:user_name) { 'J Random Author' }
 
         it 'reports a successful result' do
-          expect(obj.call(call_params)).must_be :success?
+          expect(call_result).must_be :success?
         end
 
         it 'reports no errors' do
-          expect(obj.call(call_params).errors).must_be :empty?
+          expect(actual_errors).must_be :empty?
         end
 
         describe 'correctly reports contributions found when the member has' do
@@ -82,7 +87,7 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
             let(:found_articles) { :not_found }
 
             it 'by reporting the result #proposals as an empty array' do
-              expect(obj.call(call_params).proposals).must_be :empty?
+              expect(proposals).must_be :empty?
             end
           end # describe 'not published articles'
 
@@ -93,7 +98,7 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
               let(:found_contributions) { :not_found }
 
               it 'by reporting the result #proposals as an empty array' do
-                expect(obj.call(call_params).proposals).must_be :empty?
+                expect(proposals).must_be :empty?
               end
             end # describe 'no ... proposals active by reporting #proposals'
 
@@ -115,8 +120,7 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
               end
 
               it 'containing the Proposal entities' do
-                actual = obj.call(call_params).proposals
-                expect(actual).must_equal found_contributions
+                expect(proposals).must_equal found_contributions
               end
             end # describe 'existing ... proposals by reporting #proposals'
           end # describe 'published articles that have'
@@ -127,15 +131,20 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
         let(:user_name) { GUEST_USER_NAME }
 
         it 'reports failure' do
-          skip 'Rework pending.'
-          expect(obj.call call_params).wont_be :success?
+          expect(call_result).wont_be :success?
         end
 
-        it 'reports an error that no user is logged in'
+        it 'reports a single error' do
+          expect(actual_errors.count).must_equal 1
+        end
+
+        it 'reports an error that no user is logged in' do
+          expected = { current_user: :not_logged_in }
+          expect(actual_errors.first).must_equal expected
+        end
 
         it 'returns no #proposals' do
-          skip 'Rework pending.'
-          expect(obj.call(call_params).proposals).must_be :empty?
+          expect(proposals).must_be :empty?
         end
       end # describe 'no Member presently logged in, it'
 
