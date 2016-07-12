@@ -11,7 +11,7 @@ module Prolog
       # Value object communicating result of use case to caller.
       class Result < Dry::Types::Value
         attribute :contributions, Types::ContributionHash
-        attribute :errors, Types::Strict::Array
+        attribute :errors, Types::ErrorArray
 
         def success
           errors.empty?
