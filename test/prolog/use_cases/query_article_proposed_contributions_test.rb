@@ -153,15 +153,20 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
         let(:user_name) { 'J Random User' }
 
         it 'reports failure' do
-          skip 'Rework pending.'
-          expect(obj.call call_params).wont_be :success?
+          expect(call_result).wont_be :success?
         end
 
-        it 'reports an error that the current user is not the author'
+        it 'reports a single error' do
+          expect(actual_errors.count).must_equal 1
+        end
+
+        it 'reports an error that the current user is not the author' do
+          expected = { current_user: :not_author }
+          expect(actual_errors.first).must_equal expected
+        end
 
         it 'returns no #propoosals' do
-          skip 'Rework pending.'
-          expect(obj.call(call_params).proposals).must_be :empty?
+          expect(call_result.proposals).must_be :empty?
         end
       end # describe 'a ... user not the Author of the specified Article, it'
 
@@ -171,15 +176,20 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
         let(:user_name) { 'J Random User' }
 
         it 'reports failure' do
-          skip 'Rework pending.'
-          expect(obj.call call_params).wont_be :success?
+          expect(call_result).wont_be :success?
         end
 
-        it 'reports an error that the article was not found'
+        it 'reports a single error' do
+          expect(actual_errors.count).must_equal 1
+        end
+
+        it 'reports an error that the article was not found' do
+          expected = { article_not_found: JSON.dump(article_id) }
+          expect(actual_errors.first).must_equal expected
+        end
 
         it 'returns no #propoosals' do
-          skip 'Rework pending.'
-          expect(obj.call(call_params).proposals).must_be :empty?
+          expect(call_result.proposals).must_be :empty?
         end
       end # describe 'no Article matching the specification is found'
     end # describe 'on an instance initialised with'

@@ -2,7 +2,7 @@
 
 require_relative 'query_article_proposed_contributions/result'
 require_relative 'query_article_proposed_contributions/search_result'
-require_relative 'query_article_proposed_contributions/verify_authentication'
+require_relative 'query_article_proposed_contributions/validator'
 
 module Prolog
   module UseCases
@@ -10,17 +10,6 @@ module Prolog
     # Responded to, that are Proposed against an Article published by the
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
-      # Runs validation steps for use case.
-      class Validator
-        def self.call(authoriser)
-          _to_hash Array(VerifyAuthentication.call(authoriser))
-        end
-
-        def self._to_hash(errors)
-          errors.map { |error| { error.first => error.last } }
-        end
-      end # class Prolog::UseCases::QueryArticleProposedContributions::Validator
-
       # Methods that neither depend on nor affect instance state.
       module Internals
         def self.contrib_search_params(article_id)
@@ -46,7 +35,8 @@ module Prolog
       attr_reader :article_id, :article_repo, :authoriser, :contribution_repo
 
       def errors
-        Validator.call authoriser
+        Validator.call article_id: article_id, article_repo: article_repo,
+                       authoriser: authoriser
       end
 
       def proposals
