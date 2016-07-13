@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'prolog/support/dry_types_setup'
+require 'prolog/entities/result/base'
 
 module Prolog
   module UseCases
@@ -9,13 +9,8 @@ module Prolog
     # currently loggedd-in Member.
     class QueryArticleProposedContributions
       # Result notification encapsulation for query.
-      class Result < Dry::Types::Value
-        attribute :errors, Types::ErrorArray
+      class Result < Prolog::Entities::Result::Base
         attribute :proposals, Types::Strict::Array
-
-        def success?
-          errors.empty?
-        end
       end # class Prolog::UseCases::QueryArticleProposedContributions::Result
     end # class Prolog::UseCases::QueryArticleProposedContributions
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'prolog/support/dry_types_setup'
+require 'prolog/entities/result/base'
 
 module Prolog
   module UseCases
@@ -9,19 +9,8 @@ module Prolog
     # conventional sugar.
     class SummariseOwnContribHistory
       # Value object communicating result of use case to caller.
-      class Result < Dry::Types::Value
+      class Result < Prolog::Entities::Result::Base
         attribute :contributions, Types::ContributionHash
-        attribute :errors, Types::ErrorArray
-
-        def success
-          errors.empty?
-        end
-        alias success? success
-
-        def failure
-          !success
-        end
-        alias failure? failure
       end # class Prolog::UseCases::SummariseOwnContribHistory::Result
     end # class Prolog::UseCases::SummariseOwnContribHistory
   end
