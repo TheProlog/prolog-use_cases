@@ -2,59 +2,13 @@
 
 require 'forwardable'
 
+require_relative './summarise_articles_by_author/list_articles'
+require_relative './summarise_articles_by_author/result'
+
 module Prolog
   module UseCases
     # Just what it says on the tin: like SummariseContent for a single Author.
     class SummariseArticlesByAuthor
-      # Result notification encapsulation for query.
-      class Result
-        attr_reader :articles, :errors, :keywords
-
-        def initialize(errors:, articles:, keywords: [])
-          @errors = errors
-          @articles = articles
-          @keywords = keywords
-          self
-        end
-
-        def success?
-          errors.empty?
-        end
-      end # class Prolog::UseCases::SummariseArticlesByAuthor::Result
-
-      # Build list of articles by author visible to current user.
-      class ListArticles
-        def initialize(repository:, author_name:, authoriser:)
-          @author_name = author_name
-          @current_user = authoriser.current_user
-          @repository = repository
-          self
-        end
-
-        def call
-          articles = filter(articles_by_author)
-          Result.new articles: articles, errors: []
-        end
-
-        private
-
-        attr_reader :author_name, :current_user, :repository
-
-        def articles_by_author
-          repository.find(author_name: author_name)
-        end
-
-        def author?(article)
-          current_user == article.author_name
-        end
-
-        def filter(articles)
-          articles.select do |article|
-            article.published? || author?(article)
-          end
-        end
-      end # class Prolog::UseCases::SummariseContent::ListArticles
-
       def initialize(authoriser:, repository:)
         @authoriser = authoriser
         @repository = repository
@@ -95,7 +49,7 @@ module Prolog
       # Methods that neither affect nor depend on instance state.
       module Internals
         def self.keywords_from(articles)
-          _keyword_set_from(_all_keywords_in(articles))
+          _keyword_set_from(_all_keywords_in(articles)).to_a
         end
 
         def self._all_keywords_in(articles)

@@ -62,20 +62,8 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
           expect(call_result.errors).must_be :empty?
         end
 
-        it 'has a :success attribute returning true' do
-          expect(call_result.success).must_equal true
-        end
-
-        it 'also returns true from #success?' do
+        it 'reports #success?' do
           expect(call_result).must_be :success?
-        end
-
-        it 'has a :failure attribute returning false' do
-          expect(call_result.failure).must_equal false
-        end
-
-        it 'also returns false from #failure?' do
-          expect(call_result).wont_be :failure?
         end
 
         describe 'when the current Member has' do
@@ -182,19 +170,7 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
           end
         end # describe 'has an :errors attribute that'
 
-        it 'has a :success attribute returning false' do
-          expect(call_result.success).must_equal false
-        end
-
-        it 'also returns false from #success?' do
-          expect(call_result).wont_be :success?
-        end
-
-        it 'has a :failure attribute returning true' do
-          expect(call_result.failure).must_equal true
-        end
-
-        it 'also returns true from #failure?' do
+        it 'reports #failure?' do
           expect(call_result).must_be :failure?
         end
 

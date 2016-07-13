@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'prolog/support/dry_types_setup'
+require 'prolog/entities/result/base'
 
 module Prolog
   module UseCases
@@ -11,13 +11,8 @@ module Prolog
       # `AuthoriseContributionResponse` now has an `:article` attribute. This
       # should return the Article entity associated with the current workflow
       # *as retrieved from the Article Repository.*
-      class Result < Dry::Types::Value
+      class Result < Prolog::Entities::Result::Base
         attribute :article, Types::Class
-        attribute :errors, Types::ErrorArray
-
-        def success?
-          errors.empty?
-        end
       end # class Prolog::UseCases::AuthoriseContributionResponse::Result
     end # class Prolog::UseCases::AuthoriseContributionResponse
   end

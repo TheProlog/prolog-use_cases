@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'prolog/support/dry_types_setup'
+require 'prolog/entities/result/base'
 
 module Prolog
   module UseCases
@@ -8,20 +8,9 @@ module Prolog
     # for an Edit Contribution.
     class ProposeEditContribution
       # Reports results from execution of `#call` method.
-      class Result < Dry::Types::Value
+      class Result < Prolog::Entities::Result::Base
         attribute :article, Types::Class
         attribute :contribution, Types::Class
-        attribute :errors, Types::ErrorArray
-
-        def success
-          errors.empty?
-        end
-        alias success? success
-
-        def failure
-          !success
-        end
-        alias failure? failure
       end # class Prolog::UseCases::ProposeEditContribution::Result
     end # class Prolog::UseCases::ProposeEditContribution
   end

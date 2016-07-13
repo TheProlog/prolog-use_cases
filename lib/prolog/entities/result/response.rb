@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
-require 'prolog/support/dry_types_setup'
+require 'prolog/entities/result/base'
 
 module Prolog
   module Entities
     module Result
       # Encapsulates result of an action where an Author of an Article has
       # Accepted or Rejected a Contribution that has been Proposed against it.
-      class Response < Dry::Types::Value
-        attribute :entity, Types::Class # Accepted-Contribution entity
-        attribute :errors, Types::ErrorArray
+      class Response < Base
+        attribute :entity, Types::Class # Contribution entity
         attribute :original_content, Types::Strict::String
         attribute :proposal, Types::Class
         attribute :response, Types::ContributionResponse
@@ -25,14 +24,6 @@ module Prolog
         def responded?
           true
         end
-
-        def success?
-          errors.empty?
-        end
-
-        # def to_h
-        #   super.merge(success: success?)
-        # end
       end # class Prolog::Entities::Result::Response
     end
   end
