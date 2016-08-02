@@ -9,7 +9,7 @@ module Prolog
     class AuthoriseContributionResponse
       # Collect all collaborators for Authorise Contribution Response use case
       # in a value object.
-      class Collaborators < Dry::Types::Value
+      class Collaborators < ::Dry::Types::Value
         attribute :article_repo, Types::Class
         attribute :authoriser, Types::Class
         attribute :contribution_repo, Types::Class

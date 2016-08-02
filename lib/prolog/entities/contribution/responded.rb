@@ -11,13 +11,13 @@ module Prolog
   module Entities
     module Contribution
       # Responded-Contribution entity (base for Accepted or Rejected).
-      class Responded < Dry::Types::Value
+      class Responded < ::Dry::Types::Value
         extend Forwardable
 
         attribute :article_id, Prolog::Entities::ArticleIdentV
         attribute :identifier, Types::UUID
         attribute :proposal_id, Types::UUID
-        attribute :responded_at, Types::DateTimeOrNow
+        attribute :responded_at, Types::TimeOrNow
         attribute :response_text, Types::Strict::String.default('')
 
         def_delegators :article_id, :author_name, :title

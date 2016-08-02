@@ -12,7 +12,7 @@ module Prolog
     class ProposeEditContribution
       # Objects providing services to the use case. We *could* be more specific,
       # or define a validation schema for this. Maybe, in The Glorious Future.
-      class Collaborators < Dry::Types::Value
+      class Collaborators < ::Dry::Types::Value
         extend Forwardable
 
         attribute :authoriser, Types::Class

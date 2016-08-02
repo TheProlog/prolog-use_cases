@@ -49,7 +49,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::Attributes' do
 
       it ':endpoints' do
         params[:endpoints] = nil
-        expected = (-1..-1)
+        expected = (0..0)
         expect(obj.endpoints).must_equal expected
       end
     end # describe 'supplies expected default values for omitted parameters for'

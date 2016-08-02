@@ -30,7 +30,7 @@ module Prolog
         end
 
         def ensure_valid_value_type(value)
-          return (-1..-1) unless value.is_a?(Range) || value.to_i != 0
+          return (-1..-1) unless value.is_a?(Range) || value.to_i.nonzero?
           yield
         end
 

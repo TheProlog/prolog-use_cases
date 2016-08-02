@@ -173,8 +173,7 @@ describe 'Prolog::UseCases::ProposeEditContribution' do
 
             it 'proposed at' do
               actual = result_contribution.proposed_at.to_time
-              current = DateTime.now.to_time
-              expect(current - actual).must_be :<, 30.0 # seconds
+              expect(Time.now - actual).must_be :<, 30.0 # seconds
             end
 
             it 'justification' do

@@ -11,14 +11,14 @@ module Prolog
   module Entities
     module Contribution
       # Proposed-Contribution entity;
-      class Proposed < Dry::Types::Value
+      class Proposed < ::Dry::Types::Value
         extend Forwardable
 
         attribute :article_id, ArticleIdentV
         attribute :identifier, Types::UUID
         attribute :justification, Types::Strict::String.default('')
         attribute :original_content, Types::Strict::String
-        attribute :proposed_at, Types::DateTimeOrNow
+        attribute :proposed_at, Types::TimeOrNow
         attribute :proposed_content, Types::Strict::String
         attribute :proposer, Types::Strict::String
         # attribute :type, Types::Symbol.default(:edit)
