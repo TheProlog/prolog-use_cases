@@ -34,7 +34,7 @@ describe 'Prolog::UseCases::ProposeEditContribution::ValidateAttributes' do
   let(:proposer) { 'P Random Proposer' }
   let(:proposed_content) { '<p>Entire replacement.</p>' }
   let(:justification) { 'Just because.' }
-  let(:proposed_at) { DateTime.parse '13 May 2016 12:34:56 SGT' }
+  let(:proposed_at) { Time.parse '13 May 2016 12:34:56 SGT' }
 
   describe 'when calling the #call method with' do
     describe 'a complete set of' do

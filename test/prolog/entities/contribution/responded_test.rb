@@ -23,7 +23,7 @@ describe 'Prolog::Entities::Contribution::Responded' do
   let(:author_name) { 'J Random Author' }
   let(:identifier) { '12345678-1234-5678-9012-123456789012' }
   let(:proposal_id) { '87654321-9876-5432-1098-987654321098' }
-  let(:responded_at) { DateTime.parse '2 Jun 2016 01:23:45 SGT' }
+  let(:responded_at) { Time.parse '2 Jun 2016 01:23:45 SGT' }
   let(:response_text) { 'Roger dodger' }
   let(:title) { 'This is a Title' }
 

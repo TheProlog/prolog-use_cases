@@ -25,7 +25,7 @@ describe 'Prolog::Entities::Contribution::Proposed' do
   let(:identifier) { '12345678-1234-5678-9012-123456789012' }
   let(:justification) { '' }
   let(:original_content) { '<p>This is <em>original</em> content.</p>' }
-  let(:proposed_at) { DateTime.parse '9 May 2016 12:34:56 SGT' }
+  let(:proposed_at) { Time.parse '9 May 2016 12:34:56 SGT' }
   let(:proposed_content) { '<p>Complete replacement.</p>' }
   let(:proposer) { 'T Random Member' }
   let(:title) { 'This is a Title' }
@@ -59,7 +59,7 @@ describe 'Prolog::Entities::Contribution::Proposed' do
       end
 
       it ':proposed_at' do
-        expect(obj.proposed_at).must_be_close_to(DateTime.now, ten_seconds)
+        expect(obj.proposed_at).must_be_close_to(Time.now, ten_seconds)
       end
     end # describe 'uses expected default attributes for'
 
@@ -88,7 +88,7 @@ describe 'Prolog::Entities::Contribution::Proposed' do
         index = name.sub(/test_\d+_/, '')
         required_params[index] = @bad_value
         obj = described_class.new required_params
-        expect(obj.proposed_at).must_be_close_to(DateTime.now, ten_seconds)
+        expect(obj.proposed_at).must_be_close_to(Time.now, ten_seconds)
       end
 
       it ':proposed_at' do

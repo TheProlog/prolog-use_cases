@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Use-case layer for Meldd/Prolog application.}
   spec.description   = %Q(Following a hexagonal or clean architecture, the use cases are implemented in the next major layer "outward" from the core entities, which are known to this code but not vice versa.)
   spec.homepage      = "https://github.com/theprolog/prolog-use_cases"
+  spec.required_ruby_version = '>= 2.3.0'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
@@ -27,6 +28,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "prolog_core", "~> 0.4"
+  spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0", ">= 1.0.2"
+  spec.add_dependency "prolog-services-replace_content", "0.1.2"
+  spec.add_dependency "prolog-use_cases-publish_new_article", "~> 0.2", ">= 0.2.2"
+
   spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
   spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
   spec.add_dependency "ox", "~> 2.3"
@@ -34,8 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "gemoji", "~> 2.1"
   spec.add_dependency "github-markdown", "0.6.9"
   spec.add_dependency "rinku", "~> 2.0", ">= 2.0.0"
-  spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0", ">= 1.0.2"
-  spec.add_dependency "prolog-services-replace_content", "0.1.2"
   spec.add_dependency "uuid", "~> 2.3", ">= 2.3.8"
 
   # FIXME: dry-rb update to validation 0.8.0 breaks horribly; see our Issue #60.

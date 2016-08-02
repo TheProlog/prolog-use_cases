@@ -25,7 +25,7 @@ describe 'Prolog::Entities::Contribution::Accepted' do
       updated_body: updated_body, identifier: nil, responded_at: nil,
       response_text: nil }
   end
-  let(:responded_at) { DateTime.parse '2 Jun 2016 01:23:45 SGT' }
+  let(:responded_at) { Time.parse '2 Jun 2016 01:23:45 SGT' }
   let(:response_text) { 'Roger dodger' }
   let(:title) { 'This is a Title' }
   let(:updated_body) { 'Update your body with exercise.' }
