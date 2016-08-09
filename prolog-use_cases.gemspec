@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0", ">= 1.0.2"
   spec.add_dependency "prolog-services-replace_content", "0.1.2"
   spec.add_dependency "prolog-use_cases-publish_new_article", "~> 0.2", ">= 0.2.2"
+  spec.add_dependency "prolog-use_cases-register_new_member", "~> 0.1", ">= 0.1.1"
 
   spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
   spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
@@ -41,12 +42,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rinku", "~> 2.0", ">= 2.0.0"
   spec.add_dependency "uuid", "~> 2.3", ">= 2.3.8"
 
-  # FIXME: dry-rb update to validation 0.8.0 breaks horribly; see our Issue #60.
-  spec.add_dependency "dry-container", "0.3.3"
-  spec.add_dependency "dry-logic", "0.2.3"
-  # spec.add_dependency "dry-monads", "0.0.1"
-  spec.add_dependency "dry-types", "0.7.2"
-  spec.add_dependency "dry-validation", "0.7.4"
+  spec.add_dependency "dry-validation", "~> 0.9", ">= 0.9.3"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 11.0" # NOTE: was "~> 10.0"
