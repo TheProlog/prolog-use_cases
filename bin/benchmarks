@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# set -euo pipefail
+# IFS=$'\n\t'
+# set -vx
+
+BMKS=`find test/benchmarks -name \*_bmk.rb`
+for i in $BMKS; do
+  echo; echo "Running $i"
+  ruby $i
+done
