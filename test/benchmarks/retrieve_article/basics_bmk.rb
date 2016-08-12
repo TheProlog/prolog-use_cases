@@ -4,7 +4,7 @@ require 'benchmark/ips'
 
 require 'dry-types'
 
-require_relative '../../../lib/prolog/use_cases/retrieve_article'
+require 'prolog/use_cases/retrieve_article'
 
 class RepoDummy
   def initialize(result:)
@@ -44,8 +44,6 @@ Benchmark.ips do |x|
   params = { title: title, author: author_name, repository: repository }
   authoriser = Struct.new(:guest?, :current_user).new false, 'User Name'
   init_params = { repository: repository, authoriser: authoriser }
-  # obj = Prolog::UseCases::RetrieveArticle.new init_params
-  # ret = obj.call params
 
   x.report 'original, 1 article' do
     Prolog::UseCases::RetrieveArticle.new(init_params).call params
