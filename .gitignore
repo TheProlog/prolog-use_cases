@@ -8,5 +8,9 @@
 /spec/reports/
 /tmp/
 /o-rdoc/
+/gemsets/dev/
+/gemsets/error/
+/gemsets/prolog/
+/gemsets/runtime/
 /bin/
 !/bin/setup
