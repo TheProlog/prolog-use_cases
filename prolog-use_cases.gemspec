@@ -29,9 +29,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "prolog_core", '0.4.0'
   spec.add_dependency "prolog-services-markdown_to_html", '1.0.2'
-  spec.add_dependency "prolog-use_cases-publish_new_article", '0.2.4'
   spec.add_dependency "prolog-services-replace_content", '0.1.2'
+  spec.add_dependency "prolog-use_cases-publish_new_article", '0.2.4'
   spec.add_dependency "prolog-use_cases-register_new_member", '0.2.0'
+  spec.add_dependency "prolog-use_cases-retrieve_article", '0.1.1'
 
   spec.add_dependency "activemodel", '4.2.7.1'
   spec.add_dependency "validates_email_format_of", '1.6.3'
