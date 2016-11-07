@@ -22,8 +22,10 @@ describe 'Prolog::Entities::Contribution::Accepted' do
   let(:proposal_id) { '87654321-9876-5432-1098-987654321098' }
   let(:required_params) do
     { article_id: article_id, proposal_id: proposal_id,
-      updated_body: updated_body, identifier: nil, responded_at: nil,
-      response_text: nil }
+      updated_body: updated_body,
+      # Defaults start here. FIXME: Issue #80
+      identifier: ::UUID.generate, responded_at: Time.now,
+      response_text: '' }
   end
   let(:responded_at) { Time.parse '2 Jun 2016 01:23:45 SGT' }
   let(:response_text) { 'Roger dodger' }
@@ -52,7 +54,7 @@ describe 'Prolog::Entities::Contribution::Accepted' do
       expected = 'invalid type for :updated_body'
       expect do
         described_class.new required_params
-      end.must_raise_with_message_part expected, Dry::Types::StructError
+      end.must_raise_with_message_part expected, Dry::Struct::Error
     end
   end # describe 'initialisation'
 

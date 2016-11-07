@@ -64,7 +64,7 @@ module Prolog
           end
 
           def self.auth_verifier
-            -> (params) { VerifyAuthentication.call params[:authoriser] }
+            ->(params) { VerifyAuthentication.call params[:authoriser] }
           end
 
           def self.author_verifier

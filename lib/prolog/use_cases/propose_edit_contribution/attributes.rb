@@ -11,7 +11,7 @@ module Prolog
     class ProposeEditContribution
       # Value object replacing form object as container of data items associated
       # with this use-case instance.
-      class Attributes < ::Dry::Types::Struct
+      class Attributes < ::Dry::Struct
         attribute :article, Types::Class
         attribute :endpoints, Types::IntegerRange
         attribute :identifier, Types::UUID # generates by default

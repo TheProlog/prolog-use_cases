@@ -13,7 +13,7 @@ module Prolog
       # Objects providing services to the use case. We *could* be more specific,
       # or define a validation schema for this. Maybe, in The Glorious Future.
       # Cannot be immutable without breaking test code. FIXME
-      class Collaborators < ::Dry::Types::Struct
+      class Collaborators < ::Dry::Struct
         extend Forwardable
 
         attribute :authoriser, Types::Class

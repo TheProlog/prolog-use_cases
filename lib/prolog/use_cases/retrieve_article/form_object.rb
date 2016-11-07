@@ -17,7 +17,7 @@ module Prolog
         values do
           attribute :current_user, String
           attribute :author_name, String,
-                    default: -> (fo, _) { fo.current_user }
+                    default: ->(fo, _) { fo.current_user }
           attribute :title, String
           attribute :body, String
           attribute :image_url, String
@@ -44,6 +44,7 @@ module Prolog
           repository.find attributes
         end
 
+        # Reek complains about :reek:ManualDispatch here. True, but oh well.
         def repository?
           repository.respond_to? :find
         end

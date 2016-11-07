@@ -39,6 +39,7 @@ class BuildUpdatedBody
     [lead, accepted_mtp, proposed_content, tail]
   end
 
+  # Reek complains of a :reek:NilCheck here. True, but oh well.
   def article_body
     @article_body ||= article&.body.to_s
   end

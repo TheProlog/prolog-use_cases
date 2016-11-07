@@ -9,7 +9,7 @@ module Prolog
     class AuthoriseContributionResponse
       # Collect all collaborators for Authorise Contribution Response use case.
       # Cannot be immutable without breaking test code. FIXME
-      class Collaborators < ::Dry::Types::Struct
+      class Collaborators < ::Dry::Struct
         attribute :article_repo, Types::Class
         attribute :authoriser, Types::Class
         attribute :contribution_repo, Types::Class

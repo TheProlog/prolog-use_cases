@@ -36,6 +36,7 @@ module Prolog
 
         private
 
+        # Reek complains about a :reek:NilCheck here.
         def article_body_length
           article&.body&.length.to_i
         end

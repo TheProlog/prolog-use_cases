@@ -41,8 +41,9 @@ module Prolog
 
       def entity_attribs
         { article_id: article_id, proposal_id: proposal_id,
-          updated_body: updated_body, identifier: identifier,
-          response_text: response_text, responded_at: nil }
+          identifier: identifier, response_text: response_text,
+          # FIXME: Issue #80; `responded_at` should use default
+          responded_at: Time.now }
       end
 
       def result_params

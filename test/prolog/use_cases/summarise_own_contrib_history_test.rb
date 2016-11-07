@@ -98,7 +98,9 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
               { article_id: article_id, identifier: identifier,
                 original_content: original_content,
                 proposed_content: proposed_content,
-                proposer: proposer, justification: nil, proposed_at: nil }
+                proposer: proposer,
+                # FIXME: Issue #80
+                justification: '', proposed_at: Time.now }
             end
             let(:proposed_contributions) do
               [Prolog::Entities::Contribution::Proposed.new(contrib_params)]
@@ -120,7 +122,9 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
             let(:contrib_params) do
               { article_id: article_id, identifier: identifier,
                 proposal_id: proposal_id, response_text: response_text,
-                updated_body: updated_body, responded_at: nil }
+                updated_body: updated_body,
+                # FIXME: Issue #80
+                responded_at: Time.now }
             end
             let(:proposal_id) { UUID.generate }
             let(:response_text) { 'Good catch.' }
@@ -140,7 +144,8 @@ describe 'Prolog::UseCases::SummariseOwnContribHistory' do
             let(:contrib_params) do
               { article_id: article_id, identifier: identifier,
                 proposal_id: proposal_id, response_text: response_text,
-                responded_at: nil }
+                # FIXME: Issue #80
+                responded_at: Time.now }
             end
             let(:proposal_id) { UUID.generate }
             let(:response_text) { 'Sorry, not even close.' }

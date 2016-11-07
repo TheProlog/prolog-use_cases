@@ -12,6 +12,7 @@ module Prolog
           @id_number = id_number
           @body = body
           @endpoints = endpoints
+          @str = nil
           init_other_ivars
         end
 

@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!env zsh
 # set -euo pipefail
 # IFS=$'\n\t'
 # set -vx
 
-bundle install
+# bundle install
+source gemsets/new-setup-and-test.sh setup
 
-if [[ -d $RBENV_ROOT ]]
-then
+if [[ -d $RBENV_ROOT ]]; then
   rbenv rehash
 fi
 

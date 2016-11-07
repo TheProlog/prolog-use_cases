@@ -14,3 +14,10 @@ Metrics/MethodLength:
 
 Style/NestedParenthesizedCalls:
   Enabled: false
+
+# New to 0.44.0
+
+Metrics/BlockLength:
+  Max: 300
+  Include:
+    - 'test/**/*_test.rb'

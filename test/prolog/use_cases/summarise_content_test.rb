@@ -57,7 +57,7 @@ describe 'Prolog::UseCases::SummariseContent' do
         let(:kbf) { return_value[:keywords_by_frequency] }
 
         it 'non-zero integer values as keys' do
-          others = kbf.keys.reject { |key| key.is_a?(Fixnum) && key.positive? }
+          others = kbf.keys.reject { |key| key.is_a?(Integer) && key.positive? }
           expect(others).must_be :empty?
         end
 

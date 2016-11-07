@@ -18,6 +18,7 @@ module Prolog
             end
           end
 
+          # Reek complains about :reek:ManualDispatch here. Too bad.
           def self.if_article(obj)
             methods = [:author_name, :body, :image_url, :keywords, :title]
             actual = methods.reject { |sym| obj.respond_to? sym }
@@ -25,11 +26,13 @@ module Prolog
             obj
           end
 
+          # Reek complains about :reek:ManualDispatch. True, but oh well.
           def self.if_countable(obj)
             return :search_failure unless obj.respond_to? :count
             yield obj
           end
 
+          # Reek complains about :reek:ManualDispatch. True, but oh well.
           def self.if_single_match(enum)
             return :non_specific_search_terms unless enum.count == 1
             yield enum.first

@@ -45,7 +45,8 @@ module Prolog
       def entity_attribs
         { article_id: article_id, proposal_id: proposal_id,
           updated_body: updated_body, identifier: identifier,
-          response_text: response_text, responded_at: nil }
+          # FIXME: Issue #80 -- `responded_at` should use default
+          response_text: response_text, responded_at: Time.now }
       end
 
       # We no longer have *any* validation in this class so, as far as

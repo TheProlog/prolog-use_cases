@@ -87,8 +87,9 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
     let(:original_content) { body_content[endpoints] }
     let(:proposed_content) { 'This is <em>updated</em> content.' }
     let(:proposer) { 'J Random Proposer' }
-    let(:justification) { nil } # defaults to empty string
-    let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
+    # FIXME: Issue #80 for `justification` and `proposed_at`
+    let(:justification) { '' } # defaults to empty string
+    let(:proposed_at) { Time.now } # defaults to `Time.now` at instantiation
     let(:identifier) { UUID.generate }
     let(:found_article) do
       mtp_format = %(<a id="contribution-#{proposal.identifier}-%s"></a>)
@@ -179,7 +180,8 @@ describe 'Prolog::UseCases::AuthoriseContributionResponse' do
                              identifier: new_id,
                              proposal_id: proposal.identifier,
                              updated_body: q.freeze,
-                             responded_at: nil, response_text: nil }
+                             # FIXME: Issue #80
+                             responded_at: Time.now, response_text: '' }
           contrib = contribution_repo.create contrib_params
           contribution_repo.add contrib
         end
