@@ -11,7 +11,7 @@ module Prolog
   module Entities
     module Contribution
       # Responded-Contribution entity (base for Accepted or Rejected).
-      class Responded < ::Dry::Types::Value
+      class Responded < ::Dry::Struct::Value
         extend Forwardable
 
         attribute :article_id, Prolog::Entities::ArticleIdentV

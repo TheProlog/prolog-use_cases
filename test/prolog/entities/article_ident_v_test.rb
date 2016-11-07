@@ -14,7 +14,7 @@ describe 'Prolog::Entities::ArticleIdentV' do
     describe 'must have a parameter value for' do
       after do
         params.delete @param
-        error_class = Dry::Types::StructError
+        error_class = Dry::Struct::Error
         error = expect { described_class.new params }.must_raise error_class
         expected = "[#{described_class}.new] :#{@param} " \
           'is missing in Hash input'

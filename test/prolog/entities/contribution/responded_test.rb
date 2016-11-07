@@ -17,7 +17,8 @@ describe 'Prolog::Entities::Contribution::Responded' do
   end
   let(:required_params) do
     { article_id: article_id, proposal_id: proposal_id,
-      identifier: nil, responded_at: nil, response_text: nil }
+      # "Defaults" start here. FIXME: Issue #80
+      identifier: ::UUID.generate, responded_at: Time.now, response_text: '' }
   end
   let(:article_id) { artid_class.new author_name: author_name, title: title }
   let(:author_name) { 'J Random Author' }

@@ -16,6 +16,7 @@ module Prolog
             _replace_and_convert params
           end
 
+          # Reek complains of a :reek:NilCheck here.
           def self._article_body_from(fo)
             fo.article&.body.to_s
           end

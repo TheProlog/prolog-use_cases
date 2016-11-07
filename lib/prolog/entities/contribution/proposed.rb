@@ -11,7 +11,7 @@ module Prolog
   module Entities
     module Contribution
       # Proposed-Contribution entity;
-      class Proposed < ::Dry::Types::Value
+      class Proposed < ::Dry::Struct::Value
         extend Forwardable
 
         attribute :article_id, ArticleIdentV

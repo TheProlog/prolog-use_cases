@@ -24,12 +24,12 @@ RuboCop::RakeTask.new(:rubocop) do |task|
   task.fail_on_error = true
   # task.options << '--rails'
   task.options << '--display-cop-names'
-  end
+end
 
-  Reek::Rake::Task.new do |t|
+Reek::Rake::Task.new do |t|
   t.config_file = 'config.reek'
   t.source_files = 'lib/**/*.rb'
-  t.reek_opts = '--sort-by smelliness -s'
+  t.reek_opts = '--sort-by smelliness --no-progress  -s'
 end
 
 FlayTask.new do |t|

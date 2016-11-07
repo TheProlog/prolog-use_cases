@@ -27,40 +27,39 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "prolog_core", "~> 0.4"
-  spec.add_dependency "prolog-services-markdown_to_html", "~> 1.0", ">= 1.0.2"
-  spec.add_dependency "prolog-services-replace_content", "0.1.2"
-  spec.add_dependency "prolog-use_cases-publish_new_article", "~> 0.2", ">= 0.2.2"
-  spec.add_dependency "prolog-use_cases-register_new_member", "~> 0.1", ">= 0.1.1"
-  spec.add_dependency "prolog-use_cases-retrieve_article", "~> 0.1", ">= 0.1.0"
+  spec.add_dependency "prolog_core", '0.4.0'
+  spec.add_dependency "prolog-services-markdown_to_html", '1.0.2'
+  spec.add_dependency "prolog-use_cases-publish_new_article", '0.2.4'
+  spec.add_dependency "prolog-services-replace_content", '0.1.2'
+  spec.add_dependency "prolog-use_cases-register_new_member", '0.2.0'
 
-  spec.add_dependency "activemodel", "~> 4.2", ">= 4.2.5"
-  spec.add_dependency "validates_email_format_of", "~> 1.6", ">= 1.6.3"
-  spec.add_dependency "ox", "~> 2.3"
-  spec.add_dependency "html-pipeline", "~> 2.3"
-  spec.add_dependency "gemoji", "~> 2.1"
-  spec.add_dependency "github-markdown", "0.6.9"
-  spec.add_dependency "rinku", "~> 2.0", ">= 2.0.0"
-  spec.add_dependency "uuid", "~> 2.3", ">= 2.3.8"
+  spec.add_dependency "activemodel", '4.2.7.1'
+  spec.add_dependency "validates_email_format_of", '1.6.3'
+  spec.add_dependency "ox", '2.4.5'
+  spec.add_dependency "html-pipeline", '2.4.2'
+  spec.add_dependency "gemoji", '2.1.0'
+  spec.add_dependency "github-markdown", '0.6.9'
+  spec.add_dependency "rinku", '2.0.2'
+  spec.add_dependency "uuid", '2.3.8'
 
-  spec.add_dependency "dry-validation", "~> 0.9", ">= 0.9.3"
+  spec.add_dependency "dry-validation", '0.10.3'
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 11.0" # NOTE: was "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "bundler", '1.13.6'
+  spec.add_development_dependency "rake", '11.3.0'
+  spec.add_development_dependency "minitest", '5.9.1'
 
-  spec.add_development_dependency "minitest-matchers", "~> 1.4"
-  spec.add_development_dependency "minitest-reporters", "~> 1.0"
-  spec.add_development_dependency "minitest-tagz", "~> 1.2"
+  spec.add_development_dependency "minitest-matchers", '1.4.1'
+  spec.add_development_dependency "minitest-reporters", '1.1.12'
+  spec.add_development_dependency "minitest-tagz", '1.5.2'
 
-  spec.add_development_dependency "ffaker", "~> 2.2"
-  spec.add_development_dependency "flay", "~> 2.6"
-  spec.add_development_dependency "flog", "~> 4.3", ">= 4.3.2"
-  spec.add_development_dependency "reek", "~> 4.0"
-  spec.add_development_dependency "rubocop", "~> 0.39"
-  spec.add_development_dependency "simplecov", "~> 0.10"
-  spec.add_development_dependency "pry-byebug", "~> 3.2"
-  spec.add_development_dependency "pry-doc", "~> 0.8"
-  spec.add_development_dependency "colorize", "~> 0.7", ">= 0.7.7"
-  spec.add_development_dependency "awesome_print", "~> 1.6", ">= 1.6.1"
+  spec.add_development_dependency "ffaker", '2.2.0'
+  spec.add_development_dependency "flay", '2.8.1'
+  spec.add_development_dependency "flog", '4.4.0'
+  spec.add_development_dependency "reek", '4.5.1'
+  spec.add_development_dependency "rubocop", '0.45.0'
+  spec.add_development_dependency "simplecov", '0.12.0'
+  spec.add_development_dependency "pry-byebug", '3.4.0'
+  spec.add_development_dependency "pry-doc", '0.9.0'
+  # spec.add_development_dependency "colorize", "~> 0.7", ">= 0.7.7"
+  spec.add_development_dependency "awesome_print", '1.7.0'
 end

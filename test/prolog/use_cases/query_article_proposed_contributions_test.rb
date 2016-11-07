@@ -113,8 +113,9 @@ describe 'Prolog::UseCases::QueryArticleProposedContributions' do
                 params = { article_id: article_id, proposer: 'Somebody Else',
                            justification: justification,
                            original_content: 'FIXME: DUMMY ORIGINAL CONTENT',
-                           proposed_content: proposed_content, proposed_at: nil,
-                           identifier: nil }
+                           proposed_content: proposed_content,
+                           # FIXME: Issue #80
+                           proposed_at: Time.now, identifier: ::UUID.generate }
                 proposal = contrib_class.new params
                 [proposal]
               end

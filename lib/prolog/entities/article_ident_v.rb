@@ -5,7 +5,7 @@ require 'prolog/support/dry_types_setup'
 module Prolog
   module Entities
     # Required attributes to uniquely identify an Article.
-    class ArticleIdentV < ::Dry::Types::Value
+    class ArticleIdentV < ::Dry::Struct::Value
       attribute :author_name, String # FIXME: Constrained?
       attribute :title, String
 

@@ -58,6 +58,7 @@ module Prolog
         }
       end
 
+      # Reek complains of a :reek:NilCheck here. Yup.
       def if_articles_exist(on_empty:)
         articles = article_list&.articles
         return on_empty unless articles

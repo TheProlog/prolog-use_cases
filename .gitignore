@@ -1,9 +1,12 @@
 /.bundle/
+/.rbenv-gemsets
 /.yardoc
 /Gemfile.lock
 /_yardoc/
 /coverage/
 /doc/
+/gemsets/
+!/gemsets/new-setup-and-test.sh
 /pkg/
 /spec/reports/
 /tmp/

@@ -17,6 +17,9 @@ if uses_cc
 end
 
 SimpleCov.start do
+  add_filter '/gemsets/'
+  add_filter '/test/matchers/asserters/'
+
   sc_formatters = [
     SimpleCov::Formatter::HTMLFormatter
   ]

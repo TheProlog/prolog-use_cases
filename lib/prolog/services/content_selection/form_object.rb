@@ -39,6 +39,7 @@ module Prolog
           false
         end
 
+        # Reek complains about a :reek:NilCheck here. Cry us a river.
         def coverage
           bl_range = (0..article&.body&.length.to_i)
           endpoints.grep bl_range

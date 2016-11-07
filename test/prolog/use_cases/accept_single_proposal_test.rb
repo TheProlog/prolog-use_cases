@@ -44,7 +44,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:call_params) { { proposal: proposal, response_text: response_text } }
     let(:call_result) { obj.call call_params }
     let(:endpoints) { (3..18) } # 'T'..'.'
-    let(:justification) { nil } # defaults to empty string
+    let(:justification) { '' } # FIXME: Should default to '' -- Issue #80
     let(:original_content) { body_content[endpoints] }
     let(:proposal) { proposal_class.new proposal_params }
     let(:proposal_class) { Prolog::Entities::Contribution::Proposed }
@@ -54,7 +54,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
         justification: justification, proposed_at: proposed_at,
         identifier: identifier }
     end
-    let(:proposed_at) { nil } # defaults to `DateTime.now` at instantiation
+    let(:proposed_at) { Time.now } # FIXME: Issue #80 - should be default
     let(:proposed_body) do
       outer_parts = body_content.split original_content
       format_str = %(<a id="contribution-#{identifier}-%s"></a>)
@@ -65,7 +65,7 @@ describe 'Prolog::UseCases::AcceptSingleProposal' do
     let(:proposer) { 'J Random Proposer' }
     let(:title) { 'A Title' }
     let(:identifier) { UUID.generate }
-    let(:response_text) { nil }
+    let(:response_text) { '' } # FIXME: Issue #80 -- should be ''
 
     describe 'returns a Result object with' do
       it 'no :errors' do
