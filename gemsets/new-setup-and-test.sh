@@ -27,6 +27,7 @@ usecase_setup_runtime_gems() {
   echo './gemsets/runtime' > .rbenv-gemsets
   gem install awesome_print -v 1.7.0
   gem install activemodel -v 4.2.7.1
+  gem install facets -v 3.1.0
   gem install semantic_logger -v 3.4.0
   gem install uuid -v 2.3.8
   usecase_setup_prolog_core_deps
@@ -47,6 +48,7 @@ usecase_setup_prolog_gems() {
   gem install prolog-use_cases-publish_new_article -v 0.2.4
   gem install prolog-use_cases-register_new_member -v 0.2.0
   gem install prolog-use_cases-retrieve_article -v 0.1.1
+  gem install prolog-use_cases-validate_selection -v 0.1.0
   rbenv rehash
 }
 
